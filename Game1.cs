@@ -6,6 +6,7 @@ namespace ECS;
 
 public class Game1 : Game
 {
+    // Instance variables
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
