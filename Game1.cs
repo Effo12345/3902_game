@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace ECS;
-
+//TODO: finish game
 public class Game1 : Game
 {
     // Instance variables
