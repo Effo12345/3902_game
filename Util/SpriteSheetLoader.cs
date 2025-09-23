@@ -9,11 +9,6 @@ public static class SpriteSheetLoader
     };
 
     // Though not really needed, defining these as properties makes the annoying warnings go away
-    private class InternalAnimation
-    {
-        public Dictionary<string, InternalAnimationConfig> Frames { get; set; }
-    }
-
     private class InternalAnimationConfig
     {
         public float FrameDuration { get; set; }
@@ -34,12 +29,12 @@ public static class SpriteSheetLoader
         var dom = JsonDocument.Parse(configText);
         var root = dom.RootElement;
 
-        var deserializedData = root.Deserialize<InternalAnimation>(AnimOptions);
+        var deserializedData = root.Deserialize<Dictionary<string, InternalAnimationConfig>>(AnimOptions);
 
         AnimationConfig anim = new();
         anim.States = new();
 
-        foreach (var (id, config) in deserializedData.Frames)
+        foreach (var (id, config) in deserializedData)
         {
             List<Rectangle> frames = new();
             foreach (var frame in config.Frames)
