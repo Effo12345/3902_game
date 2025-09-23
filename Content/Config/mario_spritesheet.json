@@ -1,0 +1,13 @@
+{
+    "idle": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 94,
+                "y": 35,
+                "width": 42,
+                "height": 52
+            }
+        ]
+    }
+}
