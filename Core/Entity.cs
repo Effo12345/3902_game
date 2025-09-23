@@ -18,6 +18,7 @@ public class Entity(int id)
         return Components.Remove(typeof(T));
     }
 
+    // Favor tryget since it is more performant than a hascomponent + getcomponent
     public bool TryGetComponent<T>(out T component) where T : class
     {
         bool valid = Components.TryGetValue(typeof(T), out var componentObj);
@@ -29,16 +30,16 @@ public class Entity(int id)
         return valid;
     }
 
-    // public T GetComponent<T>() where T : class
-    // {
-    //     // TODO: Find a better way to handle this gracefully
-    //     if (!Components.TryGetValue(typeof(T), out var obj))
-    //     {
-    //         Console.WriteLine($"Failed getting component on entity {Id}. Returned value is invalid");
-    //     }
+    public bool HasComponent<T>() where T : class
+    {
+        return Components.ContainsKey(typeof(T));
+    }
 
-    //     return (T)obj;
-    // }
+    // Unsafe get if we know it has it already
+    public T GetComponent<T>() where T : class
+    {
+        return (T)Components[typeof(T)];
+    }
 
     // Object overrides to make it fast to search for entities by ID
     public override int GetHashCode()
