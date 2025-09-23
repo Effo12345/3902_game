@@ -1,6 +1,6 @@
 namespace ECS.Components;
 
-public struct Position
+public class Position
 {
     public Vector2 Value;
 }

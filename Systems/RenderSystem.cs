@@ -13,6 +13,29 @@ public class RenderSystem : AbstractSystem
     {
         SpriteBatch.Begin();
 
-        foreach (var entity in Engine.GetEntities()) {}
+        foreach (var entity in engine.GetEntities())
+        {
+            if (!entity.TryGetComponent<SpriteState>(out var sprite) ||
+                !entity.TryGetComponent<Position>(out var position) ||
+                !entity.TryGetComponent<Rotation>(out var rotation) ||
+                !entity.TryGetComponent<Scale>(out var scale)
+            )
+                continue;
+
+            // TODO: we should probably do flipping direction here using sprite effects
+            SpriteBatch.Draw(
+                sprite.Texture,
+                position.Value,
+                sprite.SourceRect,
+                sprite.Color,
+                rotation.Value,
+                sprite.Origin,
+                scale.Value,
+                SpriteEffects.None,
+                0
+            );
+        }
+
+        SpriteBatch.End();
     }
 }

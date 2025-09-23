@@ -1,6 +1,6 @@
 namespace ECS.Components;
 
-public struct Rotation
+public class Rotation
 {
     public float Value;
 }

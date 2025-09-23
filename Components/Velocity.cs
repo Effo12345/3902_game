@@ -1,6 +1,6 @@
 namespace ECS.Components;
 
-public struct Velocity
+public class Velocity
 {
     public Vector2 Value;
 }

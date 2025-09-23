@@ -1,6 +1,6 @@
 namespace ECS.Components;
 
-public struct SpriteState
+public class SpriteState
 {
     public Texture2D Texture;
     public Rectangle SourceRect;

@@ -9,7 +9,7 @@ public class Engine
     private readonly HashSet<Entity> Entities = [];
     private int NextEntityID = 0;
 
-    private List<ISystem> Systems;
+    private List<ISystem> Systems = new();
 
     // Force instantiation to happen inside the engine
     public Entity CreateEntity()

@@ -1,11 +1,11 @@
 namespace ECS.Components;
 
-public struct AnimationConfig
+public class AnimationConfig
 {
     public Dictionary<string, AnimationDescription> States;
 }
 
-public struct AnimationDescription
+public class AnimationDescription
 {
     public List<Rectangle> Frames;
     public float FrameDuration;

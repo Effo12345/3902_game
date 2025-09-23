@@ -1,6 +1,6 @@
 namespace ECS.Components;
 
-public struct Scale
+public class Scale
 {
     public Vector2 Value;
 }

@@ -1,6 +1,6 @@
 namespace ECS.Components;
 
-public struct AnimationState
+public class AnimationState
 {
     public string CurrentState;
     public int FrameIndex;

@@ -1,6 +1,6 @@
 namespace ECS.Core;
 
-public abstract class AbstractSystem
+public abstract class AbstractSystem : ISystem
 {
     // Provide persistent engine access in case another method needs it
     protected Engine Engine { get; set; }
