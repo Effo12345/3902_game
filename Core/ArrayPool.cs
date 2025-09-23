@@ -10,6 +10,9 @@ namespace ECS.Core;
     also avoid boxing and unboxing the components themselves, and just downcast
     the pool during access.
 */
+
+
+// TODO: Remove me if not going to be used
 public class ArrayPool<T> where T : struct  // Enforce holding components (struct types)
 {
     // TODO: make this resizing to prevent overflows
