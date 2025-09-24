@@ -14,3 +14,4 @@ global using ECS.Core;
 global using ECS.Util;
 global using ECS.Components;
 global using ECS.Systems;
+global using ECS.Events;

@@ -11,6 +11,8 @@ public class Engine
 
     private List<ISystem> Systems = new();
 
+    public EventPubSub PubSub { get; } = new();
+
     // Force instantiation to happen inside the engine
     public Entity CreateEntity()
     {
