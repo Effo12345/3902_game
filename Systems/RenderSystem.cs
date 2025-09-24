@@ -13,7 +13,7 @@ public class RenderSystem : AbstractSystem
     {
         SpriteBatch.Begin();
 
-        foreach (var entity in engine.GetEntities())
+        foreach (var entity in Engine.GetEntities())
         {
             if (!entity.TryGetComponent<SpriteState>(out var sprite) ||
                 !entity.TryGetComponent<Position>(out var position) ||

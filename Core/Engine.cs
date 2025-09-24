@@ -36,6 +36,7 @@ public class Engine
     public void AddSystem(ISystem system)
     {
         Systems.Add(system);
+        system.Initialize(this);
     }
 
     public void RemoveSystem(ISystem system)

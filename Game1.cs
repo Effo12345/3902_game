@@ -20,6 +20,9 @@ public class Game1 : Game
         // TODO: Add your initialization logic here
         TestEntity = Engine.CreateEntity();
 
+        Engine.AddSystem(new DemoInputSystem());
+        Engine.AddSystem(new DemoMovementSystem());
+
         base.Initialize();
     }
 
@@ -35,6 +38,7 @@ public class Game1 : Game
         var marioAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/mario_spritesheet.json"));
 
         TestEntity.AddComponent(new Position { Value = new Vector2(20, 20) });
+        TestEntity.AddComponent(new Velocity { Value = Vector2.Zero });
         TestEntity.AddComponent(new Rotation { Value = 0.0f });
         TestEntity.AddComponent(new Scale { Value = new Vector2(1, 1) });
         TestEntity.AddComponent(new SpriteState { Texture = marioSprites, SourceRect = marioAnimationConfig.States["idle"].Frames[0], Color = Color.White });
