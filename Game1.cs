@@ -7,6 +7,7 @@ public class Game1 : Game
 
     private Engine Engine = new();
     private Entity TestEntity;
+    private Entity Goomba;
 
     public Game1()
     {
@@ -19,6 +20,7 @@ public class Game1 : Game
     {
         // TODO: Add your initialization logic here
         TestEntity = Engine.CreateEntity();
+        Goomba = Engine.CreateEntity();
 
         Engine.AddSystem(new DemoInputSystem());
         Engine.AddSystem(new DemoMovementSystem());
@@ -42,6 +44,18 @@ public class Game1 : Game
         TestEntity.AddComponent(new Rotation { Value = 0.0f });
         TestEntity.AddComponent(new Scale { Value = new Vector2(1, 1) });
         TestEntity.AddComponent(new SpriteState { Texture = marioSprites, SourceRect = marioAnimationConfig.States["idle"].Frames[0], Color = Color.White });
+
+        //Load in Goomba
+        var goombaSprites = Content.Load<Texture2D>("Sprites/goombas");
+        var goombaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/goomba_spritesheet.json"));
+
+        Goomba.AddComponent(new Position { Value = new Vector2(100, 100) });
+        Goomba.AddComponent(new Velocity { Value = Vector2.Zero });
+        Goomba.AddComponent(new Rotation { Value = 0.0f });
+        Goomba.AddComponent(new Scale { Value = new Vector2(1, 1) });
+        Goomba.AddComponent(new SpriteState { Texture = goombaSprites, SourceRect = goombaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
+
+
     }
 
     protected override void Update(GameTime gameTime)
