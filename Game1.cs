@@ -8,6 +8,7 @@ public class Game1 : Game
     private Engine Engine = new();
     private Entity TestEntity;
     private Entity Goomba;
+    private Entity Koopa;
 
     public Game1()
     {
@@ -21,6 +22,7 @@ public class Game1 : Game
         // TODO: Add your initialization logic here
         TestEntity = Engine.CreateEntity();
         Goomba = Engine.CreateEntity();
+        Koopa = Engine.CreateEntity();
 
         Engine.AddSystem(new DemoInputSystem());
         Engine.AddSystem(new DemoMovementSystem());
@@ -54,6 +56,16 @@ public class Game1 : Game
         Goomba.AddComponent(new Rotation { Value = 0.0f });
         Goomba.AddComponent(new Scale { Value = new Vector2(1, 1) });
         Goomba.AddComponent(new SpriteState { Texture = goombaSprites, SourceRect = goombaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
+
+        //Load in Koopa
+        var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
+        var koopaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/koopa_spritesheet.json"));
+
+        Koopa.AddComponent(new Position { Value = new Vector2(200, 200) });
+        Koopa.AddComponent(new Velocity { Value = Vector2.Zero });
+        Koopa.AddComponent(new Rotation { Value = 0.0f });
+        Koopa.AddComponent(new Scale { Value = new Vector2(1, 1) });
+        Koopa.AddComponent(new SpriteState { Texture = koopaSprites, SourceRect = koopaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
 
 
     }

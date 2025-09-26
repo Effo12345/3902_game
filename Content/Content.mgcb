@@ -25,13 +25,7 @@
 /processorParam:TextureFormat=Color
 /build:../../../../Downloads/goombas.png;Sprites/goombas.png
 
-#begin Config/goomba_spritesheet.json
-/copy:Config/goomba_spritesheet.json
-
-#begin Config/mario_spritesheet.json
-/copy:Config/mario_spritesheet.json
-
-#begin Sprites/koopas.png
+#begin ../../../../Downloads/koopas.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -41,7 +35,16 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/koopas.png
+/build:../../../../Downloads/koopas.png;Sprites/koopas.png
+
+#begin Config/goomba_spritesheet.json
+/copy:Config/goomba_spritesheet.json
+
+#begin Config/koopa_spritesheet.json
+/copy:Config/koopa_spritesheet.json
+
+#begin Config/mario_spritesheet.json
+/copy:Config/mario_spritesheet.json
 
 #begin Sprites/mario.png
 /importer:TextureImporter
