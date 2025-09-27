@@ -11,7 +11,8 @@ public class RenderSystem : AbstractSystem
 
     public override void Update(Engine engine, GameTime gameTime)
     {
-        SpriteBatch.Begin();
+        // PointClamp prevents scaled sprites from looking blurry
+        SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
         foreach (var entity in Engine.GetEntities())
         {

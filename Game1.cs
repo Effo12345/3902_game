@@ -40,7 +40,7 @@ public class Game1 : Game
         TestEntity.AddComponent(new Position { Value = new Vector2(20, 20) });
         TestEntity.AddComponent(new Velocity { Value = Vector2.Zero });
         TestEntity.AddComponent(new Rotation { Value = 0.0f });
-        TestEntity.AddComponent(new Scale { Value = new Vector2(1, 1) });
+        TestEntity.AddComponent(new Scale { Value = new Vector2(3, 3) });
         TestEntity.AddComponent(new SpriteState { Texture = marioSprites, SourceRect = marioAnimationConfig.States["idle"].Frames[0], Color = Color.White });
     }
 
