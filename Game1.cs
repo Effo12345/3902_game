@@ -21,7 +21,9 @@ public class Game1 : Game
         TestEntity = Engine.CreateEntity();
 
         Engine.AddSystem(new DemoInputSystem());
-        Engine.AddSystem(new DemoMovementSystem());
+        Engine.AddSystem(new GravitySystem());
+        Engine.AddSystem(new GroundedSystem(new Vector2(0.0f, 300)));
+        Engine.AddSystem(new PhysicsSystem());
 
         base.Initialize();
     }
@@ -42,6 +44,9 @@ public class Game1 : Game
         TestEntity.AddComponent(new Rotation { Value = 0.0f });
         TestEntity.AddComponent(new Scale { Value = new Vector2(3, 3) });
         TestEntity.AddComponent(new SpriteState { Texture = marioSprites, SourceRect = marioAnimationConfig.States["idle"].Frames[0], Color = Color.White });
+        TestEntity.AddComponent(new Mass { Value = 10 });
+        TestEntity.AddComponent(new Acceleration());
+        TestEntity.AddComponent(new IsGrounded());
     }
 
     protected override void Update(GameTime gameTime)
