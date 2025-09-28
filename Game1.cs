@@ -61,7 +61,7 @@ public class Game1 : Game
         Goomba.AddComponent(new Scale { Value = new Vector2(3, 3) });
         Goomba.AddComponent(new SpriteState { Texture = goombaSprites, SourceRect = goombaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
         Goomba.AddComponent(new AnimationConfig { States = goombaAnimationConfig.States});
-        Goomba.AddComponent(new AnimationState { CurrentState = "walking", FrameIndex = 0, TimeInCurrentFrame = goombaAnimationConfig.States["walking"].FrameDuration });
+        Goomba.AddComponent(new AnimationState { CurrentState = "walking"});
 
         //Load in Koopa
         var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
@@ -73,7 +73,7 @@ public class Game1 : Game
         Koopa.AddComponent(new Scale { Value = new Vector2(3, 3) });
         Koopa.AddComponent(new SpriteState { Texture = koopaSprites, SourceRect = koopaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
         Koopa.AddComponent(new AnimationConfig { States = koopaAnimationConfig.States});
-        Koopa.AddComponent(new AnimationState { CurrentState = "walking", FrameIndex = 0, TimeInCurrentFrame = koopaAnimationConfig.States["walking"].FrameDuration });
+        Koopa.AddComponent(new AnimationState { CurrentState = "walking"});
 
 
     }
