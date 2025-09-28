@@ -2,5 +2,5 @@ namespace ECS.Components;
 
 public class BasicEnemyMovement
 {
-    public Vector2 Velocity;
+    public Vector2 Value;
 }

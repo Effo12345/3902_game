@@ -5,7 +5,7 @@ public class EnemyMovementSystem : AbstractSystem
 {
     public override bool Initialize(Engine engine)
     {
-        base.Initialize(Engine);
+        base.Initialize(engine);
         return true;
     }
 
@@ -22,6 +22,17 @@ public class EnemyMovementSystem : AbstractSystem
                 !entity.TryGetComponent<BasicEnemyMovement>(out var basicEnemyMovement)
             )
                 continue;
+
+            //If the enemy collides with something it cannot move into, change its direction.
+            if (position.Value.X <= 0 || position.Value.X >= 784)
+            {
+                basicEnemyMovement.Value.X *= -1;
+            }
+
+            //TODO: Enemies can fall in SMB1. For sprint2 theres no ground, and no good way to implement that, so this section is reserved for making enemies fall later on
+
+            //Move enemy according to its velocity
+            position.Value += basicEnemyMovement.Value * deltaTime;
         }
     }
 }
