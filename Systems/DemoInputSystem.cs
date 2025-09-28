@@ -34,7 +34,7 @@ public class DemoInputSystem : AbstractSystem
 
             Engine.PubSub.Publish(new InputEvent
             {
-                DirectionVector = direction,
+                MotionVector = direction,
                 Entity = entity
             });
         }

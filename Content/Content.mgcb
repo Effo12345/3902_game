@@ -16,6 +16,9 @@
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
 
+#begin Config/player_input.json
+/copy:Config/player_input.json
+
 #begin Sprites/mario.png
 /importer:TextureImporter
 /processor:TextureProcessor
