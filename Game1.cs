@@ -4,14 +4,20 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-
     private Engine Engine = new();
     private Entity BlueShell, FireFlower, SuperMushroom, BoostMushroom, Fireball, SuperStar;
 
     private Entity[] Items = new Entity[6];
-    private Entity TestEntity;
+    private Entity BumpableBlock;
+    private Entity BreakableBlock;
+    private Entity ItemBlock;
+    private Entity Coin;
+    private Entity GreenMushroom;
+    private Entity RedMushroom;
+    private Entity Flower;
     private Entity Goomba;
     private Entity Koopa;
+    private Entity TestEntity;
 
     private Vector2 enemyVelocity = new Vector2(-100, 0); //(Probably temporary) default velocity for enemies to set their velocity in BasicEnemyMovement as.
 
@@ -57,6 +63,21 @@ public class Game1 : Game
         Engine.AddSystem(new SpriteSwitchingSystem());
         Engine.AddSystem(new EnemyMovementSystem());
         Engine.AddSystem(new AnimationSystem());
+        BumpableBlock = Engine.CreateEntity();
+        ItemBlock = Engine.CreateEntity();
+        BreakableBlock = Engine.CreateEntity();
+        Coin = Engine.CreateEntity();
+        RedMushroom = Engine.CreateEntity();
+        GreenMushroom = Engine.CreateEntity();
+        Flower = Engine.CreateEntity();
+
+        Engine.AddSystem(new BlockBreakSystem());
+        Engine.AddSystem(new BlockBumpSystem());
+        Engine.AddSystem(new BlockPhysicsSystem());
+        Engine.AddSystem(new BlockClickSystem());
+        Engine.AddSystem(new ItemBlockSystem());
+        Engine.AddSystem(new ItemSpawnSystem());
+        Engine.AddSystem(new AnimationSystem());
 
         base.Initialize();
     }
@@ -71,6 +92,9 @@ public class Game1 : Game
 
         var marioSprites = Content.Load<Texture2D>("Sprites/mario");
         var marioAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/mario_spritesheet.json"));
+
+        var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
+        var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
 
         var blueshellSprite = Content.Load<Texture2D>("Sprites/blueshell");
         var attacksSprite = Content.Load<Texture2D>("Sprites/attacks");
@@ -136,6 +160,108 @@ public class Game1 : Game
         SuperStar.AddComponent(new Visible { Value = false });
         var marioControlConfig = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/player_input.json"));
 
+        BumpableBlock.AddComponent(new Position { Value = new Vector2(100, 150) });
+        BumpableBlock.AddComponent(new Rotation { Value = 0f });
+        BumpableBlock.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        BumpableBlock.AddComponent(new Bump());
+        BumpableBlock.AddComponent(new SpriteState
+        {
+            Texture = blockSprites,
+            SourceRect = tilesAnimationConfig.States["block"].Frames[0],
+            Origin = Vector2.Zero,
+            Color = Color.White
+        });
+
+        BreakableBlock.AddComponent(new Position { Value = new Vector2(150, 150) });
+        BreakableBlock.AddComponent(new Rotation { Value = 0f });
+        BreakableBlock.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        BreakableBlock.AddComponent(new Break());
+        BreakableBlock.AddComponent(new SpriteState
+        {
+            Texture = blockSprites,
+            SourceRect = tilesAnimationConfig.States["block"].Frames[0],
+            Origin = Vector2.Zero,
+            Color = Color.White
+        });
+
+        ItemBlock.AddComponent(new Position { Value = new Vector2(200, 150) });
+        ItemBlock.AddComponent(new Rotation { Value = 0f });
+        ItemBlock.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        ItemBlock.AddComponent(new Bump());
+        ItemBlock.AddComponent(new SpriteState
+        {
+            Texture = blockSprites,
+            SourceRect = tilesAnimationConfig.States["unused_block"].Frames[0], // show "?"
+            Origin = Vector2.Zero,
+            Color = Color.White
+        });
+        ItemBlock.AddComponent(new ItemBlock
+        {
+            Kind = ItemKind.Mushroom,
+            ItemTexture = blockSprites,
+            ItemRect = tilesAnimationConfig.States["red_mushroom"].Frames[0],
+            UsedBlockRect = tilesAnimationConfig.States["used_block"].Frames[0],
+            Used = false
+        });
+
+        var coinFrames = tilesAnimationConfig.States["coin"].Frames;
+        var coinDur = tilesAnimationConfig.States["coin"].FrameDuration;
+        Coin.AddComponent(new Position { Value = new Vector2(250, 150) });
+        Coin.AddComponent(new Rotation { Value = 0f });
+        Coin.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        Coin.AddComponent(new SpriteState
+        {
+            Texture = blockSprites,
+            SourceRect = coinFrames[0],
+            Origin = Vector2.Zero,
+            Color = Color.White
+        });
+        Coin.AddComponent(new AnimationConfig
+        {
+            States = new Dictionary<string, AnimationDescription>
+            {
+                { "coin", new AnimationDescription { Frames = coinFrames, FrameDuration = coinDur } }
+            }
+        });
+        Coin.AddComponent(new AnimationState
+        {
+            CurrentState = "coin",
+            FrameIndex = 0,
+            TimeInCurrentFrame = 0f
+        });
+
+        RedMushroom.AddComponent(new Position { Value = new Vector2(300, 150) });
+        RedMushroom.AddComponent(new Rotation { Value = 0f });
+        RedMushroom.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        RedMushroom.AddComponent(new SpriteState
+        {
+            Texture = blockSprites,
+            SourceRect = tilesAnimationConfig.States["red_mushroom"].Frames[0],
+            Origin = Vector2.Zero,
+            Color = Color.White
+        });
+
+        GreenMushroom.AddComponent(new Position { Value = new Vector2(350, 150) });
+        GreenMushroom.AddComponent(new Rotation { Value = 0f });
+        GreenMushroom.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        GreenMushroom.AddComponent(new SpriteState
+        {
+            Texture = blockSprites,
+            SourceRect = tilesAnimationConfig.States["green_mushroom"].Frames[0],
+            Origin = Vector2.Zero,
+            Color = Color.White
+        });
+
+        Flower.AddComponent(new Position { Value = new Vector2(400, 150) });
+        Flower.AddComponent(new Rotation { Value = 0f });
+        Flower.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        Flower.AddComponent(new SpriteState
+        {
+            Texture = blockSprites,
+            SourceRect = tilesAnimationConfig.States["flower"].Frames[0],
+            Origin = Vector2.Zero,
+            Color = Color.White
+        });
         TestEntity.AddComponent(new Position { Value = new Vector2(20, 20) });
         TestEntity.AddComponent(new Velocity { Value = Vector2.Zero });
         TestEntity.AddComponent(new Rotation { Value = 0.0f });
@@ -173,10 +299,7 @@ public class Game1 : Game
         Koopa.AddComponent(new SpriteState { Texture = koopaSprites, SourceRect = koopaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
         Koopa.AddComponent(new AnimationConfig { States = koopaAnimationConfig.States});
         Koopa.AddComponent(new AnimationState { CurrentState = "walking"});
-
-
     }
-
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
