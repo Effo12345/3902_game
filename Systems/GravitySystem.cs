@@ -15,8 +15,7 @@ public class GravitySystem : AbstractSystem
                 continue;
 
             // Yes this is fake, but good enough for now
-            // acceleration.Value += mass.Value * GravityAcceleration * deltaTime;
-            acceleration.Value += GravityAcceleration;
+            acceleration.Value += mass.Value * GravityAcceleration;
         }
     }
 }

@@ -17,6 +17,17 @@ public class PhysicsSystem : AbstractSystem
 
             velocity.Value += acceleration.Value * deltaTime;
             position.Value += velocity.Value * deltaTime;
+
+            if (!entity.TryGetComponent<VelocityCap>(out var velocityCap))
+                continue;
+
+            // TODO: This looks like to could be more efficient
+            var vel = velocity.Value;
+            var velCap = velocityCap.Value;
+            if (Math.Abs(vel.X) > velCap.X)
+                vel.X = velCap.X * Math.Sign(vel.X);
+            if (Math.Abs(vel.Y) > velCap.Y)
+                vel.Y = velCap.Y * Math.Sign(vel.Y);
         }
     }
 }

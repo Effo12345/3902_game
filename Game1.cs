@@ -23,6 +23,9 @@ public class Game1 : Game
         Engine.AddSystem(new DemoInputSystem());
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new GroundedSystem(new Vector2(0.0f, 300)));
+        Engine.AddSystem(new InputSystem());
+        Engine.AddSystem(new PlayerMotionSystem());
+        Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PhysicsSystem());
 
         base.Initialize();
@@ -39,14 +42,19 @@ public class Game1 : Game
         var marioSprites = Content.Load<Texture2D>("Sprites/mario");
         var marioAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/mario_spritesheet.json"));
 
+        var marioControlConfig = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/player_input.json"));
+
         TestEntity.AddComponent(new Position { Value = new Vector2(20, 20) });
         TestEntity.AddComponent(new Velocity { Value = Vector2.Zero });
         TestEntity.AddComponent(new Rotation { Value = 0.0f });
         TestEntity.AddComponent(new Scale { Value = new Vector2(3, 3) });
         TestEntity.AddComponent(new SpriteState { Texture = marioSprites, SourceRect = marioAnimationConfig.States["idle"].Frames[0], Color = Color.White });
-        TestEntity.AddComponent(new Mass { Value = 10 });
+        TestEntity.AddComponent(new Mass { Value = 5 });
         TestEntity.AddComponent(new Acceleration());
         TestEntity.AddComponent(new IsGrounded());
+        TestEntity.AddComponent(marioControlConfig);
+        TestEntity.AddComponent(new Friction { Value = 4.0f });
+        TestEntity.AddComponent(new VelocityCap { Value = new Vector2(10.0f, 10.0f) });
     }
 
     protected override void Update(GameTime gameTime)
