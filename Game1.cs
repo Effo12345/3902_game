@@ -7,6 +7,10 @@ public class Game1 : Game
 
     private Engine Engine = new();
     private Entity TestEntity;
+    private Entity Goomba;
+    private Entity Koopa;
+
+    private Vector2 enemyVelocity = new Vector2(-100, 0); //(Probably temporary) default velocity for enemies to set their velocity in BasicEnemyMovement as.
 
     public Game1()
     {
@@ -19,9 +23,12 @@ public class Game1 : Game
     {
         // TODO: Add your initialization logic here
         TestEntity = Engine.CreateEntity();
+        Goomba = Engine.CreateEntity();
+        Koopa = Engine.CreateEntity();
 
         Engine.AddSystem(new DemoInputSystem());
         Engine.AddSystem(new DemoMovementSystem());
+        Engine.AddSystem(new EnemyMovementSystem());
 
         base.Initialize();
     }
@@ -42,6 +49,28 @@ public class Game1 : Game
         TestEntity.AddComponent(new Rotation { Value = 0.0f });
         TestEntity.AddComponent(new Scale { Value = new Vector2(3, 3) });
         TestEntity.AddComponent(new SpriteState { Texture = marioSprites, SourceRect = marioAnimationConfig.States["idle"].Frames[0], Color = Color.White });
+
+        //Load in Goomba
+        var goombaSprites = Content.Load<Texture2D>("Sprites/goombas");
+        var goombaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/goomba_spritesheet.json"));
+
+        Goomba.AddComponent(new Position { Value = new Vector2(100, 100) });
+        Goomba.AddComponent(new BasicEnemyMovement { Value = enemyVelocity });
+        Goomba.AddComponent(new Rotation { Value = 0.0f });
+        Goomba.AddComponent(new Scale { Value = new Vector2(1, 1) });
+        Goomba.AddComponent(new SpriteState { Texture = goombaSprites, SourceRect = goombaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
+
+        //Load in Koopa
+        var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
+        var koopaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/koopa_spritesheet.json"));
+
+        Koopa.AddComponent(new Position { Value = new Vector2(200, 200) });
+        Koopa.AddComponent(new BasicEnemyMovement { Value = enemyVelocity});
+        Koopa.AddComponent(new Rotation { Value = 0.0f });
+        Koopa.AddComponent(new Scale { Value = new Vector2(1, 1) });
+        Koopa.AddComponent(new SpriteState { Texture = koopaSprites, SourceRect = koopaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
+
+
     }
 
     protected override void Update(GameTime gameTime)
