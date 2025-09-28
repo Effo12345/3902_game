@@ -1,6 +1,6 @@
 {
     "walking": {
-        "frameDuration": 0.5,
+        "frameDuration": 0.125,
         "frames": [
             {
                 "x": 1,

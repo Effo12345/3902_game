@@ -29,6 +29,7 @@ public class Game1 : Game
         Engine.AddSystem(new DemoInputSystem());
         Engine.AddSystem(new DemoMovementSystem());
         Engine.AddSystem(new EnemyMovementSystem());
+        Engine.AddSystem(new AnimationSystem());
 
         base.Initialize();
     }
@@ -57,18 +58,22 @@ public class Game1 : Game
         Goomba.AddComponent(new Position { Value = new Vector2(100, 100) });
         Goomba.AddComponent(new BasicEnemyMovement { Value = enemyVelocity });
         Goomba.AddComponent(new Rotation { Value = 0.0f });
-        Goomba.AddComponent(new Scale { Value = new Vector2(1, 1) });
+        Goomba.AddComponent(new Scale { Value = new Vector2(3, 3) });
         Goomba.AddComponent(new SpriteState { Texture = goombaSprites, SourceRect = goombaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
+        Goomba.AddComponent(new AnimationConfig { States = goombaAnimationConfig.States});
+        Goomba.AddComponent(new AnimationState { CurrentState = "walking", FrameIndex = 0, TimeInCurrentFrame = goombaAnimationConfig.States["walking"].FrameDuration });
 
         //Load in Koopa
         var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
         var koopaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/koopa_spritesheet.json"));
 
         Koopa.AddComponent(new Position { Value = new Vector2(200, 200) });
-        Koopa.AddComponent(new BasicEnemyMovement { Value = enemyVelocity});
+        Koopa.AddComponent(new BasicEnemyMovement { Value = enemyVelocity });
         Koopa.AddComponent(new Rotation { Value = 0.0f });
-        Koopa.AddComponent(new Scale { Value = new Vector2(1, 1) });
+        Koopa.AddComponent(new Scale { Value = new Vector2(3, 3) });
         Koopa.AddComponent(new SpriteState { Texture = koopaSprites, SourceRect = koopaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
+        Koopa.AddComponent(new AnimationConfig { States = koopaAnimationConfig.States});
+        Koopa.AddComponent(new AnimationState { CurrentState = "walking", FrameIndex = 0, TimeInCurrentFrame = koopaAnimationConfig.States["walking"].FrameDuration });
 
 
     }
