@@ -1,0 +1,46 @@
+{
+  "SuperMushroom": {
+    "frameDuration": 0.0,
+    "frames": [
+      {
+        "x": 180,
+        "y": 30,
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "PoisonMushroom": {
+    "frameDuration": 0.0,
+    "frames": [
+      {
+        "x": 209,
+        "y": 30,
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "SuperStar": {
+    "frameDuration": 0.0,
+    "frames": [
+      {
+        "x": 0,
+        "y": 90,
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "FireFlower": {
+    "frameDuration": 0.0,
+    "frames": [
+      {
+        "x": 0,
+        "y": 59,
+        "width": 24,
+        "height": 24
+      }
+    ]
+  }
+}
