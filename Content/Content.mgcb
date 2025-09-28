@@ -16,6 +16,9 @@
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
 
+#begin Config/tiles_spritesheet.json
+/copy:Config/tiles_spritesheet.json
+
 #begin Sprites/mario.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -27,4 +30,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/mario.png
+
+#begin Sprites/tiles.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/tiles.png
 
