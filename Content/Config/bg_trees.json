@@ -1,0 +1,13 @@
+{
+    "bg_trees": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 0,
+                "y": 9,
+                "width": 768,
+                "height": 236
+            }
+        ]
+    }
+}
