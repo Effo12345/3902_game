@@ -27,6 +27,9 @@ public class Game1 : Game
         Engine.AddSystem(new PlayerMotionSystem());
         Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PhysicsSystem());
+        Engine.AddSystem(new PlayerAnimationSystem());
+        Engine.AddSystem(new FacingSystem());
+        Engine.AddSystem(new AnimationSystem());
 
         base.Initialize();
     }
@@ -48,13 +51,16 @@ public class Game1 : Game
         TestEntity.AddComponent(new Velocity { Value = Vector2.Zero });
         TestEntity.AddComponent(new Rotation { Value = 0.0f });
         TestEntity.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        TestEntity.AddComponent(new SpriteState { Texture = marioSprites, SourceRect = marioAnimationConfig.States["idle"].Frames[0], Color = Color.White });
+        TestEntity.AddComponent(new SpriteState { Texture = marioSprites, Color = Color.White, Origin = new Vector2(0, 0) });
         TestEntity.AddComponent(new Mass { Value = 5 });
         TestEntity.AddComponent(new Acceleration());
         TestEntity.AddComponent(new IsGrounded());
         TestEntity.AddComponent(marioControlConfig);
         TestEntity.AddComponent(new Friction { Value = 4.0f });
         TestEntity.AddComponent(new VelocityCap { Value = new Vector2(10.0f, 10.0f) });
+        TestEntity.AddComponent(marioAnimationConfig);
+        TestEntity.AddComponent(new AnimationState { CurrentState = "small_idle" });
+        TestEntity.AddComponent(new FacingDirection());
     }
 
     protected override void Update(GameTime gameTime)

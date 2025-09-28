@@ -22,14 +22,13 @@ public class PlayerMotionSystem : AbstractSystem
         )
             return;
 
+        // TODO: Relate button pressed length to jump height
         if (!isGrounded.Value)
             motionVector.Y = 0.0f;
 
         velocity.Value += motionVector;
     }
 
-    public override void Update(Engine engine, GameTime gameTime)
-    {
-        // no-op
-    }
+    // no-op
+    public override void Update(Engine engine, GameTime gameTime) { }
 }
