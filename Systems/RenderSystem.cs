@@ -22,8 +22,25 @@ public class RenderSystem : AbstractSystem
             )
                 continue;
 
-            // TODO: we should probably do flipping direction here using sprite effects
-            SpriteBatch.Draw(
+            //Case here to flip enemies if moving right... sorry this is terrible I just wanted to get it working
+            if (entity.TryGetComponent<BasicEnemyMovement>(out var velocity) && velocity.Value.X > 0)
+            {
+                SpriteBatch.Draw(
+                sprite.Texture,
+                position.Value,
+                sprite.SourceRect,
+                sprite.Color,
+                rotation.Value,
+                sprite.Origin,
+                scale.Value,
+                SpriteEffects.FlipHorizontally,
+                0
+                );
+            }
+            else
+            {
+
+                SpriteBatch.Draw(
                 sprite.Texture,
                 position.Value,
                 sprite.SourceRect,
@@ -34,6 +51,7 @@ public class RenderSystem : AbstractSystem
                 SpriteEffects.None,
                 0
             );
+            }
         }
 
         SpriteBatch.End();

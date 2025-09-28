@@ -23,7 +23,7 @@ public class EnemyMovementSystem : AbstractSystem
             )
                 continue;
 
-            //If the enemy collides with something it cannot move into, change its direction.
+            //If the enemy collides with something it cannot move into, change its direction and flip its sprite.
             if (position.Value.X <= 0 || position.Value.X >= 784)
             {
                 basicEnemyMovement.Value.X *= -1;
