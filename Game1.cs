@@ -35,7 +35,6 @@ public class Game1 : Game
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new FacingSystem());
         Engine.AddSystem(new SpriteSwitchingSystem());
-        Engine.AddSystem(new DemoMovementSystem());
         Engine.AddSystem(new EnemyMovementSystem());
         Engine.AddSystem(new AnimationSystem());
 
