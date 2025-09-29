@@ -23,6 +23,12 @@ public class RenderSystem : AbstractSystem
             )
                 continue;
 
+            if (!entity.TryGetComponent<Visible>(out var visible))
+                continue;
+            if (!visible.Value)
+                continue;
+
+
             // TODO: we should probably do flipping direction here using sprite effects
             SpriteBatch.Draw(
                 sprite.Texture,
