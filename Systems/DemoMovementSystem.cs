@@ -21,7 +21,7 @@ public class DemoMovementSystem : AbstractSystem
         if (!entity.TryGetComponent<Velocity>(out var velocity))
             return;
 
-        velocity.Value = inputEvent.DirectionVector * MOVEMENT_MULTIPLIER;
+        velocity.Value = inputEvent.MotionVector * MOVEMENT_MULTIPLIER;
     }
 
     public override void Update(Engine engine, GameTime gameTime)
