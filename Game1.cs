@@ -57,7 +57,7 @@ public class Game1 : Game
         TestEntity.AddComponent(new IsGrounded());
         TestEntity.AddComponent(marioControlConfig);
         TestEntity.AddComponent(new Friction { Value = 4.0f });
-        TestEntity.AddComponent(new VelocityCap { Value = new Vector2(10.0f, 10.0f) });
+        TestEntity.AddComponent(new VelocityCap { Value = new Vector2(0.2f, 10.0f) });
         TestEntity.AddComponent(marioAnimationConfig);
         TestEntity.AddComponent(new AnimationState { CurrentState = "small_idle" });
         TestEntity.AddComponent(new FacingDirection());
