@@ -13,6 +13,9 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Config/attacks.json
+/copy:Config/attacks.json
+
 #begin Config/bg_clouds.json
 /copy:Config/bg_clouds.json
 
@@ -22,17 +25,14 @@
 #begin Config/bg_trees.json
 /copy:Config/bg_trees.json
 
-#begin Config/bluesheel.json
-/copy:Config/bluesheel.json
+#begin Config/blueshell.json
+/copy:Config/blueshell.json
 
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
 
 #begin Config/powerups.json
 /copy:Config/powerups.json
-
-#begin Config/attakcs.json
-/copy:Config/attacks.json
 
 #begin Sprites/attacks.png
 /importer:TextureImporter
@@ -82,7 +82,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/bg_trees.png
 
-#begin Sprites/Blue_Shell.png
+#begin Sprites/blueshell.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -92,7 +92,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Blue_Shell.png
+/build:Sprites/blueshell.png
 
 #begin Sprites/items.png
 /importer:TextureImporter

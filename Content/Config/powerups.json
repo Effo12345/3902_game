@@ -10,7 +10,7 @@
       }
     ]
   },
-  "PoisonMushroom": {
+  "BoostMushroom": {
     "frameDuration": 0.0,
     "frames": [
       {
@@ -22,10 +22,28 @@
     ]
   },
   "SuperStar": {
-    "frameDuration": 0.0,
+    "frameDuration": 0.1,
     "frames": [
       {
         "x": 0,
+        "y": 90,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 30,
+        "y": 90,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 60,
+        "y": 90,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 90,
         "y": 90,
         "width": 24,
         "height": 24
@@ -33,10 +51,28 @@
     ]
   },
   "FireFlower": {
-    "frameDuration": 0.0,
+    "frameDuration": 0.1,
     "frames": [
       {
         "x": 0,
+        "y": 59,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 30,
+        "y": 59,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 60,
+        "y": 59,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 90,
         "y": 59,
         "width": 24,
         "height": 24
