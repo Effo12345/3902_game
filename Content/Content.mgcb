@@ -16,14 +16,8 @@
 #begin Config/attacks.json
 /copy:Config/attacks.json
 
-#begin Config/bg_clouds.json
-/copy:Config/bg_clouds.json
-
-#begin Config/bg_mountains.json
-/copy:Config/bg_mountains.json
-
-#begin Config/bg_trees.json
-/copy:Config/bg_trees.json
+#begin Config/backgrounds.json
+/copy:Config/backgrounds.json
 
 #begin Config/blueshell.json
 /copy:Config/blueshell.json
@@ -31,8 +25,8 @@
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
 
-#begin Config/powerups.json
-/copy:Config/powerups.json
+#begin Config/items.json
+/copy:Config/items.json
 
 #begin Sprites/attacks.png
 /importer:TextureImporter

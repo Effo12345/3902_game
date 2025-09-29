@@ -1,4 +1,15 @@
 {
+  "Blueshell": {
+    "frameDuration": 0.0,
+    "frames": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 16,
+        "height": 15
+      }
+    ]
+  },
   "SuperMushroom": {
     "frameDuration": 0.0,
     "frames": [
