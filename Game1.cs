@@ -8,6 +8,9 @@ public class Game1 : Game
     private Engine Engine = new();
     private Entity BlueShell, FireFlower, SuperMushroom, BoostMushroom, Fireball, SuperStar;
 
+    // TODO: Implement switching render target by pressing keys
+    private int CurrentItemIndex;
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -88,7 +91,6 @@ public class Game1 : Game
         BoostMushroom.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["BoostMushroom"].Frames[0], Color = Color.White });
         BoostMushroom.AddComponent(new AnimationConfig { States = itemConfig.States });
         BoostMushroom.AddComponent(new AnimationState { CurrentState = "BoostMushroom", FrameIndex = 0, TimeInCurrentFrame = itemConfig.States["BoostMushroom"].FrameDuration });
-
 
         SuperStar.AddComponent(new Position { Value = new Vector2(300, 20) });
         SuperStar.AddComponent(new Velocity { Value = Vector2.Zero });
