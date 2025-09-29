@@ -19,7 +19,7 @@ public class EnemyMovementSystem : AbstractSystem
         {
             //Entity needs BasicEnemyMovement as well as Position to be affected
             if (!entity.TryGetComponent<Position>(out var position) ||
-                !entity.TryGetComponent<BasicEnemyMovement>(out var basicEnemyMovement)
+                !entity.TryGetComponent<BasicEnemy>(out var basicEnemyMovement)
             )
                 continue;
 

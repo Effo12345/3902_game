@@ -24,7 +24,7 @@ public class RenderSystem : AbstractSystem
                 continue;
 
             //Case here to flip enemies if moving right... sorry this is terrible I just wanted to get it working
-            if (entity.TryGetComponent<BasicEnemyMovement>(out var velocity) && velocity.Value.X > 0)
+            if (entity.TryGetComponent<BasicEnemy>(out var velocity) && velocity.Value.X > 0)
             {
                 SpriteBatch.Draw(
                 sprite.Texture,

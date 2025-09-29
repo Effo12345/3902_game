@@ -26,7 +26,7 @@ public class Game1 : Game
         Goomba = Engine.CreateEntity();
         Koopa = Engine.CreateEntity();
 
-        Engine.AddSystem(new DemoInputSystem());
+        Engine.AddSystem(new SpriteSwitchingSystem());
         Engine.AddSystem(new DemoMovementSystem());
         Engine.AddSystem(new EnemyMovementSystem());
         Engine.AddSystem(new AnimationSystem());
@@ -56,7 +56,7 @@ public class Game1 : Game
         var goombaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/goomba_spritesheet.json"));
 
         Goomba.AddComponent(new Position { Value = new Vector2(100, 100) });
-        Goomba.AddComponent(new BasicEnemyMovement { Value = enemyVelocity });
+        Goomba.AddComponent(new BasicEnemy { Name = "Goomba", Value = enemyVelocity });
         Goomba.AddComponent(new Rotation { Value = 0.0f });
         Goomba.AddComponent(new Scale { Value = new Vector2(3, 3) });
         Goomba.AddComponent(new SpriteState { Texture = goombaSprites, SourceRect = goombaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
@@ -67,8 +67,7 @@ public class Game1 : Game
         var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
         var koopaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/koopa_spritesheet.json"));
 
-        Koopa.AddComponent(new Position { Value = new Vector2(200, 200) });
-        Koopa.AddComponent(new BasicEnemyMovement { Value = enemyVelocity });
+        Koopa.AddComponent(new BasicEnemy { Name = "Koopa", Value = enemyVelocity });
         Koopa.AddComponent(new Rotation { Value = 0.0f });
         Koopa.AddComponent(new Scale { Value = new Vector2(3, 3) });
         Koopa.AddComponent(new SpriteState { Texture = koopaSprites, SourceRect = koopaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
