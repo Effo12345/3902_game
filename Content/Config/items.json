@@ -1,0 +1,93 @@
+{
+  "Blueshell": {
+    "frameDuration": 0.0,
+    "frames": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 16,
+        "height": 15
+      }
+    ]
+  },
+  "SuperMushroom": {
+    "frameDuration": 0.0,
+    "frames": [
+      {
+        "x": 180,
+        "y": 30,
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "BoostMushroom": {
+    "frameDuration": 0.0,
+    "frames": [
+      {
+        "x": 209,
+        "y": 30,
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "SuperStar": {
+    "frameDuration": 0.1,
+    "frames": [
+      {
+        "x": 0,
+        "y": 90,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 30,
+        "y": 90,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 60,
+        "y": 90,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 90,
+        "y": 90,
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "FireFlower": {
+    "frameDuration": 0.1,
+    "frames": [
+      {
+        "x": 0,
+        "y": 59,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 30,
+        "y": 59,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 60,
+        "y": 59,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 90,
+        "y": 59,
+        "width": 24,
+        "height": 24
+      }
+    ]
+  }
+}
