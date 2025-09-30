@@ -5,6 +5,7 @@ public class BlockBreakSystem : AbstractSystem
 {
     public override bool Initialize(Engine engine)
     {
+        //Call OnBreak when BlockBreak is triggered
         base.Initialize(engine);
         Engine.PubSub.CreateSubscription<BlockBreak>(OnBreak);
         return true;
