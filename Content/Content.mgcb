@@ -20,7 +20,8 @@
 /copy:Config/backgrounds.json
 
 #begin Config/blueshell.json
-/copy:Config/blueshell.json
+#/copy:Config/blueshell.json
+
 #begin Config/goomba_spritesheet.json
 /copy:Config/goomba_spritesheet.json
 
