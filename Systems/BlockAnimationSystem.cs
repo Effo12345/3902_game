@@ -1,6 +1,6 @@
 namespace ECS.Systems;
 
-public class AnimationSystem : AbstractSystem
+public class BlockAnimationSystem : AbstractSystem
 {
     // public override bool Initialize(Engine engine)
     // {

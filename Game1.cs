@@ -37,7 +37,7 @@ public class Game1 : Game
         Engine.AddSystem(new BlockClickSystem());
         Engine.AddSystem(new ItemBlockSystem());
         Engine.AddSystem(new ItemSpawnSystem());
-        Engine.AddSystem(new AnimationSystem());
+        Engine.AddSystem(new BlockAnimationSystem());
 
         base.Initialize();
     }
