@@ -4,7 +4,7 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    private Engine Engine = new();
+    private Engine Engine = new Engine();
     private Entity BlueShell, FireFlower, SuperMushroom, BoostMushroom, Fireball, SuperStar;
 
     private Entity[] Items = new Entity[6];
@@ -77,7 +77,6 @@ public class Game1 : Game
         Engine.AddSystem(new BlockClickSystem());
         Engine.AddSystem(new ItemBlockSystem());
         Engine.AddSystem(new ItemSpawnSystem());
-        Engine.AddSystem(new BlockAnimationSystem());
 
         base.Initialize();
     }
