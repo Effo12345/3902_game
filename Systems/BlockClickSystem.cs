@@ -1,14 +1,17 @@
 namespace ECS.Systems;
 
+/// <summary>
+/// For sprite 2 only. Use to demonstrate block animations
+/// </summary>
 public class BlockClickSystem : AbstractSystem
 {
     private MouseState _prev;
 
     public override void Update(Engine engine, GameTime gameTime)
     {
-        var mouse   = Mouse.GetState();
+        var mouse = Mouse.GetState();
         bool clicked = mouse.LeftButton == ButtonState.Pressed &&
-                       _prev.LeftButton  == ButtonState.Released;
+                       _prev.LeftButton == ButtonState.Released;
 
         if (!clicked)
         {
@@ -31,7 +34,7 @@ public class BlockClickSystem : AbstractSystem
             if (e.TryGetComponent<Break>(out _))
                 Engine.PubSub.Publish(new BlockBreak { Entity = e });
 
-            break; 
+            break;
         }
 
         _prev = mouse;
@@ -41,7 +44,7 @@ public class BlockClickSystem : AbstractSystem
     {
         rect = default;
 
-        if (!e.TryGetComponent<SpriteState>(out var sprite)) 
+        if (!e.TryGetComponent<SpriteState>(out var sprite))
             return false;
         if (!e.TryGetComponent<Position>(out var pos))
             return false;
@@ -53,7 +56,7 @@ public class BlockClickSystem : AbstractSystem
             sy = sc.Value.Y;
         }
 
-        var src    = sprite.SourceRect;
+        var src = sprite.SourceRect;
         var origin = sprite.Origin;
 
         var topLeft = new Vector2(
@@ -64,7 +67,7 @@ public class BlockClickSystem : AbstractSystem
         rect = new Rectangle(
             (int)topLeft.X,
             (int)topLeft.Y,
-            (int)(src.Width  * sx),
+            (int)(src.Width * sx),
             (int)(src.Height * sy)
         );
         return true;
