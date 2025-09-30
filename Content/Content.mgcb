@@ -21,6 +21,11 @@
 
 #begin Config/blueshell.json
 /copy:Config/blueshell.json
+#begin Config/goomba_spritesheet.json
+/copy:Config/goomba_spritesheet.json
+
+#begin Config/koopa_spritesheet.json
+/copy:Config/koopa_spritesheet.json
 
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
@@ -29,6 +34,9 @@
 /copy:Config/items.json
 
 #begin Sprites/attacks.png
+#begin Config/player_input.json
+/copy:Config/player_input.json
+#begin Sprites/goombas.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -41,6 +49,9 @@
 /build:Sprites/attacks.png
 
 #begin Sprites/bg_clouds.png
+/build:Sprites/goombas.png
+
+#begin Sprites/koopas.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -99,6 +110,7 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/items.png
+/build:Sprites/koopas.png
 
 #begin Sprites/mario.png
 /importer:TextureImporter

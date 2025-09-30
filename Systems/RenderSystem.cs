@@ -23,24 +23,45 @@ public class RenderSystem : AbstractSystem
             )
                 continue;
 
-            if (!entity.TryGetComponent<Visible>(out var visible))
-                continue;
-            if (!visible.Value)
+            // Temperory for item switching
+            if (!entity.TryGetComponent<Visible>(out var visible) && !visible.Value)
                 continue;
 
+            var spriteEffects = SpriteEffects.None;
+            if (entity.TryGetComponent<FacingDirection>(out var facing) && facing.IsFacingLeft)
+                spriteEffects = SpriteEffects.FlipHorizontally;
 
             // TODO: we should probably do flipping direction here using sprite effects
-            SpriteBatch.Draw(
-                sprite.Texture,
-                position.Value,
-                sprite.SourceRect,
-                sprite.Color,
-                rotation.Value,
-                sprite.Origin,
-                scale.Value,
-                SpriteEffects.None,
-                0
-            );
+            //Case here to flip enemies if moving right... sorry this is terrible I just wanted to get it working
+            if (entity.TryGetComponent<BasicEnemy>(out var velocity) && velocity.Value.X > 0)
+            {
+                SpriteBatch.Draw(
+                    sprite.Texture,
+                    position.Value,
+                    sprite.SourceRect,
+                    sprite.Color,
+                    rotation.Value,
+                    sprite.Origin,
+                    scale.Value,
+                    SpriteEffects.FlipHorizontally,
+                    0
+                );
+            }
+            else
+            {
+
+                SpriteBatch.Draw(
+                    sprite.Texture,
+                    position.Value,
+                    sprite.SourceRect,
+                    sprite.Color,
+                    rotation.Value,
+                    sprite.Origin,
+                    scale.Value,
+                    spriteEffects,
+                    0
+                );
+            }
         }
 
         SpriteBatch.End();
