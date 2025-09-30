@@ -24,7 +24,7 @@ public class RenderSystem : AbstractSystem
                 continue;
 
             // Temperory for item switching
-            if (!entity.TryGetComponent<Visible>(out var visible) && !visible.Value)
+            if (entity.TryGetComponent<Visible>(out var visible) && !visible.Value)
                 continue;
 
             var spriteEffects = SpriteEffects.None;

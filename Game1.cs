@@ -69,8 +69,8 @@ public class Game1 : Game
 
         Engine.AddSystem(new RenderSystem(_spriteBatch));
 
-        //var marioSprites = Content.Load<Texture2D>("Sprites/mario");
-        //var marioAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/mario_spritesheet.json"));
+        var marioSprites = Content.Load<Texture2D>("Sprites/mario");
+        var marioAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/mario_spritesheet.json"));
 
         var blueshellSprite = Content.Load<Texture2D>("Sprites/blueshell");
         var attacksSprite = Content.Load<Texture2D>("Sprites/attacks");
