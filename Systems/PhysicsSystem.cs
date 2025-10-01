@@ -18,6 +18,17 @@ public class PhysicsSystem : AbstractSystem
             velocity.Value += acceleration.Value * deltaTime;
             position.Value += velocity.Value * deltaTime;
 
+            
+            //This bit of code is for enemies to change direction when they hit the sides of the screen, and will later be refactored in with collision.
+            if (entity.TryGetComponent<BasicEnemy>(out var enemy) && entity.TryGetComponent<FacingDirection>(out var facingDirection))
+            {
+                if (position.Value.X <= 0 || position.Value.X >= 752)
+                {
+                    velocity.Value.X *= -1;
+                    facingDirection.IsFacingLeft = !facingDirection.IsFacingLeft;
+                }
+            }
+
             if (!entity.TryGetComponent<VelocityCap>(out var velocityCap))
                 continue;
 

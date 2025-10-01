@@ -61,7 +61,6 @@ public class Game1 : Game
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new FacingSystem());
         Engine.AddSystem(new SpriteSwitchingSystem());
-        Engine.AddSystem(new EnemyMovementSystem());
         Engine.AddSystem(new AnimationSystem());
         BumpableBlock = Engine.CreateEntity();
         ItemBlock = Engine.CreateEntity();
@@ -281,7 +280,10 @@ public class Game1 : Game
         var goombaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/goomba_spritesheet.json"));
 
         Goomba.AddComponent(new Position { Value = new Vector2(100, 100) });
-        Goomba.AddComponent(new BasicEnemy { Name = "Goomba", Value = enemyVelocity });
+        Goomba.AddComponent(new BasicEnemy { Name = "Goomba"});
+        Goomba.AddComponent(new Velocity { Value = enemyVelocity });
+        Goomba.AddComponent(new Acceleration { Value = Vector2.Zero });
+        Goomba.AddComponent(new FacingDirection { IsFacingLeft = true });
         Goomba.AddComponent(new Rotation { Value = 0.0f });
         Goomba.AddComponent(new Scale { Value = new Vector2(3, 3) });
         Goomba.AddComponent(new SpriteState { Texture = goombaSprites, SourceRect = goombaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
@@ -292,7 +294,10 @@ public class Game1 : Game
         var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
         var koopaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/koopa_spritesheet.json"));
 
-        Koopa.AddComponent(new BasicEnemy { Name = "Koopa", Value = enemyVelocity });
+        Koopa.AddComponent(new BasicEnemy { Name = "Koopa"});
+        Koopa.AddComponent(new Velocity { Value = enemyVelocity });
+        Koopa.AddComponent(new Acceleration { Value = Vector2.Zero });
+        Koopa.AddComponent(new FacingDirection { IsFacingLeft = true });
         Koopa.AddComponent(new Rotation { Value = 0.0f });
         Koopa.AddComponent(new Scale { Value = new Vector2(3, 3) });
         Koopa.AddComponent(new SpriteState { Texture = koopaSprites, SourceRect = koopaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
