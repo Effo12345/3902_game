@@ -13,14 +13,8 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Config/attacks.json
-/copy:Config/attacks.json
-
-#begin Config/backgrounds.json
-/copy:Config/backgrounds.json
-
-#begin Config/blueshell.json
-#/copy:Config/blueshell.json
+#begin Config/backgrounds_spritesheet.json
+/copy:Config/backgrounds_spritesheet.json
 
 #begin Config/goomba_spritesheet.json
 /copy:Config/goomba_spritesheet.json
@@ -31,10 +25,9 @@
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
 
-#begin Config/items.json
-/copy:Config/items.json
+#begin Config/items_spritesheet.json
+/copy:Config/items_spritesheet.json
 
-#begin Sprites/attacks.png
 #begin Config/player_input.json
 /copy:Config/player_input.json
 #begin Sprites/goombas.png
@@ -47,9 +40,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/attacks.png
 
-#begin Sprites/bg_clouds.png
 /build:Sprites/goombas.png
 
 #begin Sprites/koopas.png
@@ -62,43 +53,6 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/bg_clouds.png
-
-#begin Sprites/bg_mountains.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/bg_mountains.png
-
-#begin Sprites/bg_trees.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/bg_trees.png
-
-#begin Sprites/blueshell.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/blueshell.png
 
 #begin Sprites/items.png
 /importer:TextureImporter

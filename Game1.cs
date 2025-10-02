@@ -5,9 +5,9 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Engine Engine = new Engine();
-    private Entity BlueShell, FireFlower, SuperMushroom, BoostMushroom, Fireball, SuperStar;
+    private Entity KoopaShell, FireFlower, SuperMushroom, BoostMushroom, SuperStar;
 
-    private Entity[] Items = new Entity[6];
+    private Entity[] Items = new Entity[5];
     private Entity BumpableBlock;
     private Entity BreakableBlock;
     private Entity ItemBlock;
@@ -30,19 +30,17 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        BlueShell = Engine.CreateEntity();
+        KoopaShell = Engine.CreateEntity();
         FireFlower = Engine.CreateEntity();
-        Fireball = Engine.CreateEntity();
         SuperMushroom = Engine.CreateEntity();
         BoostMushroom = Engine.CreateEntity();
         SuperStar = Engine.CreateEntity();
 
-        Items[0] = BlueShell;
+        Items[0] = KoopaShell;
         Items[1] = FireFlower;
-        Items[2] = Fireball;
-        Items[3] = SuperMushroom;
-        Items[4] = BoostMushroom;
-        Items[5] = SuperStar;
+        Items[2] = SuperMushroom;
+        Items[3] = BoostMushroom;
+        Items[4] = SuperStar;
 
         // Temporary for item switching
         Engine.AddSystem(new ItemChangeSystem(Items));
@@ -95,32 +93,19 @@ public class Game1 : Game
         var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
         var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
 
-        var blueshellSprite = Content.Load<Texture2D>("Sprites/blueshell");
-        var attacksSprite = Content.Load<Texture2D>("Sprites/attacks");
         var itemSprite = Content.Load<Texture2D>("Sprites/items");
-        var bg_cloudSprite = Content.Load<Texture2D>("Sprites/bg_clouds");
-        var bg_mountainSprite = Content.Load<Texture2D>("Sprites/bg_mountains");
-        var bg_treeSprite = Content.Load<Texture2D>("Sprites/bg_trees");
+        var itemConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/items_spritesheet.json"));
 
-        var attacksConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/attacks.json"));
-        var itemConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/items.json"));
-        var backgroundConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/backgrounds.json"));
+        var backgroundConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/backgrounds_spritesheet.json"));
 
-        BlueShell.AddComponent(new Position { Value = new Vector2(200, 200) });
-        BlueShell.AddComponent(new Velocity { Value = Vector2.Zero });
-        BlueShell.AddComponent(new Rotation { Value = 0.0f });
-        BlueShell.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        BlueShell.AddComponent(new SpriteState { Texture = blueshellSprite, SourceRect = itemConfig.States["Blueshell"].Frames[0], Color = Color.White });
-        BlueShell.AddComponent(new Visible { Value = false });
-
-        Fireball.AddComponent(new Position { Value = new Vector2(200, 200) });
-        Fireball.AddComponent(new Velocity { Value = Vector2.Zero });
-        Fireball.AddComponent(new Rotation { Value = 0.0f });
-        Fireball.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        Fireball.AddComponent(new SpriteState { Texture = attacksSprite, SourceRect = attacksConfig.States["Fireball"].Frames[0], Color = Color.White });
-        Fireball.AddComponent(new AnimationConfig { States = attacksConfig.States });
-        Fireball.AddComponent(new AnimationState { CurrentState = "Fireball", FrameIndex = 0, TimeInCurrentFrame = attacksConfig.States["Fireball"].FrameDuration });
-        Fireball.AddComponent(new Visible { Value = false });
+        KoopaShell.AddComponent(new Position { Value = new Vector2(200, 200) });
+        KoopaShell.AddComponent(new Velocity { Value = Vector2.Zero });
+        KoopaShell.AddComponent(new Rotation { Value = 0.0f });
+        KoopaShell.AddComponent(new Scale { Value = new Vector2(3, 3) });
+        KoopaShell.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["KoopaShell"].Frames[0], Color = Color.White });
+        KoopaShell.AddComponent(new AnimationConfig { States = itemConfig.States });
+        KoopaShell.AddComponent(new AnimationState { CurrentState = "KoopaShell", FrameIndex = 0, TimeInCurrentFrame = itemConfig.States["KoopaShell"].FrameDuration });
+        KoopaShell.AddComponent(new Visible { Value = true });
 
         FireFlower.AddComponent(new Position { Value = new Vector2(200, 200) });
         FireFlower.AddComponent(new Velocity { Value = Vector2.Zero });

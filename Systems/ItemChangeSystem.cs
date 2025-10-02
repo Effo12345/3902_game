@@ -6,7 +6,6 @@ namespace ECS.Systems;
 
 public class ItemChangeSystem : AbstractSystem
 {
-    private int ItemCount = 6;
     private Entity[] Items;
     private int CurrentItemIndex = 0;
 
@@ -33,7 +32,7 @@ public class ItemChangeSystem : AbstractSystem
 
                     CurrentItemIndex -= 1;
                     if (CurrentItemIndex < 0)
-                        CurrentItemIndex += ItemCount;
+                        CurrentItemIndex += Items.Length;
                 }
                 else if (key == Keys.E)
                 {
@@ -42,8 +41,8 @@ public class ItemChangeSystem : AbstractSystem
                     previsible.Value = false;
 
                     CurrentItemIndex += 1;
-                    if (CurrentItemIndex >= ItemCount)
-                        CurrentItemIndex -= ItemCount;
+                    if (CurrentItemIndex >= Items.Length)
+                        CurrentItemIndex -= Items.Length;
                 }
 
                 if (!Items[CurrentItemIndex].TryGetComponent<Visible>(out var curvisible))
