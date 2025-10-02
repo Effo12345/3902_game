@@ -1,4 +1,7 @@
-﻿namespace ECS;
+﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+
+namespace ECS;
 
 public class Game1 : Game
 {
@@ -18,6 +21,7 @@ public class Game1 : Game
     private Entity Goomba;
     private Entity Koopa;
     private Entity TestEntity;
+    
 
     private Vector2 enemyVelocity = new Vector2(-100, 0); //(Probably temporary) default velocity for enemies to set their velocity in BasicEnemyMovement as.
 
@@ -30,6 +34,7 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
+
         BlueShell = Engine.CreateEntity();
         FireFlower = Engine.CreateEntity();
         Fireball = Engine.CreateEntity();
@@ -60,7 +65,6 @@ public class Game1 : Game
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new FacingSystem());
-        Engine.AddSystem(new SpriteSwitchingSystem());
         Engine.AddSystem(new AnimationSystem());
         BumpableBlock = Engine.CreateEntity();
         ItemBlock = Engine.CreateEntity();
@@ -274,42 +278,37 @@ public class Game1 : Game
         TestEntity.AddComponent(marioAnimationConfig);
         TestEntity.AddComponent(new AnimationState { CurrentState = "small_idle" });
         TestEntity.AddComponent(new FacingDirection());
-
+        
         //Load in Goomba
         var goombaSprites = Content.Load<Texture2D>("Sprites/goombas");
         var goombaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/goomba_spritesheet.json"));
 
-        Goomba.AddComponent(new Position { Value = new Vector2(100, 100) });
-        Goomba.AddComponent(new BasicEnemy { Name = "Goomba"});
-        Goomba.AddComponent(new Velocity { Value = enemyVelocity });
-        Goomba.AddComponent(new Acceleration { Value = Vector2.Zero });
-        Goomba.AddComponent(new FacingDirection { IsFacingLeft = true });
-        Goomba.AddComponent(new Rotation { Value = 0.0f });
-        Goomba.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        Goomba.AddComponent(new SpriteState { Texture = goombaSprites, SourceRect = goombaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
-        Goomba.AddComponent(new AnimationConfig { States = goombaAnimationConfig.States});
-        Goomba.AddComponent(new AnimationState { CurrentState = "walking"});
+        EnemyFactory.makeEnemy(Goomba, goombaSprites, goombaAnimationConfig, "Goomba", new Vector2(100, 100));
 
         //Load in Koopa
         var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
         var koopaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/koopa_spritesheet.json"));
 
-        Koopa.AddComponent(new BasicEnemy { Name = "Koopa"});
-        Koopa.AddComponent(new Velocity { Value = enemyVelocity });
-        Koopa.AddComponent(new Acceleration { Value = Vector2.Zero });
-        Koopa.AddComponent(new FacingDirection { IsFacingLeft = true });
-        Koopa.AddComponent(new Rotation { Value = 0.0f });
-        Koopa.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        Koopa.AddComponent(new SpriteState { Texture = koopaSprites, SourceRect = koopaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
-        Koopa.AddComponent(new AnimationConfig { States = koopaAnimationConfig.States});
-        Koopa.AddComponent(new AnimationState { CurrentState = "walking"});
+        EnemyFactory.makeEnemy(Koopa, koopaSprites, koopaAnimationConfig, "Koopa", new Vector2(100, 100));
+        EnemyFactory.hideEnemy(Koopa);
     }
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        // TODO: Add your update logic here
+        //TODO: there may be a better spot to put input stuff for switching enemies
+        if (Keyboard.GetState().IsKeyDown(Keys.O))
+        {
+            EnemyFactory.hideEnemy(Koopa);
+            EnemyFactory.resetEnemy(Goomba, new Vector2(100, 100));
+        }
+        if (Keyboard.GetState().IsKeyDown(Keys.P))
+        {
+            EnemyFactory.hideEnemy(Goomba);
+            EnemyFactory.resetEnemy(Koopa, new Vector2(100, 100));
+        }
+
 
         base.Update(gameTime);
     }
