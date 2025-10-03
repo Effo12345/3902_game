@@ -14,6 +14,7 @@ public class PlayerAnimationSystem : AbstractSystem
             if (!entity.TryGetComponent<Velocity>(out var velocity) ||
                 !entity.TryGetComponent<IsGrounded>(out var isGrounded) ||
                 !entity.TryGetComponent<AnimationState>(out var animationState) ||
+                !entity.TryGetComponent<Status>(out var currentStatus) ||
                 !entity.HasComponent<InputConfig>()
             )
                 continue;
@@ -28,7 +29,8 @@ public class PlayerAnimationSystem : AbstractSystem
             if (!isGrounded.Value)
                 animUpdate = "jump";
 
-            animUpdate = animationState.CurrentState.Split("_")[0] + "_" + animUpdate;
+            animUpdate = currentStatus.State + "_" + animUpdate;
+            //animUpdate = animationState.CurrentState.Split("_")[0] + "_" + animUpdate;
 
             engine.PubSub.Publish(new AnimationChangeEvent
             {

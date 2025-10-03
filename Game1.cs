@@ -53,6 +53,8 @@ public class Game1 : Game
         Goomba = Engine.CreateEntity();
         Koopa = Engine.CreateEntity();
 
+        Engine.AddSystem(new MarioActionSystem(TestEntity));
+
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new GroundedSystem(new Vector2(0.0f, 300)));
         Engine.AddSystem(new InputSystem());
@@ -263,6 +265,8 @@ public class Game1 : Game
         TestEntity.AddComponent(marioAnimationConfig);
         TestEntity.AddComponent(new AnimationState { CurrentState = "small_idle" });
         TestEntity.AddComponent(new FacingDirection());
+
+        TestEntity.AddComponent(new Status { State = "small"});
 
         //Load in Goomba
         var goombaSprites = Content.Load<Texture2D>("Sprites/goombas");
