@@ -26,7 +26,7 @@ public class EnemyMovementSystem : AbstractSystem
         )
             return;
 
-        if (motionVector.X == 1.0)
+        if (motionVector.Y == 1.0)
         {
             enemy.Name = "goomba";
             position.Value = new Vector2(100, 100); //TODO: remove magic number
@@ -34,7 +34,7 @@ public class EnemyMovementSystem : AbstractSystem
             facingDirection.IsFacingLeft = true;
             animationState.CurrentState = "goomba";
         }
-        if (motionVector.X == 2.0)
+        if (motionVector.Y == 2.0)
         {
             enemy.Name = "koopa";
             position.Value = new Vector2(100, 100); //TODO: remove magic number

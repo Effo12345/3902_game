@@ -56,12 +56,12 @@ public class Game1 : Game
         Engine.AddSystem(new GroundedSystem(new Vector2(0.0f, 300)));
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new PlayerMotionSystem());
+        Engine.AddSystem(new EnemyMovementSystem());
         Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new FacingSystem());
         Engine.AddSystem(new AnimationSystem());
-        Engine.AddSystem(new EnemyMovementSystem());
 
         BumpableBlock = Engine.CreateEntity();
         ItemBlock = Engine.CreateEntity();
