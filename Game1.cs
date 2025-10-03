@@ -5,9 +5,12 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Engine Engine = new Engine();
-    private Entity KoopaShell, FireFlower, SuperMushroom, BoostMushroom, SuperStar;
 
+    // Animated Powerup items
+    private Entity KoopaShell, FireFlower, SuperMushroom, BoostMushroom, SuperStar;
+    // Temporary for item switching
     private Entity[] Items = new Entity[5];
+
     private Entity BumpableBlock;
     private Entity BreakableBlock;
     private Entity ItemBlock;
@@ -104,7 +107,7 @@ public class Game1 : Game
         KoopaShell.AddComponent(new Scale { Value = new Vector2(3, 3) });
         KoopaShell.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["KoopaShell"].Frames[0], Color = Color.White });
         KoopaShell.AddComponent(new AnimationConfig { States = itemConfig.States });
-        KoopaShell.AddComponent(new AnimationState { CurrentState = "KoopaShell", FrameIndex = 0, TimeInCurrentFrame = itemConfig.States["KoopaShell"].FrameDuration });
+        KoopaShell.AddComponent(new AnimationState { CurrentState = "KoopaShell"});
         KoopaShell.AddComponent(new Visible { Value = true });
 
         FireFlower.AddComponent(new Position { Value = new Vector2(200, 200) });
@@ -113,7 +116,7 @@ public class Game1 : Game
         FireFlower.AddComponent(new Scale { Value = new Vector2(3, 3) });
         FireFlower.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["FireFlower"].Frames[0], Color = Color.White });
         FireFlower.AddComponent(new AnimationConfig { States = itemConfig.States });
-        FireFlower.AddComponent(new AnimationState { CurrentState = "FireFlower", FrameIndex = 0, TimeInCurrentFrame = itemConfig.States["FireFlower"].FrameDuration });
+        FireFlower.AddComponent(new AnimationState { CurrentState = "FireFlower" });
         FireFlower.AddComponent(new Visible { Value = false });
 
         SuperMushroom.AddComponent(new Position { Value = new Vector2(200, 200) });
@@ -122,7 +125,7 @@ public class Game1 : Game
         SuperMushroom.AddComponent(new Scale { Value = new Vector2(3, 3) });
         SuperMushroom.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["SuperMushroom"].Frames[0], Color = Color.White });
         SuperMushroom.AddComponent(new AnimationConfig { States = itemConfig.States });
-        SuperMushroom.AddComponent(new AnimationState { CurrentState = "SuperMushroom", FrameIndex = 0, TimeInCurrentFrame = itemConfig.States["SuperMushroom"].FrameDuration });
+        SuperMushroom.AddComponent(new AnimationState { CurrentState = "SuperMushroom" });
         SuperMushroom.AddComponent(new Visible { Value = false });
 
         BoostMushroom.AddComponent(new Position { Value = new Vector2(200, 200) });
@@ -131,7 +134,7 @@ public class Game1 : Game
         BoostMushroom.AddComponent(new Scale { Value = new Vector2(3, 3) });
         BoostMushroom.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["BoostMushroom"].Frames[0], Color = Color.White });
         BoostMushroom.AddComponent(new AnimationConfig { States = itemConfig.States });
-        BoostMushroom.AddComponent(new AnimationState { CurrentState = "BoostMushroom", FrameIndex = 0, TimeInCurrentFrame = itemConfig.States["BoostMushroom"].FrameDuration });
+        BoostMushroom.AddComponent(new AnimationState { CurrentState = "BoostMushroom" });
         BoostMushroom.AddComponent(new Visible { Value = false });
 
         SuperStar.AddComponent(new Position { Value = new Vector2(200, 200) });
@@ -140,7 +143,7 @@ public class Game1 : Game
         SuperStar.AddComponent(new Scale { Value = new Vector2(3, 3) });
         SuperStar.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["SuperStar"].Frames[0], Color = Color.White });
         SuperStar.AddComponent(new AnimationConfig { States = itemConfig.States });
-        SuperStar.AddComponent(new AnimationState { CurrentState = "SuperStar", FrameIndex = 0, TimeInCurrentFrame = itemConfig.States["SuperStar"].FrameDuration });
+        SuperStar.AddComponent(new AnimationState { CurrentState = "SuperStar" });
         SuperStar.AddComponent(new Visible { Value = false });
         var marioControlConfig = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/player_input.json"));
 
