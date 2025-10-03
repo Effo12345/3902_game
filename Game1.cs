@@ -283,13 +283,13 @@ public class Game1 : Game
         var goombaSprites = Content.Load<Texture2D>("Sprites/goombas");
         var goombaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/goomba_spritesheet.json"));
 
-        EnemyFactory.makeEnemy(Goomba, goombaSprites, goombaAnimationConfig, "Goomba", new Vector2(100, 100));
+        Goomba = EnemyFactory.makeEnemy(Engine, goombaSprites, goombaAnimationConfig, "Goomba", new Vector2(100, 100));
 
         //Load in Koopa
         var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
         var koopaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/koopa_spritesheet.json"));
 
-        EnemyFactory.makeEnemy(Koopa, koopaSprites, koopaAnimationConfig, "Koopa", new Vector2(100, 100));
+        Koopa = EnemyFactory.makeEnemy(Engine, koopaSprites, koopaAnimationConfig, "Koopa", new Vector2(100, 100));
         EnemyFactory.hideEnemy(Koopa);
     }
     protected override void Update(GameTime gameTime)
