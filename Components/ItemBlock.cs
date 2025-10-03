@@ -1,4 +1,4 @@
-public enum ItemKind{ Coin, Mushroom, Flower }
+public enum ItemKind{ Coin, Mushroom, Flower}
 
 public sealed class ItemBlock
 {
