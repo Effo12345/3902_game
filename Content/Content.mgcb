@@ -19,14 +19,11 @@
 #begin Config/backgrounds.json
 /copy:Config/backgrounds.json
 
-#begin Config/goomba_spritesheet.json
-/copy:Config/goomba_spritesheet.json
+#begin Config/enemy_spritesheet.json
+/copy:Config/enemy_spritesheet.json
 
 #begin Config/items.json
 /copy:Config/items.json
-
-#begin Config/koopa_spritesheet.json
-/copy:Config/koopa_spritesheet.json
 
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
@@ -97,7 +94,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/blueshell.png
 
-#begin Sprites/goombas.png
+#begin Sprites/enemies.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,7 +104,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/goombas.png
+/build:Sprites/enemies.png
 
 #begin Sprites/items.png
 /importer:TextureImporter
@@ -120,18 +117,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/items.png
-
-#begin Sprites/koopas.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/koopas.png
 
 #begin Sprites/mario.png
 /importer:TextureImporter

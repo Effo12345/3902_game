@@ -1,7 +1,9 @@
 
 
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Microsoft.VisualBasic;
+using Microsoft.Xna.Framework.Content;
 
 namespace ECS.Util;
 
@@ -9,42 +11,29 @@ namespace ECS.Util;
 //and animationConfig conventional for a goomba or a koopa.
 public static class EnemyFactory
 {
-    private static Vector2 enemyVelocity = new Vector2(-100, 0);
+    private static Vector2 enemyVelocity = new Vector2(-50, 0);
 
     private static Entity entity;
 
     //This method assumes some naming conventions in the animation config file, namely that it will have a state called "walking".
-    public static Entity makeEnemy(Engine engine, Texture2D texture, AnimationConfig animationConfig, String name, Vector2 position)
+    public static Entity makeEnemy(Engine engine, ContentManager Content, String name, Vector2 position)
     {
         entity = engine.CreateEntity();
+        var enemySprites = Content.Load<Texture2D>("Sprites/enemies");
+        var enemyAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/enemy_spritesheet.json"));
 
         entity.AddComponent(new Position { Value = position });
-        entity.AddComponent(new BasicEnemy { Name = name, Velocity = enemyVelocity });
+        entity.AddComponent(new Velocity { Value = enemyVelocity });
+        entity.AddComponent(new Acceleration {});
+        entity.AddComponent(new BasicEnemy {});
         entity.AddComponent(new FacingDirection { IsFacingLeft = true });
         entity.AddComponent(new Rotation { Value = 0.0f });
         entity.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        entity.AddComponent(new SpriteState { Texture = texture, Color = Color.White });
-        entity.AddComponent(new AnimationConfig { States = animationConfig.States });
-        entity.AddComponent(new AnimationState { CurrentState = "walking" });
+        entity.AddComponent(new SpriteState { Texture = enemySprites, Color = Color.White });
+        entity.AddComponent(new AnimationConfig { States = enemyAnimationConfig.States });
+        entity.AddComponent(new AnimationState { CurrentState = name });
+        entity.AddComponent(InputDefinitionLoader.Load(File.ReadAllText("Content/Config/player_input.json")));
 
         return entity;
-    }
-
-    //In these two methods the position is removed instead of toggling a visibility component, because even if the visibility component is false the enitity is still updated.
-    public static void hideEnemy(Entity entity)
-    {
-        if (entity.TryGetComponent<Position>(out var position))
-        {
-            entity.RemoveComponent<Position>();
-        }
-    }
-    public static void resetEnemy(Entity entity, Vector2 position)
-    {
-        if (!entity.TryGetComponent<Position>(out var value) && entity.TryGetComponent<FacingDirection>(out var facingDirection) && entity.TryGetComponent<BasicEnemy>(out var enemy))
-        {
-            entity.AddComponent(new Position { Value = position });
-            facingDirection.IsFacingLeft = true;
-            enemy.Velocity = enemyVelocity;
-        }
     }
 }

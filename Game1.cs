@@ -18,8 +18,7 @@ public class Game1 : Game
     private Entity GreenMushroom;
     private Entity RedMushroom;
     private Entity Flower;
-    private Entity Goomba;
-    private Entity Koopa;
+    private Entity Enemy;
     private Entity TestEntity;
 
     public Game1()
@@ -51,8 +50,7 @@ public class Game1 : Game
 
         // TODO: Add your initialization logic here
         TestEntity = Engine.CreateEntity();
-        Goomba = Engine.CreateEntity();
-        Koopa = Engine.CreateEntity();
+        Enemy = Engine.CreateEntity();
 
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new GroundedSystem(new Vector2(0.0f, 300)));
@@ -278,37 +276,17 @@ public class Game1 : Game
         TestEntity.AddComponent(new AnimationState { CurrentState = "small_idle" });
         TestEntity.AddComponent(new FacingDirection());
         
-        //Load in Goomba
-        var goombaSprites = Content.Load<Texture2D>("Sprites/goombas");
-        var goombaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/goomba_spritesheet.json"));
+        //Load in Enemies
+        var enemySprites = Content.Load<Texture2D>("Sprites/enemies");
+        var enemyAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/enemy_spritesheet.json"));
 
-        Goomba = EnemyFactory.makeEnemy(Engine, goombaSprites, goombaAnimationConfig, "Goomba", new Vector2(100, 100));
-
-        //Load in Koopa
-        var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
-        var koopaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/koopa_spritesheet.json"));
-
-        Koopa = EnemyFactory.makeEnemy(Engine, koopaSprites, koopaAnimationConfig, "Koopa", new Vector2(100, 100));
-        EnemyFactory.hideEnemy(Koopa);
+        Enemy = EnemyFactory.makeEnemy(Engine, Content, "goomba", new Vector2(100, 100));
     }
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
-        //TODO: there may be a better spot to put input stuff for switching enemies
-        if (Keyboard.GetState().IsKeyDown(Keys.O))
-        {
-            EnemyFactory.hideEnemy(Koopa);
-            EnemyFactory.resetEnemy(Goomba, new Vector2(100, 100));
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.P))
-        {
-            EnemyFactory.hideEnemy(Goomba);
-            EnemyFactory.resetEnemy(Koopa, new Vector2(100, 100));
-        }
-
-
+            
         base.Update(gameTime);
     }
 
