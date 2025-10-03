@@ -3,13 +3,13 @@
 using System.Runtime.CompilerServices;
 using Microsoft.VisualBasic;
 
-namespace ECS;
+namespace ECS.Util;
 
 //This class is used to quickly and easily create an enemy with some set properties: Default speed -50 left, starts facing left, scaled 3x3, no acceleration, no rotation
 //and animationConfig conventional for a goomba or a koopa.
 public static class EnemyFactory
 {
-    private static Vector2 enemyVelocity = new Vector2(-50, 0);
+    private static Vector2 enemyVelocity = new Vector2(-100, 0);
 
     private static Entity entity;
 
@@ -19,9 +19,7 @@ public static class EnemyFactory
         entity = engine.CreateEntity();
 
         entity.AddComponent(new Position { Value = position });
-        entity.AddComponent(new BasicEnemy { Name = name });
-        entity.AddComponent(new Velocity { Value = enemyVelocity });
-        entity.AddComponent(new Acceleration { Value = Vector2.Zero });
+        entity.AddComponent(new BasicEnemy { Name = name, Velocity = enemyVelocity });
         entity.AddComponent(new FacingDirection { IsFacingLeft = true });
         entity.AddComponent(new Rotation { Value = 0.0f });
         entity.AddComponent(new Scale { Value = new Vector2(3, 3) });
@@ -42,11 +40,11 @@ public static class EnemyFactory
     }
     public static void resetEnemy(Entity entity, Vector2 position)
     {
-        if (!entity.TryGetComponent<Position>(out var value) && entity.TryGetComponent<FacingDirection>(out var facingDirection) && entity.TryGetComponent<Velocity>(out var velocity))
+        if (!entity.TryGetComponent<Position>(out var value) && entity.TryGetComponent<FacingDirection>(out var facingDirection) && entity.TryGetComponent<BasicEnemy>(out var enemy))
         {
             entity.AddComponent(new Position { Value = position });
             facingDirection.IsFacingLeft = true;
-            velocity.Value = enemyVelocity;
+            enemy.Velocity = enemyVelocity;
         }
     }
 }

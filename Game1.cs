@@ -21,9 +21,6 @@ public class Game1 : Game
     private Entity Goomba;
     private Entity Koopa;
     private Entity TestEntity;
-    
-
-    private Vector2 enemyVelocity = new Vector2(-100, 0); //(Probably temporary) default velocity for enemies to set their velocity in BasicEnemyMovement as.
 
     public Game1()
     {
@@ -66,6 +63,8 @@ public class Game1 : Game
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new FacingSystem());
         Engine.AddSystem(new AnimationSystem());
+        Engine.AddSystem(new EnemyMovementSystem());
+
         BumpableBlock = Engine.CreateEntity();
         ItemBlock = Engine.CreateEntity();
         BreakableBlock = Engine.CreateEntity();
