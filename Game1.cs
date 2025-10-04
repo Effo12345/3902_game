@@ -20,6 +20,8 @@ public class Game1 : Game
     private Entity Flower;
     private Entity Enemy;
     private Entity TestEntity;
+    private Vector2 TestEnemyPosition = new Vector2(100, 100);
+    private Vector2 TestEnemyVelocity = new Vector2(-50, 0);
 
     public Game1()
     {
@@ -56,7 +58,7 @@ public class Game1 : Game
         Engine.AddSystem(new GroundedSystem(new Vector2(0.0f, 300)));
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new PlayerMotionSystem());
-        Engine.AddSystem(new EnemyMovementSystem());
+        Engine.AddSystem(new EnemyMovementSystem(TestEnemyPosition, TestEnemyVelocity));
         Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
@@ -277,7 +279,7 @@ public class Game1 : Game
         TestEntity.AddComponent(new FacingDirection());
         
         //Load in Enemies
-        Enemy = EnemyFactory.makeEnemy(Engine, Content, "goomba", new Vector2(100, 100));
+        Enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
     }
     protected override void Update(GameTime gameTime)
     {

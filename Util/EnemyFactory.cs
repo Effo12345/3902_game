@@ -11,19 +11,17 @@ namespace ECS.Util;
 //and animationConfig conventional for a goomba or a koopa.
 public static class EnemyFactory
 {
-    private static Vector2 enemyVelocity = new Vector2(-50, 0);
-
     private static Entity entity;
 
     //This method assumes some naming conventions in the animation config file, namely that it will have a state called the name of the enemy.
-    public static Entity makeEnemy(Engine engine, ContentManager Content, String name, Vector2 position)
+    public static Entity MakeEnemy(Engine engine, ContentManager Content, String name, Vector2 position, Vector2 velocity)
     {
         entity = engine.CreateEntity();
         var enemySprites = Content.Load<Texture2D>("Sprites/enemies");
         var enemyAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/enemy_spritesheet.json"));
 
         entity.AddComponent(new Position { Value = position });
-        entity.AddComponent(new Velocity { Value = enemyVelocity });
+        entity.AddComponent(new Velocity { Value = velocity });
         entity.AddComponent(new Acceleration {});
         entity.AddComponent(new BasicEnemy {});
         entity.AddComponent(new FacingDirection { IsFacingLeft = true });

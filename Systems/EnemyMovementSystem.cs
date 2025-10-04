@@ -6,6 +6,14 @@ namespace ECS.Systems;
 
 public class EnemyMovementSystem : AbstractSystem
 {
+    private Vector2 TestEnemyPosition;
+    private Vector2 TestEnemyVelocity;
+    private double epsilon = 0.000001;
+    public EnemyMovementSystem(Vector2 testEnemyPosition, Vector2 testEnemyVelocity)
+    {
+        TestEnemyPosition = testEnemyPosition;
+        TestEnemyVelocity = testEnemyVelocity;
+    }
     public override bool Initialize(Engine engine)
     {
         base.Initialize(engine);
@@ -27,18 +35,18 @@ public class EnemyMovementSystem : AbstractSystem
         )
             return;
 
-        if (Math.Abs(motionVector.Y - 1.0) < 0.000001)
+        if (Math.Abs(motionVector.Y - 1.0) < epsilon)
         {
-            position.Value = new Vector2(100, 100); //TODO: remove magic number
-            velocity.Value = new Vector2(-50, 0); //TODO: remove magic number
+            position.Value = TestEnemyPosition; 
+            velocity.Value = TestEnemyVelocity; 
             facingDirection.IsFacingLeft = true;
             enemy.Name = "goomba";
             animationState.CurrentState = "goomba";
         }
-        if (Math.Abs(motionVector.Y - 2.0) < 0.000001)
+        if (Math.Abs(motionVector.Y - 2.0) < epsilon)
         {
-            position.Value = new Vector2(100, 100); //TODO: remove magic number
-            velocity.Value = new Vector2(-50, 0); //TODO: remove magic number
+            position.Value = new Vector2(100, 100);
+            velocity.Value = new Vector2(-50, 0); 
             facingDirection.IsFacingLeft = true;
             enemy.Name = "koopa";
             animationState.CurrentState = "koopa";
