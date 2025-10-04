@@ -277,9 +277,6 @@ public class Game1 : Game
         TestEntity.AddComponent(new FacingDirection());
         
         //Load in Enemies
-        var enemySprites = Content.Load<Texture2D>("Sprites/enemies");
-        var enemyAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/enemy_spritesheet.json"));
-
         Enemy = EnemyFactory.makeEnemy(Engine, Content, "goomba", new Vector2(100, 100));
     }
     protected override void Update(GameTime gameTime)

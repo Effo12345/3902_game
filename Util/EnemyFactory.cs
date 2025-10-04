@@ -15,7 +15,7 @@ public static class EnemyFactory
 
     private static Entity entity;
 
-    //This method assumes some naming conventions in the animation config file, namely that it will have a state called "walking".
+    //This method assumes some naming conventions in the animation config file, namely that it will have a state called the name of the enemy.
     public static Entity makeEnemy(Engine engine, ContentManager Content, String name, Vector2 position)
     {
         entity = engine.CreateEntity();
@@ -32,7 +32,7 @@ public static class EnemyFactory
         entity.AddComponent(new SpriteState { Texture = enemySprites, Color = Color.White });
         entity.AddComponent(new AnimationConfig { States = enemyAnimationConfig.States });
         entity.AddComponent(new AnimationState { CurrentState = name });
-        entity.AddComponent(InputDefinitionLoader.Load(File.ReadAllText("Content/Config/player_input.json")));
+        entity.AddComponent(InputDefinitionLoader.Load(File.ReadAllText("Content/Config/enemy_input.json")));
 
         return entity;
     }

@@ -1,5 +1,6 @@
 
 using System.Net;
+using System.Runtime.CompilerServices;
 
 namespace ECS.Systems;
 
@@ -26,20 +27,20 @@ public class EnemyMovementSystem : AbstractSystem
         )
             return;
 
-        if (motionVector.Y == 1.0)
+        if (Math.Abs(motionVector.Y - 1.0) < 0.000001)
         {
-            enemy.Name = "goomba";
             position.Value = new Vector2(100, 100); //TODO: remove magic number
             velocity.Value = new Vector2(-50, 0); //TODO: remove magic number
             facingDirection.IsFacingLeft = true;
+            enemy.Name = "goomba";
             animationState.CurrentState = "goomba";
         }
-        if (motionVector.Y == 2.0)
+        if (Math.Abs(motionVector.Y - 2.0) < 0.000001)
         {
-            enemy.Name = "koopa";
             position.Value = new Vector2(100, 100); //TODO: remove magic number
             velocity.Value = new Vector2(-50, 0); //TODO: remove magic number
             facingDirection.IsFacingLeft = true;
+            enemy.Name = "koopa";
             animationState.CurrentState = "koopa";
         }
 

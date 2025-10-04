@@ -19,6 +19,9 @@
 #begin Config/backgrounds.json
 /copy:Config/backgrounds.json
 
+#begin Config/enemy_input.json
+/copy:Config/enemy_input.json
+
 #begin Config/enemy_spritesheet.json
 /copy:Config/enemy_spritesheet.json
 

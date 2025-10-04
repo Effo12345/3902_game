@@ -13,15 +13,5 @@
         "keys": ["Space"],
         "xVel": 0.0,
         "yVel": -200.0
-    },
-    "switchToGoomba": {
-        "keys": ["O"],
-        "xVel": 0.0,
-        "yVel": 1.0
-    },
-    "switchToKoopa": {
-        "keys": ["P"],
-        "xVel": 0.0,
-        "yVel": 2.0
     }
 }
