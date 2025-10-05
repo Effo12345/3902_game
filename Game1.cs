@@ -64,6 +64,7 @@ public class Game1 : Game
         Engine.AddSystem(new SpriteSwitchingSystem());
         Engine.AddSystem(new EnemyMovementSystem());
         Engine.AddSystem(new AnimationSystem());
+        Engine.AddSystem(new DebrisSpawnSystem());
         BumpableBlock = Engine.CreateEntity();
         ItemBlock = Engine.CreateEntity();
         BreakableBlock = Engine.CreateEntity();
