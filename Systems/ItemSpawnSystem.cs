@@ -21,9 +21,10 @@ public class ItemSpawnSystem : AbstractSystem
         //Create new entity for item
         var e = Engine.CreateEntity();
         //Give entity necessary components
+        // TODO: Find a better place to keep this component data
         e.AddComponent(p);
         e.AddComponent(new Rotation { Value = 0f });
-        e.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        e.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
         e.AddComponent(new SpriteState
         {
             Texture = t,

@@ -63,7 +63,7 @@ public class EnemyMovementSystem : AbstractSystem
                 continue;
 
 
-            if (position.Value.X <= 0 || position.Value.X >= 752) //TODO: remove magic numbers
+            if (position.Value.X <= 0 || position.Value.X >= 550) //TODO: remove magic numbers
             {
                 velocity.Value.X *= -1;
                 facingDirection.IsFacingLeft = !facingDirection.IsFacingLeft;

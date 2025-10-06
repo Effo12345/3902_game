@@ -70,24 +70,21 @@ public class Game1 : Game
         Entity itemBlock = Engine.CreateEntity();
         Entity breakableBlock = Engine.CreateEntity();
         Entity coin = Engine.CreateEntity();
-        Entity redMushroom = Engine.CreateEntity();
-        Entity greenMushrrom = Engine.CreateEntity();
-        Entity flower = Engine.CreateEntity();
 
         Entity enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
 
-        mobileItem.AddComponent(new Position { Value = new Vector2(200, 200) });
+        mobileItem.AddComponent(new Position { Value = new Vector2(650, 150) });
         mobileItem.AddComponent(new Velocity { Value = Vector2.Zero });
         mobileItem.AddComponent(new Rotation { Value = 0.0f });
-        mobileItem.AddComponent(new Scale { Value = new Vector2(3, 3) });
+        mobileItem.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
         mobileItem.AddComponent(new SpriteState { Texture = itemSprite, Color = Color.White });
         mobileItem.AddComponent(new AnimationConfig { States = itemConfig.States });
         mobileItem.AddComponent(new AnimationState { CurrentState = "KoopaShell" });
         mobileItem.AddComponent(itemInput);
 
-        bumpableBlock.AddComponent(new Position { Value = new Vector2(100, 150) });
+        bumpableBlock.AddComponent(new Position { Value = new Vector2(600, 100) });
         bumpableBlock.AddComponent(new Rotation { Value = 0f });
-        bumpableBlock.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        bumpableBlock.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
         bumpableBlock.AddComponent(new Bump());
         bumpableBlock.AddComponent(new SpriteState
         {
@@ -97,9 +94,9 @@ public class Game1 : Game
             Color = Color.White
         });
 
-        breakableBlock.AddComponent(new Position { Value = new Vector2(150, 150) });
+        breakableBlock.AddComponent(new Position { Value = new Vector2(640, 100) });
         breakableBlock.AddComponent(new Rotation { Value = 0f });
-        breakableBlock.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        breakableBlock.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
         breakableBlock.AddComponent(new Break());
         breakableBlock.AddComponent(new SpriteState
         {
@@ -109,9 +106,9 @@ public class Game1 : Game
             Color = Color.White
         });
 
-        itemBlock.AddComponent(new Position { Value = new Vector2(200, 150) });
+        itemBlock.AddComponent(new Position { Value = new Vector2(680, 100) });
         itemBlock.AddComponent(new Rotation { Value = 0f });
-        itemBlock.AddComponent(new Scale { Value = new Vector2(2, 2) });
+        itemBlock.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
         itemBlock.AddComponent(new Bump());
         itemBlock.AddComponent(new SpriteState
         {
@@ -131,7 +128,7 @@ public class Game1 : Game
 
         var coinFrames = tilesAnimationConfig.States["coin"].Frames;
         var coinDur = tilesAnimationConfig.States["coin"].FrameDuration;
-        coin.AddComponent(new Position { Value = new Vector2(250, 150) });
+        coin.AddComponent(new Position { Value = new Vector2(730, 100) });
         coin.AddComponent(new Rotation { Value = 0f });
         coin.AddComponent(new Scale { Value = new Vector2(2, 2) });
         coin.AddComponent(new SpriteState
@@ -153,39 +150,6 @@ public class Game1 : Game
             CurrentState = "coin",
             FrameIndex = 0,
             TimeInCurrentFrame = 0f
-        });
-
-        redMushroom.AddComponent(new Position { Value = new Vector2(300, 150) });
-        redMushroom.AddComponent(new Rotation { Value = 0f });
-        redMushroom.AddComponent(new Scale { Value = new Vector2(2, 2) });
-        redMushroom.AddComponent(new SpriteState
-        {
-            Texture = blockSprites,
-            SourceRect = tilesAnimationConfig.States["red_mushroom"].Frames[0],
-            Origin = Vector2.Zero,
-            Color = Color.White
-        });
-
-        greenMushrrom.AddComponent(new Position { Value = new Vector2(350, 150) });
-        greenMushrrom.AddComponent(new Rotation { Value = 0f });
-        greenMushrrom.AddComponent(new Scale { Value = new Vector2(2, 2) });
-        greenMushrrom.AddComponent(new SpriteState
-        {
-            Texture = blockSprites,
-            SourceRect = tilesAnimationConfig.States["green_mushroom"].Frames[0],
-            Origin = Vector2.Zero,
-            Color = Color.White
-        });
-
-        flower.AddComponent(new Position { Value = new Vector2(400, 150) });
-        flower.AddComponent(new Rotation { Value = 0f });
-        flower.AddComponent(new Scale { Value = new Vector2(2, 2) });
-        flower.AddComponent(new SpriteState
-        {
-            Texture = blockSprites,
-            SourceRect = tilesAnimationConfig.States["flower"].Frames[0],
-            Origin = Vector2.Zero,
-            Color = Color.White
         });
 
         basicMario.AddComponent(new Position { Value = new Vector2(20, 20) });

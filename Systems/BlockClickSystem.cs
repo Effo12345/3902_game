@@ -1,7 +1,8 @@
 namespace ECS.Systems;
 
 /// <summary>
-/// For sprite 2 only. Use to demonstrate block animations
+/// For sprint 2 only. Used to demonstrate block animations.
+/// Will be moved to a specialized mouse system later
 /// </summary>
 public class BlockClickSystem : AbstractSystem
 {

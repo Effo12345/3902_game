@@ -30,7 +30,8 @@ public class ItemBlockSystem : AbstractSystem
         //Remove Bump so block no longer reacts to bump
         e.RemoveComponent<Bump>();
         //Compute spawn position
-        var topPos = pos.Value - new Vector2(0f, ib.ItemRect.Height * 2);
+        // TODO: Remove the scale magic number
+        var topPos = pos.Value - new Vector2(0f, ib.ItemRect.Height * 2.5f);
         //Publish ItemSpawn event
         Engine.PubSub.Publish(new ItemSpawn
         {
