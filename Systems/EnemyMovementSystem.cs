@@ -1,38 +1,79 @@
 
+using System.Net;
+using System.Runtime.CompilerServices;
+
 namespace ECS.Systems;
 
 public class EnemyMovementSystem : AbstractSystem
 {
+    private Vector2 TestEnemyPosition;
+    private Vector2 TestEnemyVelocity;
+    private double epsilon = 0.000001;
+    public EnemyMovementSystem(Vector2 testEnemyPosition, Vector2 testEnemyVelocity)
+    {
+        TestEnemyPosition = testEnemyPosition;
+        TestEnemyVelocity = testEnemyVelocity;
+    }
     public override bool Initialize(Engine engine)
     {
         base.Initialize(engine);
+        engine.PubSub.CreateSubscription<InputEvent>(HandleInput);
+
         return true;
     }
+    private void HandleInput(IEvent evt)
+    {
+        var inputEvent = (InputEvent)evt;
+        var motionVector = inputEvent.MotionVector;
+        var entity = inputEvent.Entity;
 
+        if (!entity.TryGetComponent<BasicEnemy>(out var enemy) ||
+            !entity.TryGetComponent<Position>(out var position) ||
+            !entity.TryGetComponent<Velocity>(out var velocity) ||
+            !entity.TryGetComponent<FacingDirection>(out var facingDirection) ||
+            !entity.TryGetComponent<AnimationState>(out var animationState)
+        )
+            return;
+
+        if (Math.Abs(motionVector.Y - 1.0) < epsilon)
+        {
+            position.Value = TestEnemyPosition; 
+            velocity.Value = TestEnemyVelocity; 
+            facingDirection.IsFacingLeft = true;
+            enemy.Name = "goomba";
+            animationState.CurrentState = "goomba";
+        }
+        if (Math.Abs(motionVector.Y - 2.0) < epsilon)
+        {
+            position.Value = new Vector2(100, 100);
+            velocity.Value = new Vector2(-50, 0); 
+            facingDirection.IsFacingLeft = true;
+            enemy.Name = "koopa";
+            animationState.CurrentState = "koopa";
+        }
+
+    }
     public override void Update(Engine engine, GameTime gameTime)
     {
-        // This line is important! Any time-based stuff needs to be relative to deltatime
         float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-        //For every entity with the BasicEnemyMovement component, move them as follows:
         foreach (var entity in Engine.GetEntities())
         {
-            //Entity needs BasicEnemyMovement as well as Position to be affected
-            if (!entity.TryGetComponent<Position>(out var position) ||
-                !entity.TryGetComponent<BasicEnemy>(out var basicEnemyMovement)
+            if (!entity.TryGetComponent<BasicEnemy>(out var enemy) ||
+                !entity.TryGetComponent<Position>(out var position) ||
+                !entity.TryGetComponent<Velocity>(out var velocity) ||
+                !entity.TryGetComponent<FacingDirection>(out var facingDirection)
             )
                 continue;
 
-            //If the enemy collides with something it cannot move into, change its direction and flip its sprite.
-            if (position.Value.X <= 0 || position.Value.X >= 752)
+
+            if (position.Value.X <= 0 || position.Value.X >= 752) //TODO: remove magic numbers
             {
-                basicEnemyMovement.Value.X *= -1;
+                velocity.Value.X *= -1;
+                facingDirection.IsFacingLeft = !facingDirection.IsFacingLeft;
             }
 
-            //TODO: Enemies can fall in SMB1. For sprint2 theres no ground, and no good way to implement that, so this section is reserved for making enemies fall later on
-
-            //Move enemy according to its velocity
-            position.Value += basicEnemyMovement.Value * deltaTime;
         }
+
     }
 }

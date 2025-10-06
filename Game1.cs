@@ -1,4 +1,7 @@
-﻿namespace ECS;
+﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+
+namespace ECS;
 
 public class Game1 : Game
 {
@@ -20,11 +23,10 @@ public class Game1 : Game
     private Entity GreenMushroom;
     private Entity RedMushroom;
     private Entity Flower;
-    private Entity Goomba;
-    private Entity Koopa;
+    private Entity Enemy;
     private Entity TestEntity;
-
-    private Vector2 enemyVelocity = new Vector2(-100, 0); //(Probably temporary) default velocity for enemies to set their velocity in BasicEnemyMovement as.
+    private Vector2 TestEnemyPosition = new Vector2(100, 100);
+    private Vector2 TestEnemyVelocity = new Vector2(-50, 0);
 
     public Game1()
     {
@@ -50,8 +52,7 @@ public class Game1 : Game
         Items[4] = SuperStar;
 
         TestEntity = Engine.CreateEntity();
-        Goomba = Engine.CreateEntity();
-        Koopa = Engine.CreateEntity();
+        Enemy = Engine.CreateEntity();
 
         BumpableBlock = Engine.CreateEntity();
         ItemBlock = Engine.CreateEntity();
@@ -64,18 +65,27 @@ public class Game1 : Game
         // Temporary for item switching
         Engine.AddSystem(new ItemChangeSystem(Items));
 
+        // TODO: Add your initialization logic here
+        TestEntity = Engine.CreateEntity();
+
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new GroundedSystem(new Vector2(0.0f, 300)));
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new PlayerMotionSystem());
+        Engine.AddSystem(new EnemyMovementSystem(TestEnemyPosition, TestEnemyVelocity));
         Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new FacingSystem());
-        Engine.AddSystem(new SpriteSwitchingSystem());
-        Engine.AddSystem(new EnemyMovementSystem());
         Engine.AddSystem(new AnimationSystem());
-        
+        Engine.AddSystem(new DebrisSpawnSystem());
+        BumpableBlock = Engine.CreateEntity();
+        ItemBlock = Engine.CreateEntity();
+        BreakableBlock = Engine.CreateEntity();
+        Coin = Engine.CreateEntity();
+        RedMushroom = Engine.CreateEntity();
+        GreenMushroom = Engine.CreateEntity();
+        Flower = Engine.CreateEntity();
 
         Engine.AddSystem(new BlockBreakSystem());
         Engine.AddSystem(new BlockBumpSystem());
@@ -279,39 +289,17 @@ public class Game1 : Game
         TestEntity.AddComponent(marioAnimationConfig);
         TestEntity.AddComponent(new AnimationState { CurrentState = "small_idle" });
         TestEntity.AddComponent(new FacingDirection());
+        
+        //Load in Enemies
+        Enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
 
         TestEntity.AddComponent(new Status { State = "small"});
-
-        //Load in Goomba
-        var goombaSprites = Content.Load<Texture2D>("Sprites/goombas");
-        var goombaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/goomba_spritesheet.json"));
-
-        Goomba.AddComponent(new Position { Value = new Vector2(100, 100) });
-        Goomba.AddComponent(new BasicEnemy { Name = "Goomba", Value = enemyVelocity });
-        Goomba.AddComponent(new Rotation { Value = 0.0f });
-        Goomba.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        Goomba.AddComponent(new SpriteState { Texture = goombaSprites, SourceRect = goombaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
-        Goomba.AddComponent(new AnimationConfig { States = goombaAnimationConfig.States});
-        Goomba.AddComponent(new AnimationState { CurrentState = "walking"});
-
-        //Load in Koopa
-        var koopaSprites = Content.Load<Texture2D>("Sprites/koopas");
-        var koopaAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/koopa_spritesheet.json"));
-
-        Koopa.AddComponent(new BasicEnemy { Name = "Koopa", Value = enemyVelocity });
-        Koopa.AddComponent(new Rotation { Value = 0.0f });
-        Koopa.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        Koopa.AddComponent(new SpriteState { Texture = koopaSprites, SourceRect = koopaAnimationConfig.States["walking"].Frames[0], Color = Color.White });
-        Koopa.AddComponent(new AnimationConfig { States = koopaAnimationConfig.States});
-        Koopa.AddComponent(new AnimationState { CurrentState = "walking"});
     }
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
-        // TODO: Add your update logic here
-
+            
         base.Update(gameTime);
     }
 

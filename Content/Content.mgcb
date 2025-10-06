@@ -13,14 +13,19 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Config/attacks.json
+/copy:Config/attacks.json
+
+#begin Config/backgrounds.json
+/copy:Config/backgrounds.json
+
+#begin Config/enemy_input.json
+/copy:Config/enemy_input.json
 #begin Config/backgrounds_spritesheet.json
 /copy:Config/backgrounds_spritesheet.json
 
-#begin Config/goomba_spritesheet.json
-/copy:Config/goomba_spritesheet.json
-
-#begin Config/koopa_spritesheet.json
-/copy:Config/koopa_spritesheet.json
+#begin Config/enemy_spritesheet.json
+/copy:Config/enemy_spritesheet.json
 
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
@@ -30,7 +35,11 @@
 
 #begin Config/player_input.json
 /copy:Config/player_input.json
-#begin Sprites/goombas.png
+
+#begin Config/tiles_spritesheet.json
+/copy:Config/tiles_spritesheet.json
+
+#begin Sprites/attacks.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -41,9 +50,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 
-/build:Sprites/goombas.png
-
-#begin Sprites/koopas.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -53,6 +59,18 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
+
+#begin Sprites/enemies.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/enemies.png
 
 #begin Sprites/items.png
 /importer:TextureImporter
@@ -65,10 +83,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/items.png
-/build:Sprites/koopas.png
-
-#begin Config/tiles_spritesheet.json
-/copy:Config/tiles_spritesheet.json
 
 #begin Sprites/mario.png
 /importer:TextureImporter
@@ -85,7 +99,7 @@
 #begin Sprites/tiles.png
 /importer:TextureImporter
 /processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyColor=14,94,241,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True

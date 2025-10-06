@@ -1,0 +1,36 @@
+{
+    "goomba": {
+        "frameDuration": 0.125,
+        "frames": [
+            {
+                "x": 0,
+                "y": 0,
+                "width": 16,
+                "height": 16
+            },
+            {
+                "x": 24,
+                "y": 0,
+                "width": 16,
+                "height":16
+            }
+        ]
+    },
+    "koopa": {
+        "frameDuration": 0.125,
+        "frames": [
+            {
+                "x": 0,
+                "y": 18,
+                "width": 16,
+                "height": 27
+            },
+            {
+                "x": 17,
+                "y": 18,
+                "width": 16,
+                "height": 27
+            }
+        ]
+    }
+}
