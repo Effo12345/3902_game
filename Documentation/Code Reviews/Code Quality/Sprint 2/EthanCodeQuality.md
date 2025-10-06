@@ -1,111 +1,83 @@
 # Code Quality Review
 
-**Author**: Name
+**Author**: Ethan
 
-**Date**: Current date
+**Date**: 11/05/25
 
-**Sprint**: Sprint number
+**Sprint**: 2
 
-**File(s) reviewed**: Name(s) of files reviewed
+**File(s) reviewed**: EnemyMovementSystem.cs
 
-**Author of file(s)**: Author of file(s) reviewed
+**Author of file(s)**: Logan
 
-**Time spent reviewing**: Time spent reviewing (in minutes)
+**Time spent reviewing**: 12 minutes
 
 ## Code Smell Analysis
 
 ### 1. Duplicated Code
 
-- Insightful
-- Comments
-- Here
+- HandleInput duplicates variable setting inside the if statements
 
 ### 2. Long Method
 
-- Insightful
-- Comments
-- Here
+- HandleInput is slightly on the long side. See above
 
 ### 3. Large Class
 
-- Insightful
-- Comments
-- Here
+- N/A
 
 ### 4. Long Parameter List
 
-- Insightful
-- Comments
-- Here
+- N/A
 
 ### 5. Cyclomatic Complexity
 
-- Insightful
-- Comments
-- Here
+- N/A
 
 ### 6. Divergent Change
 
-- Insightful
-- Comments
-- Here
+- There are some hard-coded values in here that need removed in future
 
 ### 7. Shotgun Surgery
 
-- Insightful
-- Comments
-- Here
+- Very successfull in avoiding this one. Entire enemy behavior is either delegated to existing systems or handled here very simply
 
 ### 8. Feature Envy
 
-- Insightful
-- Comments
-- Here
+- Class is focused and useful. Nice work
 
 ### 9. Data Clumps
 
-- Insightful
-- Comments
-- Here
+- N/A
 
 ### 10. Switch Statements
 
-- Insightful
-- Comments
-- Here
+- N/A
 
 ### 11. Lazy Class/ Middle Man
 
-- Insightful
-- Comments
-- Here
+- This seems like the correct scope for this system. Will likely do more in future
 
 ### 12. Message Chains
 
-- Insightful
-- Comments
-- Here
+- At most 2 levels. Very good
 
 ### 13. Deoderizing Comments
 
-- Insightful
-- Comments
-- Here
+- Temporary, sprint2-only values are clearly labeled. Good
 
 <!-- Code smells presentation: https://osu.instructure.com/courses/190003/files/78535068?module_item_id=15761957 -->
 <!-- These smells included for convenience. Feel free to add/remove as needed or put N/A when not present -->
 
 ## Future Improvement
 
-**Proposed Change**: Discuss something that could make the code better
+**Proposed Change**: Enemy damaging behavior
 
-Discuss whether the current implementation supports this change and why (how it would be hard if not supported,
-or how it could be implemented if supported)
+The existing implementation would support this relatively easily. One could add a new subscription to a collision or damage event and then apply that state to the enemy.
 
-- Pros/cons to current approach
-- Pros/cons to current approach
-- Pros/cons to current approach
+- This would likely require some refactoring to work with existing behavior
+- Doing it this way would mean this system generally still operates on the same set of objects
 
 ## Conclusion
 
-Closing remarks, as needed
+Overall, this system is tightly-focused to the singular, simple task it should accomplish; it successfully leverages existing systems. It also passes the majority of the code smells tests with only a few areas for improvement.
