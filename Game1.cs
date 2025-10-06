@@ -14,6 +14,8 @@ public class Game1 : Game
     // Temporary for item switching
     private Entity[] Items = new Entity[5];
 
+    private Entity Fireball;
+
     private Entity BumpableBlock;
     private Entity BreakableBlock;
     private Entity ItemBlock;
@@ -41,18 +43,30 @@ public class Game1 : Game
         BoostMushroom = Engine.CreateEntity();
         SuperStar = Engine.CreateEntity();
 
+        Fireball = Engine.CreateEntity();
+
         Items[0] = KoopaShell;
         Items[1] = FireFlower;
         Items[2] = SuperMushroom;
         Items[3] = BoostMushroom;
         Items[4] = SuperStar;
 
+        TestEntity = Engine.CreateEntity();
+        Enemy = Engine.CreateEntity();
+
+        BumpableBlock = Engine.CreateEntity();
+        ItemBlock = Engine.CreateEntity();
+        BreakableBlock = Engine.CreateEntity();
+        Coin = Engine.CreateEntity();
+        RedMushroom = Engine.CreateEntity();
+        GreenMushroom = Engine.CreateEntity();
+        Flower = Engine.CreateEntity();
+
         // Temporary for item switching
         Engine.AddSystem(new ItemChangeSystem(Items));
 
         // TODO: Add your initialization logic here
         TestEntity = Engine.CreateEntity();
-        Enemy = Engine.CreateEntity();
 
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new GroundedSystem(new Vector2(0.0f, 300)));
@@ -101,6 +115,17 @@ public class Game1 : Game
         var itemConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/items_spritesheet.json"));
 
         var backgroundConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/backgrounds_spritesheet.json"));
+
+        Engine.AddSystem(new MarioActionSystem(TestEntity, itemSprite));
+
+        //Fireball.AddComponent(new Position { Value = new Vector2(0, 0) });
+        //Fireball.AddComponent(new Velocity { Value = Vector2.Zero });
+        //Fireball.AddComponent(new Rotation { Value = 0.0f });
+        //Fireball.AddComponent(new Scale { Value = new Vector2(1.5f, 1.5f) });
+        //Fireball.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["Fireball"].Frames[0], Color = Color.White });
+        //Fireball.AddComponent(new AnimationConfig { States = itemConfig.States });
+        //Fireball.AddComponent(new AnimationState { CurrentState = "Fireball" });
+        //Fireball.AddComponent(new Visible { Value = false });
 
         KoopaShell.AddComponent(new Position { Value = new Vector2(200, 200) });
         KoopaShell.AddComponent(new Velocity { Value = Vector2.Zero });
@@ -267,6 +292,8 @@ public class Game1 : Game
         
         //Load in Enemies
         Enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
+
+        TestEntity.AddComponent(new Status { State = "small"});
     }
     protected override void Update(GameTime gameTime)
     {
