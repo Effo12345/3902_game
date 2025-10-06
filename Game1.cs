@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-
-namespace ECS;
+﻿namespace ECS;
 
 public class Game1 : Game
 {
@@ -9,11 +6,12 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private Engine Engine = new Engine();
 
-    // Temporary for item switching
-    private List<Entity> Items = new();
-
-    private Vector2 TestenemyPosition = new Vector2(100, 100);
-    private Vector2 TestenemyVelocity = new Vector2(-50, 0);
+    // Temporary magic numbers for testing and sprint2-specific features
+    // In future, will either be unneeded or moved to config files
+    private Vector2 TestEnemyPosition = new Vector2(100, 100);
+    private Vector2 TestEnemyVelocity = new Vector2(-50, 0);
+    private Vector2 TestWorldBounds = new Vector2(0.0f, 300);
+    private readonly string[] TestItemAnimations = ["KoopaShell", "FireFlower", "SuperMushroom", "BoostMushroom", "SuperStar"];
 
     public Game1()
     {
@@ -25,10 +23,10 @@ public class Game1 : Game
     protected override void Initialize()
     {
         Engine.AddSystem(new GravitySystem());
-        Engine.AddSystem(new GroundedSystem(new Vector2(0.0f, 300)));
+        Engine.AddSystem(new GroundedSystem(TestWorldBounds));
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new PlayerMotionSystem());
-        Engine.AddSystem(new EnemyMovementSystem(TestenemyPosition, TestenemyVelocity));
+        Engine.AddSystem(new EnemyMovementSystem(TestEnemyPosition, TestEnemyVelocity));
         Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
@@ -43,7 +41,7 @@ public class Game1 : Game
         Engine.AddSystem(new BlockClickSystem());
         Engine.AddSystem(new ItemBlockSystem());
         Engine.AddSystem(new ItemSpawnSystem());
-        Engine.AddSystem(new ItemChangeSystem(Items));
+        Engine.AddSystem(new ItemChangeSystem(TestItemAnimations));
 
         base.Initialize();
     }
@@ -62,17 +60,9 @@ public class Game1 : Game
         var itemSprite = Content.Load<Texture2D>("Sprites/items");
         var itemConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/items_spritesheet.json"));
 
-        Entity koopaShell = Engine.CreateEntity();
-        Entity fireflower = Engine.CreateEntity();
-        Entity superMushroom = Engine.CreateEntity();
-        Entity boostMushroom = Engine.CreateEntity();
-        Entity superStar = Engine.CreateEntity();
+        var itemInput = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/item_input.json"));
 
-        Items.Add(koopaShell);
-        Items.Add(fireflower);
-        Items.Add(superMushroom);
-        Items.Add(boostMushroom);
-        Items.Add(superStar);
+        Entity mobileItem = Engine.CreateEntity();
 
         Entity basicMario = Engine.CreateEntity();
 
@@ -84,52 +74,16 @@ public class Game1 : Game
         Entity greenMushrrom = Engine.CreateEntity();
         Entity flower = Engine.CreateEntity();
 
-        Entity enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestenemyPosition, TestenemyVelocity);
+        Entity enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
 
-        koopaShell.AddComponent(new Position { Value = new Vector2(200, 200) });
-        koopaShell.AddComponent(new Velocity { Value = Vector2.Zero });
-        koopaShell.AddComponent(new Rotation { Value = 0.0f });
-        koopaShell.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        koopaShell.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["KoopaShell"].Frames[0], Color = Color.White });
-        koopaShell.AddComponent(new AnimationConfig { States = itemConfig.States });
-        koopaShell.AddComponent(new AnimationState { CurrentState = "KoopaShell" });
-        koopaShell.AddComponent(new Visible { Value = true });
-
-        fireflower.AddComponent(new Position { Value = new Vector2(200, 200) });
-        fireflower.AddComponent(new Velocity { Value = Vector2.Zero });
-        fireflower.AddComponent(new Rotation { Value = 0.0f });
-        fireflower.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        fireflower.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["FireFlower"].Frames[0], Color = Color.White });
-        fireflower.AddComponent(new AnimationConfig { States = itemConfig.States });
-        fireflower.AddComponent(new AnimationState { CurrentState = "Fireflower" });
-        fireflower.AddComponent(new Visible { Value = false });
-
-        superMushroom.AddComponent(new Position { Value = new Vector2(200, 200) });
-        superMushroom.AddComponent(new Velocity { Value = Vector2.Zero });
-        superMushroom.AddComponent(new Rotation { Value = 0.0f });
-        superMushroom.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        superMushroom.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["SuperMushroom"].Frames[0], Color = Color.White });
-        superMushroom.AddComponent(new AnimationConfig { States = itemConfig.States });
-        superMushroom.AddComponent(new AnimationState { CurrentState = "SuperMushroom" });
-        superMushroom.AddComponent(new Visible { Value = false });
-
-        boostMushroom.AddComponent(new Position { Value = new Vector2(200, 200) });
-        boostMushroom.AddComponent(new Velocity { Value = Vector2.Zero });
-        boostMushroom.AddComponent(new Rotation { Value = 0.0f });
-        boostMushroom.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        boostMushroom.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["BoostMushroom"].Frames[0], Color = Color.White });
-        boostMushroom.AddComponent(new AnimationConfig { States = itemConfig.States });
-        boostMushroom.AddComponent(new AnimationState { CurrentState = "BoostMushroom" });
-        boostMushroom.AddComponent(new Visible { Value = false });
-
-        superStar.AddComponent(new Position { Value = new Vector2(200, 200) });
-        superStar.AddComponent(new Velocity { Value = Vector2.Zero });
-        superStar.AddComponent(new Rotation { Value = 0.0f });
-        superStar.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        superStar.AddComponent(new SpriteState { Texture = itemSprite, SourceRect = itemConfig.States["SuperStar"].Frames[0], Color = Color.White });
-        superStar.AddComponent(new AnimationConfig { States = itemConfig.States });
-        superStar.AddComponent(new AnimationState { CurrentState = "SuperStar" });
-        superStar.AddComponent(new Visible { Value = false });
+        mobileItem.AddComponent(new Position { Value = new Vector2(200, 200) });
+        mobileItem.AddComponent(new Velocity { Value = Vector2.Zero });
+        mobileItem.AddComponent(new Rotation { Value = 0.0f });
+        mobileItem.AddComponent(new Scale { Value = new Vector2(3, 3) });
+        mobileItem.AddComponent(new SpriteState { Texture = itemSprite, Color = Color.White });
+        mobileItem.AddComponent(new AnimationConfig { States = itemConfig.States });
+        mobileItem.AddComponent(new AnimationState { CurrentState = "KoopaShell" });
+        mobileItem.AddComponent(itemInput);
 
         bumpableBlock.AddComponent(new Position { Value = new Vector2(100, 150) });
         bumpableBlock.AddComponent(new Rotation { Value = 0f });

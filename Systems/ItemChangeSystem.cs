@@ -1,56 +1,62 @@
-﻿using ECS.Core;
-using System.Collections;
-using System.Linq;
-
-namespace ECS.Systems;
+﻿namespace ECS.Systems;
 
 public class ItemChangeSystem : AbstractSystem
 {
-    private List<Entity> Items;
+    private readonly string[] ItemAnimations;
+    private readonly float MagicKeyVector = 1.0f;
+    private readonly float Epsilon = 0.0001f;
+    private readonly int InputBufferLength = 5;  // frames
+
     private int CurrentItemIndex = 0;
+    // Buffer inputs coming in to work around not having 
+    // pressed vs. pressing from input system
+    private int InputBuffer;
 
-    private Keys[] _previousKeys = Array.Empty<Keys>();
-
-    public ItemChangeSystem(List<Entity> items)
+    public ItemChangeSystem(string[] items)
     {
-        Items = items;
+        ItemAnimations = items;
+    }
+
+    public override bool Initialize(Engine engine)
+    {   
+        base.Initialize(engine);
+        engine.PubSub.CreateSubscription<InputEvent>(HandleInput);
+
+        return true;
+    }
+
+    private void HandleInput(IEvent evt)
+    {
+        var inputEvent = (InputEvent)evt;
+        var motionVector = inputEvent.MotionVector;
+        var entity = inputEvent.Entity;
+
+        // Reject unimportant inputs
+        if (Math.Abs(motionVector.Y - MagicKeyVector) > Epsilon ||
+            entity.HasComponent<BasicEnemy>()
+        )
+            return;
+
+        if (InputBuffer > 0)
+        {
+            InputBuffer = InputBufferLength;
+            return;
+        }
+
+        CurrentItemIndex = (CurrentItemIndex + 1) % ItemAnimations.Length;
+
+        Engine.PubSub.Publish(new AnimationChangeEvent
+        {
+            NewState = ItemAnimations[CurrentItemIndex],
+            Entity = entity
+        });
+
+        InputBuffer = InputBufferLength;
     }
 
     public override void Update(Engine engine, GameTime gameTime)
     {
-        Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-
-        foreach (var key in pressedKeys)
-        {
-            if (!_previousKeys.Contains(key))
-            {
-                if (key == Keys.Q)
-                {
-                    if (!Items[CurrentItemIndex].TryGetComponent<Visible>(out var previsible))
-                        continue;
-                    previsible.Value = false;
-
-                    CurrentItemIndex -= 1;
-                    if (CurrentItemIndex < 0)
-                        CurrentItemIndex += Items.Count;
-                }
-                else if (key == Keys.E)
-                {
-                    if (!Items[CurrentItemIndex].TryGetComponent<Visible>(out var previsible))
-                        continue;
-                    previsible.Value = false;
-
-                    CurrentItemIndex += 1;
-                    if (CurrentItemIndex >= Items.Count)
-                        CurrentItemIndex -= Items.Count;
-                }
-
-                if (!Items[CurrentItemIndex].TryGetComponent<Visible>(out var curvisible))
-                    continue;
-                curvisible.Value = true;
-            }
-        }
-
-        _previousKeys = pressedKeys;
+        if (InputBuffer > 0)
+            InputBuffer--;
     }
 }

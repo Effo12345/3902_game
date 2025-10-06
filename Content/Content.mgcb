@@ -16,49 +16,32 @@
 #begin Config/attacks.json
 /copy:Config/attacks.json
 
+#begin Config/backgrounds_spritesheet.json
+/copy:Config/backgrounds_spritesheet.json
+
 #begin Config/backgrounds.json
 /copy:Config/backgrounds.json
 
 #begin Config/enemy_input.json
 /copy:Config/enemy_input.json
-#begin Config/backgrounds_spritesheet.json
-/copy:Config/backgrounds_spritesheet.json
 
 #begin Config/enemy_spritesheet.json
 /copy:Config/enemy_spritesheet.json
 
-#begin Config/mario_spritesheet.json
-/copy:Config/mario_spritesheet.json
+#begin Config/item_input.json
+/copy:Config/item_input.json
 
 #begin Config/items_spritesheet.json
 /copy:Config/items_spritesheet.json
+
+#begin Config/mario_spritesheet.json
+/copy:Config/mario_spritesheet.json
 
 #begin Config/player_input.json
 /copy:Config/player_input.json
 
 #begin Config/tiles_spritesheet.json
 /copy:Config/tiles_spritesheet.json
-
-#begin Sprites/attacks.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
 
 #begin Sprites/enemies.png
 /importer:TextureImporter
