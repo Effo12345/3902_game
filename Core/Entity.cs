@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace ECS.Core;
 
 public class Entity(int id)

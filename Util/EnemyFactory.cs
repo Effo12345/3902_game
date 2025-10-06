@@ -1,10 +1,3 @@
-
-
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Microsoft.VisualBasic;
-using Microsoft.Xna.Framework.Content;
-
 namespace ECS.Util;
 
 //This class is used to quickly and easily create an enemy with some set properties: Default speed -50 left, starts facing left, scaled 3x3, no acceleration, no rotation

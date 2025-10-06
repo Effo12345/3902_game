@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace ECS.Core;
 
 // Inspiration and reference for the ECS system comes from https://www.richardlord.net/blog/ecs/what-is-an-entity-framework

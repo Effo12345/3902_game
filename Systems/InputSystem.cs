@@ -1,6 +1,3 @@
-
-using System.Linq;
-
 namespace ECS.Systems;
 
 public class InputSystem : AbstractSystem

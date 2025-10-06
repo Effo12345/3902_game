@@ -1,9 +1,4 @@
-﻿using ECS.Core;
-using System.Collections;
-using System.Linq;
-using System.Security.Cryptography;
-
-namespace ECS.Systems;
+﻿namespace ECS.Systems;
 
 public class MarioActionSystem : AbstractSystem
 {

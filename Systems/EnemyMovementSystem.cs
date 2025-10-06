@@ -1,7 +1,3 @@
-
-using System.Net;
-using System.Runtime.CompilerServices;
-
 namespace ECS.Systems;
 
 public class EnemyMovementSystem : AbstractSystem

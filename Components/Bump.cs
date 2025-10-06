@@ -1,5 +1,3 @@
-using System.ComponentModel;
-
 namespace ECS.Components;
 
 public class BumpState
