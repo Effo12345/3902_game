@@ -8,7 +8,7 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Engine Engine = new Engine();
-    
+
     // Temporary for item switching
     private List<Entity> Items = new();
 
@@ -54,6 +54,7 @@ public class Game1 : Game
 
         var marioSprites = Content.Load<Texture2D>("Sprites/mario");
         var marioAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/mario_spritesheet.json"));
+        var marioControlConfig = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/player_input.json"));
 
         var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
         var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
@@ -129,7 +130,6 @@ public class Game1 : Game
         superStar.AddComponent(new AnimationConfig { States = itemConfig.States });
         superStar.AddComponent(new AnimationState { CurrentState = "SuperStar" });
         superStar.AddComponent(new Visible { Value = false });
-        var marioControlConfig = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/player_input.json"));
 
         bumpableBlock.AddComponent(new Position { Value = new Vector2(100, 150) });
         bumpableBlock.AddComponent(new Rotation { Value = 0f });
@@ -233,6 +233,7 @@ public class Game1 : Game
             Origin = Vector2.Zero,
             Color = Color.White
         });
+
         basicMario.AddComponent(new Position { Value = new Vector2(20, 20) });
         basicMario.AddComponent(new Velocity { Value = Vector2.Zero });
         basicMario.AddComponent(new Rotation { Value = 0.0f });
