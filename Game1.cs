@@ -1,4 +1,4 @@
-﻿namespace ECS;
+namespace ECS;
 
 public class Game1 : Game
 {
