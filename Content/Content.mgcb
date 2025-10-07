@@ -13,15 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Config/attacks.json
-/copy:Config/attacks.json
-
-#begin Config/backgrounds_spritesheet.json
-/copy:Config/backgrounds_spritesheet.json
-
-#begin Config/backgrounds.json
-/copy:Config/backgrounds.json
-
 #begin Config/enemy_input.json
 /copy:Config/enemy_input.json
 
