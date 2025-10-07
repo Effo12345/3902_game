@@ -4,6 +4,10 @@
 - **Left Arrow** - Move left
 - **Right Arrow** - Move right
 - **Space Bar** - Jump
+- **F** - Select small mario
+- **G** - Select large mario
+- **H** - Select fire mario
+- **L** - Throw fireballs (fire mario only)
 
 ## Enemies
 - **P** - Select koopa
