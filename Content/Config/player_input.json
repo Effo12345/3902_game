@@ -1,0 +1,17 @@
+{
+    "left": {
+        "keys": ["Left"],
+        "xVel": -5.0,
+        "yVel": 0.0
+    },
+    "right": {
+        "keys": ["Right"],
+        "xVel": 5.0,
+        "yVel": 0.0
+    },
+    "jump": {
+        "keys": ["Space"],
+        "xVel": 0.0,
+        "yVel": -200.0
+    }
+}
