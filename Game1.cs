@@ -64,7 +64,7 @@ public class Game1 : Game
         Engine.AddSystem(new MarioActionSystem(BasicMario, ItemSprite));
         Engine.AddSystem(new RenderSystem(_spriteBatch));
     }
-    
+
     private void SetupEntities()
     {
         // Clear any entities that were previously instantiated
@@ -72,123 +72,49 @@ public class Game1 : Game
 
         // Intentionally get configs and content on each reset
         // This lets us test new configs without recompiling
-        var marioSprites = Content.Load<Texture2D>("Sprites/mario");
-        var marioAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/mario_spritesheet.json"));
-        var marioControlConfig = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/player_input.json"));
 
+        // Mario
+        var marioSprites = Content.Load<Texture2D>("Sprites/mario");
+        BasicMario = PlayerFactory.MakePlayer(Engine, marioSprites, "Content/Config/mario_spritesheet.json", "Content/Config/player_input.json");
+
+        // Enemies
+        Entity enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
+
+        // Items
+        ItemSprite = Content.Load<Texture2D>("Sprites/items");
+        Entity mobileItem = ItemFactory.MakeItem(
+            Engine,
+            new Vector2(650, 150),
+            ItemSprite,
+            "Content/Config/items_spritesheet.json",
+            "Content/Config/item_input.json"
+        );
+
+        // Tiles
         var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
         var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
 
-        ItemSprite = Content.Load<Texture2D>("Sprites/items");
-        var itemConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/items_spritesheet.json"));
-
-        var itemInput = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/item_input.json"));
-
-        Entity mobileItem = Engine.CreateEntity();
-
-        BasicMario = Engine.CreateEntity();
-
-        Entity bumpableBlock = Engine.CreateEntity();
-        Entity itemBlock = Engine.CreateEntity();
-        Entity breakableBlock = Engine.CreateEntity();
-        Entity coin = Engine.CreateEntity();
-
-        Entity enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
-
-        mobileItem.AddComponent(new Position { Value = new Vector2(650, 150) });
-        mobileItem.AddComponent(new Velocity { Value = Vector2.Zero });
-        mobileItem.AddComponent(new Rotation { Value = 0.0f });
-        mobileItem.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
-        mobileItem.AddComponent(new SpriteState { Texture = ItemSprite, Color = Color.White });
-        mobileItem.AddComponent(new AnimationConfig { States = itemConfig.States });
-        mobileItem.AddComponent(new AnimationState { CurrentState = "KoopaShell" });
-        mobileItem.AddComponent(itemInput);
-
-        bumpableBlock.AddComponent(new Position { Value = new Vector2(600, 100) });
-        bumpableBlock.AddComponent(new Rotation { Value = 0f });
-        bumpableBlock.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
-        bumpableBlock.AddComponent(new Bump());
-        bumpableBlock.AddComponent(new SpriteState
+        TileEntityConfigData tileEntityConfig = new TileEntityConfigData
         {
+            Engine = Engine,
             Texture = blockSprites,
-            SourceRect = tilesAnimationConfig.States["block"].Frames[0],
-            Origin = Vector2.Zero,
-            Color = Color.White
-        });
+            Animation = tilesAnimationConfig
+        };
 
-        breakableBlock.AddComponent(new Position { Value = new Vector2(640, 100) });
-        breakableBlock.AddComponent(new Rotation { Value = 0f });
-        breakableBlock.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
-        breakableBlock.AddComponent(new Break());
-        breakableBlock.AddComponent(new SpriteState
-        {
-            Texture = blockSprites,
-            SourceRect = tilesAnimationConfig.States["block"].Frames[0],
-            Origin = Vector2.Zero,
-            Color = Color.White
-        });
+        tileEntityConfig.Pos = new Vector2(600, 100);
+        Entity bumpableBlock = TileEntityFactory.MakeBumpBlock(tileEntityConfig, "block");
 
-        itemBlock.AddComponent(new Position { Value = new Vector2(680, 100) });
-        itemBlock.AddComponent(new Rotation { Value = 0f });
-        itemBlock.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
-        itemBlock.AddComponent(new Bump());
-        itemBlock.AddComponent(new SpriteState
-        {
-            Texture = blockSprites,
-            SourceRect = tilesAnimationConfig.States["unused_block"].Frames[0], // show "?"
-            Origin = Vector2.Zero,
-            Color = Color.White
-        });
-        itemBlock.AddComponent(new ItemBlock
-        {
-            Kind = ItemKind.Mushroom,
-            ItemTexture = blockSprites,
-            ItemRect = tilesAnimationConfig.States["red_mushroom"].Frames[0],
-            UsedBlockRect = tilesAnimationConfig.States["used_block"].Frames[0],
-            Used = false
-        });
 
-        var coinFrames = tilesAnimationConfig.States["coin"].Frames;
-        var coinDur = tilesAnimationConfig.States["coin"].FrameDuration;
-        coin.AddComponent(new Position { Value = new Vector2(730, 100) });
-        coin.AddComponent(new Rotation { Value = 0f });
-        coin.AddComponent(new Scale { Value = new Vector2(2, 2) });
-        coin.AddComponent(new SpriteState
-        {
-            Texture = blockSprites,
-            SourceRect = coinFrames[0],
-            Origin = Vector2.Zero,
-            Color = Color.White
-        });
-        coin.AddComponent(new AnimationConfig
-        {
-            States = new Dictionary<string, AnimationDescription>
-            {
-                { "coin", new AnimationDescription { Frames = coinFrames, FrameDuration = coinDur } }
-            }
-        });
-        coin.AddComponent(new AnimationState
-        {
-            CurrentState = "coin",
-            FrameIndex = 0,
-            TimeInCurrentFrame = 0f
-        });
+        tileEntityConfig.Pos = new Vector2(640, 100);
+        Entity breakableBlock = TileEntityFactory.MakeBreakBlock(tileEntityConfig, "block");
 
-        BasicMario.AddComponent(new Position { Value = new Vector2(20, 20) });
-        BasicMario.AddComponent(new Velocity { Value = Vector2.Zero });
-        BasicMario.AddComponent(new Rotation { Value = 0.0f });
-        BasicMario.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        BasicMario.AddComponent(new SpriteState { Texture = marioSprites, Color = Color.White, Origin = new Vector2(0, 0) });
-        BasicMario.AddComponent(new Mass { Value = 5 });
-        BasicMario.AddComponent(new Acceleration());
-        BasicMario.AddComponent(new IsGrounded());
-        BasicMario.AddComponent(marioControlConfig);
-        BasicMario.AddComponent(new Friction { Value = 4.0f });
-        BasicMario.AddComponent(new VelocityCap { Value = new Vector2(0.2f, 10.0f) });
-        BasicMario.AddComponent(marioAnimationConfig);
-        BasicMario.AddComponent(new AnimationState { CurrentState = "small_idle" });
-        BasicMario.AddComponent(new FacingDirection());
-        BasicMario.AddComponent(new Status { State = "small" });
+        // TODO: make a mapping between ItemKinds and animation state strings
+        tileEntityConfig.Pos = new Vector2(680, 100);
+        Entity itemBlock = TileEntityFactory.MakeItemBlock(tileEntityConfig, "unused_block", ItemKind.Mushroom, "red_mushroom", "used_block");
+
+
+        tileEntityConfig.Pos = new Vector2(730, 100);
+        Entity coin = TileEntityFactory.MakeCoin(tileEntityConfig);
     }
 
     protected override void Update(GameTime gameTime)
