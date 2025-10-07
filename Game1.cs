@@ -8,10 +8,18 @@ public class Game1 : Game
 
     // Temporary magic numbers for testing and sprint2-specific features
     // In future, will either be unneeded or moved to config files
-    private Vector2 TestEnemyPosition = new Vector2(100, 100);
-    private Vector2 TestEnemyVelocity = new Vector2(-50, 0);
-    private Vector2 TestWorldBounds = new Vector2(0.0f, 300);
+    private readonly Vector2 TestEnemyPosition = new Vector2(100, 100);
+    private readonly Vector2 TestEnemyVelocity = new Vector2(-50, 0);
+    private readonly Vector2 TestWorldBounds = new Vector2(0.0f, 300);
     private readonly string[] TestItemAnimations = ["KoopaShell", "FireFlower", "SuperMushroom", "BoostMushroom", "SuperStar"];
+
+    // Entities stored specifically to be passed in temporary system constructors
+    // Will be removed after sprint 2
+    private Entity BasicMario;
+    private Texture2D ItemSprite;
+
+    // Temporary game-scoped control tracking
+    private bool resetLastFrame = false;
 
     public Game1()
     {
@@ -50,6 +58,20 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+        SetupEntities();
+
+        // TODO: It's annoying to have these systems here by themselves
+        Engine.AddSystem(new MarioActionSystem(BasicMario, ItemSprite));
+        Engine.AddSystem(new RenderSystem(_spriteBatch));
+    }
+    
+    private void SetupEntities()
+    {
+        // Clear any entities that were previously instantiated
+        Engine.GetEntities().Clear();
+
+        // Intentionally get configs and content on each reset
+        // This lets us test new configs without recompiling
         var marioSprites = Content.Load<Texture2D>("Sprites/mario");
         var marioAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/mario_spritesheet.json"));
         var marioControlConfig = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/player_input.json"));
@@ -57,14 +79,14 @@ public class Game1 : Game
         var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
         var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
 
-        var itemSprite = Content.Load<Texture2D>("Sprites/items");
+        ItemSprite = Content.Load<Texture2D>("Sprites/items");
         var itemConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/items_spritesheet.json"));
 
         var itemInput = InputDefinitionLoader.Load(File.ReadAllText("Content/Config/item_input.json"));
 
         Entity mobileItem = Engine.CreateEntity();
 
-        Entity basicMario = Engine.CreateEntity();
+        BasicMario = Engine.CreateEntity();
 
         Entity bumpableBlock = Engine.CreateEntity();
         Entity itemBlock = Engine.CreateEntity();
@@ -77,7 +99,7 @@ public class Game1 : Game
         mobileItem.AddComponent(new Velocity { Value = Vector2.Zero });
         mobileItem.AddComponent(new Rotation { Value = 0.0f });
         mobileItem.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
-        mobileItem.AddComponent(new SpriteState { Texture = itemSprite, Color = Color.White });
+        mobileItem.AddComponent(new SpriteState { Texture = ItemSprite, Color = Color.White });
         mobileItem.AddComponent(new AnimationConfig { States = itemConfig.States });
         mobileItem.AddComponent(new AnimationState { CurrentState = "KoopaShell" });
         mobileItem.AddComponent(itemInput);
@@ -152,31 +174,40 @@ public class Game1 : Game
             TimeInCurrentFrame = 0f
         });
 
-        basicMario.AddComponent(new Position { Value = new Vector2(20, 20) });
-        basicMario.AddComponent(new Velocity { Value = Vector2.Zero });
-        basicMario.AddComponent(new Rotation { Value = 0.0f });
-        basicMario.AddComponent(new Scale { Value = new Vector2(3, 3) });
-        basicMario.AddComponent(new SpriteState { Texture = marioSprites, Color = Color.White, Origin = new Vector2(0, 0) });
-        basicMario.AddComponent(new Mass { Value = 5 });
-        basicMario.AddComponent(new Acceleration());
-        basicMario.AddComponent(new IsGrounded());
-        basicMario.AddComponent(marioControlConfig);
-        basicMario.AddComponent(new Friction { Value = 4.0f });
-        basicMario.AddComponent(new VelocityCap { Value = new Vector2(0.2f, 10.0f) });
-        basicMario.AddComponent(marioAnimationConfig);
-        basicMario.AddComponent(new AnimationState { CurrentState = "small_idle" });
-        basicMario.AddComponent(new FacingDirection());
-        basicMario.AddComponent(new Status { State = "small" });
-
-        // TODO: It's annoying to have these systems here by themselves
-        Engine.AddSystem(new MarioActionSystem(basicMario, itemSprite));
-        Engine.AddSystem(new RenderSystem(_spriteBatch));
+        BasicMario.AddComponent(new Position { Value = new Vector2(20, 20) });
+        BasicMario.AddComponent(new Velocity { Value = Vector2.Zero });
+        BasicMario.AddComponent(new Rotation { Value = 0.0f });
+        BasicMario.AddComponent(new Scale { Value = new Vector2(3, 3) });
+        BasicMario.AddComponent(new SpriteState { Texture = marioSprites, Color = Color.White, Origin = new Vector2(0, 0) });
+        BasicMario.AddComponent(new Mass { Value = 5 });
+        BasicMario.AddComponent(new Acceleration());
+        BasicMario.AddComponent(new IsGrounded());
+        BasicMario.AddComponent(marioControlConfig);
+        BasicMario.AddComponent(new Friction { Value = 4.0f });
+        BasicMario.AddComponent(new VelocityCap { Value = new Vector2(0.2f, 10.0f) });
+        BasicMario.AddComponent(marioAnimationConfig);
+        BasicMario.AddComponent(new AnimationState { CurrentState = "small_idle" });
+        BasicMario.AddComponent(new FacingDirection());
+        BasicMario.AddComponent(new Status { State = "small" });
     }
+
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        // Temporarily handle some broad inputs here while the InputSystem is being rewritten
+        if (Keyboard.GetState().IsKeyDown(Keys.Q))
             Exit();
-            
+
+        if (Keyboard.GetState().IsKeyDown(Keys.R))
+        {
+            if (!resetLastFrame)
+                SetupEntities();
+            resetLastFrame = true;
+        }
+        else
+        {
+            resetLastFrame = false;
+        }
+
         base.Update(gameTime);
     }
 
