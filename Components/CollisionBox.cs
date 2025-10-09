@@ -1,4 +1,4 @@
-namespace ECS;
+namespace ECS.Components;
 
 public class CollisionBox
 {
