@@ -39,6 +39,15 @@
 ### Other
 - Player life system
 - Level time system
+- String-based tag component
+- Scale jump height by button pressed time
+
+## Starting Assignments
+- Logan: Collision detection and publishing
+- Mian: Input system
+- Ethan: Reflection-based entity loading
+- Stone: Camera rendering
+- Jiajie: Level loading
 
 # Sprint 2
 
