@@ -9,7 +9,8 @@ public class CollisionDetectionSystem : AbstractSystem
     {
         foreach (var entity in engine.GetEntities())
         {
-            if (!entity.TryGetComponent<CollisionBox>(out var collisionBox))
+            if (!entity.TryGetComponent<CollisionBox>(out var collisionBox) ||
+                !entity.TryGetComponent<Position>(out var position))
                 continue;
 
         }
