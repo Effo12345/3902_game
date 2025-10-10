@@ -61,7 +61,8 @@ public class Game1 : Game
         SetupEntities();
 
         // TODO: It's annoying to have these systems here by themselves
-        Engine.AddSystem(new MarioActionSystem(BasicMario, ItemSprite));
+        //Engine.AddSystem(new MarioActionSystem(BasicMario));
+        Engine.AddSystem(new FireballSystem(ItemSprite));
         Engine.AddSystem(new RenderSystem(_spriteBatch));
     }
 
