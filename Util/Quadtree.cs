@@ -4,7 +4,7 @@ namespace ECS.Util;
 
 public class Quadtree
 {
-    private readonly List<Entity> entities = new();
+    private List<Entity> entities = new();
     private Rectangle Bounds;
     private int sectionCapacity = 2;
     private Quadtree topLeft = null;
