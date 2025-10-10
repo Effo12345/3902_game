@@ -7,10 +7,10 @@ public class Quadtree
     private readonly List<Entity> entities = new();
     private Rectangle Bounds;
     private int sectionCapacity = 2;
-    private Quadtree topLeft;
-    private Quadtree topRight;
-    private Quadtree bottomLeft;
-    private Quadtree bottomRight;
+    private Quadtree topLeft = null;
+    private Quadtree topRight = null;
+    private Quadtree bottomLeft = null;
+    private Quadtree bottomRight = null;
 
     private void subdivide()
     {
@@ -23,6 +23,12 @@ public class Quadtree
         topRight = new Quadtree(topRightBounds);
         bottomLeft = new Quadtree(bottomLeftBounds);
         bottomRight = new Quadtree(bottomRightBounds);
+
+        foreach (var entity in entities)
+        {
+            this.insert(entity);
+            entities.Remove(entity);
+        }
     }
 
     public Quadtree(Rectangle bounds)
