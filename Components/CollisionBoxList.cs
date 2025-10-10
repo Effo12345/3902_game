@@ -1,5 +1,10 @@
 namespace ECS.Components;
 
+public class CollisionBoxList
+{
+    public List<CollisionBox> CollisionBoxes;
+}
+
 public class CollisionBox
 {
     public Rectangle collisionRectangle;
@@ -8,6 +13,7 @@ public class CollisionBox
         staticBoxCollider,
         dynamicBoxCollider,
         staticBoxTrigger,
-        dynamicBoxTrigger
+        dynamicBoxTrigger,
+        none
     }
 }

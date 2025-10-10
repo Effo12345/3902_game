@@ -63,4 +63,25 @@ public class Quadtree
         else if (position.Value.X <= Bounds.Center.X && position.Value.Y > Bounds.Center.Y) bottomLeft.insert(entity);
         else if (position.Value.X > Bounds.Center.X && position.Value.Y > Bounds.Center.Y) bottomRight.insert(entity);
     }
+
+    public void remove(Entity entity)
+    {
+        //Check if this tree has subtrees.
+        if (topLeft == null)
+        {
+            if (!entity.TryGetComponent<Position>(out var position))
+                return;
+
+            if (position.Value.X <= Bounds.Center.X && position.Value.Y <= Bounds.Center.Y) topLeft.remove(entity);
+            else if (position.Value.X > Bounds.Center.X && position.Value.Y <= Bounds.Center.Y) topRight.remove(entity);
+            else if (position.Value.X <= Bounds.Center.X && position.Value.Y > Bounds.Center.Y) bottomLeft.remove(entity);
+            else if (position.Value.X > Bounds.Center.X && position.Value.Y > Bounds.Center.Y) bottomRight.remove(entity);
+        }
+        else //Otherwise, remove entity from this leaf's entity list, then check if it's parent needs to merge
+        {
+            if (entities.Contains(entity)) entities.Remove(entity);
+
+            //TODO: Merge the subtrees together if they 
+        }
+    }
 }
