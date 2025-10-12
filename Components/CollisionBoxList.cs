@@ -5,7 +5,7 @@ public class CollisionBoxList
     public List<CollisionBox> CollisionBoxes;
 }
 
-public class CollisionBox
+public struct CollisionBox
 {
     public Rectangle collisionRectangle;
     public enum collisionType
