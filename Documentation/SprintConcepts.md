@@ -44,7 +44,7 @@
 
 ## Starting Assignments
 - Logan: Collision detection and publishing
-- Mian: Input system
+- Mian: Input system, collison box and vector visualization
 - Ethan: Reflection-based entity loading
 - Stone: Camera rendering
 - Jiajie: Level loading
