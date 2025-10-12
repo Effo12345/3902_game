@@ -26,8 +26,8 @@ public class Quadtree
 
         foreach (var entity in entities)
         {
-            this.insert(entity);
             entities.Remove(entity);
+            this.Insert(entity);
         }
     }
 
@@ -36,52 +36,44 @@ public class Quadtree
         Bounds = bounds;
     }
 
-    public void insert(Entity entity)
+    public void Insert(Entity entity)
     {
-        //If this section already contains the entity, don't allow it to be added.
-        if (entities.Contains(entity))
+
+        if (!entity.TryGetComponent<CollisionBoxList>(out var collisionBoxList)) //This should never return. Adding something to the quadtree in collisionDetectionSystem assumes the entity has a position.
             return;
 
-        //If this section is under capacity and there arent any subsections, add entity into this section.
-        if (entities.Count() < sectionCapacity && topLeft == null)
+        foreach (var collisionBox in collisionBoxList.CollisionBoxes)
         {
-            entities.Add(entity);
-            return;
-        }
-
-        //If there aren't any subsections, create subsections and insert into one of those based on position
-        if (topLeft == null)
-        {
-            subdivide();
-        }
-
-        if (!entity.TryGetComponent<Position>(out var position)) //This should never return. Adding something to the quadtree in collisionDetectionSystem assumes the entity has a position.
+            if (entities.Contains(entity) || !Bounds.Contains(collisionBox.collisionRectangle.X, collisionBox.collisionRectangle.Y))
             return;
 
-        if (position.Value.X <= Bounds.Center.X && position.Value.Y <= Bounds.Center.Y) topLeft.insert(entity); //Center is rounded down, so check for equality on lower havles.
-        else if (position.Value.X > Bounds.Center.X && position.Value.Y <= Bounds.Center.Y) topRight.insert(entity);
-        else if (position.Value.X <= Bounds.Center.X && position.Value.Y > Bounds.Center.Y) bottomLeft.insert(entity);
-        else if (position.Value.X > Bounds.Center.X && position.Value.Y > Bounds.Center.Y) bottomRight.insert(entity);
-    }
-
-    public void remove(Entity entity)
-    {
-        //Check if this tree has subtrees.
-        if (topLeft == null)
-        {
-            if (!entity.TryGetComponent<Position>(out var position))
+            //If this section is under capacity and there arent any subsections, add entity into this section.
+            if (entities.Count() < sectionCapacity && topLeft == null)
+            {
+                entities.Add(entity);
                 return;
+            }
 
-            if (position.Value.X <= Bounds.Center.X && position.Value.Y <= Bounds.Center.Y) topLeft.remove(entity);
-            else if (position.Value.X > Bounds.Center.X && position.Value.Y <= Bounds.Center.Y) topRight.remove(entity);
-            else if (position.Value.X <= Bounds.Center.X && position.Value.Y > Bounds.Center.Y) bottomLeft.remove(entity);
-            else if (position.Value.X > Bounds.Center.X && position.Value.Y > Bounds.Center.Y) bottomRight.remove(entity);
-        }
-        else //Otherwise, remove entity from this leaf's entity list, then check if it's parent needs to merge
-        {
-            if (entities.Contains(entity)) entities.Remove(entity);
+            //If there aren't any subsections, create subsections and insert into one of the subsections
+            if (topLeft == null)
+            {
+                subdivide();
+            }
 
-            //TODO: Merge the subtrees together if they 
+            topLeft.Insert(entity);
+            topRight.Insert(entity);
+            bottomLeft.Insert(entity);
+            bottomRight.Insert(entity);
         }
     }
+    
+    public List<CollisionEvent> GetCollisions()
+    {
+        List<CollisionEvent> collisions = new List<CollisionEvent>();
+
+
+
+        return collisions;
+    }
+
 }
