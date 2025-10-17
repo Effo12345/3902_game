@@ -12,7 +12,7 @@ public class CollisionDetectionSystem : AbstractSystem
         quadtree = new Quadtree(new Rectangle()); //TODO: replace the rectangle parameter with game window.
         foreach (var entity in engine.GetEntities())
         {
-            if (!entity.TryGetComponent<CollisionBoxList>(out var collisionBox) ||
+            if (!entity.TryGetComponent<CollisionInfo>(out var collisionBox) ||
                 !entity.TryGetComponent<Position>(out var position))
                 continue;
 
