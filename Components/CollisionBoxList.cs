@@ -2,13 +2,14 @@ namespace ECS.Components;
 
 public class CollisionInfo
 {
-    public List<Collider> Colliders;
+    public Collider HitBox;
+    public Collider HurtBox;
 }
 
 public struct Collider
 {
-    public Rectangle collisionBox;
-    public enum collisionType
+    public Rectangle CollisionBox;
+    public enum CollisionType
     {
         staticBoxCollider,
         dynamicBoxCollider,

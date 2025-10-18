@@ -50,10 +50,12 @@ public class Quadtree
         if (!entity.TryGetComponent<CollisionInfo>(out var collisionInfo)) //This should never return. Adding something to the quadtree in collisionDetectionSystem assumes the entity has a position.
             return;
 
-        foreach (var collider in collisionInfo.Colliders)
+        Collider[] colliders = {collisionInfo.HitBox, collisionInfo.HurtBox};
+
+        foreach (var collider in colliders)
         {
             //If the section already contains the entity, or the collision box is outside the bounds of the quadtree, do nothing.
-            if (entities.Contains(entity) || !Bounds.Intersects(collider.collisionBox))
+            if (entities.Contains(entity) || !Bounds.Intersects(collider.CollisionBox))
                 continue;
 
             //If this section is under capacity and there arent any subsections, add entity into this section.
@@ -80,6 +82,94 @@ public class Quadtree
     {
         List<CollisionEvent> collisions = new List<CollisionEvent>();
 
+        //If this section has subsections, parse the subsections instead: only leaf sections have data.
+        if (topLeft == null)
+        {
+            collisions.AddRange(topLeft.GetCollisions());
+            collisions.AddRange(topRight.GetCollisions());
+            collisions.AddRange(bottomLeft.GetCollisions());
+            collisions.AddRange(bottomRight.GetCollisions());
+        }
+        else { //If this section is a leaf section, check for collisions and add collisionEvents to the list.
+            Entity entityA;
+            Entity entityB;
+            Rectangle intersection;
+            CollisionEvent collisionEvent;
+            for (int i = 0; i < entities.Count; i++)
+            {
+                entityA = entities[i];
+                for(int j = i+1; j < entities.Count; j++)
+                {
+                    entityB = entities[j];
+
+                    //Get collision info for both entities
+                    entityA.TryGetComponent<CollisionInfo>(out var collisionInfoA);
+                    entityB.TryGetComponent<CollisionInfo>(out var collisionInfoB);
+
+                    //Look for collisionbox collision
+                    intersection = Rectangle.Intersect(collisionInfoA.HitBox.CollisionBox, collisionInfoB.HitBox.CollisionBox);
+                    Direction direction;
+                    if (intersection.Width != 0 || intersection.Height != 0)
+                    {
+                        if (intersection.Width >= intersection.Height)
+                        {
+                            if (collisionInfoA.HitBox.CollisionBox.Y > collisionInfoB.HitBox.CollisionBox.Y)
+                            {
+                                direction = Direction.Top;
+                            }
+                            else
+                            {
+                                direction = Direction.Bottom;
+                            }
+                        }
+                        else
+                        {
+                            direction = Direction.Side;
+                        }
+                        collisionEvent = new CollisionEvent
+                        {
+                            EntityA = entityA,
+                            EntityB = entityB,
+                            CollisionRectangle = intersection,
+                            HurtCollision = false,
+                            Direction = direction
+                        };
+                        collisions.Add(collisionEvent);
+                    }
+
+                    //Look for collisionbox collision
+                    intersection = Rectangle.Intersect(collisionInfoA.HurtBox.CollisionBox, collisionInfoB.HurtBox.CollisionBox);
+                    if (intersection.Width != 0 || intersection.Height != 0)
+                    {
+                        if (intersection.Width >= intersection.Height)
+                        {
+                            if (collisionInfoA.HitBox.CollisionBox.Y > collisionInfoB.HitBox.CollisionBox.Y)
+                            {
+                                direction = Direction.Top;
+                            }
+                            else
+                            {
+                                direction = Direction.Bottom;
+                            }
+                        }
+                        else
+                        {
+                            direction = Direction.Side;
+                        }
+                        collisionEvent = new CollisionEvent
+                        {
+                            EntityA = entityA,
+                            EntityB = entityB,
+                            CollisionRectangle = intersection,
+                            HurtCollision = true,
+                            Direction = direction
+                        };
+                        collisions.Add(collisionEvent);
+                    }
+                }
+            }
+            
+        }
 
 
         return collisions;
