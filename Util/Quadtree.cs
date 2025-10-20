@@ -97,6 +97,9 @@ public class Quadtree
             CollisionEvent collisionEvent;
             for (int i = 0; i < entities.Count; i++)
             {
+                if (!entities[i].HasComponent<Velocity>()) //If the entity isn't movable, skip to check next entity.
+                    continue;
+                    
                 entityA = entities[i];
                 for(int j = i+1; j < entities.Count; j++)
                 {
