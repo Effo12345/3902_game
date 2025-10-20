@@ -19,7 +19,7 @@ public static class EnemyFactory
         entity.AddComponent(new BasicEnemy {});
         entity.AddComponent(new FacingDirection { IsFacingLeft = true });
         entity.AddComponent(new Rotation { Value = 0.0f });
-        entity.AddComponent(new Scale { Value = new Vector2(3, 3) });
+        entity.AddComponent(new Scale { Value = new Vector2(2, 2) });
         entity.AddComponent(new SpriteState { Texture = enemySprites, Color = Color.White });
         entity.AddComponent(new AnimationConfig { States = enemyAnimationConfig.States });
         entity.AddComponent(new AnimationState { CurrentState = name });

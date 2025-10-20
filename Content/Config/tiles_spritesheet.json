@@ -1,5 +1,5 @@
 {
-    "block": {
+    "Block": {
         "frameDuration": 0.0,
         "frames": [
             {
@@ -10,7 +10,7 @@
             }
         ]
     },
-    "unused_block": {
+    "UnusedBlock": {
         "frameDuration": 0.0,
         "frames": [
             {
@@ -21,7 +21,7 @@
             }
         ]
     },
-    "used_block": {
+    "UsedBlock": {
         "frameDuration": 0.0,
         "frames": [
             {
@@ -32,7 +32,7 @@
             }
         ]
     },
-    "red_mushroom": {
+    "SuperMushroom": {
         "frameDuration": 0,
         "frames": [
             {
@@ -54,7 +54,7 @@
             }
         ]
     },
-    "flower": {
+    "FireFlower": {
         "frameDuration": 0,
         "frames": [
             {
@@ -65,7 +65,7 @@
             }
         ]
     },
-    "coin": {
+    "Coin": {
         "frameDuration": 0.2,
         "frames": [
             {"x": 219, "y": 28, "width": 12, "height": 16},

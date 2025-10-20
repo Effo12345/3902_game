@@ -1,0 +1,25 @@
+{
+  "playerStart": { "X": 32, "Y": 0 },
+
+  "enemies": [
+    { "name": "Goomba", "position": { "X": 100, "Y": 32 }, "velocity": { "X": -50, "Y": 0 } },
+    { "name": "Koopa",  "position": { "X": 260, "Y": 32 }, "velocity": { "X": -30, "Y": 0 } }
+  ],
+
+  "blocks": [
+    { "blockType": "Block", "isBreakable": true,  "isBumpable": false, "position": { "X": 240, "Y": 160 } },
+    { "blockType": "Block", "isBreakable": false, "isBumpable": true,  "position": { "X": 272, "Y": 160 } },
+
+    { "blockType": "UnusedBlock", "isBreakable": false, "isBumpable": true,  "position": { "X": 304, "Y": 160 },
+      "kind": "SuperMushroom" },
+
+    { "blockType": "UnusedBlock", "isBreakable": false, "isBumpable": true,  "position": { "X": 336, "Y": 160 },
+      "kind": "FireFlower" }
+  ],
+
+  "coins": [
+    { "position": { "X": 180, "Y": 120 } },
+    { "position": { "X": 212, "Y": 120 } },
+    { "position": { "X": 244, "Y": 120 } }
+  ]
+}
