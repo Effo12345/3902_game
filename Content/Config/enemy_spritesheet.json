@@ -1,5 +1,5 @@
 {
-    "goomba": {
+    "Goomba": {
         "frameDuration": 0.125,
         "frames": [
             {
@@ -16,7 +16,7 @@
             }
         ]
     },
-    "koopa": {
+    "Koopa": {
         "frameDuration": 0.125,
         "frames": [
             {
