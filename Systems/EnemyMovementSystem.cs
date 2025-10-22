@@ -4,7 +4,7 @@ public class EnemyMovementSystem : AbstractSystem
 {
     private Vector2 TestEnemyPosition;
     private Vector2 TestEnemyVelocity;
-    private double epsilon = 0.000001;
+    //private double epsilon = 0.000001;
     public EnemyMovementSystem(Vector2 testEnemyPosition, Vector2 testEnemyVelocity)
     {
         TestEnemyPosition = testEnemyPosition;
@@ -13,10 +13,20 @@ public class EnemyMovementSystem : AbstractSystem
     public override bool Initialize(Engine engine)
     {
         base.Initialize(engine);
-        engine.PubSub.CreateSubscription<InputEvent>(HandleInput);
+        //engine.PubSub.CreateSubscription<InputEvent>(HandleInput);
+        engine.PubSub.CreateSubscription<CollisionEvent>(HandleCollision);
 
         return true;
     }
+
+    private void HandleCollision(IEvent evt)
+    {
+        var collisionEvent = (CollisionEvent)evt;
+        var entityA = collisionEvent.EntityA;
+        var entityB = collisionEvent.EntityB;
+
+    }
+    /* LEFTOVER SPRINT 2 FEATURE
     private void HandleInput(IEvent evt)
     {
         var inputEvent = (InputEvent)evt;
@@ -49,6 +59,7 @@ public class EnemyMovementSystem : AbstractSystem
         }
 
     }
+    */
     public override void Update(Engine engine, GameTime gameTime)
     {
         float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;

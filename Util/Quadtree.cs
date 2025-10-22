@@ -1,5 +1,3 @@
-using System.Net;
-
 namespace ECS.Util;
 
 public class Quadtree

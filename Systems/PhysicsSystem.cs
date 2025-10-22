@@ -20,8 +20,8 @@ public class PhysicsSystem : AbstractSystem
 
             if (entity.TryGetComponent<CollisionInfo>(out var collisionInfo))
             {
-                collisionInfo.HitBox.CollisionBox.Offset(velocity.Value * deltaTime);
-                collisionInfo.HurtBox.CollisionBox.Offset(velocity.Value * deltaTime);
+                collisionInfo.HitBox.Offset(velocity.Value * deltaTime);
+                collisionInfo.HurtBox.Offset(velocity.Value * deltaTime);
             }
 
             if (!entity.TryGetComponent<VelocityCap>(out var velocityCap))

@@ -30,6 +30,7 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
+        Engine.AddSystem(new CollisionDetectionSystem());
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new GroundedSystem(TestWorldBounds));
         Engine.AddSystem(new InputSystem());
