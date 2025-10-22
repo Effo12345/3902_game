@@ -3,7 +3,6 @@ namespace ECS.Components;
 public class CollisionInfo
 {
     public Rectangle HitBox;
-    public Rectangle HurtBox;
     public CollisionType CollisionType;
 }
 

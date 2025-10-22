@@ -6,19 +6,22 @@ namespace ECS.Systems;
 public class CollisionDetectionSystem : AbstractSystem
 {
     Quadtree quadtree;
-    List<CollisionEvent> collisionEvents;
     public override void Update(Engine engine, GameTime gameTime)
     {
+        List<CollisionEvent> collisionEvents = new List<CollisionEvent>();
         quadtree = new Quadtree(new Rectangle(0,0,800,480)); //TODO: replace the rectangle parameter with game window.
         foreach (var entity in engine.GetEntities())
         {
-            if (!entity.TryGetComponent<CollisionInfo>(out var collisionBox))
+            if (!entity.TryGetComponent<CollisionInfo>(out var collisionInfo))
                 continue;
 
             quadtree.Insert(entity);
+
+            if (!entity.TryGetComponent<Velocity>(out var velocity)) //Only check for collisions on moving entities
+                continue;
+            collisionEvents.AddRange(quadtree.GetCollisions(entity));
         }
 
-        collisionEvents = quadtree.GetCollisions();
         foreach(var collisionEvent in collisionEvents)
         {
             engine.PubSub.Publish(collisionEvent);

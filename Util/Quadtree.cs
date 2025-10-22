@@ -14,6 +14,16 @@ public class Quadtree
     private Quadtree bottomLeft = null;
     private Quadtree bottomRight = null;
 
+    private bool intersectsQuadrants(Rectangle collisionBox)
+    {
+        bool overlaps = false;
+        if (collisionBox.X <= X + Width / 2 && collisionBox.X + collisionBox.Width >= X + Width / 2 ||  //If rectangle intersects multiple quadtrants, keep in this node instead of pushing to quadrants.
+            collisionBox.Y <= Y + Height / 2 && collisionBox.Y + collisionBox.Height >= Y + Height / 2)
+            {
+                overlaps = true;
+            }
+        return overlaps;
+    }
     private void subdivide()
     {
         Rectangle topLeftBounds = new Rectangle(X, Y, Width / 2, Height / 2);
@@ -26,14 +36,21 @@ public class Quadtree
         bottomLeft = new Quadtree(bottomLeftBounds);
         bottomRight = new Quadtree(bottomRightBounds);
 
-        foreach (var entity in entities)
+        List<Entity> dummyEntities = [.. entities];
+        foreach (var entity in dummyEntities)
         {
-            topLeft.Insert(entity);
-            topRight.Insert(entity);
-            bottomLeft.Insert(entity);
-            bottomRight.Insert(entity);
+            entity.TryGetComponent<CollisionInfo>(out var collisionInfo);
+            Rectangle collisionBox = collisionInfo.HitBox;
+
+            if (!intersectsQuadrants(collisionBox))
+            {
+                topLeft.Insert(entity);
+                topRight.Insert(entity);
+                bottomLeft.Insert(entity);
+                bottomRight.Insert(entity);
+                entities.Remove(entity);
+            }
         }
-        entities.Clear();
     }
 
     public Quadtree(Rectangle bounds)
@@ -51,132 +68,88 @@ public class Quadtree
         if (!entity.TryGetComponent<CollisionInfo>(out var collisionInfo)) //This should never return. Adding something to the quadtree in collisionDetectionSystem assumes the entity has a position.
             return;
 
-        Rectangle[] collisionBoxes = {collisionInfo.HitBox, collisionInfo.HurtBox};
 
-        foreach (var collisionBox in collisionBoxes)
+        Rectangle collisionBox = collisionInfo.HitBox;
+        //If the section already contains the entity, or the collision box is outside the bounds of the quadtree, do nothing.
+        if (entities.Contains(entity) || !Bounds.Intersects(collisionBox))
+            return;
+
+            //If this section is under capacity and either there arent any subsections or the collision box overlaps with those subsections, add entity into this section.
+
+        if (entities.Count() < sectionCapacity && (topLeft == null || intersectsQuadrants(collisionBox))) //If topLeft == null, then this section is a leaf node, and can be added to. 
         {
-            //If the section already contains the entity, or the collision box is outside the bounds of the quadtree, do nothing.
-            if (entities.Contains(entity) || !Bounds.Intersects(collisionBox))
-                continue;
-
-            //If this section is under capacity and there arent any subsections, add entity into this section.
-            if (entities.Count() < sectionCapacity && topLeft == null) //If topLeft == null, then this section is a leaf node, and can be added to. 
-            {
-                entities.Add(entity);
-                continue;
-            }
-
-            //If there aren't any subsections, create subsections and insert into one of the subsections
-            if (topLeft == null)
-            {
-                subdivide();
-            }
-
-            topLeft.Insert(entity);
-            topRight.Insert(entity);
-            bottomLeft.Insert(entity);
-            bottomRight.Insert(entity);
+            entities.Add(entity);
+            return;
         }
+
+        //If there aren't any subsections, create subsections and insert into one of the subsections
+        if (topLeft == null)
+        {
+            subdivide();
+        }
+
+        topLeft.Insert(entity);
+        topRight.Insert(entity);
+        bottomLeft.Insert(entity);
+        bottomRight.Insert(entity);
     }
     
-    public List<CollisionEvent> GetCollisions()
+    
+    public List<CollisionEvent> GetCollisions(Entity movingEntity)
     {
         List<CollisionEvent> collisions = new List<CollisionEvent>();
+        List<Quadtree> children = new List<Quadtree> { topLeft, topRight, bottomLeft, bottomRight };
+        movingEntity.TryGetComponent<CollisionInfo>(out var movingCollisionInfo);
+        Rectangle movingCollisionBox = movingCollisionInfo.HitBox;
 
-        //If this section has subsections, parse the subsections instead: only leaf sections have data.
+        //First, get collisions in child trees
         if (topLeft != null)
         {
-            collisions.AddRange(topLeft.GetCollisions());
-            collisions.AddRange(topRight.GetCollisions());
-            collisions.AddRange(bottomLeft.GetCollisions());
-            collisions.AddRange(bottomRight.GetCollisions());
-        }
-        else { //If this section is a leaf section, check for collisions and add collisionEvents to the list.
-            Entity entityA;
-            Entity entityB;
-            Rectangle intersection;
-            CollisionEvent collisionEvent;
-            for (int i = 0; i < entities.Count; i++)
+            foreach (var childQuadtree in children)
             {
-                if (!entities[i].HasComponent<Velocity>()) //If the entity isn't movable, skip to check next entity.
-                    continue;
-                    
-                entityA = entities[i];
-                for(int j = i+1; j < entities.Count; j++)
+                if (movingCollisionBox.Intersects(childQuadtree.Bounds))
                 {
-                    entityB = entities[j];
+                    collisions.AddRange(childQuadtree.GetCollisions(movingEntity));
+                }
+            }
+        }
+        
+        //Now get collisions for rectangles in this quadtree
+        foreach (var secondaryEntity in entities)
+        {
+            secondaryEntity.TryGetComponent<CollisionInfo>(out var secondaryCollisionInfo);
+            Rectangle secondaryCollisionBox = movingCollisionInfo.HitBox;
 
-                    //Get collision info for both entities
-                    entityA.TryGetComponent<CollisionInfo>(out var collisionInfoA);
-                    entityB.TryGetComponent<CollisionInfo>(out var collisionInfoB);
-
-                    //Look for collisionbox collision
-                    intersection = Rectangle.Intersect(collisionInfoA.HitBox, collisionInfoB.HitBox);
-                    Direction direction;
-                    if (intersection.Width != 0 || intersection.Height != 0)
+            if (movingCollisionBox.Intersects(secondaryCollisionBox))
+            {
+                Rectangle intersection = Rectangle.Intersect(movingCollisionBox, secondaryCollisionBox);
+                Direction direction;
+                if (intersection.Width >= intersection.Height)
+                {
+                    if (movingCollisionBox.Y > secondaryCollisionBox.Y)
                     {
-                        if (intersection.Width >= intersection.Height)
-                        {
-                            if (collisionInfoA.HitBox.Y > collisionInfoB.HitBox.Y)
-                            {
-                                direction = Direction.Top;
-                            }
-                            else
-                            {
-                                direction = Direction.Bottom;
-                            }
-                        }
-                        else
-                        {
-                            direction = Direction.Side;
-                        }
-                        collisionEvent = new CollisionEvent
-                        {
-                            EntityA = entityA,
-                            EntityB = entityB,
-                            CollisionRectangle = intersection,
-                            HurtCollision = false,
-                            Direction = direction
-                        };
-                        collisions.Add(collisionEvent);
+                        direction = Direction.Top;
                     }
-
-                    //Look for hurtbox collision
-                    intersection = Rectangle.Intersect(collisionInfoA.HurtBox, collisionInfoB.HurtBox);
-                    if (intersection.Width != 0 || intersection.Height != 0)
+                    else
                     {
-                        if (intersection.Width >= intersection.Height)
-                        {
-                            if (collisionInfoA.HitBox.Y > collisionInfoB.HitBox.Y)
-                            {
-                                direction = Direction.Top;
-                            }
-                            else
-                            {
-                                direction = Direction.Bottom;
-                            }
-                        }
-                        else
-                        {
-                            direction = Direction.Side;
-                        }
-                        collisionEvent = new CollisionEvent
-                        {
-                            EntityA = entityA,
-                            EntityB = entityB,
-                            CollisionRectangle = intersection,
-                            HurtCollision = true,
-                            Direction = direction
-                        };
-                        collisions.Add(collisionEvent);
+                        direction = Direction.Bottom;
                     }
                 }
+                else
+                {
+                    direction = Direction.Side;
+                }
+                CollisionEvent collisionEvent = new CollisionEvent
+                {
+                    EntityA = movingEntity,
+                    EntityB = secondaryEntity,
+                    Direction = direction
+                };
+                collisions.Add(collisionEvent);
             }
             
         }
 
-
         return collisions;
     }
-
 }

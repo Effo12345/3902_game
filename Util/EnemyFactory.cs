@@ -16,7 +16,7 @@ public static class EnemyFactory
 
         entity.AddComponent(new Position { Value = position });
         entity.AddComponent(new Velocity { Value = velocity });
-        entity.AddComponent(new CollisionInfo { HitBox = collisionBox, HurtBox = collisionBox, CollisionType = CollisionType.movingBoxCollider });
+        entity.AddComponent(new CollisionInfo { HitBox = collisionBox, CollisionType = CollisionType.movingBoxCollider });
         entity.AddComponent(new Acceleration {});
         entity.AddComponent(new BasicEnemy {});
         entity.AddComponent(new FacingDirection { IsFacingLeft = true });
