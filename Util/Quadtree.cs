@@ -28,9 +28,12 @@ public class Quadtree
 
         foreach (var entity in entities)
         {
-            entities.Remove(entity);
-            this.Insert(entity);
+            topLeft.Insert(entity);
+            topRight.Insert(entity);
+            bottomLeft.Insert(entity);
+            bottomRight.Insert(entity);
         }
+        entities.Clear();
     }
 
     public Quadtree(Rectangle bounds)

@@ -102,20 +102,36 @@ public class Game1 : Game
             Animation = tilesAnimationConfig
         };
 
-        tileEntityConfig.Pos = new Vector2(600, 100);
-        Entity bumpableBlock = TileEntityFactory.MakeBumpBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(100, 300);
+        Entity Block1 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(148, 300);
+        Entity Block2 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(196, 300);
+        Entity Block3 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(242, 300);
+        Entity Block4 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(290, 300);
+        Entity Block5 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(338, 300);
+        Entity Block6 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(386, 300);
+        Entity Block7 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(434, 300);
+        Entity Block8 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(492, 300);
+        Entity Block9 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
 
-        tileEntityConfig.Pos = new Vector2(640, 100);
-        Entity breakableBlock = TileEntityFactory.MakeBreakBlock(tileEntityConfig, "block");
 
-        // TODO: make a mapping between ItemKinds and animation state strings
-        tileEntityConfig.Pos = new Vector2(680, 100);
-        Entity itemBlock = TileEntityFactory.MakeItemBlock(tileEntityConfig, "unused_block", ItemKind.Mushroom, "red_mushroom", "used_block");
-
-
-        tileEntityConfig.Pos = new Vector2(730, 100);
-        Entity coin = TileEntityFactory.MakeCoin(tileEntityConfig);
     }
 
     protected override void Update(GameTime gameTime)
