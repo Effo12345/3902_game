@@ -35,7 +35,7 @@ public class Game1 : Game
         Engine.AddSystem(new GroundedSystem(TestWorldBounds));
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new PlayerMotionSystem());
-        Engine.AddSystem(new EnemyMovementSystem(TestEnemyPosition, TestEnemyVelocity));
+        Engine.AddSystem(new EnemyMovementSystem( ));
         Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
@@ -79,7 +79,7 @@ public class Game1 : Game
         BasicMario = PlayerFactory.MakePlayer(Engine, marioSprites, "Content/Config/mario_spritesheet.json", "Content/Config/player_input.json");
 
         // Enemies
-        Entity enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
+        Entity goomba1 = EnemyFactory.MakeEnemy(Engine, Content, "goomba", new Vector2(300, 200), TestEnemyVelocity * -1, false);
 
         // Items
         ItemSprite = Content.Load<Texture2D>("Sprites/items");
@@ -102,6 +102,9 @@ public class Game1 : Game
             Animation = tilesAnimationConfig
         };
 
+
+        tileEntityConfig.Pos = new Vector2(52, 300);
+        Entity Block0 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
         tileEntityConfig.Pos = new Vector2(100, 300);
         Entity Block1 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
@@ -127,7 +130,7 @@ public class Game1 : Game
         tileEntityConfig.Pos = new Vector2(434, 300);
         Entity Block8 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(492, 300);
+        tileEntityConfig.Pos = new Vector2(482, 300);
         Entity Block9 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
 

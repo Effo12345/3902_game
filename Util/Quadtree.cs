@@ -120,7 +120,7 @@ public class Quadtree
             secondaryEntity.TryGetComponent<CollisionInfo>(out var secondaryCollisionInfo);
             Rectangle secondaryCollisionBox = movingCollisionInfo.HitBox;
 
-            if (movingCollisionBox.Intersects(secondaryCollisionBox))
+            if (movingCollisionBox.Intersects(secondaryCollisionBox) && !movingEntity.Equals(secondaryEntity))
             {
                 Rectangle intersection = Rectangle.Intersect(movingCollisionBox, secondaryCollisionBox);
                 Direction direction;
