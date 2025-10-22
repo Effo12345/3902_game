@@ -50,12 +50,12 @@ public class Quadtree
         if (!entity.TryGetComponent<CollisionInfo>(out var collisionInfo)) //This should never return. Adding something to the quadtree in collisionDetectionSystem assumes the entity has a position.
             return;
 
-        Collider[] colliders = {collisionInfo.HitBox, collisionInfo.HurtBox};
+        Rectangle[] collisionBoxes = {collisionInfo.HitBox, collisionInfo.HurtBox};
 
-        foreach (var collider in colliders)
+        foreach (var collisionBox in collisionBoxes)
         {
             //If the section already contains the entity, or the collision box is outside the bounds of the quadtree, do nothing.
-            if (entities.Contains(entity) || !Bounds.Intersects(collider.CollisionBox))
+            if (entities.Contains(entity) || !Bounds.Intersects(collisionBox))
                 continue;
 
             //If this section is under capacity and there arent any subsections, add entity into this section.
@@ -83,7 +83,7 @@ public class Quadtree
         List<CollisionEvent> collisions = new List<CollisionEvent>();
 
         //If this section has subsections, parse the subsections instead: only leaf sections have data.
-        if (topLeft == null)
+        if (topLeft != null)
         {
             collisions.AddRange(topLeft.GetCollisions());
             collisions.AddRange(topRight.GetCollisions());
@@ -110,13 +110,13 @@ public class Quadtree
                     entityB.TryGetComponent<CollisionInfo>(out var collisionInfoB);
 
                     //Look for collisionbox collision
-                    intersection = Rectangle.Intersect(collisionInfoA.HitBox.CollisionBox, collisionInfoB.HitBox.CollisionBox);
+                    intersection = Rectangle.Intersect(collisionInfoA.HitBox, collisionInfoB.HitBox);
                     Direction direction;
                     if (intersection.Width != 0 || intersection.Height != 0)
                     {
                         if (intersection.Width >= intersection.Height)
                         {
-                            if (collisionInfoA.HitBox.CollisionBox.Y > collisionInfoB.HitBox.CollisionBox.Y)
+                            if (collisionInfoA.HitBox.Y > collisionInfoB.HitBox.Y)
                             {
                                 direction = Direction.Top;
                             }
@@ -140,13 +140,13 @@ public class Quadtree
                         collisions.Add(collisionEvent);
                     }
 
-                    //Look for collisionbox collision
-                    intersection = Rectangle.Intersect(collisionInfoA.HurtBox.CollisionBox, collisionInfoB.HurtBox.CollisionBox);
+                    //Look for hurtbox collision
+                    intersection = Rectangle.Intersect(collisionInfoA.HurtBox, collisionInfoB.HurtBox);
                     if (intersection.Width != 0 || intersection.Height != 0)
                     {
                         if (intersection.Width >= intersection.Height)
                         {
-                            if (collisionInfoA.HitBox.CollisionBox.Y > collisionInfoB.HitBox.CollisionBox.Y)
+                            if (collisionInfoA.HitBox.Y > collisionInfoB.HitBox.Y)
                             {
                                 direction = Direction.Top;
                             }
