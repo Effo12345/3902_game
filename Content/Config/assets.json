@@ -1,0 +1,35 @@
+{
+    "textures": [
+        {
+            "key": "MarioSheet",
+            "path": "Sprites/mario"
+        }
+    ],
+    "spriteAtlases": [
+        {
+            "key": "MarioAnimation",
+            "path": "Content/Config/mario_spritesheet.json"
+        }
+    ],
+    "inputConfigs": [
+        {
+            "key": "PlayerInput",
+            "path": "Content/Config/player_input.json"
+        }
+    ],
+    "entityConfigs": [
+        {
+            "key": "MarioConfig",
+            "path": "Content/Config/player_config.json"
+        }
+    ],
+    "entities": [
+        {
+            "key": "mario",
+            "spriteTexture": "MarioSheet",
+            "spriteAtlas": "MarioAnimation",
+            "entityConfig": "MarioConfig",
+            "inputConfig": "PlayerInput"
+        }
+    ]
+}

@@ -61,7 +61,7 @@ public class Game1 : Game
         SetupEntities();
 
         // TODO: It's annoying to have these systems here by themselves
-        Engine.AddSystem(new MarioActionSystem(BasicMario, ItemSprite));
+        // Engine.AddSystem(new MarioActionSystem(BasicMario, ItemSprite));
         Engine.AddSystem(new RenderSystem(_spriteBatch));
     }
 
@@ -75,46 +75,51 @@ public class Game1 : Game
 
         // Mario
         var marioSprites = Content.Load<Texture2D>("Sprites/mario");
-        BasicMario = PlayerFactory.MakePlayer(Engine, marioSprites, "Content/Config/mario_spritesheet.json", "Content/Config/player_input.json");
+        //     BasicMario = PlayerFactory.MakePlayer(Engine, marioSprites, "Content/Config/mario_spritesheet.json", "Content/Config/player_input.json");
 
-        // Enemies
-        Entity enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
+        //     // Enemies
+        //     Entity enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
 
-        // Items
-        ItemSprite = Content.Load<Texture2D>("Sprites/items");
-        Entity mobileItem = ItemFactory.MakeItem(
-            Engine,
-            new Vector2(650, 150),
-            ItemSprite,
-            "Content/Config/items_spritesheet.json",
-            "Content/Config/item_input.json"
-        );
+        //     // Items
+        //     ItemSprite = Content.Load<Texture2D>("Sprites/items");
+        //     Entity mobileItem = ItemFactory.MakeItem(
+        //         Engine,
+        //         new Vector2(650, 150),
+        //         ItemSprite,
+        //         "Content/Config/items_spritesheet.json",
+        //         "Content/Config/item_input.json"
+        //     );
 
-        // Tiles
-        var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
-        var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
+        //     // Tiles
+        //     var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
+        //     var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
 
-        TileEntityConfigData tileEntityConfig = new TileEntityConfigData
-        {
-            Engine = Engine,
-            Texture = blockSprites,
-            Animation = tilesAnimationConfig
-        };
+        //     TileEntityConfigData tileEntityConfig = new TileEntityConfigData
+        //     {
+        //         Engine = Engine,
+        //         Texture = blockSprites,
+        //         Animation = tilesAnimationConfig
+        //     };
 
-        tileEntityConfig.Pos = new Vector2(600, 100);
-        Entity bumpableBlock = TileEntityFactory.MakeBumpBlock(tileEntityConfig, "block");
-
-
-        tileEntityConfig.Pos = new Vector2(640, 100);
-        Entity breakableBlock = TileEntityFactory.MakeBreakBlock(tileEntityConfig, "block");
-
-        // TODO: make a mapping between ItemKinds and animation state strings
-        tileEntityConfig.Pos = new Vector2(680, 100);
-        Entity itemBlock = TileEntityFactory.MakeItemBlock(tileEntityConfig, "unused_block", ItemKind.Mushroom, "red_mushroom", "used_block");
+        //     tileEntityConfig.Pos = new Vector2(600, 100);
+        //     Entity bumpableBlock = TileEntityFactory.MakeBumpBlock(tileEntityConfig, "block");
 
 
-        tileEntityConfig.Pos = new Vector2(730, 100);
-        Entity coin = TileEntityFactory.MakeCoin(tileEntityConfig);
+        //     tileEntityConfig.Pos = new Vector2(640, 100);
+        //     Entity breakableBlock = TileEntityFactory.MakeBreakBlock(tileEntityConfig, "block");
+
+        //     // TODO: make a mapping between ItemKinds and animation state strings
+        //     tileEntityConfig.Pos = new Vector2(680, 100);
+        //     Entity itemBlock = TileEntityFactory.MakeItemBlock(tileEntityConfig, "unused_block", ItemKind.Mushroom, "red_mushroom", "used_block");
+
+
+        //     tileEntityConfig.Pos = new Vector2(730, 100);
+        //     Entity coin = TileEntityFactory.MakeCoin(tileEntityConfig);
+
+        var assets = AssetLoader.Load(Content, File.ReadAllText("Content/Config/assets.json"));
+        EntityFactory.RegisterAssets(assets);
+
+        var player = EntityFactory.BuildEntity(Engine, "mario");
     }
 
     protected override void Update(GameTime gameTime)

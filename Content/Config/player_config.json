@@ -1,6 +1,18 @@
 {
-    "Position": { "Value": [ 400, 500 ] },
+    "Position": { "Value": [ 20, 20 ] },
+    "Velocity": { "Value": [ 0, 0 ] },
     "Rotation": { "Value": 0.0 },
-    "Scale": { "Value": [ 2, 2 ] },
-    "Velocity": { "Value": [ 0, 0 ] }
+    "Scale": { "Value": [ 3.0, 3.0 ] },
+    "Mass": { "Value": 5 },
+    "Acceleration": { "Value": [ 0.0, 0.0 ] },
+    "IsGrounded": { "Value": false },
+    "Friction": { "Value": 4.0 },
+    "VelocityCap": { "Value": [ 0.2, 10.0 ] },
+    "AnimationState": {
+        "CurrentState": "small_idle",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    },
+    "FacingDirection": { "IsFacingLeft": false },
+    "Status": { "State": "small" }
 }

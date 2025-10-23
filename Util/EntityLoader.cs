@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace ECS.Util;
 
 public class EntityConfig
@@ -14,6 +12,7 @@ public static class EntityLoader
 
     static EntityLoader()
     {
+        // TODO: Can this be done at compile time?
         ValidComponents = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(a => a.GetTypes())  // Flatten types from loaded assemblies
             .Where(t =>

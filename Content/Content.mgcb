@@ -13,6 +13,9 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Config/assets.json
+/copy:Config/assets.json
+
 #begin Config/enemy_input.json
 /copy:Config/enemy_input.json
 
