@@ -61,7 +61,7 @@ public static class TileEntityFactory
     {
         Entity entity = config.Engine.CreateEntity();
 
-        entity.AddComponent(new Position { Value = new Vector2(730, 100) });
+        entity.AddComponent(new Position { Value = config.Pos });
         entity.AddComponent(new Rotation { Value = 0f });
         entity.AddComponent(new Scale { Value = new Vector2(2, 2) });
         entity.AddComponent(new SpriteState
@@ -73,7 +73,7 @@ public static class TileEntityFactory
         entity.AddComponent(config.Animation);
         entity.AddComponent(new AnimationState
         {
-            CurrentState = "coin",
+            CurrentState = "Coin",
             FrameIndex = 0,
             TimeInCurrentFrame = 0f
         });

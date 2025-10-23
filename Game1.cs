@@ -13,14 +13,6 @@ public class Game1 : Game
     private readonly Vector2 TestWorldBounds = new Vector2(0.0f, 300);
     private readonly string[] TestItemAnimations = ["KoopaShell", "FireFlower", "SuperMushroom", "BoostMushroom", "SuperStar"];
 
-    // Entities stored specifically to be passed in temporary system constructors
-    // Will be removed after sprint 2
-    private Entity BasicMario;
-    private Texture2D ItemSprite;
-
-    // Temporary game-scoped control tracking
-    private bool resetLastFrame = false;
-
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -41,11 +33,12 @@ public class Game1 : Game
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new FacingSystem());
         Engine.AddSystem(new AnimationSystem());
+        Engine.AddSystem(new StartScreenSystem(this, Content, GraphicsDevice));
 
         // Temporary for item switching
         Engine.AddSystem(new DebrisSpawnSystem());
         Engine.AddSystem(new BlockBreakSystem());
-        Engine.AddSystem(new BlockBumpSystem());
+        Engine.AddSystem(new BlockBumpSystem());                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         Engine.AddSystem(new BlockPhysicsSystem());
         Engine.AddSystem(new BlockClickSystem());
         Engine.AddSystem(new ItemBlockSystem());
@@ -58,11 +51,8 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-        SetupEntities();
-
         // TODO: It's annoying to have these systems here by themselves
-        Engine.AddSystem(new MarioActionSystem(BasicMario, ItemSprite));
+        // Engine.AddSystem(new MarioActionSystem(BasicMario, ItemSprite));
         Engine.AddSystem(new RenderSystem(_spriteBatch));
     }
 
@@ -201,5 +191,5 @@ public class Game1 : Game
         Engine.Update(gameTime);
 
         base.Draw(gameTime);
-    }
+    } 
 }
