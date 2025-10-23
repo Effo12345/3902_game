@@ -31,8 +31,8 @@ public class Game1 : Game
     protected override void Initialize()
     {
         Engine.AddSystem(new CollisionDetectionSystem());
-        Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new GroundedSystem(TestWorldBounds));
+        Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new PlayerMotionSystem());
         Engine.AddSystem(new EnemyMovementSystem( ));
@@ -107,6 +107,9 @@ public class Game1 : Game
         tileEntityConfig.Pos = new Vector2(-44, 432);
         Entity Blocka = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
+        tileEntityConfig.Pos = new Vector2(-44, 384);
+        Entity Blockc = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
         tileEntityConfig.Pos = new Vector2(4, 432);
         Entity Blockb = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
@@ -150,16 +153,22 @@ public class Game1 : Game
         Entity Block12 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
         tileEntityConfig.Pos = new Vector2(674, 432);
-        Entity Block13 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+        //Entity Block13 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
         tileEntityConfig.Pos = new Vector2(722, 432);
-        Entity Block14 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+        //Entity Block14 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
         tileEntityConfig.Pos = new Vector2(770, 432);
         Entity Block15 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
+        tileEntityConfig.Pos = new Vector2(770, 384);
+        Entity Block18 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
         tileEntityConfig.Pos = new Vector2(818, 432);
         Entity Block16 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(818, 384);
+        Entity Block17 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
 
 

@@ -124,7 +124,7 @@ public class Quadtree
                 Direction direction;
                 if (intersection.Width >= intersection.Height)
                 {
-                    if (movingCollisionBox.Y > secondaryCollisionBox.Y)
+                    if (movingCollisionBox.Y < secondaryCollisionBox.Y)
                     {
                         direction = Direction.Top;
                     }

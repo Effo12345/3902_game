@@ -6,11 +6,11 @@ public class CollisionInfo
     public CollisionType CollisionType;
 }
 
-    public enum  CollisionType
-    {
-        nonMovingBoxCollider,
-        movingBoxCollider,
-        nonMovingBoxTrigger,
-        movingBoxTrigger,
-        none
-    }
+public enum CollisionType
+{
+    nonMovingBoxCollider,
+    movingBoxCollider,
+    nonMovingBoxTrigger,
+    movingBoxTrigger,
+    none
+}

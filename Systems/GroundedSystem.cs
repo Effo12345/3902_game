@@ -26,9 +26,7 @@ public class GroundedSystem : AbstractSystem
             if (isGrounded.Value)
             {
                 velocity.Value.Y = acceleration.Value.Y = 0.0f;  // This should be done by collision
-            }
-            else
-            {
+                
                 isGrounded.Value = false;
             }
         }

@@ -29,9 +29,13 @@ public class EnemyMovementSystem : AbstractSystem
             return;
 
 
-        if (direction.Equals(Direction.Bottom))
+        if (direction.Equals(Direction.Top))
         {
             isGroundedA.Value = true;
+            entityA.TryGetComponent<Position>(out var positionA);
+            entityB.TryGetComponent<Position>(out var positionB);
+
+            positionA.Value.Y = positionB.Value.Y - collisionInfoA.HitBox.Height;
         }
         if (direction.Equals(Direction.Side))
         {
@@ -43,27 +47,7 @@ public class EnemyMovementSystem : AbstractSystem
                 velocityA.Value.X *= -1;
                 facingDirectionA.IsFacingLeft = !facingDirectionA.IsFacingLeft;
             }
-            if (collisionInfoB.CollisionType.Equals(CollisionType.movingBoxCollider))
-            {
-                entityB.TryGetComponent<Velocity>(out var velocityB);
-                entityB.TryGetComponent<FacingDirection>(out var facingDirectionB);
-                velocityB.Value.X *= -1;
-                facingDirectionB.IsFacingLeft = !facingDirectionB.IsFacingLeft;
-            }
         }
-
-
-
     }
-    public override void Update(Engine engine, GameTime gameTime)
-    {
-        foreach (var entity in engine.GetEntities())
-        {
-            if (entity.TryGetComponent<BasicEnemy>(out var enemy))
-            {
-                entity.TryGetComponent<CollisionInfo>(out var collisionInfo);
-                //Console.Write(collisionInfo.HitBox.ToString());
-            }
-        }
-    } //No op
+    public override void Update(Engine engine, GameTime gameTime){}//No op
 }
