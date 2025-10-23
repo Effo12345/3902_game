@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace ECS.Systems;
 
 public class RenderSystem : AbstractSystem
@@ -44,9 +46,27 @@ public class RenderSystem : AbstractSystem
                 spriteEffects,
                 0
                 );
-    
         }
+        foreach(var entity in Engine.GetEntities())
+        {
+            TextLabel tl; 
+            Position tpos;
+            if (entity.TryGetComponent(out tl) && entity.TryGetComponent(out tpos) && tl.Font != null)
+            {
+                float rotText = 0f;
 
+                SpriteBatch.DrawString(
+                tl.Font,
+                tl.Text,
+                tpos.Value,
+                tl.Color,
+                rotText,
+                tl.Origin,
+                1f,
+                SpriteEffects.None,
+                1f);
+            }
+        }
         SpriteBatch.End();
     }
 }
