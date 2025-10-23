@@ -3,12 +3,20 @@
         {
             "key": "MarioSheet",
             "path": "Sprites/mario"
+        },
+        {
+            "key": "EnemiesSheet",
+            "path": "Sprites/enemies"
         }
     ],
     "spriteAtlases": [
         {
             "key": "MarioAnimation",
             "path": "Content/Config/mario_spritesheet.json"
+        },
+        {
+            "key": "EnemyAnimation",
+            "path": "Content/Config/enemy_spritesheet.json"
         }
     ],
     "inputConfigs": [
@@ -21,6 +29,14 @@
         {
             "key": "MarioConfig",
             "path": "Content/Config/player_config.json"
+        },
+        {
+            "key": "GoombaConfig",
+            "path": "Content/Config/goomba_config.json"
+        },
+        {
+            "key": "KoopaConfig",
+            "path": "Content/Config/koopa_config.json"
         }
     ],
     "entities": [
@@ -30,6 +46,18 @@
             "spriteAtlas": "MarioAnimation",
             "entityConfig": "MarioConfig",
             "inputConfig": "PlayerInput"
+        },
+        {
+            "key": "goomba",
+            "spriteTexture": "EnemiesSheet",
+            "spriteAtlas": "EnemyAnimation",
+            "entityConfig": "GoombaConfig"
+        },
+        {
+            "key": "koopa",
+            "spriteTexture": "EnemiesSheet",
+            "spriteAtlas": "EnemyAnimation",
+            "entityConfig": "KoopaConfig"
         }
     ]
 }

@@ -74,35 +74,36 @@ public class Game1 : Game
         // Intentionally get configs and content on each reset
         // This lets us test new configs without recompiling
 
+        var assets = AssetLoader.Load(Content, File.ReadAllText("Content/Config/assets.json"));
+        EntityFactory.RegisterAssets(assets);
+
         // Mario
-        var marioSprites = Content.Load<Texture2D>("Sprites/mario");
-        //     BasicMario = PlayerFactory.MakePlayer(Engine, marioSprites, "Content/Config/mario_spritesheet.json", "Content/Config/player_input.json");
+        var mario = EntityFactory.BuildEntity(Engine, "mario");
 
         // Enemies
-        Entity goomba1 = EnemyFactory.MakeEnemy(Engine, Content, "goomba", new Vector2(300, 200), TestEnemyVelocity * -1, false);
+        var goomba = EntityFactory.BuildEntity(Engine, "goomba");
+        var koopa = EntityFactory.BuildEntity(Engine, "koopa");
 
-        Entity goomba2 = EnemyFactory.MakeEnemy(Engine, Content, "koopa", new Vector2(500, 200), TestEnemyVelocity, true);
+        // Items
+        ItemSprite = Content.Load<Texture2D>("Sprites/items");
+        Entity mobileItem = ItemFactory.MakeItem(
+            Engine,
+            new Vector2(650, 150),
+            ItemSprite,
+            "Content/Config/items_spritesheet.json",
+            "Content/Config/item_input.json"
+        );
 
-            // Items
-            ItemSprite = Content.Load<Texture2D>("Sprites/items");
-            Entity mobileItem = ItemFactory.MakeItem(
-                Engine,
-                new Vector2(650, 150),
-                ItemSprite,
-                "Content/Config/items_spritesheet.json",
-                "Content/Config/item_input.json"
-            );
+        // Tiles
+        var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
+        var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
 
-            // Tiles
-            var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
-            var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
-
-            TileEntityConfigData tileEntityConfig = new TileEntityConfigData
-            {
-                Engine = Engine,
-                Texture = blockSprites,
-                Animation = tilesAnimationConfig
-            };
+        TileEntityConfigData tileEntityConfig = new TileEntityConfigData
+        {
+            Engine = Engine,
+            Texture = blockSprites,
+            Animation = tilesAnimationConfig
+        };
 
         tileEntityConfig.Pos = new Vector2(-44, 432);
         Entity Blocka = TileEntityFactory.MakeBlock(tileEntityConfig, "block");

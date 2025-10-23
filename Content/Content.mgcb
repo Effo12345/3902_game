@@ -22,11 +22,17 @@
 #begin Config/enemy_spritesheet.json
 /copy:Config/enemy_spritesheet.json
 
+#begin Config/goomba_config.json
+/copy:Config/goomba_config.json
+
 #begin Config/item_input.json
 /copy:Config/item_input.json
 
 #begin Config/items_spritesheet.json
 /copy:Config/items_spritesheet.json
+
+#begin Config/koopa_config.json
+/copy:Config/koopa_config.json
 
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
