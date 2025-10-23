@@ -8,15 +8,10 @@ public class Game1 : Game
 
     // Temporary magic numbers for testing and sprint2-specific features
     // In future, will either be unneeded or moved to config files
-    private readonly Vector2 TestEnemyPosition = new Vector2(100, 100);
-    private readonly Vector2 TestEnemyVelocity = new Vector2(-50, 0);
+    // private readonly Vector2 TestEnemyPosition = new Vector2(100, 100);
+    // private readonly Vector2 TestEnemyVelocity = new Vector2(-50, 0);
     private readonly Vector2 TestWorldBounds = new Vector2(0.0f, 300);
-    private readonly string[] TestItemAnimations = ["KoopaShell", "FireFlower", "SuperMushroom", "BoostMushroom", "SuperStar"];
-
-    // Entities stored specifically to be passed in temporary system constructors
-    // Will be removed after sprint 2
-    private Entity BasicMario;
-    private Texture2D ItemSprite;
+    // private readonly string[] TestItemAnimations = ["KoopaShell", "FireFlower", "SuperMushroom", "BoostMushroom", "SuperStar"];
 
     // Temporary game-scoped control tracking
     private bool resetLastFrame = false;
@@ -50,7 +45,7 @@ public class Game1 : Game
         Engine.AddSystem(new BlockClickSystem());
         Engine.AddSystem(new ItemBlockSystem());
         Engine.AddSystem(new ItemSpawnSystem());
-        Engine.AddSystem(new ItemChangeSystem(TestItemAnimations));
+        // Engine.AddSystem(new ItemChangeSystem(TestItemAnimations));
 
         base.Initialize();
     }
@@ -85,14 +80,7 @@ public class Game1 : Game
         var koopa = EntityFactory.BuildEntity(Engine, "koopa");
 
         // Items
-        ItemSprite = Content.Load<Texture2D>("Sprites/items");
-        Entity mobileItem = ItemFactory.MakeItem(
-            Engine,
-            new Vector2(650, 150),
-            ItemSprite,
-            "Content/Config/items_spritesheet.json",
-            "Content/Config/item_input.json"
-        );
+        var demoItem = EntityFactory.BuildEntity(Engine, "demo_item");
 
         // Tiles
         var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
@@ -105,53 +93,15 @@ public class Game1 : Game
             Animation = tilesAnimationConfig
         };
 
-        tileEntityConfig.Pos = new Vector2(-44, 432);
-        Entity Blocka = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
         tileEntityConfig.Pos = new Vector2(-44, 384);
-        Entity Blockc = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+        Entity Blockc = TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
 
-        tileEntityConfig.Pos = new Vector2(4, 432);
-        Entity Blockb = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(52, 432);
-        Entity Block0 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(100, 432);
-        Entity Block1 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(148, 432);
-        Entity Block2 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(196, 432);
-        Entity Block3 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(242, 432);
-        Entity Block4 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(290, 432);
-        Entity Block5 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(338, 432);
-        Entity Block6 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(386, 432);
-        Entity Block7 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(434, 432);
-        Entity Block8 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(482, 432);
-        Entity Block9 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(530, 432);
-        Entity Block10 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(578, 432);
-        Entity Block11 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(626, 432);
-        Entity Block12 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+        // Line of blocks along the bottom
+        for (int i = 0; i < 15; i++)
+        {
+            tileEntityConfig.Pos = new Vector2(48 * i - 44, 432);
+            TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
+        }
 
         tileEntityConfig.Pos = new Vector2(674, 432);
         //Entity Block13 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
@@ -160,19 +110,10 @@ public class Game1 : Game
         //Entity Block14 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
         tileEntityConfig.Pos = new Vector2(770, 432);
-        Entity Block15 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+        Entity Block15 = TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
 
         tileEntityConfig.Pos = new Vector2(770, 384);
-        Entity Block18 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(818, 432);
-        Entity Block16 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(818, 384);
-        Entity Block17 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-
-
+        Entity Block18 = TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
     }
 
     protected override void Update(GameTime gameTime)

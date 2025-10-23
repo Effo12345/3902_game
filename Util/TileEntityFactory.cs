@@ -16,10 +16,21 @@ public static class TileEntityFactory
         entity.AddComponent(new SpriteState
         {
             Texture = config.Texture,
-            SourceRect = config.Animation.States[blockType].Frames[0],
+            SourceRect = config.Animation.States["block"].Frames[0],
             Origin = Vector2.Zero,
             Color = Color.White
         });
+
+
+        // var entity = EntityFactory.BuildEntity(config.Engine, blockType);
+
+        // // TODO: this should get moved out to level loading
+        // entity.AddComponent(new Position { Value = config.Pos });
+
+        // var collision = entity.GetComponent<CollisionInfo>();
+        // collision.HitBox.X = (int)config.Pos.X;
+        // collision.HitBox.Y = (int)config.Pos.Y;
+        
 
         return entity;
     }

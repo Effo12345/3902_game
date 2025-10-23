@@ -1,0 +1,14 @@
+{
+    "Position": { "Value": [ 4, 432 ] },
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 3.0, 3.0 ] },
+    "CollisionInfo": {
+        "HitBox": [ 0, 0, 48, 48 ],
+        "CollisonType": "CollisionType.nonMovingBoxCollider"
+    },
+    "AnimationState": {
+        "CurrentState": "block",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    }
+}

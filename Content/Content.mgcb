@@ -16,6 +16,9 @@
 #begin Config/assets.json
 /copy:Config/assets.json
 
+#begin Config/demo_item_config.json
+/copy:Config/demo_item_config.json
+
 #begin Config/enemy_input.json
 /copy:Config/enemy_input.json
 
@@ -42,6 +45,9 @@
 
 #begin Config/player_input.json
 /copy:Config/player_input.json
+
+#begin Config/static_block_config.json
+/copy:Config/static_block_config.json
 
 #begin Config/tiles_spritesheet.json
 /copy:Config/tiles_spritesheet.json

@@ -7,6 +7,14 @@
         {
             "key": "EnemiesSheet",
             "path": "Sprites/enemies"
+        },
+        {
+            "key": "TilesSheet",
+            "path": "Sprites/tiles"
+        },
+        {
+            "key": "ItemsSheet",
+            "path": "Sprites/items"
         }
     ],
     "spriteAtlases": [
@@ -17,6 +25,14 @@
         {
             "key": "EnemyAnimation",
             "path": "Content/Config/enemy_spritesheet.json"
+        },
+        {
+            "key": "TilesAnimation",
+            "path": "Content/Config/tiles_spritesheet.json"
+        },
+        {
+            "key": "ItemsAnimation",
+            "path": "Content/Config/items_spritesheet.json"
         }
     ],
     "inputConfigs": [
@@ -37,6 +53,14 @@
         {
             "key": "KoopaConfig",
             "path": "Content/Config/koopa_config.json"
+        },
+        {
+            "key": "StaticBlock",
+            "path": "Content/Config/static_block_config.json"
+        },
+        {
+            "key": "DemoItem",
+            "path": "Content/Config/demo_item_config.json"
         }
     ],
     "entities": [
@@ -58,6 +82,18 @@
             "spriteTexture": "EnemiesSheet",
             "spriteAtlas": "EnemyAnimation",
             "entityConfig": "KoopaConfig"
+        },
+        {
+            "key": "static_block",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "StaticBlock"
+        },
+        {
+            "key": "demo_item",
+            "spriteTexture": "ItemsSheet",
+            "spriteAtlas": "ItemsAnimation",
+            "entityConfig": "DemoItem"
         }
     ]
 }
