@@ -81,6 +81,8 @@ public class Game1 : Game
         // Enemies
         Entity goomba1 = EnemyFactory.MakeEnemy(Engine, Content, "goomba", new Vector2(300, 200), TestEnemyVelocity * -1, false);
 
+        Entity goomba2 = EnemyFactory.MakeEnemy(Engine, Content, "koopa", new Vector2(500, 200), TestEnemyVelocity, true);
+
         // Items
         ItemSprite = Content.Load<Texture2D>("Sprites/items");
         Entity mobileItem = ItemFactory.MakeItem(
@@ -102,36 +104,62 @@ public class Game1 : Game
             Animation = tilesAnimationConfig
         };
 
+        tileEntityConfig.Pos = new Vector2(-44, 432);
+        Entity Blocka = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(52, 300);
+        tileEntityConfig.Pos = new Vector2(4, 432);
+        Entity Blockb = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(52, 432);
         Entity Block0 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(100, 300);
+        tileEntityConfig.Pos = new Vector2(100, 432);
         Entity Block1 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(148, 300);
+        tileEntityConfig.Pos = new Vector2(148, 432);
         Entity Block2 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(196, 300);
+        tileEntityConfig.Pos = new Vector2(196, 432);
         Entity Block3 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(242, 300);
+        tileEntityConfig.Pos = new Vector2(242, 432);
         Entity Block4 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(290, 300);
+        tileEntityConfig.Pos = new Vector2(290, 432);
         Entity Block5 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(338, 300);
+        tileEntityConfig.Pos = new Vector2(338, 432);
         Entity Block6 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(386, 300);
+        tileEntityConfig.Pos = new Vector2(386, 432);
         Entity Block7 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(434, 300);
+        tileEntityConfig.Pos = new Vector2(434, 432);
         Entity Block8 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        tileEntityConfig.Pos = new Vector2(482, 300);
+        tileEntityConfig.Pos = new Vector2(482, 432);
         Entity Block9 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(530, 432);
+        Entity Block10 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(578, 432);
+        Entity Block11 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(626, 432);
+        Entity Block12 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(674, 432);
+        Entity Block13 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(722, 432);
+        Entity Block14 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(770, 432);
+        Entity Block15 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
+
+        tileEntityConfig.Pos = new Vector2(818, 432);
+        Entity Block16 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
 
 
@@ -153,7 +181,6 @@ public class Game1 : Game
         {
             resetLastFrame = false;
         }
-
         base.Update(gameTime);
     }
 

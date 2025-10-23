@@ -64,11 +64,9 @@ public class Quadtree
 
     public void Insert(Entity entity)
     {
-
         if (!entity.TryGetComponent<CollisionInfo>(out var collisionInfo)) //This should never return. Adding something to the quadtree in collisionDetectionSystem assumes the entity has a position.
             return;
-
-
+            
         Rectangle collisionBox = collisionInfo.HitBox;
         //If the section already contains the entity, or the collision box is outside the bounds of the quadtree, do nothing.
         if (entities.Contains(entity) || !Bounds.Intersects(collisionBox))
@@ -118,7 +116,7 @@ public class Quadtree
         foreach (var secondaryEntity in entities)
         {
             secondaryEntity.TryGetComponent<CollisionInfo>(out var secondaryCollisionInfo);
-            Rectangle secondaryCollisionBox = movingCollisionInfo.HitBox;
+            Rectangle secondaryCollisionBox = secondaryCollisionInfo.HitBox;
 
             if (movingCollisionBox.Intersects(secondaryCollisionBox) && !movingEntity.Equals(secondaryEntity))
             {

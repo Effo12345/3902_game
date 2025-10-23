@@ -23,9 +23,8 @@ public class GroundedSystem : AbstractSystem
             )
                 continue;
 
-            if (position.Value.Y >= GroundedThreshold.Y)
+            if (isGrounded.Value)
             {
-                isGrounded.Value = true;
                 velocity.Value.Y = acceleration.Value.Y = 0.0f;  // This should be done by collision
             }
             else

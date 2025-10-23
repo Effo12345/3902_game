@@ -16,9 +16,13 @@ public class CollisionDetectionSystem : AbstractSystem
                 continue;
 
             quadtree.Insert(entity);
-
-            if (!entity.TryGetComponent<Velocity>(out var velocity)) //Only check for collisions on moving entities
+        }
+        foreach (var entity in engine.GetEntities())
+        {
+            if (!entity.TryGetComponent<CollisionInfo>(out var collisionInfo) ||
+                !entity.TryGetComponent<Velocity>(out var velocity)) //Only check for collisions on moving entities
                 continue;
+                
             collisionEvents.AddRange(quadtree.GetCollisions(entity));
         }
 

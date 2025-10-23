@@ -12,7 +12,7 @@ public static class EnemyFactory
         entity = engine.CreateEntity();
         var enemySprites = Content.Load<Texture2D>("Sprites/enemies");
         var enemyAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/enemy_spritesheet.json"));
-        var collisionBox = new Rectangle((int)position.X, (int)position.Y, enemySprites.Width * 3, enemySprites.Height * 3); //TODO: Make scale not a magic number
+        var collisionBox = new Rectangle((int)position.X, (int)position.Y, enemyAnimationConfig.States[name].Frames[0].Width * 3, enemyAnimationConfig.States[name].Frames[0].Height * 3); //TODO: Make scale not a magic number
 
         entity.AddComponent(new Position { Value = position });
         entity.AddComponent(new Velocity { Value = velocity });

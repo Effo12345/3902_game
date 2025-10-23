@@ -5,7 +5,7 @@ public static class TileEntityFactory
     public static Entity MakeBlock(TileEntityConfigData config, string blockType)
     {
         Entity entity = config.Engine.CreateEntity();
-        var collisionBox = new Rectangle((int)config.Pos.X, (int)config.Pos.Y, config.Texture.Width * 3, config.Texture.Height * 3); //TODO: make scale not a magic number
+        var collisionBox = new Rectangle((int)config.Pos.X, (int)config.Pos.Y, config.Animation.States["block"].Frames[0].Width * 3, config.Animation.States["block"].Frames[0].Height * 3); //TODO: make scale not a magic number
 
         entity.AddComponent(new Position { Value = config.Pos });
         entity.AddComponent(new CollisionInfo { HitBox = collisionBox, CollisionType = CollisionType.nonMovingBoxCollider });
