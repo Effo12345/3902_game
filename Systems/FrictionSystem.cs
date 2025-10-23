@@ -18,7 +18,7 @@ public class FrictionSystem : AbstractSystem
 
             if (Math.Abs(velocity.Value.X) < friction.Value)
             {
-                //velocity.Value.X = 0.0f;
+                velocity.Value.X = 0.0f;
             }
             else
             {
