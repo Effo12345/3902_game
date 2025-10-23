@@ -31,8 +31,6 @@ public class RenderSystem : AbstractSystem
             if (entity.TryGetComponent<FacingDirection>(out var facing) && facing.IsFacingLeft)
                 spriteEffects = SpriteEffects.FlipHorizontally;
 
-            // TODO: we should probably do flipping direction here using sprite effects
-
             SpriteBatch.Draw(
                 sprite.Texture,
                 position.Value,
