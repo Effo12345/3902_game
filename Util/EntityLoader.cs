@@ -31,7 +31,8 @@ public static class EntityLoader
             Converters =
             {
                 new JsonStringEnumConverter(),
-                new JsonStringVector2Converter()
+                new JsonStringVector2Converter(),
+                new JsonStringRectangleConverter()
             }
         };
     }

@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace ECS.Util;
 
 public class JsonStringVector2Converter : JsonConverter<Vector2>
