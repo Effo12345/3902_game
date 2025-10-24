@@ -82,7 +82,7 @@ public class Game1 : Game
         // Items
         var demoItem = EntityFactory.BuildEntity(Engine, "demo_item");
 
-        // Tiles (FINISH MOVING ME TO ENTITY LOADING)
+        // Tiles
         var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
         var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
 

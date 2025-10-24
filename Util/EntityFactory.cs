@@ -32,6 +32,20 @@ public static class EntityFactory
         return entity;
     }
 
+    /**
+     * Courtesy of https://stackoverflow.com/a/39666660
+     * Uses reflection to conduct a shallow clone of passed objects.
+     * Calls the MemberwiseClone method defined in object but which is normally protected.
+    */
+    public static T Clone<T>(T obj)
+    {
+        var inst = obj.GetType().GetMethod(
+            "MemberwiseClone",
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic
+        );
+        return (T)inst?.Invoke(obj, null);
+    }
+
     private static void AppendGeneralComponents(Entity entity, EntityFiles entityData)
     {
         if (entityData.EntityConfig is null)
@@ -44,7 +58,10 @@ public static class EntityFactory
             // There's a way to do this where we only pay the reflection cost
             // once per component type
             dynamic castComponent = Convert.ChangeType(component, type);
-            entity.AddComponent(castComponent);
+
+            // We need to (shallow) copy the component or all entities
+            // of the same type will share a single instance
+            entity.AddComponent(Clone(castComponent));
         }
     }
 
