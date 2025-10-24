@@ -14,5 +14,6 @@
         "TimeInCurrentFrame": 0.0
     },
     "FacingDirection": { "IsFacingLeft": false },
-    "Status": { "State": "small" }
+    "Status": { "State": "small" },
+    "Tag": { "Value": "player" }
 }
