@@ -30,8 +30,8 @@ public class GroundedSystem : AbstractSystem
         if (direction.Equals(Direction.Top))
         {
             movingIsGrounded.Value = true;
-            movingIsGrounded.CoyoteFrames = 4;
-            movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height;
+            movingIsGrounded.CoyoteFrames = 1;
+            movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
         }
     }
 
@@ -47,10 +47,9 @@ public class GroundedSystem : AbstractSystem
 
             if (isGrounded.Value)
             {
-                velocity.Value.Y = acceleration.Value.Y = 0.0f;  // This should be done by collision
+                velocity.Value.Y = acceleration.Value.Y = 0.0f;
             }
 
-            //Handle coyote frames
             if (isGrounded.CoyoteFrames > 0)
                 isGrounded.CoyoteFrames--;
             else

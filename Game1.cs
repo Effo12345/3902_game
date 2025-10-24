@@ -27,7 +27,6 @@ public class Game1 : Game
     {
         Engine.AddSystem(new CollisionDetectionSystem());
         Engine.AddSystem(new GravitySystem());
-        Engine.AddSystem(new GroundedSystem());
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new PlayerMotionSystem());
         Engine.AddSystem(new EnemyMovementSystem( ));
@@ -36,6 +35,7 @@ public class Game1 : Game
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new FacingSystem());
         Engine.AddSystem(new AnimationSystem());
+        Engine.AddSystem(new GroundedSystem());
 
         // Temporary for item switching
         Engine.AddSystem(new DebrisSpawnSystem());
