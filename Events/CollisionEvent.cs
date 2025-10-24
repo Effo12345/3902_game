@@ -1,8 +1,8 @@
 namespace ECS.Events;
-public enum Direction {Top, Bottom, Side};
+public enum Direction {Top, Bottom, Left, Right};
 public struct CollisionEvent : IEvent
 {
-    public Entity EntityA;
-    public Entity EntityB;
+    public Entity MovingEntity;
+    public Entity SecondaryEntity;
     public Direction Direction;
 }

@@ -15,37 +15,27 @@ public class EnemyMovementSystem : AbstractSystem
     private void HandleCollision(IEvent evt)
     {
         var collisionEvent = (CollisionEvent)evt;
-        var entityA = collisionEvent.EntityA;
-        var entityB = collisionEvent.EntityB;
+        var movingEntity = collisionEvent.MovingEntity;
+        var secondaryEntity = collisionEvent.SecondaryEntity;
         Direction direction = collisionEvent.Direction;
-        entityA.TryGetComponent<CollisionInfo>(out var collisionInfoA);
-        entityB.TryGetComponent<CollisionInfo>(out var collisionInfoB);
+        movingEntity.TryGetComponent<CollisionInfo>(out var movingCollisionInfo);
+        secondaryEntity.TryGetComponent<CollisionInfo>(out var secondaryCollisionInfo);
 
-        if (!entityA.TryGetComponent<BasicEnemy>(out var enemy) ||
-            !entityA.TryGetComponent<IsGrounded>(out var isGroundedA) ||
-            !entityA.TryGetComponent<Velocity>(out var velocityA) ||
-            !entityA.TryGetComponent<FacingDirection>(out var facingDirectionA)
+        if (!movingEntity.TryGetComponent<BasicEnemy>(out var movingEnemy) ||
+            !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
+            !movingEntity.TryGetComponent<FacingDirection>(out var movingFacingDirection) ||
+            !movingEntity.TryGetComponent<Position>(out var movingPosition) ||
+            !secondaryEntity.TryGetComponent<Position>(out var secondaryPosition)
         )
             return;
 
-
-        if (direction.Equals(Direction.Top))
+        if (direction.Equals(Direction.Left) || direction.Equals(Direction.Right))
         {
-            isGroundedA.Value = true;
-            entityA.TryGetComponent<Position>(out var positionA);
-            entityB.TryGetComponent<Position>(out var positionB);
-
-            positionA.Value.Y = positionB.Value.Y - collisionInfoA.HitBox.Height;
-        }
-        if (direction.Equals(Direction.Side))
-        {
-            //Only change direction if moving towards entityB
-            entityA.TryGetComponent<Position>(out var positionA);
-            entityB.TryGetComponent<Position>(out var positionB);
-            if ((positionA.Value.X < positionB.Value.X && velocityA.Value.X > 0) || (positionA.Value.X > positionB.Value.X) && velocityA.Value.X < 0)
+            //Only change direction if moving towards secondaryEntity
+            if ((movingPosition.Value.X < secondaryPosition.Value.X && movingVelocity.Value.X > 0) || (movingPosition.Value.X > secondaryPosition.Value.X) && movingVelocity.Value.X < 0)
             {
-                velocityA.Value.X *= -1;
-                facingDirectionA.IsFacingLeft = !facingDirectionA.IsFacingLeft;
+                movingVelocity.Value.X *= -1;
+                movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
             }
         }
     }
