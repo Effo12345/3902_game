@@ -9,11 +9,11 @@ public class EnemyMovementSystem : AbstractSystem
 
     private int EnemyIndex = 0;
 
-    public EnemyMovementSystem(Vector2 testEnemyPosition, Vector2 testEnemyVelocity)
-    {
-        TestEnemyPosition = testEnemyPosition;
-        TestEnemyVelocity = testEnemyVelocity;
-    }
+    //public EnemyMovementSystem(Vector2 testEnemyPosition, Vector2 testEnemyVelocity)
+    //{
+    //    TestEnemyPosition = testEnemyPosition;
+    //    TestEnemyVelocity = testEnemyVelocity;
+    //}
     public override bool Initialize(Engine engine)
     {
         base.Initialize(engine);
@@ -56,6 +56,7 @@ public class EnemyMovementSystem : AbstractSystem
                 animationState.CurrentState = "koopa";
             }
         }
+    }
 
     private void HandleCollision(IEvent evt)
     {
@@ -84,8 +85,6 @@ public class EnemyMovementSystem : AbstractSystem
             }
         }
     }
-
-    }
     public override void Update(Engine engine, GameTime gameTime)
     {
         float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -102,8 +101,8 @@ public class EnemyMovementSystem : AbstractSystem
 
             if (position.Value.X <= 0 || position.Value.X >= 550) //TODO: remove magic numbers
             {
-                movingVelocity.Value.X *= -1;
-                movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
+                velocity.Value.X *= -1;
+                facingDirection.IsFacingLeft = !facingDirection.IsFacingLeft;
             }
         }
     }
