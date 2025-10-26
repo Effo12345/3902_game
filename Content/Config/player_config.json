@@ -7,7 +7,7 @@
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "CollisionInfo": {
         "HitBox": [20, 20, 42, 60],
-        "CollisonType": "CollisionType.movingBoxCollider"
+        "CollisonType": "CollisionType.Mario"
     },
     "IsGrounded": { "Value": false },
     "Friction": { "Value": 4.0 },

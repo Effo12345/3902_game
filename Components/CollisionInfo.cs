@@ -3,14 +3,14 @@ namespace ECS.Components;
 public class CollisionInfo
 {
     public Rectangle HitBox;
-    public CollisionType CollisionType;
+    public CollisionType collisionType;
 }
 
 public enum CollisionType
 {
-    nonMovingBoxCollider,
-    movingBoxCollider,
-    nonMovingBoxTrigger,
-    movingBoxTrigger,
+    Mario,
+    Goomba,
+    Koopa,
+    Block,
     none
 }

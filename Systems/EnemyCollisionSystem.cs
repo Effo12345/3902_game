@@ -2,8 +2,9 @@ using System.Net;
 
 namespace ECS.Systems;
 
-public class EnemyMovementSystem : AbstractSystem
+public class EnemyCollisionSystem : AbstractSystem
 {
+
     public override bool Initialize(Engine engine)
     {
         base.Initialize(engine);
@@ -11,7 +12,7 @@ public class EnemyMovementSystem : AbstractSystem
 
         return true;
     }
-
+    
     private void HandleCollision(IEvent evt)
     {
         var collisionEvent = (CollisionEvent)evt;
@@ -25,10 +26,16 @@ public class EnemyMovementSystem : AbstractSystem
             !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
             !movingEntity.TryGetComponent<FacingDirection>(out var movingFacingDirection) ||
             !movingEntity.TryGetComponent<Position>(out var movingPosition) ||
+            !movingEntity.TryGetComponent<IsGrounded>(out var movingIsGrounded) ||
             !secondaryEntity.TryGetComponent<Position>(out var secondaryPosition)
         )
             return;
 
+        if (direction.Equals(Direction.Top) && secondaryCollisionInfo.collisionType.Equals(CollisionType.Block))
+        {
+            movingIsGrounded.Value = true;
+            movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
+        }
         if (direction.Equals(Direction.Left) || direction.Equals(Direction.Right))
         {
             //Only change direction if moving towards secondaryEntity
