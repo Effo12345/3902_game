@@ -8,15 +8,10 @@ public class Game1 : Game
 
     // Temporary magic numbers for testing and sprint2-specific features
     // In future, will either be unneeded or moved to config files
-    private readonly Vector2 TestEnemyPosition = new Vector2(100, 100);
-    private readonly Vector2 TestEnemyVelocity = new Vector2(-50, 0);
+    // private readonly Vector2 TestEnemyPosition = new Vector2(100, 100);
+    // private readonly Vector2 TestEnemyVelocity = new Vector2(-50, 0);
     private readonly Vector2 TestWorldBounds = new Vector2(0.0f, 300);
-    private readonly string[] TestItemAnimations = ["KoopaShell", "FireFlower", "SuperMushroom", "BoostMushroom", "SuperStar"];
-
-    // Entities stored specifically to be passed in temporary system constructors
-    // Will be removed after sprint 2
-    private Entity BasicMario;
-    private Texture2D ItemSprite;
+    // private readonly string[] TestItemAnimations = ["KoopaShell", "FireFlower", "SuperMushroom", "BoostMushroom", "SuperStar"];
 
     // Temporary game-scoped control tracking
     private bool resetLastFrame = false;
@@ -30,11 +25,12 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
+        Engine.AddSystem(new CollisionDetectionSystem());
         Engine.AddSystem(new GravitySystem());
-        Engine.AddSystem(new GroundedSystem(TestWorldBounds));
+        Engine.AddSystem(new GroundedSystem());
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new PlayerMotionSystem());
-        Engine.AddSystem(new EnemyMovementSystem(TestEnemyPosition, TestEnemyVelocity));
+        Engine.AddSystem(new EnemyMovementSystem( ));
         Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
@@ -49,7 +45,7 @@ public class Game1 : Game
         Engine.AddSystem(new BlockClickSystem());
         Engine.AddSystem(new ItemBlockSystem());
         Engine.AddSystem(new ItemSpawnSystem());
-        Engine.AddSystem(new ItemChangeSystem(TestItemAnimations));
+        // Engine.AddSystem(new ItemChangeSystem(TestItemAnimations));
 
         base.Initialize();
     }
@@ -61,8 +57,7 @@ public class Game1 : Game
         SetupEntities();
 
         // TODO: It's annoying to have these systems here by themselves
-        //Engine.AddSystem(new MarioActionSystem(BasicMario));
-        Engine.AddSystem(new FireballSystem(ItemSprite));
+        // Engine.AddSystem(new MarioActionSystem(BasicMario, ItemSprite));
         Engine.AddSystem(new RenderSystem(_spriteBatch));
     }
 
@@ -74,22 +69,18 @@ public class Game1 : Game
         // Intentionally get configs and content on each reset
         // This lets us test new configs without recompiling
 
+        var assets = AssetLoader.Load(Content, File.ReadAllText("Content/Config/assets.json"));
+        EntityFactory.RegisterAssets(assets);
+
         // Mario
-        var marioSprites = Content.Load<Texture2D>("Sprites/mario");
-        BasicMario = PlayerFactory.MakePlayer(Engine, marioSprites, "Content/Config/mario_spritesheet.json", "Content/Config/player_input.json");
+        var mario = EntityFactory.BuildEntity(Engine, "mario");
 
         // Enemies
-        Entity enemy = EnemyFactory.MakeEnemy(Engine, Content, "goomba", TestEnemyPosition, TestEnemyVelocity);
+        var goomba = EntityFactory.BuildEntity(Engine, "goomba");
+        var koopa = EntityFactory.BuildEntity(Engine, "koopa");
 
         // Items
-        ItemSprite = Content.Load<Texture2D>("Sprites/items");
-        Entity mobileItem = ItemFactory.MakeItem(
-            Engine,
-            new Vector2(650, 150),
-            ItemSprite,
-            "Content/Config/items_spritesheet.json",
-            "Content/Config/item_input.json"
-        );
+        var demoItem = EntityFactory.BuildEntity(Engine, "demo_item");
 
         // Tiles
         var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
@@ -102,20 +93,27 @@ public class Game1 : Game
             Animation = tilesAnimationConfig
         };
 
-        tileEntityConfig.Pos = new Vector2(600, 100);
-        Entity bumpableBlock = TileEntityFactory.MakeBumpBlock(tileEntityConfig, "block");
+        tileEntityConfig.Pos = new Vector2(-44, 384);
+        Entity Blockc = TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
 
+        // Line of blocks along the bottom
+        for (int i = 0; i < 15; i++)
+        {
+            tileEntityConfig.Pos = new Vector2(48 * i - 44, 432);
+            TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
+        }
 
-        tileEntityConfig.Pos = new Vector2(640, 100);
-        Entity breakableBlock = TileEntityFactory.MakeBreakBlock(tileEntityConfig, "block");
+        tileEntityConfig.Pos = new Vector2(674, 432);
+        //Entity Block13 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
-        // TODO: make a mapping between ItemKinds and animation state strings
-        tileEntityConfig.Pos = new Vector2(680, 100);
-        Entity itemBlock = TileEntityFactory.MakeItemBlock(tileEntityConfig, "unused_block", ItemKind.Mushroom, "red_mushroom", "used_block");
+        tileEntityConfig.Pos = new Vector2(722, 432);
+        //Entity Block14 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
 
+        tileEntityConfig.Pos = new Vector2(770, 432);
+        Entity Block15 = TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
 
-        tileEntityConfig.Pos = new Vector2(730, 100);
-        Entity coin = TileEntityFactory.MakeCoin(tileEntityConfig);
+        tileEntityConfig.Pos = new Vector2(770, 384);
+        Entity Block18 = TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
     }
 
     protected override void Update(GameTime gameTime)
@@ -134,7 +132,6 @@ public class Game1 : Game
         {
             resetLastFrame = false;
         }
-
         base.Update(gameTime);
     }
 

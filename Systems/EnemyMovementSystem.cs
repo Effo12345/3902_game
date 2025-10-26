@@ -1,3 +1,5 @@
+using System.Net;
+
 namespace ECS.Systems;
 
 public class EnemyMovementSystem : AbstractSystem
@@ -16,6 +18,7 @@ public class EnemyMovementSystem : AbstractSystem
     {
         base.Initialize(engine);
         engine.PubSub.CreateSubscription<InputActionEvent>(HandleInput);
+        engine.PubSub.CreateSubscription<CollisionEvent>(HandleCollision);
 
         return true;
     }
@@ -54,6 +57,34 @@ public class EnemyMovementSystem : AbstractSystem
             }
         }
 
+    private void HandleCollision(IEvent evt)
+    {
+        var collisionEvent = (CollisionEvent)evt;
+        var movingEntity = collisionEvent.MovingEntity;
+        var secondaryEntity = collisionEvent.SecondaryEntity;
+        Direction direction = collisionEvent.Direction;
+        movingEntity.TryGetComponent<CollisionInfo>(out var movingCollisionInfo);
+        secondaryEntity.TryGetComponent<CollisionInfo>(out var secondaryCollisionInfo);
+
+        if (!movingEntity.TryGetComponent<BasicEnemy>(out var movingEnemy) ||
+            !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
+            !movingEntity.TryGetComponent<FacingDirection>(out var movingFacingDirection) ||
+            !movingEntity.TryGetComponent<Position>(out var movingPosition) ||
+            !secondaryEntity.TryGetComponent<Position>(out var secondaryPosition)
+        )
+            return;
+
+        if (direction.Equals(Direction.Left) || direction.Equals(Direction.Right))
+        {
+            //Only change direction if moving towards secondaryEntity
+            if ((movingPosition.Value.X < secondaryPosition.Value.X && movingVelocity.Value.X > 0) || (movingPosition.Value.X > secondaryPosition.Value.X) && movingVelocity.Value.X < 0)
+            {
+                movingVelocity.Value.X *= -1;
+                movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
+            }
+        }
+    }
+
     }
     public override void Update(Engine engine, GameTime gameTime)
     {
@@ -71,11 +102,9 @@ public class EnemyMovementSystem : AbstractSystem
 
             if (position.Value.X <= 0 || position.Value.X >= 550) //TODO: remove magic numbers
             {
-                velocity.Value.X *= -1;
-                facingDirection.IsFacingLeft = !facingDirection.IsFacingLeft;
+                movingVelocity.Value.X *= -1;
+                movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
             }
-
         }
-
     }
 }
