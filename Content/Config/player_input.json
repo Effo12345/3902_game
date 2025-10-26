@@ -1,17 +1,27 @@
 {
-    "left": {
-        "keys": ["Left"],
-        "xVel": -5.0,
-        "yVel": 0.0
-    },
-    "right": {
-        "keys": ["Right"],
-        "xVel": 5.0,
-        "yVel": 0.0
-    },
-    "jump": {
-        "keys": ["Space"],
-        "xVel": 0.0,
-        "yVel": -200.0
-    }
+  "MoveLeft": {
+    "type": "Axis",
+    "keys": [ "A", "Left" ],
+    "axisX": -5,
+    "axisY": 0
+  },
+  "MoveRight": {
+    "type": "Axis",
+    "keys": [ "D", "Right" ],
+    "axisX": 5,
+    "axisY": 0
+  },
+  "Jump": {
+    "type": "Button",
+    "keys": [ "Space" ]
+  },
+  "Fire": {
+    "type": "Button",
+    "keys": [ "L" ],
+    "mouseButtons": [ "Left" ]
+  },
+  "SwitchState": {
+    "type": "Button",
+    "keys": [ "F" ]
+  }
 }

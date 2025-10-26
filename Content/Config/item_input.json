@@ -1,7 +1,6 @@
 {
-    "switch": {
-        "keys": ["T"],
-        "xVel": 0.0,
-        "yVel": 1.0
-    }
+  "SwitchItem": {
+    "type": "Button",
+    "keys": [ "T" ]
+  }
 }
