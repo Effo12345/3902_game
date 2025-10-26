@@ -89,9 +89,9 @@ public class InputSystem : AbstractSystem
                         (ab.Keys != null && ab.Keys.Any(_prevKeyboard.IsKeyDown)) ||
                         (ab.MouseButtons != null && IsAnyMouseDown(_prevMouse, ab.MouseButtons));
 
-                    if (nowDown && !prevDown) PublishButton(engine, entity, actionName, InputPhase.Started);
-                    if (nowDown && prevDown) PublishButton(engine, entity, actionName, InputPhase.Performed);
-                    if (!nowDown && prevDown) PublishButton(engine, entity, actionName, InputPhase.Canceled);
+                    if (nowDown && !prevDown) PublishButton(engine, entity, actionName, InputPhase.Press);
+                    if (nowDown && prevDown) PublishButton(engine, entity, actionName, InputPhase.Hold);
+                    if (!nowDown && prevDown) PublishButton(engine, entity, actionName, InputPhase.Release);
                 }
             }
 

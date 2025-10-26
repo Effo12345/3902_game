@@ -41,7 +41,7 @@ public class PlayerMotionSystem : AbstractSystem
                     )
             return;
 
-        if (inputEvent.Action == "SwitchState" && inputEvent.Phase == InputPhase.Started)
+        if (inputEvent.Action == "SwitchState" && inputEvent.Phase == InputPhase.Press)
         {
             StateIndex++;
             if (StateIndex % 3 == 0)
@@ -57,7 +57,7 @@ public class PlayerMotionSystem : AbstractSystem
                 currentStatus.State = "fire";
             }
         }
-        else if (inputEvent.Action == "Fire" && inputEvent.Phase == InputPhase.Started)
+        else if (inputEvent.Action == "Fire" && inputEvent.Phase == InputPhase.Press)
         {
             if (currentStatus.State == "fire")
             {
@@ -81,12 +81,12 @@ public class PlayerMotionSystem : AbstractSystem
         {
             switch (inputEvent.Phase)
             {
-                case InputPhase.Started:
+                case InputPhase.Press:
                     velocity.Value.Y += -200.0f;
                     break;
-                case InputPhase.Performed:
+                case InputPhase.Hold:
                     break;
-                case InputPhase.Canceled:
+                case InputPhase.Release:
                     break;
             }
         }

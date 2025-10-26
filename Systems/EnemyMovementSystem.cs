@@ -24,7 +24,7 @@ public class EnemyMovementSystem : AbstractSystem
         var inputEvent = (InputActionEvent)evt;
         var entity = inputEvent.Entity;
 
-        if (inputEvent.Action == "SwitchEnemy" && inputEvent.Phase == InputPhase.Started)
+        if (inputEvent.Action == "SwitchEnemy" && inputEvent.Phase == InputPhase.Press)
         {
             if (!entity.TryGetComponent<BasicEnemy>(out var enemy) ||
             !entity.TryGetComponent<Position>(out var position) ||

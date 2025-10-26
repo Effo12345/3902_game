@@ -23,7 +23,7 @@ public class ItemChangeSystem : AbstractSystem
         var inputEvent = (InputActionEvent)evt;
         var entity = inputEvent.Entity;
 
-        if (inputEvent.Action == "SwitchItem" && inputEvent.Phase == InputPhase.Started)
+        if (inputEvent.Action == "SwitchItem" && inputEvent.Phase == InputPhase.Press)
         {
             CurrentItemIndex = (CurrentItemIndex + 1) % ItemAnimations.Length;
 
