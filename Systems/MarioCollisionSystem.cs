@@ -46,6 +46,13 @@ public class MarioCollisionSystem : AbstractSystem
                 movingPosition.Value.X = secondaryPosition.Value.X + secondaryCollisionInfo.HitBox.Width;
             }
         }
+        else if (direction.Equals(Direction.Bottom) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
+        {
+            movingVelocity.Value.Y = 0;
+            {
+                movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
+            }
+        }
     }
 
     public override void Update(Engine engine, GameTime gameTime){} //no op
