@@ -25,7 +25,7 @@ public class Assets
 
     public void LoadLevelConfig(string key, string path)
     {
-        LevelConfigs[key] = LevelLoader.Load(File.ReadAllText(path));
+        LevelConfigs[key] = LevelConfigLoader.Load(File.ReadAllText(path));
     }
 
     public void LoadEntityConfig(string key, string path)

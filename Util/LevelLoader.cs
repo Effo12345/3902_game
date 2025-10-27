@@ -1,61 +1,23 @@
 namespace ECS.Util;
 
-public class LevelEntity
-{
-    public string Key { get; set; }
-    public EntityConfig Config { get; set; }
-}
-
-public class LevelConfig
-{
-    public List<LevelEntity> Entities { get; set; } = [];
-}
-
-
 public static class LevelLoader
 {
-    private class JsonEntity
+    private static Assets Assets;
+
+    public static void RegisterAssets(Assets assets)
     {
-        public string Key { get; set; }
-        public JsonElement Components { get; set; }
+        Assets = assets;
     }
 
-    private class JsonLevel
+    public static void Load(Engine engine, string key)
     {
-        public List<JsonEntity> Entities { get; set; } = [];
-    }
+        engine.GetEntities().Clear();
 
-    private static readonly JsonSerializerOptions LevelOptions = new()
-    {
-        // Ignore case since it'll just cause problems
-        PropertyNameCaseInsensitive = true
-    };
-
-    public static LevelConfig Load(string configText)
-    {
-        var dom = JsonDocument.Parse(configText);
-        var root = dom.RootElement;
-
-        var conf = new LevelConfig();
-
-        if (!root.TryGetProperty("entities", out var entities))
-            return conf;
-
-        // JsonSerializer.Deserialize<List<LevelEntity>>(entities.GetRawText(), LevelOptions);
-
-        var jsonLevel = root.Deserialize<JsonLevel>(LevelOptions);
-
-        foreach (var entityConfig in jsonLevel.Entities)
+        var levelConfig = Assets.GetLevelConfig(key);
+        foreach (var entityConfig in levelConfig.Entities)
         {
-            Console.WriteLine(entityConfig.Components);
-
-            conf.Entities.Add(new LevelEntity
-            {
-                Key = entityConfig.Key,
-                Config = EntityLoader.Load(entityConfig.Components.GetRawText())
-            });
+            var entity = EntityFactory.BuildEntity(engine, entityConfig.Key);
+            EntityFactory.AppendComponentsFromConfig(entity, entityConfig.Config);
         }
-
-        return conf;
     }
 }
