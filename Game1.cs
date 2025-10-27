@@ -26,25 +26,26 @@ public class Game1 : Game
     protected override void Initialize()
     {
         Engine.AddSystem(new CollisionDetectionSystem());
-        Engine.AddSystem(new GravitySystem());
-        Engine.AddSystem(new GroundedSystem());
         Engine.AddSystem(new InputSystem());
+        Engine.AddSystem(new MarioCollisionSystem());
+        Engine.AddSystem(new EnemyCollisionSystem());
+        Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new PlayerMotionSystem());
-        Engine.AddSystem(new EnemyMovementSystem( ));
         Engine.AddSystem(new FrictionSystem());
-        Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
-        Engine.AddSystem(new FacingSystem());
         Engine.AddSystem(new AnimationSystem());
+        Engine.AddSystem(new GroundedSystem());
+        Engine.AddSystem(new PhysicsSystem());
+        Engine.AddSystem(new FacingSystem());
 
         // Temporary for item switching
-        Engine.AddSystem(new DebrisSpawnSystem());
-        Engine.AddSystem(new BlockBreakSystem());
-        Engine.AddSystem(new BlockBumpSystem());
-        Engine.AddSystem(new BlockPhysicsSystem());
-        Engine.AddSystem(new BlockClickSystem());
-        Engine.AddSystem(new ItemBlockSystem());
-        Engine.AddSystem(new ItemSpawnSystem());
+        // Engine.AddSystem(new DebrisSpawnSystem());
+        // Engine.AddSystem(new BlockBreakSystem());
+        // Engine.AddSystem(new BlockBumpSystem());
+        // Engine.AddSystem(new BlockPhysicsSystem());
+        // Engine.AddSystem(new BlockClickSystem());
+        // Engine.AddSystem(new ItemBlockSystem());
+        // Engine.AddSystem(new ItemSpawnSystem());
         // Engine.AddSystem(new ItemChangeSystem(TestItemAnimations));
 
         base.Initialize();

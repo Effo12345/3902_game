@@ -4,7 +4,7 @@
     "Scale": { "Value": [ 3.0, 3.0 ] },
     "CollisionInfo": {
         "HitBox": [ 0, 0, 48, 48 ],
-        "CollisonType": "CollisionType.nonMovingBoxCollider"
+        "CollisonType": "CollisionType.Block"
     },
     "AnimationState": {
         "CurrentState": "block",

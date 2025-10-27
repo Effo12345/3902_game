@@ -4,32 +4,32 @@ public static class TileEntityFactory
 {
     public static Entity MakeBlock(TileEntityConfigData config, string blockType)
     {
-        // Entity entity = config.Engine.CreateEntity();
-        // var collisionBox = new Rectangle((int)config.Pos.X, (int)config.Pos.Y, config.Animation.States["block"].Frames[0].Width * 3, config.Animation.States["block"].Frames[0].Height * 3); //TODO: make scale not a magic number
+        Entity entity = config.Engine.CreateEntity();
+        var collisionBox = new Rectangle((int)config.Pos.X, (int)config.Pos.Y, config.Animation.States["block"].Frames[0].Width * 3, config.Animation.States["block"].Frames[0].Height * 3); //TODO: make scale not a magic number
 
-        // entity.AddComponent(new Position { Value = config.Pos });
-        // entity.AddComponent(new CollisionInfo { HitBox = collisionBox, CollisionType = CollisionType.nonMovingBoxCollider });
-        // entity.AddComponent(new Rotation { Value = 0f });
-        // entity.AddComponent(new Scale { Value = new Vector2(3, 3) });
+        entity.AddComponent(new Position { Value = config.Pos });
+        entity.AddComponent(new CollisionInfo { HitBox = collisionBox, collisionType = CollisionType.Block });
+        entity.AddComponent(new Rotation { Value = 0f });
+        entity.AddComponent(new Scale { Value = new Vector2(3, 3) });
 
-        // // Lots of accessors here
-        // entity.AddComponent(new SpriteState
-        // {
-        //     Texture = config.Texture,
-        //     SourceRect = config.Animation.States["block"].Frames[0],
-        //     Origin = Vector2.Zero,
-        //     Color = Color.White
-        // });
+        // Lots of accessors here
+        entity.AddComponent(new SpriteState
+        {
+            Texture = config.Texture,
+            SourceRect = config.Animation.States["block"].Frames[0],
+            Origin = Vector2.Zero,
+            Color = Color.White
+        });
 
 
-        var entity = EntityFactory.BuildEntity(config.Engine, blockType);
+        // var entity = EntityFactory.BuildEntity(config.Engine, blockType);
 
-        // TODO: this should get moved out to level loading
-        entity.GetComponent<Position>().Value = config.Pos;
+        // // TODO: this should get moved out to level loading
+        // entity.GetComponent<Position>().Value = config.Pos;
 
-        var collision = entity.GetComponent<CollisionInfo>();
-        collision.HitBox.X = (int)config.Pos.X;
-        collision.HitBox.Y = (int)config.Pos.Y;
+        // var collision = entity.GetComponent<CollisionInfo>();
+        // collision.HitBox.X = (int)config.Pos.X;
+        // collision.HitBox.Y = (int)config.Pos.Y;
         
 
         return entity;

@@ -14,8 +14,7 @@ public class PlayerAnimationSystem : AbstractSystem
             if (!entity.TryGetComponent<Velocity>(out var velocity) ||
                 !entity.TryGetComponent<IsGrounded>(out var isGrounded) ||
                 !entity.TryGetComponent<AnimationState>(out var animationState) ||
-                !entity.TryGetComponent<Status>(out var currentStatus) ||
-                !entity.HasComponent<InputConfig>()
+                !entity.TryGetComponent<Status>(out var currentStatus)
             )
                 continue;
 

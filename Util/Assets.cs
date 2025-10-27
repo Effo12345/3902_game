@@ -1,10 +1,10 @@
-namespace ECS.Util; 
+namespace ECS.Util;
 
 public class Assets
 {
     private Dictionary<string, Texture2D> Textures = new();
     private Dictionary<string, AnimationConfig> SpriteAtlases = new();
-    private Dictionary<string, InputConfig> InputConfigs = new();
+    private Dictionary<string, InputBindings> InputConfigs = new();
     private Dictionary<string, LevelConfig> LevelConfigs = new();
     private Dictionary<string, EntityConfig> EntityConfigs = new();
 
@@ -20,7 +20,12 @@ public class Assets
 
     public void LoadInputConfig(string key, string path)
     {
-        InputConfigs[key] = InputDefinitionLoader.Load(File.ReadAllText(path));
+        InputConfigs[key] = InputDefinitionLoader.LoadFromJson(File.ReadAllText(path));
+    }
+
+    public void LoadLevelConfig(string key, string path)
+    {
+        LevelConfigs[key] = LevelConfigLoader.Load(File.ReadAllText(path));
     }
 
     public void LoadLevelConfig(string key, string path)
@@ -35,7 +40,7 @@ public class Assets
 
     public Texture2D GetTexture(string key) => Textures[key];
     public AnimationConfig GetSpriteAtlas(string key) => SpriteAtlases[key];
-    public InputConfig GetInputConfig(string key) => InputConfigs[key];
     public LevelConfig GetLevelConfig(string key) => LevelConfigs[key];
+    public InputBindings GetInputConfig(string key) => InputConfigs[key];
     public EntityConfig GetEntityConfig(string key) => EntityConfigs[key];
 }

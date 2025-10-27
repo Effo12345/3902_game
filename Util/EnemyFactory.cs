@@ -19,7 +19,7 @@ public static class EnemyFactory
         entity.AddComponent(new Acceleration());
         entity.AddComponent(new IsGrounded());
         entity.AddComponent(new Mass { Value = 5 });
-        entity.AddComponent(new CollisionInfo { HitBox = collisionBox, CollisionType = CollisionType.movingBoxCollider });
+        entity.AddComponent(new CollisionInfo { HitBox = collisionBox, collisionType = CollisionType.Goomba });
         entity.AddComponent(new Acceleration {});
         entity.AddComponent(new BasicEnemy {Name = name});
         entity.AddComponent(new FacingDirection { IsFacingLeft = IsFacingLeft });
@@ -28,7 +28,7 @@ public static class EnemyFactory
         entity.AddComponent(new SpriteState { Texture = enemySprites, Color = Color.White });
         entity.AddComponent(new AnimationConfig { States = enemyAnimationConfig.States });
         entity.AddComponent(new AnimationState { CurrentState = name });
-        entity.AddComponent(InputDefinitionLoader.Load(File.ReadAllText("Content/Config/enemy_input.json")));
+        entity.AddComponent(InputDefinitionLoader.LoadFromJson(File.ReadAllText("Content/Config/enemy_input.json")));
 
         return entity;
     }
