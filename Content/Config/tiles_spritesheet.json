@@ -118,5 +118,29 @@
             {"x": 207, "y": 181, "width": 16, "height": 16},
             {"x": 224, "y": 181, "width": 16, "height": 16}
         ]
+    },
+    "green_pipe_tl": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 1, "y": 178, "width": 16, "height": 16}
+        ]
+    },
+    "green_pipe_tr": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 18, "y": 178, "width": 16, "height": 16}
+        ]
+    },
+    "green_pipe_bl": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 1, "y": 195, "width": 16, "height": 16}
+        ]
+    },
+    "green_pipe_br": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 18, "y": 195, "width": 16, "height": 16}
+        ]
     }
 }
