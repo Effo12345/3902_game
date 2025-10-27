@@ -35,10 +35,11 @@ public class PlayerMotionSystem : AbstractSystem
         var entity = inputEvent.Entity;
 
         if (!entity.TryGetComponent<Status>(out var currentStatus) ||
-                    !entity.TryGetComponent<Position>(out var position) ||
-                    !entity.TryGetComponent<Velocity>(out var velocity) ||
-                    !entity.TryGetComponent<FacingDirection>(out var facingDirection)
-                    )
+            !entity.TryGetComponent<Position>(out var position) ||
+            !entity.TryGetComponent<Velocity>(out var velocity) ||
+            !entity.TryGetComponent<FacingDirection>(out var facingDirection) ||
+            !entity.TryGetComponent<IsGrounded>(out var grounded)
+        )
             return;
 
         if (inputEvent.Action == "SwitchState" && inputEvent.Phase == InputPhase.Press)
@@ -79,16 +80,9 @@ public class PlayerMotionSystem : AbstractSystem
         }
         else if (inputEvent.Action == "Jump")
         {
-            switch (inputEvent.Phase)
-            {
-                case InputPhase.Press:
-                    velocity.Value.Y += -400.0f;
-                    break;
-                case InputPhase.Hold:
-                    break;
-                case InputPhase.Release:
-                    break;
-            }
+            // TODO: Make holding the button cause higher jumps
+            if (inputEvent.Phase == InputPhase.Press && grounded.Value)
+                velocity.Value.Y += -300.0f; // TODO: Move this back to config file
         }
     }
 

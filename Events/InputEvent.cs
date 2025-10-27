@@ -1,11 +1,5 @@
 namespace ECS.Events;
 
-//public struct InputEvent : IEvent
-//{
-//    public Vector2 MotionVector;
-//    public Entity Entity;
-//}
-
 public sealed class InputActionEvent : IEvent
 {
     public string Action = "";   // "Jump" "Fire" "Restart"
