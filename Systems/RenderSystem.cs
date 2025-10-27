@@ -18,22 +18,21 @@ public class RenderSystem : AbstractSystem
     private static bool IsMario(Entity entity)
     {
         return entity.TryGetComponent<Position>(out var _)
-            && entity.TryGetComponent<InputConfig>(out var _);
+            && entity.TryGetComponent<InputBindings>(out var _);
     }
 
+    // TODO: Move camera adjustments to their own system
     private Vector2 PositionAdjustment()
     {
-        if (_center == null)
+        foreach (var entity in Engine.GetEntities())
         {
-            foreach (var entity in Engine.GetEntities())
+            if (IsMario(entity))
             {
-                if (IsMario(entity))
-                {
-                    _center = entity;
-                    break;
-                }
+                _center = entity;
+                break;
             }
         }
+
         if (_center == null)
         {
             // If the following loop finds nothing, use (0, 0)
