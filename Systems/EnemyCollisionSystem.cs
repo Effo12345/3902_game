@@ -36,7 +36,7 @@ public class EnemyCollisionSystem : AbstractSystem
             movingIsGrounded.Value = true;
             movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
         }
-        if (direction.Equals(Direction.Left) || direction.Equals(Direction.Right))
+        else if (direction.Equals(Direction.Left) || direction.Equals(Direction.Right))
         {
             //Only change direction if moving towards secondaryEntity
             if ((movingPosition.Value.X < secondaryPosition.Value.X && movingVelocity.Value.X > 0) || (movingPosition.Value.X > secondaryPosition.Value.X) && movingVelocity.Value.X < 0)
@@ -44,6 +44,11 @@ public class EnemyCollisionSystem : AbstractSystem
                 movingVelocity.Value.X *= -1;
                 movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
             }
+        }
+        else if (direction.Equals(Direction.Bottom))
+        {
+            movingEnemy.isDead = true;
+            movingCollisionInfo.HitBox = new Rectangle();
         }
     }
     public override void Update(Engine engine, GameTime gameTime){}//No op

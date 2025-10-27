@@ -15,9 +15,6 @@ public class PhysicsSystem : AbstractSystem
             )
                 continue;
 
-            //if (entity.TryGetComponent<InputConfig>(out var input))
-            //    Console.Write(velocity.Value.Y);
-
             velocity.Value += acceleration.Value * deltaTime;
             position.Value += velocity.Value * deltaTime;
 

@@ -16,5 +16,8 @@
         "TimeInCurrentFrame": 0.0
     },
     "FacingDirection": { "IsFacingLeft": false },
-    "BasicEnemy": { "Name": "goomba" }
+    "BasicEnemy": { 
+        "Name": "goomba",
+        "isDead": false
+    }
 }
