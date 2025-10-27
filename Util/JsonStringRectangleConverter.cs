@@ -29,6 +29,8 @@ public class JsonStringRectangleConverter : JsonConverter<Rectangle>
         writer.WriteStartArray();
         writer.WriteNumberValue(value.X);
         writer.WriteNumberValue(value.Y);
+        writer.WriteNumberValue(value.Width);
+        writer.WriteNumberValue(value.Height);
         writer.WriteEndArray();
     }
 }

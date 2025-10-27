@@ -1,0 +1,130 @@
+{
+    "entities": [
+        {
+            "key": "mario",
+            "components": {
+                "Position": { "Value": [ 20, 20 ] }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 300, 200 ] }
+            }
+        },
+        {
+            "key": "koopa",
+            "components": {
+                "Position": { "Value": [ 500, 200 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -44, 384 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -44, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 4, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 52, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 100, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 148, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 244, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 292, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 340, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 388, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 436, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 484, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 532, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 580, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 628, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 770, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 770, 384 ] }
+            }
+        }
+    ]
+}

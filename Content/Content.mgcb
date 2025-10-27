@@ -37,6 +37,9 @@
 #begin Config/koopa_config.json
 /copy:Config/koopa_config.json
 
+#begin Config/mario_1_1.json
+/copy:Config/mario_1_1.json
+
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
 
@@ -48,6 +51,9 @@
 
 #begin Config/static_block_config.json
 /copy:Config/static_block_config.json
+
+#begin Config/test_level.json
+/copy:Config/test_level.json
 
 #begin Config/tiles_spritesheet.json
 /copy:Config/tiles_spritesheet.json

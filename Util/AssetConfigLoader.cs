@@ -21,6 +21,7 @@ public class AssetConfig
     public List<AssetFile> SpriteAtlases { get; set; } = [];
     public List<AssetFile> InputConfigs { get; set; } = [];
     public List<AssetFile> EntityConfigs { get; set; } = [];
+    public List<AssetFile> LevelConfigs { get; set; } = [];
     public List<EntityFiles> Entities { get; set; } = [];
 }
 
@@ -60,6 +61,7 @@ public class AssetConfigLoader
             SpriteAtlases = TryGetValue(root, "spriteAtlases", new List<AssetFile>()),
             InputConfigs = TryGetValue(root, "inputConfigs", new List<AssetFile>()),
             EntityConfigs = TryGetValue(root, "entityConfigs", new List<AssetFile>()),
+            LevelConfigs = TryGetValue(root, "levelConfigs", new List<AssetFile>()),
             Entities = TryGetValue(root, "entities", new List<EntityFiles>())
         };
 

@@ -18,14 +18,6 @@ public class PhysicsSystem : AbstractSystem
             velocity.Value += acceleration.Value * deltaTime;
             position.Value += velocity.Value * deltaTime;
 
-            if (entity.TryGetComponent<CollisionInfo>(out var collisionInfo))
-            {
-                var width = collisionInfo.HitBox.Width;
-                var height = collisionInfo.HitBox.Height;
-
-                collisionInfo.HitBox = new Rectangle(position.Value.ToPoint(), new Point(width, height));
-            }
-
             if (!entity.TryGetComponent<VelocityCap>(out var velocityCap))
                 continue;
 

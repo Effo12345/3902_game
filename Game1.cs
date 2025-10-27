@@ -72,49 +72,10 @@ public class Game1 : Game
 
         var assets = AssetLoader.Load(Content, File.ReadAllText("Content/Config/assets.json"));
         EntityFactory.RegisterAssets(assets);
+        LevelLoader.RegisterAssets(assets);
 
-        // Mario
-        var mario = EntityFactory.BuildEntity(Engine, "mario");
-
-        // Enemies
-        var goomba = EntityFactory.BuildEntity(Engine, "goomba");
-        var koopa = EntityFactory.BuildEntity(Engine, "koopa");
-
-        // Items
-        var demoItem = EntityFactory.BuildEntity(Engine, "demo_item");
-
-        // Tiles
-        var blockSprites = Content.Load<Texture2D>("Sprites/tiles");
-        var tilesAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/tiles_spritesheet.json"));
-
-        TileEntityConfigData tileEntityConfig = new TileEntityConfigData
-        {
-            Engine = Engine,
-            Texture = blockSprites,
-            Animation = tilesAnimationConfig
-        };
-
-        tileEntityConfig.Pos = new Vector2(-44, 384);
-        Entity Blockc = TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
-
-        // Line of blocks along the bottom
-        for (int i = 0; i < 15; i++)
-        {
-            tileEntityConfig.Pos = new Vector2(48 * i - 44, 432);
-            TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
-        }
-
-        tileEntityConfig.Pos = new Vector2(674, 432);
-        //Entity Block13 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(722, 432);
-        //Entity Block14 = TileEntityFactory.MakeBlock(tileEntityConfig, "block");
-
-        tileEntityConfig.Pos = new Vector2(770, 432);
-        Entity Block15 = TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
-
-        tileEntityConfig.Pos = new Vector2(770, 384);
-        Entity Block18 = TileEntityFactory.MakeBlock(tileEntityConfig, "static_block");
+        // LevelLoader.Load(Engine, "TestLevel");
+        LevelLoader.Load(Engine, "Mario1_1");
     }
 
     protected override void Update(GameTime gameTime)

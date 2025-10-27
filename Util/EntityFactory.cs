@@ -32,12 +32,27 @@ public static class EntityFactory
         return entity;
     }
 
+    public static void AppendComponentsFromConfig(Entity entity, EntityConfig config)
+    {
+        foreach ((var type, var component) in config.Components)
+        {
+            // TODO: This is gross and slow
+            // There's a way to do this where we only pay the reflection cost
+            // once per component type
+            dynamic castComponent = Convert.ChangeType(component, type);
+
+            // We need to (shallow) copy the component or all entities
+            // of the same type will share a single instance
+            entity.AddComponent(Clone(castComponent));
+        }
+    }
+
     /**
      * Courtesy of https://stackoverflow.com/a/39666660
      * Uses reflection to conduct a shallow clone of passed objects.
      * Calls the MemberwiseClone method defined in object but which is normally protected.
     */
-    public static T Clone<T>(T obj)
+    private static T Clone<T>(T obj)
     {
         var inst = obj.GetType().GetMethod(
             "MemberwiseClone",
@@ -52,17 +67,7 @@ public static class EntityFactory
             return;
 
         var entityConfig = Assets.GetEntityConfig(entityData.EntityConfig);
-        foreach ((var type, var component) in entityConfig.Components)
-        {
-            // TODO: This is gross and slow
-            // There's a way to do this where we only pay the reflection cost
-            // once per component type
-            dynamic castComponent = Convert.ChangeType(component, type);
-
-            // We need to (shallow) copy the component or all entities
-            // of the same type will share a single instance
-            entity.AddComponent(Clone(castComponent));
-        }
+        AppendComponentsFromConfig(entity, entityConfig);
     }
 
     private static void AppendSpecializedComponents(Entity entity, EntityFiles entityData)

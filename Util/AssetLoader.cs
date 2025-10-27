@@ -10,6 +10,7 @@ public static class AssetLoader
         LoadAssetType(config.Textures, (key, path) => assets.LoadTexture(content, key, path));
         LoadAssetType(config.SpriteAtlases, assets.LoadSpriteAtlas);
         LoadAssetType(config.InputConfigs, assets.LoadInputConfig);
+        LoadAssetType(config.LevelConfigs, assets.LoadLevelConfig);
         LoadAssetType(config.EntityConfigs, assets.LoadEntityConfig);
 
         RegisterEntities(config.Entities);
