@@ -24,8 +24,8 @@ public class MarioCollisionSystem : AbstractSystem
             !movingEntity.TryGetComponent<Position>(out var movingPosition) ||
             !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
             !secondaryEntity.TryGetComponent<Position>(out var secondaryPosition) ||
-            !movingEntity.TryGetComponent<InputConfig>(out var config)
-            ) //TODO: This is checking if the entity has input config to make sure its mario. It should use collisionType, but that isn't working
+            !movingEntity.TryGetComponent<InputConfig>(out var config)//TODO: This is checking if the entity has input config to make sure its mario. It should use collisionType, but that isn't working
+            ) 
             return;
 
 
@@ -40,12 +40,12 @@ public class MarioCollisionSystem : AbstractSystem
             if (movingPosition.Value.X < secondaryPosition.Value.X)
             {
                 movingPosition.Value.X = secondaryPosition.Value.X - movingCollisionInfo.HitBox.Width + 1;
-            } else
+            }
+            else
             {
                 movingPosition.Value.X = secondaryPosition.Value.X + secondaryCollisionInfo.HitBox.Width;
             }
         }
-
     }
 
     public override void Update(Engine engine, GameTime gameTime){} //no op

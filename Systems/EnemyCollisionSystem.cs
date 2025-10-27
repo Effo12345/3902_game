@@ -45,7 +45,7 @@ public class EnemyCollisionSystem : AbstractSystem
                 movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
             }
         }
-        else if (direction.Equals(Direction.Bottom))
+        else if (direction.Equals(Direction.Bottom) && secondaryCollisionInfo.collisionType.Equals(CollisionType.Mario))
         {
             movingEnemy.isDead = true;
             movingCollisionInfo.HitBox = new Rectangle();
