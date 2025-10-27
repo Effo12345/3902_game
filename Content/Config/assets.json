@@ -67,6 +67,10 @@
         {
             "key": "TestLevel",
             "path": "Content/Config/test_level.json"
+        },
+        {
+            "key": "Mario1_1",
+            "path": "Content/Config/mario_1_1.json"
         }
     ],
     "entities": [

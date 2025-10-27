@@ -37,6 +37,9 @@
 #begin Config/koopa_config.json
 /copy:Config/koopa_config.json
 
+#begin Config/mario_1_1.json
+/copy:Config/mario_1_1.json
+
 #begin Config/mario_spritesheet.json
 /copy:Config/mario_spritesheet.json
 
