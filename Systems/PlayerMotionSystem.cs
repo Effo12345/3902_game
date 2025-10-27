@@ -93,6 +93,5 @@ public class PlayerMotionSystem : AbstractSystem
     }
 
     // no-op
-    public override void Update(Engine engine, GameTime gameTime)
-    { }
+    public override void Update(Engine engine, GameTime gameTime) { }
 }

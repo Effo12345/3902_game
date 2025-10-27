@@ -7,7 +7,7 @@
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "CollisionInfo": {
         "HitBox": [ 300, 200, 48, 48 ],
-        "CollisonType": "CollisionType.movingBoxCollider"
+        "CollisonType": "CollisionType.Goomba"
     },
     "IsGrounded": { "Value": false },
     "AnimationState": {
@@ -16,5 +16,8 @@
         "TimeInCurrentFrame": 0.0
     },
     "FacingDirection": { "IsFacingLeft": false },
-    "BasicEnemy": { "Name": "goomba" }
+    "BasicEnemy": { 
+        "Name": "goomba",
+        "isDead": false
+    }
 }
