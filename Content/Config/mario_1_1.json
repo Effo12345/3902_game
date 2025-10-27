@@ -22,7 +22,7 @@
             "components": {
                 "Position": { "Value": [ -44, 432 ] },
                 "AnimationState": {
-                    "CurrentState": "dirt_block",
+                    "CurrentState": "left_vertical_grass_block",
                     "FrameIndex": 0,
                     "TimeInCurrentFrame": 0.0
                 }
@@ -770,7 +770,7 @@
             "components": {
                 "Position": { "Value": [ 1540, 384 ] },
                 "AnimationState": {
-                    "CurrentState": "flat_grass_block",
+                    "CurrentState": "right_rounded_grass_block",
                     "FrameIndex": 0,
                     "TimeInCurrentFrame": 0.0
                 }
@@ -781,7 +781,7 @@
             "components": {
                 "Position": { "Value": [ 1540, 432 ] },
                 "AnimationState": {
-                    "CurrentState": "dirt_block",
+                    "CurrentState": "right_vertical_grass_block",
                     "FrameIndex": 0,
                     "TimeInCurrentFrame": 0.0
                 }

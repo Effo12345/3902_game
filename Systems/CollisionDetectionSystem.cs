@@ -9,7 +9,7 @@ public class CollisionDetectionSystem : AbstractSystem
     public override void Update(Engine engine, GameTime gameTime)
     {
         List<CollisionEvent> collisionEvents = new List<CollisionEvent>();
-        quadtree = new Quadtree(new Rectangle(0,0,800,480)); //TODO: replace the rectangle parameter with game window.
+        quadtree = new Quadtree(new Rectangle(0,0,1600,480)); //TODO: replace the rectangle parameter with game window.
         foreach (var entity in engine.GetEntities())
         {
             if (!entity.TryGetComponent<Collider>(out var collisionInfo) ||

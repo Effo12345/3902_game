@@ -92,6 +92,18 @@
             {"x": 461, "y": 202, "width": 16, "height": 16}
         ]
     },
+    "left_vertical_grass_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 427, "y": 219, "width": 16, "height": 16}
+        ]
+    },
+    "right_vertical_grass_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 461, "y": 219, "width": 16, "height": 16}
+        ]
+    },
     "dirt_block": {
         "frameDuration": 0.0,
         "frames": [

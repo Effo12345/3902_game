@@ -1,5 +1,6 @@
 # Known issues
-- Holding `p` or `o` freezes the enemies at their starting position
-- The reset button breaks Mario changing states and throwing fireballs
+- Moving into a wall at high speeds will occasionally cause Mario to float on the corner of a block.
+- Colliding with the floor will occasionally cancel all of Mario's horizontal momentum.
+- Interacting with the top of enemies at a low angle sometimes forces them through the floor and causes errors with their flipping animation.
 
 # Features that may seem like issues
