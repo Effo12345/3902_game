@@ -11,7 +11,8 @@ public static class LevelLoader
 
     public static void Load(Engine engine, string key)
     {
-        engine.GetEntities().Clear();
+        // engine.GetEntities().Clear();
+        engine.ClearEntities();
 
         var levelConfig = Assets.GetLevelConfig(key);
         foreach (var entityConfig in levelConfig.Entities)

@@ -23,5 +23,21 @@
   "SwitchState": {
     "type": "Button",
     "keys": [ "F" ]
+  },
+  "Quit": {
+    "type": "Button",
+    "keys": [ "Q" ]
+  },
+  "Reset": {
+    "type": "Button",
+    "keys": [ "R" ]
+  },
+  "TestLevel": {
+    "type": "Button",
+    "keys": [ "T" ]
+  },
+  "MarioLevel": {
+    "type": "Button",
+    "keys": [ "M" ]
   }
 }
