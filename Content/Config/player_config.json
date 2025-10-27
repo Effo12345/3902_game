@@ -5,9 +5,9 @@
     "Scale": { "Value": [ 3.0, 3.0 ] },
     "Mass": { "Value": 5 },
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
-    "CollisionInfo": {
-        "HitBox": [20, 20, 42, 60],
-        "CollisonType": "CollisionType.Mario"
+    "Collider": {
+        "Type": "Mario",
+        "HitBox": [0, 0, 42, 60]
     },
     "IsGrounded": { "Value": false },
     "Friction": { "Value": 4.0 },

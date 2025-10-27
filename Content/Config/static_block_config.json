@@ -2,9 +2,9 @@
     "Position": { "Value": [ 4, 432 ] },
     "Rotation": { "Value": 0.0 },
     "Scale": { "Value": [ 3.0, 3.0 ] },
-    "CollisionInfo": {
-        "HitBox": [ 0, 0, 48, 48 ],
-        "CollisonType": "CollisionType.Block"
+    "Collider": {
+        "Type": "Block",
+        "HitBox": [0, 0, 48, 48]
     },
     "AnimationState": {
         "CurrentState": "block",

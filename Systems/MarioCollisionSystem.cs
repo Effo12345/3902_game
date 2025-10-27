@@ -18,8 +18,8 @@ public class MarioCollisionSystem : AbstractSystem
         var secondaryEntity = collisionEvent.SecondaryEntity;
         Direction direction = collisionEvent.Direction;
 
-        if (!movingEntity.TryGetComponent<CollisionInfo>(out var movingCollisionInfo) ||
-            !secondaryEntity.TryGetComponent<CollisionInfo>(out var secondaryCollisionInfo) ||
+        if (!movingEntity.TryGetComponent<Collider>(out var movingCollisionInfo) ||
+            !secondaryEntity.TryGetComponent<Collider>(out var secondaryCollisionInfo) ||
             !movingEntity.TryGetComponent<IsGrounded>(out var movingIsGrounded) ||
             !movingEntity.TryGetComponent<Position>(out var movingPosition) ||
             !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
@@ -29,12 +29,12 @@ public class MarioCollisionSystem : AbstractSystem
             return;
 
 
-        if (direction.Equals(Direction.Top) && secondaryCollisionInfo.collisionType.Equals(CollisionType.Block))
+        if (direction.Equals(Direction.Top) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
         {
             movingIsGrounded.Value = true;
             movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
         }
-        else if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && secondaryCollisionInfo.collisionType.Equals(CollisionType.Block))
+        else if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
         {
             movingVelocity.Value.X = 0;
             if (movingPosition.Value.X < secondaryPosition.Value.X)

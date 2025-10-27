@@ -9,15 +9,15 @@ public class EnemyCollisionSystem : AbstractSystem
 
         return true;
     }
-    
+
     private void HandleCollision(IEvent evt)
     {
         var collisionEvent = (CollisionEvent)evt;
         var movingEntity = collisionEvent.MovingEntity;
         var secondaryEntity = collisionEvent.SecondaryEntity;
         Direction direction = collisionEvent.Direction;
-        movingEntity.TryGetComponent<CollisionInfo>(out var movingCollisionInfo);
-        secondaryEntity.TryGetComponent<CollisionInfo>(out var secondaryCollisionInfo);
+        movingEntity.TryGetComponent<Collider>(out var movingCollisionInfo);
+        secondaryEntity.TryGetComponent<Collider>(out var secondaryCollisionInfo);
 
         if (!movingEntity.TryGetComponent<BasicEnemy>(out var movingEnemy) ||
             !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
@@ -28,7 +28,7 @@ public class EnemyCollisionSystem : AbstractSystem
         )
             return;
 
-        if (direction.Equals(Direction.Top) && secondaryCollisionInfo.collisionType.Equals(CollisionType.Block))
+        if (direction.Equals(Direction.Top) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
         {
             movingIsGrounded.Value = true;
             movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
@@ -42,31 +42,13 @@ public class EnemyCollisionSystem : AbstractSystem
                 movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
             }
         }
-        else if (direction.Equals(Direction.Bottom) && secondaryCollisionInfo.collisionType.Equals(CollisionType.Mario))
+        else if (direction.Equals(Direction.Bottom) && secondaryCollisionInfo.Type.Equals(ColliderType.Mario))
         {
             movingEnemy.isDead = true;
             movingCollisionInfo.HitBox = new Rectangle();
         }
     }
-    public override void Update(Engine engine, GameTime gameTime)
-    {
-        // float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-        // foreach (var entity in Engine.GetEntities())
-        // {
-        //     if (!entity.TryGetComponent<BasicEnemy>(out var enemy) ||
-        //         !entity.TryGetComponent<Position>(out var position) ||
-        //         !entity.TryGetComponent<Velocity>(out var velocity) ||
-        //         !entity.TryGetComponent<FacingDirection>(out var facingDirection)
-        //     )
-        //         continue;
-
-
-        //     if (position.Value.X <= 0 || position.Value.X >= 550) //TODO: remove magic numbers
-        //     {
-        //         velocity.Value.X *= -1;
-        //         facingDirection.IsFacingLeft = !facingDirection.IsFacingLeft;
-        //     }
-        // }
-    }
+    
+    // no-op
+    public override void Update(Engine engine, GameTime gameTime) { }
 }

@@ -19,7 +19,7 @@ public static class EnemyFactory
         entity.AddComponent(new Acceleration());
         entity.AddComponent(new IsGrounded());
         entity.AddComponent(new Mass { Value = 5 });
-        entity.AddComponent(new CollisionInfo { HitBox = collisionBox, collisionType = CollisionType.Goomba });
+        // entity.AddComponent(new CollisionInfo { HitBox = collisionBox, collisionType = CollisionType.Goomba });
         entity.AddComponent(new Acceleration {});
         entity.AddComponent(new BasicEnemy {Name = name});
         entity.AddComponent(new FacingDirection { IsFacingLeft = IsFacingLeft });

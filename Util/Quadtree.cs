@@ -39,7 +39,7 @@ public class Quadtree
         List<Entity> dummyEntities = [.. entities];
         foreach (var entity in dummyEntities)
         {
-            entity.TryGetComponent<CollisionInfo>(out var collisionInfo);
+            entity.TryGetComponent<Collider>(out var collisionInfo);
             Rectangle collisionBox = collisionInfo.HitBox;
 
             if (!intersectsQuadrants(collisionBox))
@@ -64,7 +64,7 @@ public class Quadtree
 
     public void Insert(Entity entity)
     {
-        if (!entity.TryGetComponent<CollisionInfo>(out var collisionInfo)) //This should never return. Adding something to the quadtree in collisionDetectionSystem assumes the entity has a position.
+        if (!entity.TryGetComponent<Collider>(out var collisionInfo)) //This should never return. Adding something to the quadtree in collisionDetectionSystem assumes the entity has a position.
             return;
             
         Rectangle collisionBox = collisionInfo.HitBox;
@@ -97,7 +97,7 @@ public class Quadtree
     {
         List<CollisionEvent> collisions = new List<CollisionEvent>();
         List<Quadtree> children = new List<Quadtree> { topLeft, topRight, bottomLeft, bottomRight };
-        movingEntity.TryGetComponent<CollisionInfo>(out var movingCollisionInfo);
+        movingEntity.TryGetComponent<Collider>(out var movingCollisionInfo);
         Rectangle movingCollisionBox = movingCollisionInfo.HitBox;
 
         //First, get collisions in child trees
@@ -115,7 +115,7 @@ public class Quadtree
         //Now get collisions for rectangles in this quadtree
         foreach (var secondaryEntity in entities)
         {
-            secondaryEntity.TryGetComponent<CollisionInfo>(out var secondaryCollisionInfo);
+            secondaryEntity.TryGetComponent<Collider>(out var secondaryCollisionInfo);
             Rectangle secondaryCollisionBox = secondaryCollisionInfo.HitBox;
 
             if (movingCollisionBox.Intersects(secondaryCollisionBox) && !movingEntity.Equals(secondaryEntity))

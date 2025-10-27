@@ -8,7 +8,7 @@ public static class TileEntityFactory
         var collisionBox = new Rectangle((int)config.Pos.X, (int)config.Pos.Y, config.Animation.States["block"].Frames[0].Width * 3, config.Animation.States["block"].Frames[0].Height * 3); //TODO: make scale not a magic number
 
         entity.AddComponent(new Position { Value = config.Pos });
-        entity.AddComponent(new CollisionInfo { HitBox = collisionBox, collisionType = CollisionType.Block });
+        // entity.AddComponent(new CollisionInfo { HitBox = collisionBox, collisionType = CollisionType.Block });
         entity.AddComponent(new Rotation { Value = 0f });
         entity.AddComponent(new Scale { Value = new Vector2(3, 3) });
 
