@@ -1,17 +1,4 @@
-using System.ComponentModel;
-
 namespace ECS.Components;
-
-//public class InputConfig
-//{
-//    public List<InputAction> Actions;
-//}
-
-//public class InputAction
-//{
-//    public List<Keys> Keys;
-//    public Vector2 Velocity;
-//}
 
 public enum InputActionType { Button, Axis }
 public enum InputPhase { Press, Hold, Release }
