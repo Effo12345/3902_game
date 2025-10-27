@@ -1,0 +1,10 @@
+{
+    "entities": [
+        {
+            "key": "mario",
+            "components": {
+                "Position": { "Value": [ 500, 200 ] }
+            }
+        }
+    ]
+}

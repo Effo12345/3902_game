@@ -63,6 +63,12 @@
             "path": "Content/Config/demo_item_config.json"
         }
     ],
+    "levelConfigs": [
+        {
+            "key": "TestLevel",
+            "path": "Content/Config/test_level.json"
+        }
+    ],
     "entities": [
         {
             "key": "mario",
