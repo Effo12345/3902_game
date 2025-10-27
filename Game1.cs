@@ -39,13 +39,13 @@ public class Game1 : Game
         Engine.AddSystem(new FacingSystem());
 
         // Temporary for item switching
-        Engine.AddSystem(new DebrisSpawnSystem());
-        Engine.AddSystem(new BlockBreakSystem());
-        Engine.AddSystem(new BlockBumpSystem());
-        Engine.AddSystem(new BlockPhysicsSystem());
-        Engine.AddSystem(new BlockClickSystem());
-        Engine.AddSystem(new ItemBlockSystem());
-        Engine.AddSystem(new ItemSpawnSystem());
+        // Engine.AddSystem(new DebrisSpawnSystem());
+        // Engine.AddSystem(new BlockBreakSystem());
+        // Engine.AddSystem(new BlockBumpSystem());
+        // Engine.AddSystem(new BlockPhysicsSystem());
+        // Engine.AddSystem(new BlockClickSystem());
+        // Engine.AddSystem(new ItemBlockSystem());
+        // Engine.AddSystem(new ItemSpawnSystem());
         // Engine.AddSystem(new ItemChangeSystem(TestItemAnimations));
 
         base.Initialize();

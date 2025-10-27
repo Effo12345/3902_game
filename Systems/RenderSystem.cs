@@ -29,9 +29,9 @@ public class RenderSystem : AbstractSystem
 
             var spriteEffects = SpriteEffects.None;
             if (entity.TryGetComponent<FacingDirection>(out var facing) && facing.IsFacingLeft)
-                spriteEffects = SpriteEffects.FlipHorizontally;
+                spriteEffects |= SpriteEffects.FlipHorizontally;
             if (entity.TryGetComponent<BasicEnemy>(out var enemy) && enemy.isDead) //Temporary flipping enemy when stomped on
-                spriteEffects = SpriteEffects.FlipVertically;
+                spriteEffects |= SpriteEffects.FlipVertically;
 
             SpriteBatch.Draw(
                 sprite.Texture,

@@ -23,7 +23,6 @@ public class FrictionSystem : AbstractSystem
             else
             {
                 velocity.Value.X -= friction.Value * Math.Sign(velocity.Value.X);
-                
             }
         }
     }

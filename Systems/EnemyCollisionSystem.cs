@@ -50,23 +50,23 @@ public class EnemyCollisionSystem : AbstractSystem
     }
     public override void Update(Engine engine, GameTime gameTime)
     {
-        float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        // float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-        foreach (var entity in Engine.GetEntities())
-        {
-            if (!entity.TryGetComponent<BasicEnemy>(out var enemy) ||
-                !entity.TryGetComponent<Position>(out var position) ||
-                !entity.TryGetComponent<Velocity>(out var velocity) ||
-                !entity.TryGetComponent<FacingDirection>(out var facingDirection)
-            )
-                continue;
+        // foreach (var entity in Engine.GetEntities())
+        // {
+        //     if (!entity.TryGetComponent<BasicEnemy>(out var enemy) ||
+        //         !entity.TryGetComponent<Position>(out var position) ||
+        //         !entity.TryGetComponent<Velocity>(out var velocity) ||
+        //         !entity.TryGetComponent<FacingDirection>(out var facingDirection)
+        //     )
+        //         continue;
 
 
-            if (position.Value.X <= 0 || position.Value.X >= 550) //TODO: remove magic numbers
-            {
-                velocity.Value.X *= -1;
-                facingDirection.IsFacingLeft = !facingDirection.IsFacingLeft;
-            }
-        }
+        //     if (position.Value.X <= 0 || position.Value.X >= 550) //TODO: remove magic numbers
+        //     {
+        //         velocity.Value.X *= -1;
+        //         facingDirection.IsFacingLeft = !facingDirection.IsFacingLeft;
+        //     }
+        // }
     }
 }

@@ -24,7 +24,7 @@ public class MarioCollisionSystem : AbstractSystem
             !movingEntity.TryGetComponent<Position>(out var movingPosition) ||
             !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
             !secondaryEntity.TryGetComponent<Position>(out var secondaryPosition) ||
-            !movingEntity.TryGetComponent<InputConfig>(out var config)//TODO: This is checking if the entity has input config to make sure its mario. It should use collisionType, but that isn't working
+            !movingEntity.TryGetComponent<InputBindings>(out var config)//TODO: This is checking if the entity has input config to make sure its mario. It should use collisionType, but that isn't working
             ) 
             return;
 
