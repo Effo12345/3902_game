@@ -21,6 +21,39 @@
         {
             "key": "static_block",
             "components": {
+                "Position": { "Value": [ 52, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "question_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 100, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "question_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 148, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "question_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
                 "Position": { "Value": [ -44, 384 ] }
             }
         },
