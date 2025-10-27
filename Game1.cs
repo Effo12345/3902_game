@@ -74,8 +74,8 @@ public class Game1 : Game
         EntityFactory.RegisterAssets(assets);
         LevelLoader.RegisterAssets(assets);
 
-        LevelLoader.Load(Engine, "TestLevel");
-        // LevelLoader.Load(Engine, "Mario1_1");
+        // LevelLoader.Load(Engine, "TestLevel");
+        LevelLoader.Load(Engine, "Mario1_1");
     }
 
     protected override void Update(GameTime gameTime)

@@ -82,7 +82,7 @@ public class PlayerMotionSystem : AbstractSystem
             switch (inputEvent.Phase)
             {
                 case InputPhase.Press:
-                    velocity.Value.Y += -200.0f;
+                    velocity.Value.Y += -400.0f;
                     break;
                 case InputPhase.Hold:
                     break;
