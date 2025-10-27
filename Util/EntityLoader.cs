@@ -57,9 +57,6 @@ public static class EntityLoader
                 JsonOptions
             );
 
-            // dynamic test = Convert.ChangeType(component, componentType);
-            // entity.AddComponent(test);
-
             entityConfig.Components[componentType] = component;
         }
 
