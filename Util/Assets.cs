@@ -28,11 +28,6 @@ public class Assets
         LevelConfigs[key] = LevelConfigLoader.Load(File.ReadAllText(path));
     }
 
-    public void LoadLevelConfig(string key, string path)
-    {
-        LevelConfigs[key] = LevelConfigLoader.Load(File.ReadAllText(path));
-    }
-
     public void LoadEntityConfig(string key, string path)
     {
         EntityConfigs[key] = EntityLoader.Load(File.ReadAllText(path));
