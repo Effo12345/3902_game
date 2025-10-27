@@ -6,7 +6,7 @@
     "Mass": { "Value": 5 },
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "CollisionInfo": {
-        "HitBox": [ 300, 200, 48, 81 ],
+        "HitBox": [ 0, 0, 48, 81 ],
         "CollisonType": "CollisionType.movingBoxCollider"
     },
     "IsGrounded": { "Value": false },
