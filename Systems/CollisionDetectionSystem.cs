@@ -12,8 +12,14 @@ public class CollisionDetectionSystem : AbstractSystem
         quadtree = new Quadtree(new Rectangle(0,0,800,480)); //TODO: replace the rectangle parameter with game window.
         foreach (var entity in engine.GetEntities())
         {
-            if (!entity.TryGetComponent<CollisionInfo>(out var collisionInfo))
+            if (!entity.TryGetComponent<CollisionInfo>(out var collisionInfo) ||
+                !entity.TryGetComponent<Position>(out var position)
+            )
                 continue;
+            
+            // TODO: Make collision box coordinates relative to entity's position
+            collisionInfo.HitBox.X = (int)position.Value.X;
+            collisionInfo.HitBox.Y = (int)position.Value.Y;
 
             quadtree.Insert(entity);
         }
