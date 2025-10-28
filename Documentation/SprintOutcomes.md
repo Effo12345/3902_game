@@ -6,9 +6,10 @@
 - Load level data from JSON
 - Instantiate level contents from loaded data
 - Mobile camera (based on Mario's position and inputs)
-- Quadtree optimization
+- Quadtree collision optimization
 - Mario jump on enemy interction (damage enemy, animation, spawn turtle shell)
 - Mario and enemy + static blocks (prevent vertical and horizontal movement)
+- Partial Mario 1-1 definition
 - Debug level
 
 ## Backlogged Features
