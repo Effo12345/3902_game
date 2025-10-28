@@ -57,10 +57,6 @@
         {
             "key": "StaticBlock",
             "path": "Content/Config/static_block_config.json"
-        },
-        {
-            "key": "DemoItem",
-            "path": "Content/Config/demo_item_config.json"
         }
     ],
     "levelConfigs": [
@@ -98,12 +94,6 @@
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
             "entityConfig": "StaticBlock"
-        },
-        {
-            "key": "demo_item",
-            "spriteTexture": "ItemsSheet",
-            "spriteAtlas": "ItemsAnimation",
-            "entityConfig": "DemoItem"
         }
     ]
 }
