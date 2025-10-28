@@ -4,7 +4,7 @@ namespace ECS.Core;
 public class Engine
 {
     // Fast to search for entity in hashset by ID
-    private readonly HashSet<Entity> Entities = [];
+    private HashSet<Entity> Entities = [];
     private int NextEntityID = 0;
 
     private List<ISystem> Systems = new();
@@ -29,6 +29,11 @@ public class Engine
     public HashSet<Entity> GetEntities()
     {
         return Entities;
+    }
+
+    public void ClearEntities()
+    {
+        Entities = [];
     }
 
     public void AddSystem(ISystem system)

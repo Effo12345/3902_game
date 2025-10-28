@@ -8,7 +8,7 @@ public static class PlayerFactory
         Entity entity = engine.CreateEntity();
 
         var marioAnimationConfig = SpriteSheetLoader.Load(File.ReadAllText(animationConfigFile));
-        var marioControlConfig = InputDefinitionLoader.Load(File.ReadAllText(controlConfigFile));
+        var marioControlConfig = InputDefinitionLoader.LoadFromJson(File.ReadAllText(controlConfigFile));
 
         entity.AddComponent(new Position { Value = new Vector2(20, 20) });
         entity.AddComponent(new Velocity { Value = Vector2.Zero });

@@ -1,12 +1,6 @@
 {
-    "switchToGoomba": {
-        "keys": ["O"],
-        "xVel": 0.0,
-        "yVel": 1.0
-    },
-    "switchToKoopa": {
-        "keys": ["P"],
-        "xVel": 0.0,
-        "yVel": 2.0
-    }
+  "SwitchEnemy": {
+    "type": "Button",
+    "keys": [ "O" ]
+  }
 }
