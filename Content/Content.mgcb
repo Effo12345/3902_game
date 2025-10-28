@@ -16,20 +16,11 @@
 #begin Config/assets.json
 /copy:Config/assets.json
 
-#begin Config/demo_item_config.json
-/copy:Config/demo_item_config.json
-
-#begin Config/enemy_input.json
-/copy:Config/enemy_input.json
-
 #begin Config/enemy_spritesheet.json
 /copy:Config/enemy_spritesheet.json
 
 #begin Config/goomba_config.json
 /copy:Config/goomba_config.json
-
-#begin Config/item_input.json
-/copy:Config/item_input.json
 
 #begin Config/items_spritesheet.json
 /copy:Config/items_spritesheet.json

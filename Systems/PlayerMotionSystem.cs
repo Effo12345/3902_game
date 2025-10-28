@@ -1,8 +1,3 @@
-
-using ECS.Components;
-using Microsoft.Xna.Framework;
-using System;
-
 namespace ECS.Systems;
 
 public class PlayerMotionSystem : AbstractSystem

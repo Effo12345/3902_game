@@ -1,3 +1,6 @@
+// CURRENTLY ARCHIVED
+// MOSTLY FUNCTIONAL BUT NEEDS TWEAKS FOR THE NEW SYSTEMS
+
 namespace ECS.Systems;
 
 public class ItemSpawnSystem : AbstractSystem
@@ -33,5 +36,5 @@ public class ItemSpawnSystem : AbstractSystem
             Color = Color.White
         });
     }
-    public override void Update(Engine engine, GameTime gameTime){}
+    public override void Update(Engine engine, GameTime gameTime) { }
 }

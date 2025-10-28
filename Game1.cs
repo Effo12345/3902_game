@@ -44,7 +44,7 @@ public class Game1 : Game
 
         GameManager.Initialize("Mario1_1");
 
-        // TODO: It's annoying to have these systems here by themselves
+        // TODO: It's annoying to have this system here by itself
         Engine.AddSystem(new RenderSystem(_spriteBatch));
     }
 

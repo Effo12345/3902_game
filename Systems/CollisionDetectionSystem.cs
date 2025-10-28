@@ -1,6 +1,3 @@
-
-using System.Runtime.CompilerServices;
-
 namespace ECS.Systems;
 
 public class CollisionDetectionSystem : AbstractSystem

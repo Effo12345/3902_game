@@ -1,4 +1,5 @@
-using ECS.Components;
+// CURRENTLY ARCHIVED
+// MOSTLY FUNCTIONAL BUT NEEDS TWEAKS FOR THE NEW SYSTEMS
 
 namespace ECS.Systems;
 
@@ -38,5 +39,5 @@ public class FireballSystem : AbstractSystem
         fireball.AddComponent(new AnimationConfig { States = itemConfig.States });
         fireball.AddComponent(new AnimationState { CurrentState = "Fireball" });
     }
-    public override void Update(Engine engine, GameTime gameTime){}
+    public override void Update(Engine engine, GameTime gameTime) { }
 }

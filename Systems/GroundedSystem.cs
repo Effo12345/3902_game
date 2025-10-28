@@ -1,8 +1,5 @@
-
 namespace ECS.Systems;
 
-// Temporary grounded system for jumping implementation
-// TODO: Will need to replace with collision
 public class GroundedSystem : AbstractSystem
 {
     public override void Update(Engine engine, GameTime gameTime)

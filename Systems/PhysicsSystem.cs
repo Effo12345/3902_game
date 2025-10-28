@@ -1,4 +1,3 @@
-
 namespace ECS.Systems;
 
 public class PhysicsSystem : AbstractSystem
