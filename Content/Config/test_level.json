@@ -3,7 +3,7 @@
         {
             "key": "mario",
             "components": {
-                "Position": { "Value": [ 20, 20 ] }
+                "Position": { "Value": [ 100, 20 ] }
             }
         },
         {
