@@ -1,6 +1,6 @@
 # Team 3 Design Documentation
 
-## Sprint 2
+## Sprint 3
 - Code quality and readability reviews can be found in the [**Code Reviews**](./Code%20Reviews/) folder
 - The latest key bindings for the sprint are in [**Controls.md**](Controls.md)
 - Initial concepts are in [**SprintConcepts.md**](SprintConcepts.md)

@@ -1,3 +1,6 @@
+// CURRENTLY ARCHIVED
+// MOSTLY FUNCTIONAL BUT NEEDS TWEAKS FOR THE NEW SYSTEMS
+
 namespace ECS.Systems;
 
 public class BlockBumpSystem : AbstractSystem

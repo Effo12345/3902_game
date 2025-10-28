@@ -5,9 +5,11 @@ public class Entity(int id)
     public int Id { get; } = id;
     private Dictionary<Type, object> Components = new();
 
+    // Forcibly override component if a same type was already present
     public bool AddComponent<T>(T component) where T : class
     {
-        return Components.TryAdd(typeof(T), component);
+        Components[typeof(T)] = component;
+        return true;
     }
 
     public bool RemoveComponent<T>() where T : class

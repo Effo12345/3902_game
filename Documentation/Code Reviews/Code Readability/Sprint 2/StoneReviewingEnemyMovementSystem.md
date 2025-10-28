@@ -16,7 +16,7 @@
 
 ### Positive Aspects
 
-- The name "EnemyMovementSystem" can be easily understood
+- Reasonably avoids some magic numbers
 
 ### Areas for Improvement
 

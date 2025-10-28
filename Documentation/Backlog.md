@@ -1,7 +1,13 @@
 # Backlogged Items
 
 ## Backlogged from last sprint
-- N/A
+- Advanced Mario animation
 
 ## Backlog for next sprint
-- Advanced Mario animation
+- Advanced Mario animations
+- Finish JSON definition of 1-1
+- Item + Mario interaction (change powerup state)
+- Enemy + Mario interaction (damage Mario + animation)
+- Velocity and acceleration vector visualizer
+- Collision box visualizer
+- Scale jump height by button pressed time

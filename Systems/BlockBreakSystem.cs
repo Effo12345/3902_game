@@ -1,3 +1,6 @@
+// CURRENTLY ARCHIVED
+// MOSTLY FUNCTIONAL BUT NEEDS TWEAKS FOR THE NEW SYSTEMS
+
 namespace ECS.Systems;
 
 //System responsible for handling block breaking

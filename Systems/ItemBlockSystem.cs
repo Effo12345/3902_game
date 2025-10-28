@@ -1,3 +1,6 @@
+// CURRENTLY ARCHIVED
+// MOSTLY FUNCTIONAL BUT NEEDS TWEAKS FOR THE NEW SYSTEMS
+
 namespace ECS.Systems;
 
 public class ItemBlockSystem : AbstractSystem
@@ -41,5 +44,5 @@ public class ItemBlockSystem : AbstractSystem
             Kind = ib.Kind
         });
     }
-    public override void Update(Engine engine, GameTime gameTime) {}
+    public override void Update(Engine engine, GameTime gameTime) { }
 }
