@@ -1,43 +1,75 @@
 namespace ECS.Util;
 
-// TODO: Make an abstract jsonLoader class
+// TODO: Clean up the warnings in this file
 public static class InputDefinitionLoader
 {
-    private static readonly JsonSerializerOptions AnimOptions = new()
+    // JSON ignore the capitalization
+    private static readonly JsonSerializerOptions Options = new()
     {
-        // Ignore case since it'll just cause problems
         PropertyNameCaseInsensitive = true
     };
 
-    private class InternalInputAction
+    // DTO
+    private sealed class InternalBinding
     {
-        public List<string> Keys { get; set; }
-        public float XVel { get; set; }
-        public float YVel { get; set; }
+        public string Type { get; set; } = "Button";       // Button | Axis
+        public List<string>? Keys { get; set; }            // ["W","A","Space"]
+        public List<string>? MouseButtons { get; set; }    // Mousebutton["Left","Right"]
+        public float AxisX { get; set; } = 0;              // Only Axis
+        public float AxisY { get; set; } = 0;              // Only Axis
     }
 
-    // TODO: Do error handling here
-    public static InputConfig Load(string configText)
+    public static InputBindings LoadFromJson(string json)
     {
-        var dom = JsonDocument.Parse(configText);
-        var root = dom.RootElement;
+        var dict = JsonSerializer.Deserialize<Dictionary<string, InternalBinding>>(json, Options)
+                   ?? new Dictionary<string, InternalBinding>(StringComparer.OrdinalIgnoreCase);
 
-        var deserializedData = root.Deserialize<Dictionary<string, InternalInputAction>>(AnimOptions);
+        var result = new InputBindings();
 
-        InputConfig config = new();
-        config.Actions = new();
-
-        foreach (var action in deserializedData.Values)
+        foreach (var (actionName, ib) in dict)
         {
-            InputAction input = new InputAction
+            var binding = new ActionBinding
             {
-                Keys = [.. action.Keys.Select(Enum.Parse<Keys>)],
-                Velocity = new Vector2(action.XVel, action.YVel)
+                Type = ParseType(ib.Type),
+                Keys = ParseKeys(ib.Keys),
+                MouseButtons = ib.MouseButtons ?? new List<string>(),
+                AxisX = ib.AxisX,
+                AxisY = ib.AxisY
             };
 
-            config.Actions.Add(input);
+            result.Actions[actionName] = binding;
         }
 
-        return config;
+        return result;
+    }
+
+    public static InputBindings LoadFromFile(string path)
+    {
+        var json = File.ReadAllText(path);
+        return LoadFromJson(json);
+    }
+
+    // ---- Helper ----
+
+    private static InputActionType ParseType(string? type)
+    {
+        if (type == null) return InputActionType.Button;
+        return type.Equals("Axis", StringComparison.OrdinalIgnoreCase)
+            ? InputActionType.Axis
+            : InputActionType.Button;
+    }
+
+    private static List<Keys> ParseKeys(IEnumerable<string>? names)
+    {
+        var list = new List<Keys>();
+        if (names == null) return list;
+
+        foreach (var s in names)
+        {
+            if (Enum.TryParse<Keys>(s, ignoreCase: true, out var key))
+                list.Add(key);
+            // else: Ignore unrecognized keys
+        }
+        return list;
     }
 }

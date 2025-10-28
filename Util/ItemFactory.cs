@@ -8,7 +8,7 @@ public static class ItemFactory
 
         var itemConfig = SpriteSheetLoader.Load(File.ReadAllText(itemConfigFile));
 
-        var itemInput = InputDefinitionLoader.Load(File.ReadAllText(itemInputFile));
+        var itemInput = InputDefinitionLoader.LoadFromJson(File.ReadAllText(itemInputFile));
 
         // TODO: pull out the remaining magic numbers
         entity.AddComponent(new Position { Value = pos });

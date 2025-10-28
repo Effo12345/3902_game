@@ -1,0 +1,23 @@
+{
+    "Position": { "Value": [ 500, 200 ] },
+    "Velocity": { "Value": [ -50, 0 ] },
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 3.0, 3.0 ] },
+    "Mass": { "Value": 5 },
+    "Acceleration": { "Value": [ 0.0, 0.0 ] },
+    "Collider": {
+        "Type": "Koopa",
+        "HitBox": [0, 0, 48, 81]
+    },
+    "IsGrounded": { "Value": false },
+    "AnimationState": {
+        "CurrentState": "koopa",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    },
+    "FacingDirection": { "IsFacingLeft": true },
+    "BasicEnemy": { 
+        "Name": "koopa",
+        "isDead": false
+    }
+}
