@@ -4,7 +4,7 @@
 - **Left Arrow** - Move left
 - **Right Arrow** - Move right
 - **Space Bar** - Jump
-- **F** - Cycle through Mario's states
+- **F** - Cycle through Mario's powerup states
 
 ## General
 - **Q** - Quit the game
