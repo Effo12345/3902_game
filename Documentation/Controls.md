@@ -4,21 +4,10 @@
 - **Left Arrow** - Move left
 - **Right Arrow** - Move right
 - **Space Bar** - Jump
-- **F** - Select small mario
-- **G** - Select large mario
-- **H** - Select fire mario
-- **L** - Throw fireballs (fire mario only)
-
-## Enemies
-- **P** - Select koopa
-- **O** - Select goomba
-
-## Items
-- **T** - Cycle through item types
-
-## Blocks
-- **Mouse Click** - Interact with the tile object
+- **F** - Cycle through Mario's states
 
 ## General
 - **Q** - Quit the game
-- **R** - Reset the game to the base state
+- **R** - Reset the game to the base state of the current level
+- **T** - Switch to the test level
+- **M** - Switch to Mario 1-1
