@@ -47,10 +47,21 @@ public class RenderSystem : AbstractSystem
         }
     }
 
+    // TODO: Split this into its own system
     public override void Update(Engine engine, GameTime gameTime)
     {
+        // Get the transformation matrix needed to offset by the camera amount...
+        Vector2 cameraOffset = PositionAdjustment();
+        Matrix cameraTransform = Matrix.CreateTranslation(cameraOffset.X, cameraOffset.Y, 0);
+
+        // ...then publish it
+        engine.PubSub.Publish(new CameraTransformEvent
+        {
+            Transform = cameraTransform
+        });
+
         // PointClamp prevents scaled sprites from looking blurry
-        SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
+        SpriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: cameraTransform);
 
         foreach (var entity in Engine.GetEntities())
         {
@@ -73,7 +84,7 @@ public class RenderSystem : AbstractSystem
 
             SpriteBatch.Draw(
                 sprite.Texture,
-                position.Value + PositionAdjustment(),
+                position.Value,
                 sprite.SourceRect,
                 sprite.Color,
                 rotation.Value,
