@@ -46,6 +46,7 @@ public class Game1 : Game
 
         // TODO: It's annoying to have this system here by itself
         Engine.AddSystem(new RenderSystem(_spriteBatch));
+        Engine.AddSystem(new CollisionVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
     }
 
     protected override void Update(GameTime gameTime)
@@ -59,6 +60,8 @@ public class Game1 : Game
 
         // TODO: Add execution time and priority for systems
         Engine.Update(gameTime);
+
+        // Console.WriteLine($"Running slowly: {gameTime.IsRunningSlowly} Frame time: {gameTime.ElapsedGameTime.TotalMilliseconds}");
 
         base.Draw(gameTime);
     }
