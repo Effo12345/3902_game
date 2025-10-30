@@ -32,7 +32,8 @@ public static class EntityLoader
             {
                 new JsonStringEnumConverter(),
                 new JsonStringVector2Converter(),
-                new JsonStringRectangleConverter()
+                new JsonStringRectangleConverter(),
+                new JsonStringColorConverter()
             }
         };
     }
