@@ -76,6 +76,7 @@
 - Game over screen
 - Pausing
 - Acceleration-based user input (in addition to velocity)
+- Reorganize filesystem
 
 ## Initial Assignments
 - Ethan: Collision box visualizer, Font loading, Velocity and acceleration vector visualizer, Sound effects and background music, Finish JSON definition of 1-1
