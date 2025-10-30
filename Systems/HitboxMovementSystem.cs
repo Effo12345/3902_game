@@ -22,9 +22,8 @@ public class HitboxMovementSystem : AbstractSystem {
                 }
                 else if (status.State == "big" || status.State == "fire")
                 {
-                    Console.WriteLine("working");
-                    collider.HitBox.Width = 20 * 3;
-                    collider.HitBox.Height = 32 * 3;
+                    collider.HitBox.Width = 15 * 3;
+                    collider.HitBox.Height = 28 * 3;
                 }
             }
         }
