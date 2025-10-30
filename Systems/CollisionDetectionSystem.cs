@@ -13,10 +13,6 @@ public class CollisionDetectionSystem : AbstractSystem
                 !entity.TryGetComponent<Position>(out var position)
             )
                 continue;
-            
-            // TODO: Make collision box coordinates relative to entity's position
-            collisionInfo.HitBox.X = (int)position.Value.X;
-            collisionInfo.HitBox.Y = (int)position.Value.Y;
 
             quadtree.Insert(entity);
         }

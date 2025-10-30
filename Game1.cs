@@ -16,6 +16,7 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
+        Engine.AddSystem(new HitboxMovementSystem());
         Engine.AddSystem(new CollisionDetectionSystem());
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new MarioCollisionSystem());
