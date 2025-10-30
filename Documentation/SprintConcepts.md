@@ -54,6 +54,7 @@
 - Level HUD
 - Fix mario throwing fireballs
 - Clean up mario physics
+- Item entities and behavior
 
 ### Collision
 - Fix issues with existing interactions
@@ -73,13 +74,14 @@
 - Main menu screen
 - Game over screen
 - Pausing
+- Acceleration-based user input (in addition to velocity)
 
 ## Initial Assignments
-- Ethan: Collision box visualizer, Velocity and acceleration vector visualizer, Sound effects and background music, Font loading, Finish JSON definition of 1-1
-- Jiajie: Goal flag system, Level HUD
+- Ethan: Collision box visualizer, Font loading, Velocity and acceleration vector visualizer, Sound effects and background music, Finish JSON definition of 1-1
+- Jiajie: Item entities and behavior, Goal flag system/flag loading, Level HUD
 - Logan: Fix issues with existing collision interactions, Mario + dynamic blocks (bumping + breaking blocks on collision)
-- Mian: Deferred entity instantiation, Pipe interaction and sub-area loading, Fix mario throwing fireballs
-- Stone: 
+- Mian: Deferred entity instantiation, Acceleration-based user input (in addition to velocity), Pipe interaction and sub-area loading, Fix mario throwing fireballs
+- Stone: Player life system, level time system
 
 # Sprint 3 Focused Features
 
