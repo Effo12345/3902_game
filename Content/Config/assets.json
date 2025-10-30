@@ -17,6 +17,12 @@
             "path": "Sprites/items"
         }
     ],
+    "fonts": [
+        {
+            "key": "HUDFont",
+            "path": "Fonts/HUD"
+        }
+    ],
     "spriteAtlases": [
         {
             "key": "MarioAnimation",
