@@ -22,6 +22,9 @@
 #begin Config/goomba_config.json
 /copy:Config/goomba_config.json
 
+#begin Config/hud_text_config.json
+/copy:Config/hud_text_config.json
+
 #begin Config/items_spritesheet.json
 /copy:Config/items_spritesheet.json
 
