@@ -55,6 +55,7 @@
 - Fix mario throwing fireballs
 - Clean up mario physics
 - Item entities and behavior
+- Level background
 
 ### Collision
 - Fix issues with existing interactions
