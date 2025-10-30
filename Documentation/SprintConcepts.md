@@ -19,6 +19,7 @@
 - Fix issues with existing interactions
 - Enemy + fireball (kill enemy, animation)
 - Mario + dynamic blocks (bumping + breaking blocks on collision)
+- Change mario's collision box size based on powerup state
 
 ### Utilities
 - Debug mode
@@ -58,6 +59,7 @@
 - Fix issues with existing interactions
 - Enemy + fireball (kill enemy, animation)
 - Mario + dynamic blocks (bumping + breaking blocks on collision)
+- Change mario's collision box size based on powerup state
 
 ### Utilities
 - Debug mode
