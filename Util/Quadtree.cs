@@ -126,20 +126,23 @@ public class Quadtree
                 {
                     if (movingCollisionBox.Y < secondaryCollisionBox.Y)
                     {
-                        direction = Direction.Top;
+                        direction = Direction.Bottom;
                     }
                     else
                     {
-                        direction = Direction.Bottom;
+                        direction = Direction.Top;
                     }
                 }
                 else
                 {
-                    if(movingCollisionBox.X < secondaryCollisionBox.X)
+                    if (movingCollisionBox.X < secondaryCollisionBox.X)
+                    {
+                        direction = Direction.Right;
+                    }
+                    else
                     {
                         direction = Direction.Left;
                     }
-                    direction = Direction.Right;
                 }
                 CollisionEvent collisionEvent = new CollisionEvent
                 {

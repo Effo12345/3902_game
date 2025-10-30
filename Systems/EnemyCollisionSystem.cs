@@ -28,7 +28,7 @@ public class EnemyCollisionSystem : AbstractSystem
         )
             return;
 
-        if (direction.Equals(Direction.Top) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
+        if (direction.Equals(Direction.Bottom) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
         {
             movingIsGrounded.Value = true;
             movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
@@ -42,7 +42,7 @@ public class EnemyCollisionSystem : AbstractSystem
                 movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
             }
         }
-        else if (direction.Equals(Direction.Bottom) && secondaryCollisionInfo.Type.Equals(ColliderType.Mario))
+        else if (direction.Equals(Direction.Top) && secondaryCollisionInfo.Type.Equals(ColliderType.Mario))
         {
             movingEnemy.isDead = true;
             movingCollisionInfo.HitBox = new Rectangle();

@@ -28,12 +28,12 @@ public class MarioCollisionSystem : AbstractSystem
             return;
 
 
-        if (direction.Equals(Direction.Top) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
+        if (direction.Equals(Direction.Bottom) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
         {
             movingIsGrounded.Value = true;
             movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
         }
-        else if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
+        else if ((direction.Equals(Direction.Right) || direction.Equals(Direction.Left)) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
         {
             movingVelocity.Value.X = 0;
             if (movingPosition.Value.X < secondaryPosition.Value.X)
@@ -45,7 +45,7 @@ public class MarioCollisionSystem : AbstractSystem
                 movingPosition.Value.X = secondaryPosition.Value.X + secondaryCollisionInfo.HitBox.Width;
             }
         }
-        else if (direction.Equals(Direction.Bottom) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
+        else if (direction.Equals(Direction.Top) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
         {
             movingVelocity.Value.Y = 0;
             {
