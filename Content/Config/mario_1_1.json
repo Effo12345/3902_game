@@ -1,6 +1,16 @@
 {
     "entities": [
         {
+            "key": "timer",
+            "components": {
+                "TextRender": {
+                    "Text": "timer",
+                    "Font": "HUDFont",
+                    "Color": [ 0, 0, 0, 0 ]
+                }
+            }
+        },
+        {
             "key": "mario",
             "components": {
                 "Position": { "Value": [ 20, 20 ] }
