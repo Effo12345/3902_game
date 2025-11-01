@@ -108,6 +108,10 @@
         {
             "key": "hud_text",
             "entityConfig": "HUDText"
+        },
+        {
+            "key": "timer",
+            "entityConfig": "HUDText"
         }
     ]
 }
