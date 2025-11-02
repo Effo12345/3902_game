@@ -57,20 +57,26 @@ public class MarioCollisionSystem : AbstractSystem
                 break;
 
             case ColliderType.Goomba:
-                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Bottom)) && !movingStatus.isInvincible)
+                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Top)) && !movingStatus.isInvincible)
                 {
                     if (movingStatus.State != "small")
+                    {
                         movingStatus.State = "small";
+                        movingStatus.isInvincible = true;
+                    }
 
                     else
                         movingStatus.State = "dead"; //TODO: make mario die
                 }
                 break;
             case ColliderType.Koopa:
-                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Bottom)) && !movingStatus.isInvincible)
+                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Top)) && !movingStatus.isInvincible)
                 {
                     if (movingStatus.State != "small")
+                    {
                         movingStatus.State = "small";
+                        movingStatus.isInvincible = true;
+                    }
 
                     else
                         movingStatus.State = "dead"; //TODO: make mario die

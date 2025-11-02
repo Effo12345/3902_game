@@ -18,6 +18,10 @@
         "TimeInCurrentFrame": 0.0
     },
     "FacingDirection": { "IsFacingLeft": false },
-    "Status": { "State": "small" },
+    "Status": { 
+        "State": "small",
+        "InvincibilityDuration": 2.0,
+        "IsInvincible": false
+    },
     "Tag": { "Value": "player" }
 }
