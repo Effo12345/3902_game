@@ -43,6 +43,9 @@
 #begin Config/static_block_config.json
 /copy:Config/static_block_config.json
 
+#begin Config/fireball_config.json
+/copy:Config/fireball_config.json
+
 #begin Config/test_level.json
 /copy:Config/test_level.json
 

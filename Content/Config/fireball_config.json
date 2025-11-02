@@ -1,0 +1,14 @@
+{
+    "Position": { "Value": [ 0, 0 ] },
+    "Velocity": { "Value": [ 0, 0 ] },
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 1.5, 1.5 ] },
+    "Mass": { "Value": 2.5 },
+    "Acceleration": { "Value": [ 0.0, 0.0 ] },
+    "IsGrounded": { "Value": false },
+    "AnimationState": {
+        "CurrentState": "Fireball",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    }
+}
