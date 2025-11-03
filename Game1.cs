@@ -30,6 +30,7 @@ public class Game1 : Game
         Engine.AddSystem(new GroundedSystem());
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new FacingSystem());
+        Engine.AddSystem(new MarioDefeatSystem());
 
         GameManager = new(this, Engine);
 
