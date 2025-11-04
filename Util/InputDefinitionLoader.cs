@@ -54,8 +54,8 @@ public static class InputDefinitionLoader
     private static InputActionType ParseType(string? type)
     {
         if (type == null) return InputActionType.Button;
-        if (type.Equals("Vector", StringComparison.OrdinalIgnoreCase))
-            return InputActionType.Vector;
+        if (type.Equals("Velocity", StringComparison.OrdinalIgnoreCase))
+            return InputActionType.Velocity;
         else if (type.Equals("Acceleration", StringComparison.OrdinalIgnoreCase))
             return InputActionType.Acceleration;
         else
