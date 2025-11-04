@@ -33,21 +33,31 @@ public class InputSystem : AbstractSystem
                 }
             }
 
-            // 2) Action��Axis add up to Move��Button sends Started/Performed/Canceled
-            Vector2 move = Vector2.Zero;
+            // 2) Action Axis add up to Move Button sends Press/Hold/Release
+            Vector2 vectormove = Vector2.Zero;
+            Vector2 accelerationmove = Vector2.Zero;
 
             foreach (var kv in bindings.Actions)
             {
                 var actionName = kv.Key;
                 var ab = kv.Value;
 
-                if (ab.Type == InputActionType.Axis)
+                if (ab.Type == InputActionType.Vector)
                 {
                     // Any pressed key or mousekey add up the binded vector
                     if ((ab.Keys != null && ab.Keys.Any(kb.IsKeyDown)) ||
                         (ab.MouseButtons != null && IsAnyMouseDown(ms, ab.MouseButtons)))
                     {
-                        move += new Vector2(ab.AxisX, ab.AxisY);
+                        vectormove += new Vector2(ab.AxisX, ab.AxisY);
+                    }
+                }
+                else if (ab.Type == InputActionType.Acceleration)
+                {
+                    // Any pressed key or mousekey add up the binded vector
+                    if ((ab.Keys != null && ab.Keys.Any(kb.IsKeyDown)) ||
+                        (ab.MouseButtons != null && IsAnyMouseDown(ms, ab.MouseButtons)))
+                    {
+                        accelerationmove += new Vector2(ab.AxisX, ab.AxisY);
                     }
                 }
                 else // Button
@@ -66,13 +76,22 @@ public class InputSystem : AbstractSystem
                 }
             }
 
-            // 3) publish to "Move"
-            if (move != Vector2.Zero)
+            if (vectormove != Vector2.Zero)
             {
                 engine.PubSub.Publish(new InputAxisEvent
                 {
-                    Action = "Move",
-                    Value = move,
+                    Action = "Vector",
+                    Value = vectormove,
+                    Entity = entity
+                });
+            }
+
+            if (accelerationmove != Vector2.Zero)
+            {
+                engine.PubSub.Publish(new InputAxisEvent
+                {
+                    Action = "Acceleration",
+                    Value = accelerationmove,
                     Entity = entity
                 });
             }

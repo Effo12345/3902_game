@@ -13,7 +13,7 @@ public class PlayerMotionSystem : AbstractSystem
     private void OnAxis(IEvent evt)
     {
         var e = (InputAxisEvent)evt;
-        if (e.Action != "Move") return;
+        if (e.Action != "Vector") return;
         var entity = e.Entity;
 
         if (!entity.TryGetComponent<Velocity>(out var velocity) ||

@@ -1,6 +1,6 @@
 namespace ECS.Components;
 
-public enum InputActionType { Button, Axis }
+public enum InputActionType { Button, Vector, Acceleration}
 public enum InputPhase { Press, Hold, Release }
 
 public sealed class InputBindings

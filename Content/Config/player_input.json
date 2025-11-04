@@ -1,12 +1,12 @@
 {
   "MoveLeft": {
-    "type": "Axis",
+    "type": "Vector",
     "keys": [ "A", "Left" ],
     "axisX": -5,
     "axisY": 0
   },
   "MoveRight": {
-    "type": "Axis",
+    "type": "Vector",
     "keys": [ "D", "Right" ],
     "axisX": 5,
     "axisY": 0
