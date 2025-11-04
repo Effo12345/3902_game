@@ -17,6 +17,12 @@
             "path": "Sprites/items"
         }
     ],
+    "fonts": [
+        {
+            "key": "HUDFont",
+            "path": "Fonts/HUD"
+        }
+    ],
     "spriteAtlases": [
         {
             "key": "MarioAnimation",
@@ -61,6 +67,10 @@
         {
             "key": "StaticBlock",
             "path": "Content/Config/static_block_config.json"
+        },
+        {
+            "key": "HUDText",
+            "path": "Content/Config/hud_text_config.json"
         }
     ],
     "levelConfigs": [
@@ -104,6 +114,10 @@
           "spriteTexture": "ItemsSheet",
           "spriteAtlas": "ItemsAnimation",
           "entityConfig": "FireballConfig"
+        },
+        {
+            "key": "hud_text",
+            "entityConfig": "HUDText"
         }
     ]
 }
