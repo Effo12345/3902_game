@@ -16,15 +16,6 @@ public class Engine
 
     public void Defer(Action<Engine> mutation) => Deferred.Enqueue(mutation);
 
-    public void FlushDeferred()
-    {
-        while (Deferred.Count > 0)
-        {
-            var m = Deferred.Dequeue();
-            m(this);
-        }
-    }
-
     // Force instantiation to happen inside the engine
     public Entity CreateEntity()
     {
@@ -66,6 +57,12 @@ public class Engine
         foreach (var system in Systems)
         {
             system.Update(this, gameTime);
+        }
+
+        while (Deferred.Count > 0)
+        {
+            var m = Deferred.Dequeue();
+            m(this);
         }
     }
 }

@@ -60,8 +60,6 @@ public class Game1 : Game
         // TODO: Add execution time and priority for systems
         Engine.Update(gameTime);
 
-        Engine.FlushDeferred();
-
         base.Draw(gameTime);
     }
 }
