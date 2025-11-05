@@ -32,5 +32,16 @@
                 "height": 27
             }
         ]
+    },
+    "shell" : {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 41,
+                "y": 0,
+                "width": 16,
+                "height": 16
+            }
+        ]
     }
 }

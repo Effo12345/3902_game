@@ -26,7 +26,7 @@ public class MarioCollisionSystem : AbstractSystem
             !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
             !secondaryEntity.TryGetComponent<Position>(out var secondaryPosition) ||
             !movingEntity.TryGetComponent<Status>(out var movingStatus)//TODO: This is checking if the entity has input config to make sure its mario. It should use collisionType, but that isn't working
-            ) 
+            )
             return;
         ColliderType type = secondaryCollisionInfo.Type;
         switch (type)
@@ -59,30 +59,47 @@ public class MarioCollisionSystem : AbstractSystem
             case ColliderType.Goomba:
                 if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Top)) && !movingStatus.isInvincible)
                 {
-                    if (movingStatus.State != "small")
-                    {
-                        movingStatus.State = "small";
-                        movingStatus.isInvincible = true;
-                    }
-
-                    else
-                        movingStatus.State = "dead"; 
+                    HandleDamage(movingStatus);
+                }
+                else if (direction.Equals(Direction.Bottom) && movingVelocity.Value.Y > 0)
+                {
+                    movingVelocity.Value.Y = -500; //TODO: remove magic number
+                    secondaryEntity.TryGetComponent<BasicEnemy>(out var secondaryEnemy);
+                    secondaryEnemy.isDead = true;
+                    secondaryCollisionInfo.HitBox = new Rectangle();
                 }
                 break;
             case ColliderType.Koopa:
                 if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Top)) && !movingStatus.isInvincible)
                 {
-                    if (movingStatus.State != "small")
+                    HandleDamage(movingStatus);
+                }
+                else if (direction.Equals(Direction.Bottom) && movingVelocity.Value.Y > 0) //Make sure mario is moving down to kill enemy
+                {
+                    movingVelocity.Value.Y = -500; //TODO: remove magic number
+                    secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity);
+                    secondaryVelocity.Value.X = 0;
+                    secondaryCollisionInfo.Type = ColliderType.Shell;
+                    Engine.PubSub.Publish(new AnimationChangeEvent
                     {
-                        movingStatus.State = "small";
-                        movingStatus.isInvincible = true;
-                    }
-
-                    else
-                        movingStatus.State = "dead"; 
+                        NewState = "shell",
+                        Entity = secondaryEntity
+                    });
                 }
                 break;
         }
+    }
+
+    private void HandleDamage(Status status)
+    {
+        if (status.State != "small")
+        {
+            status.State = "small";
+            status.isInvincible = true;
+        }
+
+        else
+            status.State = "dead";
     }
 
     public override void Update(Engine engine, GameTime gameTime){} //no op

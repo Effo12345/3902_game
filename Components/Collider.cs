@@ -6,6 +6,7 @@ public enum ColliderType
     Mario,
     Goomba,
     Koopa,
+    Shell,
     Block
 }
 

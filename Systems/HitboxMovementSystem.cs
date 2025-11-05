@@ -13,6 +13,7 @@ public class HitboxMovementSystem : AbstractSystem {
             collider.HitBox.X = (int)position.Value.X;
             collider.HitBox.Y = (int)position.Value.Y;
 
+            //Change hitbox size for different sized marios
             if (entity.TryGetComponent<Status>(out var status))
             {
                 if (status.State == "small")
@@ -24,6 +25,19 @@ public class HitboxMovementSystem : AbstractSystem {
                 {
                     collider.HitBox.Width = 15 * 3;
                     collider.HitBox.Height = 28 * 3;
+                }
+            }
+
+            //Change hitbox size for different sized koopa / shell
+            if (entity.TryGetComponent<BasicEnemy>(out var enemy))
+            {
+                if (collider.Type == ColliderType.Shell)
+                {
+                    collider.HitBox.Height = 16 * 3;
+                }
+                else if (collider.Type == ColliderType.Koopa)
+                {
+                    collider.HitBox.Height = 27 * 3;
                 }
             }
         }

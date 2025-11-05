@@ -33,7 +33,7 @@ public class EnemyCollisionSystem : AbstractSystem
             movingIsGrounded.Value = true;
             movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
         }
-        else if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && !secondaryCollisionInfo.Type.Equals(ColliderType.Mario))
+        else if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && !secondaryCollisionInfo.Type.Equals(ColliderType.Mario) && !secondaryCollisionInfo.Type.Equals(ColliderType.Shell))
         {
             //Only change direction if moving towards secondaryEntity
             if ((movingPosition.Value.X < secondaryPosition.Value.X && movingVelocity.Value.X > 0) || (movingPosition.Value.X > secondaryPosition.Value.X) && movingVelocity.Value.X < 0)
@@ -41,12 +41,6 @@ public class EnemyCollisionSystem : AbstractSystem
                 movingVelocity.Value.X *= -1;
                 movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
             }
-        }
-        //TODO: this check is to make sure mario is moving down to kill the enemy, and it can be simplified.
-        else if (direction.Equals(Direction.Top) && secondaryCollisionInfo.Type.Equals(ColliderType.Mario) && secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity) && secondaryVelocity.Value.Y > 0)
-        {
-            movingEnemy.isDead = true;
-            movingCollisionInfo.HitBox = new Rectangle();
         }
     }
     

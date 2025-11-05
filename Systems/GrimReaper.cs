@@ -52,6 +52,7 @@ public class MarioDefeatSystem : AbstractSystem
             {
                 timer = 0.0f;
                 animationStarted = false;
+                //TODO: play sound for mario dying here
                 GameManager.ChangeLevel("Mario1_1");
             }
         }
