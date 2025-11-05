@@ -66,7 +66,7 @@ public class MarioCollisionSystem : AbstractSystem
                     }
 
                     else
-                        movingStatus.State = "dead"; //TODO: make mario die
+                        movingStatus.State = "dead"; 
                 }
                 break;
             case ColliderType.Koopa:
@@ -79,7 +79,7 @@ public class MarioCollisionSystem : AbstractSystem
                     }
 
                     else
-                        movingStatus.State = "dead"; //TODO: make mario die
+                        movingStatus.State = "dead"; 
                 }
                 break;
         }
