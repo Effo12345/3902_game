@@ -102,7 +102,7 @@ public class MarioCollisionSystem : AbstractSystem
                     if (direction.Equals(Direction.Bottom))
                         secondaryVelocity.Value.X = 0;
                     //Only damage mario if shell is moving towards him
-                    else if ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X > 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X < 0)
+                    else if ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X < 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X > 0)
                         HurtMario(movingStatus);
                 }
                 break;

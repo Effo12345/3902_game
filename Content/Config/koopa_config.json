@@ -19,6 +19,6 @@
     "BasicEnemy": { 
         "Name": "koopa",
         "DeathType": "Alive",
-        "cleanupTimer": 0.5
+        "ShellTimer": 6
     }
 }

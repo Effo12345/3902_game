@@ -23,7 +23,7 @@ public class MarioDefeatSystem : AbstractSystem
                 continue;
 
             //If mario goes below a certain point, he dies
-            if (position.Value.Y >= 550) //TODO: get rid of magic number and potentially relate to game window.
+            if (position.Value.Y >= 500) //TODO: get rid of magic number and potentially relate to game window.
                 status.State = "dead";
 
             if (status.State == "dead")

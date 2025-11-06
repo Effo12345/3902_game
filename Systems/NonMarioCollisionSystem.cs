@@ -55,7 +55,7 @@ public class NonMarioCollisionSystem : AbstractSystem
                 break;
             case ColliderType.Shell:
                 if ( //woof
-                    secondaryType == ColliderType.Goomba || secondaryType == ColliderType.Koopa &&
+                    (secondaryType == ColliderType.Goomba || secondaryType == ColliderType.Koopa) &&
                     ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && movingVelocity.Value.X > 0) ||
                     (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X && movingVelocity.Value.X < 0)))
                 {

@@ -31,6 +31,7 @@ public class Game1 : Game
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new FacingSystem());
         Engine.AddSystem(new EnemyCleanupSystem());
+        Engine.AddSystem(new KoopaWakeupSystem());
 
         GameManager = new(this, Engine);
 
