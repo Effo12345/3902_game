@@ -20,6 +20,8 @@ public class EnemyCollisionSystem : AbstractSystem
         secondaryEntity.TryGetComponent<Collider>(out var secondaryCollisionInfo);
 
         if (!movingEntity.TryGetComponent<BasicEnemy>(out var movingEnemy) ||
+            !movingEntity.TryGetComponent<Scale>(out var movingScale) ||
+            !movingEntity.TryGetComponent<SpriteState>(out var movingSprite) ||
             !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
             !movingEntity.TryGetComponent<FacingDirection>(out var movingFacingDirection) ||
             !movingEntity.TryGetComponent<Position>(out var movingPosition) ||
@@ -31,7 +33,7 @@ public class EnemyCollisionSystem : AbstractSystem
         if (direction.Equals(Direction.Bottom) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
         {
             movingIsGrounded.Value = true;
-            movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
+            movingPosition.Value.Y = secondaryPosition.Value.Y - movingSprite.SourceRect.Height * movingScale.Value.Y + 1;
         }
         else if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && !secondaryCollisionInfo.Type.Equals(ColliderType.Mario) && !secondaryCollisionInfo.Type.Equals(ColliderType.Shell))
         {

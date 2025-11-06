@@ -59,20 +59,18 @@ public class MarioCollisionSystem : AbstractSystem
             case ColliderType.Goomba:
                 if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Top)) && !movingStatus.isInvincible)
                 {
-                    HandleDamage(movingStatus);
+                    HurtMario(movingStatus);
                 }
                 else if (direction.Equals(Direction.Bottom) && movingVelocity.Value.Y > 0)
                 {
                     movingVelocity.Value.Y = -500; //TODO: remove magic number
-                    secondaryEntity.TryGetComponent<BasicEnemy>(out var secondaryEnemy);
-                    secondaryEnemy.isDead = true;
-                    secondaryCollisionInfo.HitBox = new Rectangle();
+                    HurtEnemy(secondaryEntity);
                 }
                 break;
             case ColliderType.Koopa:
                 if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Top)) && !movingStatus.isInvincible)
                 {
-                    HandleDamage(movingStatus);
+                    HurtMario(movingStatus);
                 }
                 else if (direction.Equals(Direction.Bottom) && movingVelocity.Value.Y > 0) //Make sure mario is moving down to kill enemy
                 {
@@ -90,7 +88,7 @@ public class MarioCollisionSystem : AbstractSystem
         }
     }
 
-    private void HandleDamage(Status status)
+    private static void HurtMario(Status status)
     {
         if (status.State != "small")
         {
@@ -100,6 +98,21 @@ public class MarioCollisionSystem : AbstractSystem
 
         else
             status.State = "dead";
+    }
+
+    private static void HurtEnemy(Entity entity)
+    {
+        entity.TryGetComponent<BasicEnemy>(out var enemy);
+        entity.TryGetComponent<Scale>(out var scale);
+        entity.TryGetComponent<Velocity>(out var velocity);
+        entity.TryGetComponent<Collider>(out var collider);
+        entity.TryGetComponent<Position>(out var position);
+        entity.TryGetComponent<SpriteState>(out var sprite);
+        entity.RemoveComponent<Mass>();
+        collider.HitBox = new Rectangle();
+        scale.Value = new Vector2(3, 1);
+        velocity.Value.X = 0;
+        enemy.isDead = true;
     }
 
     public override void Update(Engine engine, GameTime gameTime){} //no op
