@@ -1,4 +1,3 @@
-
 namespace ECS.Systems;
 
 public class CollisionVisualizationSystem : AbstractSystem
@@ -96,8 +95,5 @@ public class CollisionVisualizationSystem : AbstractSystem
 
         updateColliders(collisionEvent.MovingEntity, collisionEvent.Direction);
         updateColliders(collisionEvent.SecondaryEntity, DirInverter[collisionEvent.Direction]);
-
-        if (collisionEvent.MovingEntity.HasComponent<Tag>())
-            Console.WriteLine($"Got {collisionEvent.Direction} collision for Mario");
     }
 }
