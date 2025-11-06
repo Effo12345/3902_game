@@ -25,10 +25,11 @@ public class MarioCollisionSystem : AbstractSystem
             !movingEntity.TryGetComponent<Position>(out var movingPosition) ||
             !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
             !secondaryEntity.TryGetComponent<Position>(out var secondaryPosition) ||
-            !movingEntity.TryGetComponent<Status>(out var movingStatus)//TODO: This is checking if the entity has input config to make sure its mario. It should use collisionType, but that isn't working
+            !movingEntity.TryGetComponent<Status>(out var movingStatus)
             )
             return;
         ColliderType type = secondaryCollisionInfo.Type;
+        secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity);
         switch (type)
         {
             case ColliderType.Block:
@@ -75,7 +76,6 @@ public class MarioCollisionSystem : AbstractSystem
                 else if (direction.Equals(Direction.Bottom) && movingVelocity.Value.Y > 0) //Make sure mario is moving down to kill enemy
                 {
                     movingVelocity.Value.Y = -500; //TODO: remove magic number
-                    secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity);
                     secondaryVelocity.Value.X = 0;
                     secondaryCollisionInfo.Type = ColliderType.Shell;
                     Engine.PubSub.Publish(new AnimationChangeEvent
@@ -83,6 +83,27 @@ public class MarioCollisionSystem : AbstractSystem
                         NewState = "shell",
                         Entity = secondaryEntity
                     });
+                }
+                break;
+            case ColliderType.Shell:
+                if (direction.Equals(Direction.Bottom))
+                    movingVelocity.Value.Y = -500; //TODO: remove magic number
+
+                if (Math.Abs(secondaryVelocity.Value.X) < 0.001) //If shell is not moving
+                {
+                    //Compare x position of centers
+                    if (movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X)
+                        secondaryVelocity.Value.X = 400;
+                    else
+                        secondaryVelocity.Value.X = -400;
+                }
+                else
+                {
+                    if (direction.Equals(Direction.Bottom))
+                        secondaryVelocity.Value.X = 0;
+                    //Only damage mario if shell is moving towards him
+                    else if ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X > 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X < 0)
+                        HurtMario(movingStatus);
                 }
                 break;
         }
@@ -106,13 +127,11 @@ public class MarioCollisionSystem : AbstractSystem
         entity.TryGetComponent<Scale>(out var scale);
         entity.TryGetComponent<Velocity>(out var velocity);
         entity.TryGetComponent<Collider>(out var collider);
-        entity.TryGetComponent<Position>(out var position);
-        entity.TryGetComponent<SpriteState>(out var sprite);
         entity.RemoveComponent<Mass>();
         collider.HitBox = new Rectangle();
         scale.Value = new Vector2(3, 1);
         velocity.Value.X = 0;
-        enemy.isDead = true;
+        enemy.DeathType = DeathType.Squished;
     }
 
     public override void Update(Engine engine, GameTime gameTime){} //no op

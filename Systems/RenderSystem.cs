@@ -79,6 +79,8 @@ public class RenderSystem : AbstractSystem
             var spriteEffects = SpriteEffects.None;
             if (entity.TryGetComponent<FacingDirection>(out var facing) && facing.IsFacingLeft)
                 spriteEffects |= SpriteEffects.FlipHorizontally;
+            if (entity.TryGetComponent<BasicEnemy>(out var enemy) && enemy.DeathType == DeathType.Flipped)
+                spriteEffects |= SpriteEffects.FlipVertically;
 
             SpriteBatch.Draw(
                 sprite.Texture,

@@ -20,7 +20,7 @@ public class Game1 : Game
         Engine.AddSystem(new CollisionDetectionSystem());
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new MarioCollisionSystem());
-        Engine.AddSystem(new EnemyCollisionSystem());
+        Engine.AddSystem(new NonMarioCollisionSystem());
         Engine.AddSystem(new InvincibilitySystem());
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new PlayerMotionSystem());

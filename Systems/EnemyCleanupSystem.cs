@@ -13,14 +13,13 @@ public class EnemyCleanupSystem : AbstractSystem
                 !entity.TryGetComponent<AnimationState>(out var animationState))
                 continue;
 
-            if (enemy.isDead)
+            if (enemy.DeathType == DeathType.Squished)
             {
-                enemy.cleanupTimer -= deltaTime;
+                enemy.CleanupTimer -= deltaTime;
                 animationState.FrameIndex = 0;
             }
-
             
-            if(enemy.cleanupTimer < 0.0f || position.Value.Y > 500)
+            if(enemy.CleanupTimer < 0.0f || position.Value.Y > 500)
                 engine.DestroyEntity(entity);
             
         }

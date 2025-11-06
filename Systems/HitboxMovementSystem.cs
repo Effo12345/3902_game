@@ -12,7 +12,7 @@ public class HitboxMovementSystem : AbstractSystem {
                 continue;
 
             //Don't adjust hitboxes for dead enemies
-            if (entity.TryGetComponent<BasicEnemy>(out var enemy) && enemy.isDead)
+            if (entity.TryGetComponent<BasicEnemy>(out var enemy) && enemy.DeathType != DeathType.Alive)
                 continue;
 
             //TODO: make hitbox relative to position

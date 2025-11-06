@@ -18,7 +18,7 @@
     "FacingDirection": { "IsFacingLeft": false },
     "BasicEnemy": { 
         "Name": "goomba",
-        "isDead": false,
+        "DeathType": "Alive",
         "cleanupTimer": 0.5
     }
 }
