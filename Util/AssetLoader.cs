@@ -8,6 +8,7 @@ public static class AssetLoader
         var config = AssetConfigLoader.Load(configText);
 
         LoadAssetType(config.Textures, (key, path) => assets.LoadTexture(content, key, path));
+        LoadAssetType(config.Fonts, (key, path) => assets.LoadFont(content, key, path));
         LoadAssetType(config.SpriteAtlases, assets.LoadSpriteAtlas);
         LoadAssetType(config.InputConfigs, assets.LoadInputConfig);
         LoadAssetType(config.LevelConfigs, assets.LoadLevelConfig);

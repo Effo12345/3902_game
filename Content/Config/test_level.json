@@ -19,6 +19,16 @@
             }
         },
         {
+            "key": "hud_text",
+            "components": {
+                "TextRender": {
+                    "Text": "Hi :3",
+                    "Font": "HUDFont",
+                    "Color": [ 255, 255, 255, 255 ]
+                }
+            }
+        },
+        {
             "key": "static_block",
             "components": {
                 "Position": { "Value": [ 52, 288 ] },

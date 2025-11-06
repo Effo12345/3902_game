@@ -17,6 +17,12 @@
             "path": "Sprites/items"
         }
     ],
+    "fonts": [
+        {
+            "key": "HUDFont",
+            "path": "Fonts/HUD"
+        }
+    ],
     "spriteAtlases": [
         {
             "key": "MarioAnimation",
@@ -55,8 +61,16 @@
             "path": "Content/Config/koopa_config.json"
         },
         {
+            "key": "FireballConfig",
+            "path": "Content/Config/fireball_config.json"
+        },
+        {
             "key": "StaticBlock",
             "path": "Content/Config/static_block_config.json"
+        },
+        {
+            "key": "HUDText",
+            "path": "Content/Config/hud_text_config.json"
         }
     ],
     "levelConfigs": [
@@ -90,10 +104,20 @@
             "entityConfig": "KoopaConfig"
         },
         {
-            "key": "static_block",
-            "spriteTexture": "TilesSheet",
-            "spriteAtlas": "TilesAnimation",
-            "entityConfig": "StaticBlock"
+          "key": "static_block",
+          "spriteTexture": "TilesSheet",
+          "spriteAtlas": "TilesAnimation",
+          "entityConfig": "StaticBlock"
+        },
+        {
+          "key": "fireball",
+          "spriteTexture": "ItemsSheet",
+          "spriteAtlas": "ItemsAnimation",
+          "entityConfig": "FireballConfig"
+        },
+        {
+            "key": "hud_text",
+            "entityConfig": "HUDText"
         }
     ]
 }

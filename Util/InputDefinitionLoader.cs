@@ -12,11 +12,11 @@ public static class InputDefinitionLoader
     // DTO
     private sealed class InternalBinding
     {
-        public string Type { get; set; } = "Button";       // Button | Axis
+        public string Type { get; set; } = "Button";       // Button | Vector | Acceleration
         public List<string>? Keys { get; set; }            // ["W","A","Space"]
         public List<string>? MouseButtons { get; set; }    // Mousebutton["Left","Right"]
-        public float AxisX { get; set; } = 0;              // Only Axis
-        public float AxisY { get; set; } = 0;              // Only Axis
+        public float AxisX { get; set; } = 0;              // Vector / Acceleration
+        public float AxisY { get; set; } = 0;              // Vector / Acceleration
     }
 
     public static InputBindings LoadFromJson(string json)
@@ -54,9 +54,12 @@ public static class InputDefinitionLoader
     private static InputActionType ParseType(string? type)
     {
         if (type == null) return InputActionType.Button;
-        return type.Equals("Axis", StringComparison.OrdinalIgnoreCase)
-            ? InputActionType.Axis
-            : InputActionType.Button;
+        if (type.Equals("Velocity", StringComparison.OrdinalIgnoreCase))
+            return InputActionType.Velocity;
+        else if (type.Equals("Acceleration", StringComparison.OrdinalIgnoreCase))
+            return InputActionType.Acceleration;
+        else
+            return InputActionType.Button;
     }
 
     private static List<Keys> ParseKeys(IEnumerable<string>? names)
