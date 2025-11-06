@@ -55,6 +55,7 @@ public class MarioCollisionSystem : AbstractSystem
                     movingVelocity.Value.Y = 0;
                     movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
                 }
+            Engine.PubSub.Publish(new BlockBump { Entity = secondaryEntity });
                 break;
 
             case ColliderType.Goomba:

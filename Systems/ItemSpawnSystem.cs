@@ -1,40 +1,34 @@
-// CURRENTLY ARCHIVED
-// MOSTLY FUNCTIONAL BUT NEEDS TWEAKS FOR THE NEW SYSTEMS
-
 namespace ECS.Systems;
 
 public class ItemSpawnSystem : AbstractSystem
 {
     public override bool Initialize(Engine engine)
     {
-        //Call OnSpawn when ItemSpawn is triggered
         base.Initialize(engine);
         Engine.PubSub.CreateSubscription<ItemSpawn>(OnSpawn);
         return true;
     }
     private void OnSpawn(IEvent evnt)
     {
-        //events carries the info to create the item
         var e = (ItemSpawn)evnt;
-        //create item using provided info
-        CreateItem(e.Position, e.Texture, e.SourceRect);
-    }
-    private void CreateItem(Position p, Texture2D t, Rectangle r)
-    {
-        //Create new entity for item
-        var e = Engine.CreateEntity();
-        //Give entity necessary components
-        // TODO: Find a better place to keep this component data
-        e.AddComponent(p);
-        e.AddComponent(new Rotation { Value = 0f });
-        e.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
-        e.AddComponent(new SpriteState
+
+        Entity item = EntityFactory.BuildEntity(Engine, e.ItemKind.Kind.ToString());
+        Vector2 pos = e.Position.Value;
+        if (e.SourceBlock.TryGetComponent<Collider>(out var blockCol) && item.TryGetComponent<Collider>(out var itemCol))
         {
-            Texture = t,
-            SourceRect = r,
-            Origin = Vector2.Zero,
-            Color = Color.White
-        });
+            float blockWidth = blockCol.HitBox.Width;
+            float itemWidth = itemCol.HitBox.Width;
+            float itemHeight = itemCol.HitBox.Height;
+
+            pos.X += (blockWidth - itemWidth) / 2;
+            item.AddComponent(new Rise { DeltaY = itemHeight, Speed = 30f });
+        }
+
+        if (item.TryGetComponent<Position>(out var p))
+            p.Value = pos;
+        else
+            item.AddComponent(new Position { Value = pos });
+    
     }
     public override void Update(Engine engine, GameTime gameTime) { }
-}
+} 

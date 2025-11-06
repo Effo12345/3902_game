@@ -403,14 +403,9 @@
             }
         },
         {
-            "key": "static_block",
+            "key": "question_block",
             "components": {
-                "Position": { "Value": [ 772, 240 ] },
-                "AnimationState": {
-                    "CurrentState": "question_block",
-                    "FrameIndex": 0,
-                    "TimeInCurrentFrame": 0.0
-                }
+                "Position": { "Value": [ 772, 240 ] }
             }
         },
         {
@@ -530,13 +525,13 @@
             }
         },
         {
-            "key": "static_block",
+            "key": "question_block",
             "components": {
                 "Position": { "Value": [ 1012, 240 ] },
-                "AnimationState": {
-                    "CurrentState": "question_block",
-                    "FrameIndex": 0,
-                    "TimeInCurrentFrame": 0.0
+                "ItemKind": {
+                    "Kind": "coin",
+                    "TextureKey": "ItemsSheet",
+                    "spriteAtlasKey": "ItemsAnimation"
                 }
             }
         },
@@ -569,7 +564,7 @@
             }
         },
         {
-            "key": "static_block",
+            "key": "question_block",
             "components": {
                 "Position": { "Value": [ 1060, 96 ] },
                 "AnimationState": {
@@ -610,7 +605,7 @@
             }
         },
         {
-            "key": "static_block",
+            "key": "question_block",
             "components": {
                 "Position": { "Value": [ 1108, 240 ] },
                 "AnimationState": {

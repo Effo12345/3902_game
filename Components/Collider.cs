@@ -7,7 +7,12 @@ public enum ColliderType
     Goomba,
     Koopa,
     Shell,
-    Block
+    Block,
+    Coin,
+    Red_Mushroom,
+    Green_Mushroom,
+    Flower,
+    Star
 }
 
 public class Collider

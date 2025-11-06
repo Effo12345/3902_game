@@ -61,7 +61,7 @@ public class RenderSystem : AbstractSystem
         });
 
         // PointClamp prevents scaled sprites from looking blurry
-        SpriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: cameraTransform);
+        SpriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp, transformMatrix: cameraTransform);
 
         foreach (var entity in Engine.GetEntities())
         {
@@ -82,6 +82,10 @@ public class RenderSystem : AbstractSystem
             if (entity.TryGetComponent<BasicEnemy>(out var enemy) && enemy.DeathType == DeathType.Flipped)
                 spriteEffects |= SpriteEffects.FlipVertically;
 
+            float depth = 0.5f;
+            if (entity.TryGetComponent<RenderLayer>(out var layer))
+                depth = MathHelper.Clamp(layer.Value, 0f, 1f);
+            
             SpriteBatch.Draw(
                 sprite.Texture,
                 position.Value,
@@ -91,7 +95,7 @@ public class RenderSystem : AbstractSystem
                 sprite.Origin,
                 scale.Value,
                 spriteEffects,
-                0
+                depth
                 );
 
         }

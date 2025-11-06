@@ -1,9 +1,6 @@
-// CURRENTLY ARCHIVED
-// MOSTLY FUNCTIONAL BUT NEEDS TWEAKS FOR THE NEW SYSTEMS
-
 namespace ECS.Systems;
 
-public class BlockBumpSystem : AbstractSystem
+public class BlockBumpMotionSystem : AbstractSystem
 {
     public override bool Initialize(Engine engine)
     {
@@ -17,20 +14,20 @@ public class BlockBumpSystem : AbstractSystem
         //Get bumped entity
         var e = ((BlockBump)evnt).Entity;
 
-        if (!e.TryGetComponent<Bump>(out var config))
+        if (!e.TryGetComponent<Bump>(out var config) || !e.TryGetComponent<Position>(out var pos)
+        || e.TryGetComponent<BumpState>(out _))
             return;
-        if (!e.TryGetComponent<Position>(out var pos))
-            return;
-        if (e.TryGetComponent<BumpState>(out _))
-            return;
-        //Add BumpState to track bump animation
+
         e.AddComponent(new BumpState
         {
             InitY = pos.Value.Y,
             PeakY = pos.Value.Y - MathF.Abs(config.Height),
             CurrentY = pos.Value.Y,
-            Speed = -MathF.Abs(config.UpSpeed)
+            Speed = -MathF.Abs(config.UpSpeed),
+            UpSpeed = MathF.Abs(config.UpSpeed),
+            DownSpeed = MathF.Abs(config.DownSpeed)
         });
+        Engine.PubSub.Publish(new BlockBumped { Entity = e, Position = pos });
     }
     public override void Update(Engine engine, GameTime gameTime)
     {
@@ -46,11 +43,6 @@ public class BlockBumpSystem : AbstractSystem
                 e.RemoveComponent<BumpState>();
                 continue;
             }
-            if (!e.TryGetComponent<Bump>(out var config))
-            {
-                e.RemoveComponent<BumpState>();
-                continue;
-            }
             //Update current Y using speed and delta time
             state.CurrentY += state.Speed * dt;
             //If moving upward and Y have not reach peak
@@ -58,10 +50,10 @@ public class BlockBumpSystem : AbstractSystem
             {
                 //Switch to downward speed once peak reached
                 state.CurrentY = state.PeakY;
-                state.Speed = MathF.Abs(config.DownSpeed);
+                state.Speed = state.DownSpeed;
             }
             //If moving downward and have not reach original pos
-            if (state.CurrentY > 0 && state.CurrentY >= state.InitY)
+            if (state.Speed > 0 && state.CurrentY >= state.InitY)
             {
                 //Remove BumpState when reaching original pos
                 state.CurrentY = state.InitY;

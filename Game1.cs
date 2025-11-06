@@ -30,7 +30,12 @@ public class Game1 : Game
         Engine.AddSystem(new GroundedSystem());
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new FacingSystem());
-        Engine.AddSystem(new EnemyCleanupSystem());
+        Engine.AddSystem(new ItemSpawnSystem());
+        Engine.AddSystem(new ItemBlockConsumptionSystem());
+        Engine.AddSystem(new ItemRiseSystem());
+        Engine.AddSystem(new BlockBumpMotionSystem());
+        Engine.AddSystem(new ItemCollisionSystem());
+                Engine.AddSystem(new EnemyCleanupSystem());
         Engine.AddSystem(new KoopaWakeupSystem());
 
         GameManager = new(this, Engine);
