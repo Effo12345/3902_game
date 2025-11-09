@@ -16,8 +16,14 @@
 #begin Config/assets.json
 /copy:Config/assets.json
 
+#begin Config/coin_config.json
+/copy:Config/coin_config.json
+
 #begin Config/enemy_spritesheet.json
 /copy:Config/enemy_spritesheet.json
+
+#begin Config/fireball_config.json
+/copy:Config/fireball_config.json
 
 #begin Config/goomba_config.json
 /copy:Config/goomba_config.json
@@ -43,11 +49,14 @@
 #begin Config/player_input.json
 /copy:Config/player_input.json
 
+#begin Config/question_block_config.json
+/copy:Config/question_block_config.json
+
+#begin Config/red_mushroom_config.json
+/copy:Config/red_mushroom_config.json
+
 #begin Config/static_block_config.json
 /copy:Config/static_block_config.json
-
-#begin Config/fireball_config.json
-/copy:Config/fireball_config.json
 
 #begin Config/test_level.json
 /copy:Config/test_level.json
