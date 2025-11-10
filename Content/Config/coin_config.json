@@ -1,5 +1,9 @@
 {
     "Position": { "Value": [ 4, 432 ] },
+    "Velocity": {},
+    "Acceleration": {},
+    "Mass": {},
+    "IsGrounded": {},
     "Rotation": { "Value": 0.0 },
     "Scale": { "Value": [ 3, 3 ] },
     "Collider": {

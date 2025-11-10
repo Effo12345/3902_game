@@ -15,7 +15,22 @@ public class ItemSpawnSystem : AbstractSystem
         Entity item = EntityFactory.BuildEntity(Engine, e.ItemKind.Kind.ToString());
         if (e.SourceBlock.TryGetComponent<Collider>(out var blockCollider) && item.TryGetComponent<Collider>(out var itemCollider))
         {
-            item.AddComponent(new Rise { DeltaY = itemCollider.HitBox.Height, Speed = 30f });
+            if (item.TryGetComponent<Mass>(out var mass) &&
+                item.TryGetComponent<Velocity>(out var velocity) &&
+                itemCollider.Type == ColliderType.Coin)
+            {
+                velocity.Value.Y = -500;
+                mass.Value = 5;
+            }
+            else
+            {
+                var speed = 50f;
+                if (itemCollider.Type == ColliderType.Coin)
+                {
+                    speed = 200f;
+                }
+                item.AddComponent(new Rise { DeltaY = blockCollider.HitBox.Height, Speed = speed });
+            }
         }
         Vector2 spawnPosition = new Vector2(blockCollider.HitBox.X, blockCollider.HitBox.Y);
 

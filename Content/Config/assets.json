@@ -151,8 +151,8 @@
         },
         {
             "key": "coin",
-            "spriteTexture": "ItemsSheet",
-            "spriteAtlas": "ItemsAnimation",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
             "entityConfig": "CoinConfig"
         },
         {
