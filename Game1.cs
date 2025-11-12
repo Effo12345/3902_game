@@ -48,7 +48,7 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        var assets = AssetLoader.Load(Content, File.ReadAllText("Content/Config/assets.json"));
+        var assets = AssetLoader.Load(Content, File.ReadAllText("Config/assets.json"));
         EntityFactory.RegisterAssets(assets);
         LevelLoader.RegisterAssets(assets);
 
