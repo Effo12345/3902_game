@@ -53,7 +53,7 @@
     "fire_jump": {
         "frameDuration": 0.0,
         "frames": [
-            { "x": 208, "y": 480, "width": 15, "height": 28 }
+            { "x": 208, "y": 474, "width": 15, "height": 28 }
         ]
     },
     "dead": {

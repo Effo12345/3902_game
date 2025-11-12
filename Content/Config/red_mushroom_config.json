@@ -1,7 +1,7 @@
 {
     "Position": { "Value": [ 4, 432 ] },
     "Rotation": { "Value": 0.0 },
-    "Scale": { "Value": [ 2, 2 ] },
+    "Scale": { "Value": [ 3, 3 ] },
     "Collider": {
         "Type": "Red_Mushroom",
         "HitBox": [0, 0, 32, 32]

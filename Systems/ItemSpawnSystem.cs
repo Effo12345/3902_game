@@ -13,21 +13,31 @@ public class ItemSpawnSystem : AbstractSystem
         var e = (ItemSpawn)evnt;
 
         Entity item = EntityFactory.BuildEntity(Engine, e.ItemKind.Kind.ToString());
-        Vector2 pos = e.Position.Value;
-        if (e.SourceBlock.TryGetComponent<Collider>(out var blockCol) && item.TryGetComponent<Collider>(out var itemCol))
+        if (e.SourceBlock.TryGetComponent<Collider>(out var blockCollider) && item.TryGetComponent<Collider>(out var itemCollider))
         {
-            float blockWidth = blockCol.HitBox.Width;
-            float itemWidth = itemCol.HitBox.Width;
-            float itemHeight = itemCol.HitBox.Height;
-
-            pos.X += (blockWidth - itemWidth) / 2;
-            item.AddComponent(new Rise { DeltaY = itemHeight, Speed = 30f });
+            if (item.TryGetComponent<Mass>(out var mass) &&
+                item.TryGetComponent<Velocity>(out var velocity) &&
+                itemCollider.Type == ColliderType.Coin)
+            {
+                velocity.Value.Y = -500;
+                mass.Value = 5;
+            }
+            else
+            {
+                var speed = 50f;
+                if (itemCollider.Type == ColliderType.Coin)
+                {
+                    speed = 200f;
+                }
+                item.AddComponent(new Rise { DeltaY = blockCollider.HitBox.Height, Speed = speed });
+            }
         }
+        Vector2 spawnPosition = new Vector2(blockCollider.HitBox.X, blockCollider.HitBox.Y);
 
-        if (item.TryGetComponent<Position>(out var p))
-            p.Value = pos;
+        if (item.TryGetComponent<Position>(out var position))
+            position.Value = spawnPosition;
         else
-            item.AddComponent(new Position { Value = pos });
+            item.AddComponent(new Position { Value = spawnPosition });
     
     }
     public override void Update(Engine engine, GameTime gameTime) { }

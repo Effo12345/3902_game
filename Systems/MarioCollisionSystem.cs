@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Data;
 
 namespace ECS.Systems;
 
@@ -54,8 +55,8 @@ public class MarioCollisionSystem : AbstractSystem
                 {
                     movingVelocity.Value.Y = 0;
                     movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
+                    Engine.PubSub.Publish(new BlockBump { Entity = secondaryEntity });
                 }
-            Engine.PubSub.Publish(new BlockBump { Entity = secondaryEntity });
                 break;
 
             case ColliderType.Goomba:
@@ -106,6 +107,22 @@ public class MarioCollisionSystem : AbstractSystem
                     else if ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X < 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X > 0)
                         HurtMario(movingStatus);
                 }
+                break;
+            case ColliderType.Red_Mushroom:
+                movingStatus.State = "big";
+                Engine.DestroyEntity(secondaryEntity);
+                break;
+            case ColliderType.Flower:
+                movingStatus.State = "fire";
+                Engine.DestroyEntity(secondaryEntity);
+                break;
+            case ColliderType.Star:
+                movingStatus.isStar = true;
+                Engine.DestroyEntity(secondaryEntity);
+                break;
+            case ColliderType.Green_Mushroom:
+                movingStatus.Lives++;
+                Engine.DestroyEntity(secondaryEntity);
                 break;
         }
     }

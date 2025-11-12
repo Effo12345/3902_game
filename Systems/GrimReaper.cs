@@ -19,7 +19,8 @@ public class MarioDefeatSystem : AbstractSystem
         {
             if (!entity.TryGetComponent<Status>(out var status) ||
                 !entity.TryGetComponent<Velocity>(out var velocity) ||
-                !entity.TryGetComponent<Position>(out var position))
+                !entity.TryGetComponent<Position>(out var position) ||
+                animationStarted)
                 continue;
 
             //If mario goes below a certain point, he dies
@@ -36,9 +37,6 @@ public class MarioDefeatSystem : AbstractSystem
                 //Apply upwards velocity
                 velocity.Value.Y = -500;
                 velocity.Value.X = 0;
-
-                //Don't run the loop again
-                entity.RemoveComponent<Status>();
 
                 //Start timer for animation
                 animationStarted = true;

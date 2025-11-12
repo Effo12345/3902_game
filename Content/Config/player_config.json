@@ -21,7 +21,9 @@
     "Status": { 
         "State": "small",
         "InvincibilityDuration": 2.0,
-        "IsInvincible": false
+        "IsInvincible": false,
+        "IsStar": false,
+        "Lives": 3
     },
     "Tag": { "Value": "player" }
 }

@@ -25,8 +25,14 @@
 #begin Config/fireball_config.json
 /copy:Config/fireball_config.json
 
+#begin Config/flower_config.json
+/copy:Config/flower_config.json
+
 #begin Config/goomba_config.json
 /copy:Config/goomba_config.json
+
+#begin Config/green_mushroom_config.json
+/copy:Config/green_mushroom_config.json
 
 #begin Config/hud_text_config.json
 /copy:Config/hud_text_config.json
@@ -54,6 +60,9 @@
 
 #begin Config/red_mushroom_config.json
 /copy:Config/red_mushroom_config.json
+
+#begin Config/star_config.json
+/copy:Config/star_config.json
 
 #begin Config/static_block_config.json
 /copy:Config/static_block_config.json

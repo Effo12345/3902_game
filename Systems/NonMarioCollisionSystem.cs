@@ -38,12 +38,25 @@ public class NonMarioCollisionSystem : AbstractSystem
             movingIsGrounded.Value = true;
             movingPosition.Value.Y = secondaryPosition.Value.Y - movingSprite.SourceRect.Height * movingScale.Value.Y + 1;
         }
-        
+
         switch (movingType)
         {
             case ColliderType.Goomba:
             case ColliderType.Koopa:
-                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && !secondaryCollisionInfo.Type.Equals(ColliderType.Mario) && !secondaryCollisionInfo.Type.Equals(ColliderType.Shell))
+                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && !secondaryCollisionInfo.Type.Equals(ColliderType.Mario) && !secondaryCollisionInfo.Type.Equals(ColliderType.Shell) && !secondaryEntity.HasComponent<ItemKind>())
+                {
+                    //Only change direction if moving towards secondaryEntity
+                    if ((movingPosition.Value.X < secondaryPosition.Value.X && movingVelocity.Value.X > 0) || (movingPosition.Value.X > secondaryPosition.Value.X) && movingVelocity.Value.X < 0)
+                    {
+                        movingVelocity.Value.X *= -1;
+                        movingFacingDirection.IsFacingLeft = !movingFacingDirection.IsFacingLeft;
+                    }
+                }
+                break;
+            case ColliderType.Red_Mushroom:
+            case ColliderType.Green_Mushroom:
+            case ColliderType.Star:
+                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
                 {
                     //Only change direction if moving towards secondaryEntity
                     if ((movingPosition.Value.X < secondaryPosition.Value.X && movingVelocity.Value.X > 0) || (movingPosition.Value.X > secondaryPosition.Value.X) && movingVelocity.Value.X < 0)
@@ -54,8 +67,8 @@ public class NonMarioCollisionSystem : AbstractSystem
                 }
                 break;
             case ColliderType.Shell:
-                if ( //woof
-                    (secondaryType == ColliderType.Goomba || secondaryType == ColliderType.Koopa) &&
+                if ( //Kills goombas koopas and shells if moving towards them
+                    (secondaryType == ColliderType.Goomba || secondaryType == ColliderType.Koopa || secondaryType == ColliderType.Shell) &&
                     ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && movingVelocity.Value.X > 0) ||
                     (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X && movingVelocity.Value.X < 0)))
                 {
@@ -66,6 +79,7 @@ public class NonMarioCollisionSystem : AbstractSystem
                     secondaryVelocity.Value.Y = -200;
                     secondaryEnemy.DeathType = DeathType.Flipped;
                 }
+
 
                 //Change direction only on hitting block
                 if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
@@ -78,6 +92,14 @@ public class NonMarioCollisionSystem : AbstractSystem
                     }
                 }
                 break;
+        }
+
+        //Make the star jump
+        if (movingCollisionInfo.Type == ColliderType.Star && movingIsGrounded.Value == true)
+        {
+            movingVelocity.Value.Y = -500;
+            movingEntity.TryGetComponent<Acceleration>(out var movingAcceleration);
+            movingAcceleration.Value.Y = 0;
         }
 
     }
