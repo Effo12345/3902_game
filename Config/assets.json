@@ -26,85 +26,81 @@
     "spriteAtlases": [
         {
             "key": "MarioAnimation",
-            "path": "Content/Config/mario_spritesheet.json"
+            "path": "Config/mario_spritesheet.json"
         },
         {
             "key": "EnemyAnimation",
-            "path": "Content/Config/enemy_spritesheet.json"
+            "path": "Config/enemy_spritesheet.json"
         },
         {
             "key": "TilesAnimation",
-            "path": "Content/Config/tiles_spritesheet.json"
-        },
-        {
-            "key": "ItemsAnimation",
-            "path": "Content/Config/items_spritesheet.json"
+            "path": "Config/tiles_spritesheet.json"
         }
     ],
     "inputConfigs": [
         {
             "key": "PlayerInput",
-            "path": "Content/Config/player_input.json"
+            "path": "Config/player_input.json"
         }
     ],
     "entityConfigs": [
         {
             "key": "MarioConfig",
-            "path": "Content/Config/player_config.json"
+            "path": "Config/player_config.json"
         },
         {
             "key": "GoombaConfig",
-            "path": "Content/Config/goomba_config.json"
+            "path": "Config/goomba_config.json"
         },
         {
             "key": "KoopaConfig",
-            "path": "Content/Config/koopa_config.json"
+            "path": "Config/koopa_config.json"
         },
         {
             "key": "FireballConfig",
-            "path": "Content/Config/fireball_config.json"
+            "path": "Config/fireball_config.json"
         },
         {
             "key": "StaticBlock",
-            "path": "Content/Config/static_block_config.json"
+            "path": "Config/static_block_config.json"
         },
         {
             "key": "HUDText",
-            "path": "Content/Config/hud_text_config.json"
+            "path": "Config/hud_text_config.json"
         },
         {
             "key": "QuestionBlock",
-            "path": "Content/Config/question_block_config.json"
+            "path": "Config/question_block_config.json"
         },
         {
             "key": "CoinConfig",
-            "path": "Content/Config/coin_config.json"
+            "path": "Config/coin_config.json"
         },
         {
             "key": "RedMushroomConfig",
-            "path": "Content/Config/red_mushroom_config.json"
+            "path": "Config/red_mushroom_config.json"
         }, 
         {
             "key": "GreenMushroomConfig",
-            "path": "Content/Config/green_mushroom_config.json"
+            "path": "Config/green_mushroom_config.json"
         }, 
         {
             "key": "FlowerConfig",
-            "path": "Content/Config/flower_config.json"
+            "path": "Config/flower_config.json"
         }, 
         {
             "key": "StarConfig",
-            "path": "Content/Config/star_config.json"
+            "path": "Config/star_config.json"
         }
     ],
     "levelConfigs": [
         {
             "key": "TestLevel",
-            "path": "Content/Config/test_level.json"
+            "path": "Config/test_level.json"
         },
         {
             "key": "Mario1_1",
-            "path": "Content/Config/mario_1_1.json"
+            "path": "Config/mario_1_1.json"
         }
     ],
     "entities": [
@@ -132,12 +128,6 @@
           "spriteTexture": "TilesSheet",
           "spriteAtlas": "TilesAnimation",
           "entityConfig": "StaticBlock"
-        },
-        {
-          "key": "fireball",
-          "spriteTexture": "ItemsSheet",
-          "spriteAtlas": "ItemsAnimation",
-          "entityConfig": "FireballConfig"
         },
         {
             "key": "hud_text",

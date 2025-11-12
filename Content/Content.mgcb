@@ -13,66 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Config/assets.json
-/copy:Config/assets.json
-
-#begin Config/coin_config.json
-/copy:Config/coin_config.json
-
-#begin Config/enemy_spritesheet.json
-/copy:Config/enemy_spritesheet.json
-
-#begin Config/fireball_config.json
-/copy:Config/fireball_config.json
-
-#begin Config/flower_config.json
-/copy:Config/flower_config.json
-
-#begin Config/goomba_config.json
-/copy:Config/goomba_config.json
-
-#begin Config/green_mushroom_config.json
-/copy:Config/green_mushroom_config.json
-
-#begin Config/hud_text_config.json
-/copy:Config/hud_text_config.json
-
-#begin Config/items_spritesheet.json
-/copy:Config/items_spritesheet.json
-
-#begin Config/koopa_config.json
-/copy:Config/koopa_config.json
-
-#begin Config/mario_1_1.json
-/copy:Config/mario_1_1.json
-
-#begin Config/mario_spritesheet.json
-/copy:Config/mario_spritesheet.json
-
-#begin Config/player_config.json
-/copy:Config/player_config.json
-
-#begin Config/player_input.json
-/copy:Config/player_input.json
-
-#begin Config/question_block_config.json
-/copy:Config/question_block_config.json
-
-#begin Config/red_mushroom_config.json
-/copy:Config/red_mushroom_config.json
-
-#begin Config/star_config.json
-/copy:Config/star_config.json
-
-#begin Config/static_block_config.json
-/copy:Config/static_block_config.json
-
-#begin Config/test_level.json
-/copy:Config/test_level.json
-
-#begin Config/tiles_spritesheet.json
-/copy:Config/tiles_spritesheet.json
-
 #begin Fonts/File.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
