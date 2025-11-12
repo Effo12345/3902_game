@@ -26,81 +26,81 @@
     "spriteAtlases": [
         {
             "key": "MarioAnimation",
-            "path": "Config/mario_spritesheet.json"
+            "path": "Config/SpriteConfig/mario_spritesheet.json"
         },
         {
             "key": "EnemyAnimation",
-            "path": "Config/enemy_spritesheet.json"
+            "path": "Config/SpriteConfig/enemy_spritesheet.json"
         },
         {
             "key": "TilesAnimation",
-            "path": "Config/tiles_spritesheet.json"
+            "path": "Config/SpriteConfig/tiles_spritesheet.json"
         }
     ],
     "inputConfigs": [
         {
             "key": "PlayerInput",
-            "path": "Config/player_input.json"
+            "path": "Config/InputConfig/player_input.json"
         }
     ],
     "entityConfigs": [
         {
             "key": "MarioConfig",
-            "path": "Config/player_config.json"
+            "path": "Config/EntityConfig/player_config.json"
         },
         {
             "key": "GoombaConfig",
-            "path": "Config/goomba_config.json"
+            "path": "Config/EntityConfig/goomba_config.json"
         },
         {
             "key": "KoopaConfig",
-            "path": "Config/koopa_config.json"
+            "path": "Config/EntityConfig/koopa_config.json"
         },
         {
             "key": "FireballConfig",
-            "path": "Config/fireball_config.json"
+            "path": "Config/EntityConfig/fireball_config.json"
         },
         {
             "key": "StaticBlock",
-            "path": "Config/static_block_config.json"
+            "path": "Config/EntityConfig/static_block_config.json"
         },
         {
             "key": "HUDText",
-            "path": "Config/hud_text_config.json"
+            "path": "Config/EntityConfig/hud_text_config.json"
         },
         {
             "key": "QuestionBlock",
-            "path": "Config/question_block_config.json"
+            "path": "Config/EntityConfig/question_block_config.json"
         },
         {
             "key": "CoinConfig",
-            "path": "Config/coin_config.json"
+            "path": "Config/EntityConfig/coin_config.json"
         },
         {
             "key": "RedMushroomConfig",
-            "path": "Config/red_mushroom_config.json"
+            "path": "Config/EntityConfig/red_mushroom_config.json"
         }, 
         {
             "key": "GreenMushroomConfig",
-            "path": "Config/green_mushroom_config.json"
+            "path": "Config/EntityConfig/green_mushroom_config.json"
         }, 
         {
             "key": "FlowerConfig",
-            "path": "Config/flower_config.json"
+            "path": "Config/EntityConfig/flower_config.json"
         }, 
         {
             "key": "StarConfig",
-            "path": "Config/star_config.json"
+            "path": "Config/EntityConfig/star_config.json"
         }
     ],
     "levelConfigs": [
         {
             "key": "TestLevel",
-            "path": "Config/test_level.json"
+            "path": "Config/LevelConfig/test_level.json"
         },
         {
             "key": "Mario1_1",
-            "path": "Config/mario_1_1.json"
+            "path": "Config/LevelConfig/mario_1_1.json"
         }
     ],
     "entities": [
