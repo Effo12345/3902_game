@@ -16,5 +16,9 @@
         "TimeInCurrentFrame": 0.0
     },
     "FacingDirection": { "IsFacingLeft": false },
-    "BasicEnemy": { "Name": "goomba" }
+    "BasicEnemy": { 
+        "Name": "goomba",
+        "DeathType": "Alive",
+        "cleanupTimer": 0.5
+    }
 }

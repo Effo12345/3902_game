@@ -17,6 +17,12 @@
             "path": "Sprites/items"
         }
     ],
+    "fonts": [
+        {
+            "key": "HUDFont",
+            "path": "Fonts/HUD"
+        }
+    ],
     "spriteAtlases": [
         {
             "key": "MarioAnimation",
@@ -55,8 +61,40 @@
             "path": "Content/Config/koopa_config.json"
         },
         {
+            "key": "FireballConfig",
+            "path": "Content/Config/fireball_config.json"
+        },
+        {
             "key": "StaticBlock",
             "path": "Content/Config/static_block_config.json"
+        },
+        {
+            "key": "HUDText",
+            "path": "Content/Config/hud_text_config.json"
+        },
+        {
+            "key": "QuestionBlock",
+            "path": "Content/Config/question_block_config.json"
+        },
+        {
+            "key": "CoinConfig",
+            "path": "Content/Config/coin_config.json"
+        },
+        {
+            "key": "RedMushroomConfig",
+            "path": "Content/Config/red_mushroom_config.json"
+        }, 
+        {
+            "key": "GreenMushroomConfig",
+            "path": "Content/Config/green_mushroom_config.json"
+        }, 
+        {
+            "key": "FlowerConfig",
+            "path": "Content/Config/flower_config.json"
+        }, 
+        {
+            "key": "StarConfig",
+            "path": "Content/Config/star_config.json"
         }
     ],
     "levelConfigs": [
@@ -90,10 +128,56 @@
             "entityConfig": "KoopaConfig"
         },
         {
-            "key": "static_block",
+          "key": "static_block",
+          "spriteTexture": "TilesSheet",
+          "spriteAtlas": "TilesAnimation",
+          "entityConfig": "StaticBlock"
+        },
+        {
+          "key": "fireball",
+          "spriteTexture": "ItemsSheet",
+          "spriteAtlas": "ItemsAnimation",
+          "entityConfig": "FireballConfig"
+        },
+        {
+            "key": "hud_text",
+            "entityConfig": "HUDText"
+        },
+        {
+            "key": "question_block",
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
-            "entityConfig": "StaticBlock"
+            "entityConfig": "QuestionBlock"
+        },
+        {
+            "key": "coin",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "CoinConfig"
+        },
+        {
+            "key": "red_mushroom",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "RedMushroomConfig"
+        },
+        {
+            "key": "green_mushroom",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "GreenMushroomConfig"
+        },
+        {
+            "key": "flower",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FlowerConfig"
+        },
+        {
+            "key": "star",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "StarConfig"
         }
     ]
 }

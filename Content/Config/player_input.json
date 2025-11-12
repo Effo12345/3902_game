@@ -1,12 +1,12 @@
 {
   "MoveLeft": {
-    "type": "Axis",
+    "type": "Velocity",
     "keys": [ "A", "Left" ],
     "axisX": -5,
     "axisY": 0
   },
   "MoveRight": {
-    "type": "Axis",
+    "type": "Velocity",
     "keys": [ "D", "Right" ],
     "axisX": 5,
     "axisY": 0

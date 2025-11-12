@@ -18,6 +18,7 @@
     "FacingDirection": { "IsFacingLeft": true },
     "BasicEnemy": { 
         "Name": "koopa",
-        "isDead": false
+        "DeathType": "Alive",
+        "ShellTimer": 6
     }
 }

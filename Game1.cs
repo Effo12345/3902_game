@@ -16,10 +16,12 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
+        Engine.AddSystem(new HitboxMovementSystem());
         Engine.AddSystem(new CollisionDetectionSystem());
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new MarioCollisionSystem());
-        Engine.AddSystem(new EnemyCollisionSystem());
+        Engine.AddSystem(new NonMarioCollisionSystem());
+        Engine.AddSystem(new InvincibilitySystem());
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new PlayerMotionSystem());
         Engine.AddSystem(new FrictionSystem());
@@ -28,8 +30,16 @@ public class Game1 : Game
         Engine.AddSystem(new GroundedSystem());
         Engine.AddSystem(new PhysicsSystem());
         Engine.AddSystem(new FacingSystem());
+        Engine.AddSystem(new ItemSpawnSystem());
+        Engine.AddSystem(new ItemBlockConsumptionSystem());
+        Engine.AddSystem(new ItemRiseSystem());
+        Engine.AddSystem(new BlockBumpMotionSystem());
+        Engine.AddSystem(new EnemyCleanupSystem());
+        Engine.AddSystem(new KoopaWakeupSystem());
 
         GameManager = new(this, Engine);
+
+        Engine.AddSystem(new MarioDefeatSystem(GameManager));
 
         base.Initialize();
     }
@@ -48,6 +58,7 @@ public class Game1 : Game
         Engine.AddSystem(new RenderSystem(_spriteBatch));
         Engine.AddSystem(new CollisionVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
         Engine.AddSystem(new VectorVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
+        Engine.AddSystem(new TextRenderSystem(_spriteBatch, assets));
     }
 
     protected override void Update(GameTime gameTime)

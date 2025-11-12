@@ -54,6 +54,17 @@
             }
         ]
     },
+    "star": {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 274,
+                "y": 13,
+                "width": 15,
+                "height": 16
+            }
+        ]
+    },
     "flower": {
         "frameDuration": 0,
         "frames": [
@@ -68,10 +79,7 @@
     "coin": {
         "frameDuration": 0.2,
         "frames": [
-            {"x": 219, "y": 28, "width": 12, "height": 16},
-            {"x": 232, "y": 28, "width": 8, "height": 16},
-            {"x": 241, "y": 28, "width": 6, "height": 16},
-            {"x": 248, "y": 28, "width": 8, "height": 16}
+            {"x": 219, "y": 28, "width": 12, "height": 16}
         ]
     },
     "left_rounded_grass_block": {

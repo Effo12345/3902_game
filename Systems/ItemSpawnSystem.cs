@@ -1,40 +1,44 @@
-// CURRENTLY ARCHIVED
-// MOSTLY FUNCTIONAL BUT NEEDS TWEAKS FOR THE NEW SYSTEMS
-
 namespace ECS.Systems;
 
 public class ItemSpawnSystem : AbstractSystem
 {
     public override bool Initialize(Engine engine)
     {
-        //Call OnSpawn when ItemSpawn is triggered
         base.Initialize(engine);
         Engine.PubSub.CreateSubscription<ItemSpawn>(OnSpawn);
         return true;
     }
     private void OnSpawn(IEvent evnt)
     {
-        //events carries the info to create the item
         var e = (ItemSpawn)evnt;
-        //create item using provided info
-        CreateItem(e.Position, e.Texture, e.SourceRect);
-    }
-    private void CreateItem(Position p, Texture2D t, Rectangle r)
-    {
-        //Create new entity for item
-        var e = Engine.CreateEntity();
-        //Give entity necessary components
-        // TODO: Find a better place to keep this component data
-        e.AddComponent(p);
-        e.AddComponent(new Rotation { Value = 0f });
-        e.AddComponent(new Scale { Value = new Vector2(2.5f, 2.5f) });
-        e.AddComponent(new SpriteState
+
+        Entity item = EntityFactory.BuildEntity(Engine, e.ItemKind.Kind.ToString());
+        if (e.SourceBlock.TryGetComponent<Collider>(out var blockCollider) && item.TryGetComponent<Collider>(out var itemCollider))
         {
-            Texture = t,
-            SourceRect = r,
-            Origin = Vector2.Zero,
-            Color = Color.White
-        });
+            if (item.TryGetComponent<Mass>(out var mass) &&
+                item.TryGetComponent<Velocity>(out var velocity) &&
+                itemCollider.Type == ColliderType.Coin)
+            {
+                velocity.Value.Y = -500;
+                mass.Value = 5;
+            }
+            else
+            {
+                var speed = 50f;
+                if (itemCollider.Type == ColliderType.Coin)
+                {
+                    speed = 200f;
+                }
+                item.AddComponent(new Rise { DeltaY = blockCollider.HitBox.Height, Speed = speed });
+            }
+        }
+        Vector2 spawnPosition = new Vector2(blockCollider.HitBox.X, blockCollider.HitBox.Y);
+
+        if (item.TryGetComponent<Position>(out var position))
+            position.Value = spawnPosition;
+        else
+            item.AddComponent(new Position { Value = spawnPosition });
+    
     }
     public override void Update(Engine engine, GameTime gameTime) { }
-}
+} 

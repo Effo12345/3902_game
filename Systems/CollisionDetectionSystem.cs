@@ -6,17 +6,13 @@ public class CollisionDetectionSystem : AbstractSystem
     public override void Update(Engine engine, GameTime gameTime)
     {
         List<CollisionEvent> collisionEvents = new List<CollisionEvent>();
-        quadtree = new Quadtree(new Rectangle(0,0,1600,480)); //TODO: replace the rectangle parameter with game window.
+        quadtree = new Quadtree(new Rectangle(-200,0,1800,480)); //TODO: replace the rectangle parameter with bounds of level.
         foreach (var entity in engine.GetEntities())
         {
             if (!entity.TryGetComponent<Collider>(out var collisionInfo) ||
                 !entity.TryGetComponent<Position>(out var position)
             )
                 continue;
-            
-            // TODO: Make collision box coordinates relative to entity's position
-            collisionInfo.HitBox.X = (int)position.Value.X;
-            collisionInfo.HitBox.Y = (int)position.Value.Y;
 
             quadtree.Insert(entity);
         }
