@@ -2,7 +2,7 @@ namespace ECS.Systems;
 
 public class GravitySystem : AbstractSystem
 {
-    private readonly Vector2 GravityAcceleration = new(0, 10.0f);
+    private readonly Vector2 GravityAcceleration = new(0, 100.0f);
 
     public override void Update(Engine engine, GameTime gameTime)
     {
@@ -16,7 +16,7 @@ public class GravitySystem : AbstractSystem
 
             // Yes this is fake, but good enough for now
             if (!isGrounded.Value)
-                acceleration.Value += mass.Value * GravityAcceleration;
+                acceleration.Value = mass.Value * GravityAcceleration;
         }
     }
 }
