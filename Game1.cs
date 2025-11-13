@@ -49,12 +49,12 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        var assets = AssetLoader.Load(Content, File.ReadAllText("Config/assets.json"));
+        var assets = AssetLoader.Load(Content, File.ReadAllText(CONSTANTS.FILE.ASSETS));
         EntityFactory.RegisterAssets(assets);
         LevelLoader.RegisterAssets(assets);
         SoundPlayer.RegisterAssets(assets);
 
-        GameManager.Initialize("Mario1_1");
+        GameManager.Initialize(CONSTANTS.LEVEL.MARIO1_1);
 
         // TODO: It's annoying to have this system here by itself
         Engine.AddSystem(new RenderSystem(_spriteBatch));

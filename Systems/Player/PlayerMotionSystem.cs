@@ -17,7 +17,7 @@ public class PlayerMotionSystem : AbstractSystem
     private void OnAxis(IEvent evt)
     {
         var e = (InputAxisEvent)evt;
-        if (e.Action != "Velocity") return;
+        if (e.Action != CONSTANTS.ACTION.VELOCITY) return;
         var entity = e.Entity;
 
         if (!entity.TryGetComponent<Velocity>(out var velocity) ||
@@ -46,20 +46,20 @@ public class PlayerMotionSystem : AbstractSystem
             StateIndex++;
             if (StateIndex % 3 == 0)
             {
-                currentStatus.State = "small";
+                currentStatus.State = CONSTANTS.PLAYER_STATE.SMALL;
             }
             else if (StateIndex % 3 == 1)
             {
-                currentStatus.State = "big";
+                currentStatus.State = CONSTANTS.PLAYER_STATE.BIG;
             }
             else if (StateIndex % 3 == 2)
             {
-                currentStatus.State = "fire";
+                currentStatus.State = CONSTANTS.PLAYER_STATE.FIRE;
             }
         }
-        else if (inputEvent.Action == "Fire" && inputEvent.Phase == InputPhase.Press)
+        else if (inputEvent.Action == CONSTANTS.ACTION.FIRE && inputEvent.Phase == InputPhase.Press)
         {
-            if (currentStatus.State == "fire")
+            if (currentStatus.State == CONSTANTS.PLAYER_STATE.FIRE)
             {
                 Vector2 direction;
                 if (facingDirection.IsFacingLeft)
@@ -80,13 +80,13 @@ public class PlayerMotionSystem : AbstractSystem
                 });
             }
         }
-        else if (inputEvent.Action == "Jump")
+        else if (inputEvent.Action == CONSTANTS.ACTION.JUMP)
         {
             // TODO: Make holding the button cause higher jumps
             if (inputEvent.Phase == InputPhase.Press && grounded.Value)
             {
-                velocity.Value.Y += -300.0f; // TODO: Move this back to config file
-                SoundPlayer.PlaySfx("MarioJump");
+                velocity.Value.Y += CONSTANTS.TEMP.JUMP_VELOCITY; // TODO: Move this back to config file
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.JUMP);
             }
         }
     }

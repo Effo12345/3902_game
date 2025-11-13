@@ -2,6 +2,8 @@ namespace ECS.Systems;
 
 public class RenderSystem : AbstractSystem
 {
+    private const float SCROLL_WIDTH = 0.4f;
+
     private readonly SpriteBatch SpriteBatch;
 
     private float _midX; // determines where one wants to regard as middle of the screen
@@ -11,8 +13,7 @@ public class RenderSystem : AbstractSystem
     {
         SpriteBatch = spriteBatch;
         _center = null;
-        _midX = spriteBatch.GraphicsDevice.Viewport.Width * 0.4f;
-        // supposedly 0.4f here is a magic number, but I don't have a good name for it
+        _midX = spriteBatch.GraphicsDevice.Viewport.Width * SCROLL_WIDTH;
     }
 
     private static bool IsMario(Entity entity)

@@ -10,12 +10,22 @@ public class GameManager
     Game1 Game;
     Engine Engine;
 
+    readonly Dictionary<string, Action> Actions;
+
     string CurrentLevel;
 
     public GameManager(Game1 game, Engine engine)
     {
         Game = game;
         Engine = engine;
+
+        Actions = new Dictionary<string, Action>
+        {
+            {CONSTANTS.ACTION.QUIT, () => Game.Exit()},
+            {CONSTANTS.ACTION.RESET, () => ChangeLevel(CurrentLevel)},
+            {CONSTANTS.ACTION.TEST_LEVEL, () => ChangeLevel(CONSTANTS.LEVEL.TEST_LEVEL)},
+            {CONSTANTS.ACTION.MARIO_LEVEL, () => ChangeLevel(CONSTANTS.LEVEL.MARIO1_1)},
+        };
     }
 
     public void ChangeLevel(string level)
@@ -40,21 +50,6 @@ public class GameManager
         if (inputEvent.Phase != InputPhase.Press)
             return;
 
-        switch (inputEvent.Action)
-        {
-            case "Quit":
-                Game.Exit();
-                break;
-            case "Reset":
-                ChangeLevel(CurrentLevel);
-                break;
-            case "TestLevel":
-                ChangeLevel("TestLevel");
-                break;
-            case "MarioLevel":
-                ChangeLevel("Mario1_1");
-                break;
-        }
-
+        Actions[inputEvent.Action]();
     }
 }

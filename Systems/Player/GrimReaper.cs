@@ -25,9 +25,9 @@ public class MarioDefeatSystem : AbstractSystem
 
             //If mario goes below a certain point, he dies
             if (position.Value.Y >= 500) //TODO: get rid of magic number and potentially relate to game window.
-                status.State = "dead";
+                status.State = CONSTANTS.PLAYER_STATE.DEAD;
 
-            if (status.State == "dead")
+            if (status.State == CONSTANTS.PLAYER_STATE.DEAD)
             {
                 //Remove unnecessary components
                 entity.RemoveComponent<Collider>();
@@ -35,7 +35,7 @@ public class MarioDefeatSystem : AbstractSystem
                 entity.RemoveComponent<InputBindings>();
 
                 //Apply upwards velocity
-                velocity.Value.Y = -500;
+                velocity.Value.Y = CONSTANTS.COLLISION.MARIO_DEATH_VELOCITY;
                 velocity.Value.X = 0;
 
                 //Start timer for animation
@@ -43,18 +43,18 @@ public class MarioDefeatSystem : AbstractSystem
 
                 // Play death sound
                 SoundPlayer.StopAll();
-                SoundPlayer.PlaySfx("Death");
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.DEATH);
             }
         }
 
         if (animationStarted)
         {
             timer += deltaTime;
-            if (timer > 3.5)
+            if (timer > CONSTANTS.TEMP.RESPAWN_TIMER)
             {
                 timer = 0.0f;
                 animationStarted = false;
-                GameManager.ChangeLevel("Mario1_1");
+                GameManager.ChangeLevel(CONSTANTS.LEVEL.MARIO1_1);
             }
         }
     }

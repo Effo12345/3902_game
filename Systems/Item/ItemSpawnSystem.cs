@@ -19,21 +19,21 @@ public class ItemSpawnSystem : AbstractSystem
                 item.TryGetComponent<Velocity>(out var velocity) &&
                 itemCollider.Type == ColliderType.Coin)
             {
-                velocity.Value.Y = -500;
-                mass.Value = 5;
+                velocity.Value.Y =CONSTANTS.COLLISION.ITEM_SPAWN_VELOCITY;
+                mass.Value = CONSTANTS.COLLISION.ITEM_MASS;
 
-                SoundPlayer.PlaySfx("Coin");
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.COIN);
             }
             else
             {
-                var speed = 50f;
+                var speed = CONSTANTS.COLLISION.ITEM_RISE_SPEED;
                 if (itemCollider.Type == ColliderType.Coin)
                 {
-                    speed = 200f;
+                    speed = CONSTANTS.COLLISION.COIN_RISE_SPEED;
                 }
                 item.AddComponent(new Rise { DeltaY = blockCollider.HitBox.Height, Speed = speed });
 
-                SoundPlayer.PlaySfx("PowerupSpawn");
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.POWERUP_SPAWN);
             }
         }
         Vector2 spawnPosition = new Vector2(blockCollider.HitBox.X, blockCollider.HitBox.Y);
