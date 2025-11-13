@@ -1,0 +1,13 @@
+{
+    "mushrooms": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 516,
+                "y": 438,
+                "width": 512,
+                "height": 432
+            }
+        ]
+    }
+}

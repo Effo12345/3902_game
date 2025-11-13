@@ -83,6 +83,9 @@ public class RenderSystem : AbstractSystem
             if (entity.TryGetComponent<BasicEnemy>(out var enemy) && enemy.DeathType == DeathType.Flipped)
                 spriteEffects |= SpriteEffects.FlipVertically;
 
+            if (entity.TryGetComponent<Tag>(out var tag) && tag.Value == "background")
+                continue;
+
             float depth = 0.5f;
             if (entity.TryGetComponent<RenderLayer>(out var layer))
                 depth = MathHelper.Clamp(layer.Value, 0f, 1f);
@@ -97,7 +100,7 @@ public class RenderSystem : AbstractSystem
                 scale.Value,
                 spriteEffects,
                 depth
-                );
+            );
 
         }
 

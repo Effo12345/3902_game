@@ -1,0 +1,11 @@
+{
+    "Position": { "Value": [ 0, 0 ] },
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 3.0, 3.0 ] },
+    "Tag": { "Value": "background" },
+    "AnimationState": {
+        "CurrentState": "mushrooms",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    }
+}
