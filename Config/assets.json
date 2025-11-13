@@ -162,6 +162,7 @@
             "key": "BackgroundConfig",
             "path": "Config/EntityConfig/background_config.json"
         },
+        {
             "key": "MusicPlayerConfig",
             "path": "Config/EntityConfig/music_player_config.json"
         }
