@@ -40,17 +40,20 @@ public class MarioDefeatSystem : AbstractSystem
 
                 //Start timer for animation
                 animationStarted = true;
+
+                // Play death sound
+                SoundPlayer.StopAll();
+                SoundPlayer.PlaySfx("Death");
             }
         }
 
         if (animationStarted)
         {
             timer += deltaTime;
-            if (timer > 3.0)
+            if (timer > 3.5)
             {
                 timer = 0.0f;
                 animationStarted = false;
-                //TODO: play sound for mario dying here
                 GameManager.ChangeLevel("Mario1_1");
             }
         }

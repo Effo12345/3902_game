@@ -21,6 +21,8 @@ public class ItemSpawnSystem : AbstractSystem
             {
                 velocity.Value.Y = -500;
                 mass.Value = 5;
+
+                SoundPlayer.PlaySfx("Coin");
             }
             else
             {
@@ -30,6 +32,8 @@ public class ItemSpawnSystem : AbstractSystem
                     speed = 200f;
                 }
                 item.AddComponent(new Rise { DeltaY = blockCollider.HitBox.Height, Speed = speed });
+
+                SoundPlayer.PlaySfx("PowerupSpawn");
             }
         }
         Vector2 spawnPosition = new Vector2(blockCollider.HitBox.X, blockCollider.HitBox.Y);
