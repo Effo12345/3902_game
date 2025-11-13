@@ -20,6 +20,7 @@ public class GameManager
 
     public void ChangeLevel(string level)
     {
+        SoundPlayer.StopAll();
         CurrentLevel = level;
         LevelLoader.Load(Engine, level);
     }
