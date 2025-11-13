@@ -80,7 +80,7 @@ public class InputSystem : AbstractSystem
             {
                 engine.PubSub.Publish(new InputAxisEvent
                 {
-                    Action = "Velocity",
+                    Action = CONSTANTS.ACTION.VELOCITY,
                     Value = velocitymove,
                     Entity = entity
                 });
@@ -90,7 +90,7 @@ public class InputSystem : AbstractSystem
             {
                 engine.PubSub.Publish(new InputAxisEvent
                 {
-                    Action = "Acceleration",
+                    Action = CONSTANTS.ACTION.ACCELERATION,
                     Value = accelerationmove,
                     Entity = entity
                 });
@@ -118,6 +118,7 @@ public class InputSystem : AbstractSystem
 
         foreach (var b in buttons)
         {
+            // TODO: Murder the switch case
             switch (b)
             {
                 case "Left": if (ms.LeftButton == ButtonState.Pressed) return true; break;

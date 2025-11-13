@@ -66,7 +66,7 @@ public class MarioCollisionSystem : AbstractSystem
                 }
                 else if (direction.Equals(Direction.Bottom) && movingVelocity.Value.Y > 0)
                 {
-                    movingVelocity.Value.Y = -500; //TODO: remove magic number
+                    movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY;
                     HurtEnemy(secondaryEntity);
                 }
                 break;
@@ -77,66 +77,83 @@ public class MarioCollisionSystem : AbstractSystem
                 }
                 else if (direction.Equals(Direction.Bottom) && movingVelocity.Value.Y > 0) //Make sure mario is moving down to kill enemy
                 {
-                    movingVelocity.Value.Y = -500; //TODO: remove magic number
+                    movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY; //TODO: remove magic number
                     secondaryVelocity.Value.X = 0;
                     secondaryCollisionInfo.Type = ColliderType.Shell;
+
+                    SoundPlayer.PlaySfx(CONSTANTS.SOUND.STOMP);
+
                     Engine.PubSub.Publish(new AnimationChangeEvent
                     {
-                        NewState = "shell",
+                        NewState = CONSTANTS.ANIMATION_STATE.SHELL,
                         Entity = secondaryEntity
                     });
                 }
                 break;
             case ColliderType.Shell:
                 if (direction.Equals(Direction.Bottom))
-                    movingVelocity.Value.Y = -500; //TODO: remove magic number
+                {
+                    movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY; //TODO: remove magic number
+                    SoundPlayer.PlaySfx(CONSTANTS.SOUND.SHELL_KICK);
+                }
 
-                if (Math.Abs(secondaryVelocity.Value.X) < 0.001) //If shell is not moving
+                if (Math.Abs(secondaryVelocity.Value.X) < CONSTANTS.MATH.FLOAT_EPSILON) //If shell is not moving
                 {
                     //Compare x position of centers
                     if (movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X)
-                        secondaryVelocity.Value.X = 400;
+                        secondaryVelocity.Value.X = CONSTANTS.COLLISION.SHELL_KICK_SPEED;
                     else
-                        secondaryVelocity.Value.X = -400;
+                        secondaryVelocity.Value.X = -CONSTANTS.COLLISION.SHELL_KICK_SPEED;
+
+                    SoundPlayer.PlaySfx(CONSTANTS.SOUND.SHELL_KICK);
                 }
                 else
                 {
                     if (direction.Equals(Direction.Bottom))
+                    {
                         secondaryVelocity.Value.X = 0;
+                        SoundPlayer.PlaySfx(CONSTANTS.SOUND.SHELL_KICK);
+                    }
                     //Only damage mario if shell is moving towards him
                     else if ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X < 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X > 0)
                         HurtMario(movingStatus);
                 }
                 break;
             case ColliderType.Red_Mushroom:
-                movingStatus.State = "big";
+                movingStatus.State = CONSTANTS.PLAYER_STATE.BIG;
                 Engine.DestroyEntity(secondaryEntity);
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.POWERUP);
                 break;
             case ColliderType.Flower:
-                movingStatus.State = "fire";
+                movingStatus.State = CONSTANTS.PLAYER_STATE.FIRE;
                 Engine.DestroyEntity(secondaryEntity);
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.POWERUP);
                 break;
             case ColliderType.Star:
                 movingStatus.isStar = true;
                 Engine.DestroyEntity(secondaryEntity);
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.POWERUP);
                 break;
             case ColliderType.Green_Mushroom:
                 movingStatus.Lives++;
                 Engine.DestroyEntity(secondaryEntity);
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.ONEUP);
                 break;
         }
     }
 
     private static void HurtMario(Status status)
     {
-        if (status.State != "small")
+        if (status.State != CONSTANTS.PLAYER_STATE.SMALL)
         {
-            status.State = "small";
+            status.State = CONSTANTS.PLAYER_STATE.SMALL;
             status.isInvincible = true;
+
+            SoundPlayer.PlaySfx(CONSTANTS.SOUND.DAMAGE);
         }
 
         else
-            status.State = "dead";
+            status.State = CONSTANTS.PLAYER_STATE.DEAD;
     }
 
     private static void HurtEnemy(Entity entity)
@@ -150,6 +167,8 @@ public class MarioCollisionSystem : AbstractSystem
         scale.Value = new Vector2(3, 1);
         velocity.Value.X = 0;
         enemy.DeathType = DeathType.Squished;
+
+        SoundPlayer.PlaySfx(CONSTANTS.SOUND.STOMP);
     }
 
     public override void Update(Engine engine, GameTime gameTime){} //no op

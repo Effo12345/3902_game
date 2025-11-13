@@ -76,7 +76,7 @@ public class NonMarioCollisionSystem : AbstractSystem
                     secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity);
                     secondaryCollisionInfo.HitBox = new Rectangle();
                     secondaryVelocity.Value.X = 0;
-                    secondaryVelocity.Value.Y = -200;
+                    secondaryVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_FLIP_VELOCITY;
                     secondaryEnemy.DeathType = DeathType.Flipped;
                 }
 
@@ -97,7 +97,7 @@ public class NonMarioCollisionSystem : AbstractSystem
         //Make the star jump
         if (movingCollisionInfo.Type == ColliderType.Star && movingIsGrounded.Value == true)
         {
-            movingVelocity.Value.Y = -500;
+            movingVelocity.Value.Y = CONSTANTS.COLLISION.STAR_JUMP_VELOCITY;
             movingEntity.TryGetComponent<Acceleration>(out var movingAcceleration);
             movingAcceleration.Value.Y = 0;
         }

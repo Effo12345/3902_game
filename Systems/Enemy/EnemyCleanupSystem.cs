@@ -19,7 +19,7 @@ public class EnemyCleanupSystem : AbstractSystem
                 animationState.FrameIndex = 0;
             }
             
-            if(enemy.CleanupTimer < 0.0f || position.Value.Y > 500)
+            if(enemy.CleanupTimer < 0.0f || position.Value.Y > CONSTANTS.TEMP.DEATH_PLANE)
                 engine.DestroyEntity(entity);
             
         }

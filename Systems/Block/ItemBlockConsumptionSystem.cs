@@ -33,7 +33,7 @@ public class ItemBlockConsumptionSystem : AbstractSystem
             if (e.HasComponent<Bump>()) e.RemoveComponent<Bump>();
             if (e.TryGetComponent<AnimationState>(out var anim))
             {
-                anim.CurrentState = "used_block";
+                anim.CurrentState = CONSTANTS.ANIMATION_STATE.USED_BLOCK;
             }
         }
     }
