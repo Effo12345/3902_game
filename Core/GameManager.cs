@@ -50,6 +50,7 @@ public class GameManager
         if (inputEvent.Phase != InputPhase.Press)
             return;
 
-        Actions[inputEvent.Action]();
+        if (Actions.TryGetValue(inputEvent.Action, out var action))
+            action();
     }
 }
