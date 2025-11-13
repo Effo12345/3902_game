@@ -61,7 +61,7 @@ public class AssetConfigLoader
         {
             Textures = TryGetValue(root, "textures", new List<AssetFile>()),
             Fonts = TryGetValue(root, "fonts", new List<AssetFile>()),
-            // Sounds = TryGetValue(root, "sounds", new List<AssetFile>()),
+            Sounds = TryGetValue(root, "sounds", new List<AssetFile>()),
             SpriteAtlases = TryGetValue(root, "spriteAtlases", new List<AssetFile>()),
             InputConfigs = TryGetValue(root, "inputConfigs", new List<AssetFile>()),
             EntityConfigs = TryGetValue(root, "entityConfigs", new List<AssetFile>()),
