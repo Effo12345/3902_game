@@ -1,9 +1,12 @@
+using Microsoft.Xna.Framework.Audio;
+
 namespace ECS.Util;
 
 public class Assets
 {
     private readonly Dictionary<string, Texture2D> Textures = [];
     private readonly Dictionary<string, SpriteFont> Fonts = [];
+    private readonly Dictionary<string, SoundEffect> Sounds = [];
     private readonly Dictionary<string, AnimationConfig> SpriteAtlases = [];
     private readonly Dictionary<string, InputBindings> InputConfigs = [];
     private readonly Dictionary<string, LevelConfig> LevelConfigs = [];
@@ -17,6 +20,11 @@ public class Assets
     public void LoadFont(ContentManager content, string key, string path)
     {
         Fonts[key] = content.Load<SpriteFont>(path);
+    }
+
+    public void LoadSound(ContentManager content, string key, string path)
+    {
+        Sounds[key] = content.Load<SoundEffect>(path);
     }
 
     public void LoadSpriteAtlas(string key, string path)
@@ -41,6 +49,7 @@ public class Assets
 
     public Texture2D GetTexture(string key) => Textures[key];
     public SpriteFont GetFont(string key) => Fonts[key];
+    public SoundEffect GetSound(string key) => Sounds[key];
     public AnimationConfig GetSpriteAtlas(string key) => SpriteAtlases[key];
     public LevelConfig GetLevelConfig(string key) => LevelConfigs[key];
     public InputBindings GetInputConfig(string key) => InputConfigs[key];
