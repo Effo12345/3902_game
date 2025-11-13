@@ -36,6 +36,7 @@ public class Game1 : Game
         Engine.AddSystem(new BlockBumpMotionSystem());
         Engine.AddSystem(new EnemyCleanupSystem());
         Engine.AddSystem(new KoopaWakeupSystem());
+        Engine.AddSystem(new MusicSystem());
 
         GameManager = new(this, Engine);
 
@@ -51,6 +52,7 @@ public class Game1 : Game
         var assets = AssetLoader.Load(Content, File.ReadAllText("Config/assets.json"));
         EntityFactory.RegisterAssets(assets);
         LevelLoader.RegisterAssets(assets);
+        SoundPlayer.RegisterAssets(assets);
 
         GameManager.Initialize("Mario1_1");
 
