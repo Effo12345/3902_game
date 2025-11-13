@@ -15,6 +15,10 @@
         {
             "key": "ItemsSheet",
             "path": "Sprites/items"
+        },
+        {
+            "key": "BackgroundSheet",
+            "path": "Sprites/backgrounds"
         }
     ],
     "fonts": [
@@ -35,6 +39,10 @@
         {
             "key": "TilesAnimation",
             "path": "Config/SpriteConfig/tiles_spritesheet.json"
+        },
+        {
+            "key": "BackgroundAnimation",
+            "path": "Config/SpriteConfig/background_spritesheet.json"
         }
     ],
     "inputConfigs": [
@@ -91,6 +99,10 @@
         {
             "key": "StarConfig",
             "path": "Config/EntityConfig/star_config.json"
+        },
+        {
+            "key": "BackgroundConfig",
+            "path": "Config/EntityConfig/background_config.json"
         }
     ],
     "levelConfigs": [
@@ -168,6 +180,12 @@
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
             "entityConfig": "StarConfig"
+        },
+        {
+            "key": "background",
+            "spriteTexture": "BackgroundSheet",
+            "spriteAtlas": "BackgroundAnimation",
+            "entityConfig": "BackgroundConfig"
         }
     ]
 }
