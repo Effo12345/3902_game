@@ -55,6 +55,7 @@ public class Game1 : Game
         GameManager.Initialize("Mario1_1");
 
         // TODO: It's annoying to have this system here by itself
+        Engine.AddSystem(new BackgroundRenderSystem(_spriteBatch));
         Engine.AddSystem(new RenderSystem(_spriteBatch));
         Engine.AddSystem(new CollisionVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
         Engine.AddSystem(new VectorVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));

@@ -1,6 +1,18 @@
 {
     "entities": [
         {
+            "key": "background",
+            "components": {
+                "Position": { "Value": [-500, -800] }
+            }
+        },
+        {
+            "key": "background",
+            "components": {
+                "Position": { "Value": [1036, -800] }
+            }
+        },
+        {
             "key": "mario",
             "components": {
                 "Position": { "Value": [ 20, 20 ] }
