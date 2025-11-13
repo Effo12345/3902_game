@@ -93,7 +93,7 @@ public class MarioCollisionSystem : AbstractSystem
             case ColliderType.Shell:
                 if (direction.Equals(Direction.Bottom))
                 {
-                    movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY; //TODO: remove magic number
+                    movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY; 
                     SoundPlayer.PlaySfx(CONSTANTS.SOUND.SHELL_KICK);
                 }
 
@@ -115,7 +115,7 @@ public class MarioCollisionSystem : AbstractSystem
                         SoundPlayer.PlaySfx(CONSTANTS.SOUND.SHELL_KICK);
                     }
                     //Only damage mario if shell is moving towards him
-                    else if ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X < 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X > 0)
+                    else if (!movingStatus.isInvincible && ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X < 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X > 0))
                         HurtMario(movingStatus);
                 }
                 break;
