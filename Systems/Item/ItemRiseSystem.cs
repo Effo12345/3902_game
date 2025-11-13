@@ -22,7 +22,7 @@ public class ItemRiseSystem : AbstractSystem
             {
                 e.RemoveComponent<Rise>();
                 if (e.HasComponent<CanMove>())
-                    e.AddComponent(new Velocity { Value = new Vector2(100, 0) });
+                    e.AddComponent(new Velocity { Value = CONSTANTS.COLLISION.ITEM_VELOCITY });
             }
         }
     }
