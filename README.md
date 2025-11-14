@@ -5,15 +5,22 @@ A recreation of Super Mario Bros. 1-1 with Super Mario World assets.
 ## Repository Structure
 
 ```
-├── Components/     # Data-holding component definitions
+├── Components/        # Data-holding component definitions
+├── Config/         
+    ├── EntityConfig/  # Component-based entity definitions
+    ├── InputConfig/   # Input component definitions
+    ├── LevelConfig/   # Level definitions
+    ├── SpriteConfig/  # Animation definitions
+    ├── assets.json    # Centralized asset management
 ├── Content/
-    ├── Config/     # Animation and input config
-    ├── Sprites/    # Texture assets
-├── Core/           # ECS framework
-├── Documentation/  # Game documentation and code reviews
-├── Events/         # System-linking event definitions
-├── Systems/        # Game systems
-├── Util/           # Collection of ancillary classes
+    ├── Fonts/         # Text font styles
+    ├── Sounds/        # .wav audio files
+    ├── Sprites/       # Texture assets
+├── Core/              # ECS framework
+├── Documentation/     # Game documentation and code reviews
+├── Events/            # System-linking event definitions
+├── Systems/           # Game systems
+├── Util/              # Collection of ancillary classes
 ```
 
 ## Project Documentation
