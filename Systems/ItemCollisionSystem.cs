@@ -19,10 +19,10 @@ public class ItemCollisionSystem : AbstractSystem
         if (!movingEntity.HasComponent<ItemKind>()) return;
 
         if (!movingEntity.TryGetComponent<Collider>(out var movingCollisionInfo) ||
-            !secondaryEntity.TryGetComponent<Collider>(out var secondaryCollisionInfo) ||
             !movingEntity.TryGetComponent<IsGrounded>(out var movingIsGrounded) ||
             !movingEntity.TryGetComponent<Position>(out var movingPosition) ||
             !movingEntity.TryGetComponent<Velocity>(out var movingVelocity) ||
+            !secondaryEntity.TryGetComponent<Collider>(out var secondaryCollisionInfo) ||
             !secondaryEntity.TryGetComponent<Position>(out var secondaryPosition)
             )
             return;

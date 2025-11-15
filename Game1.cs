@@ -41,6 +41,7 @@ public class Game1 : Game
         GameManager = new(this, Engine);
 
         Engine.AddSystem(new MarioDefeatSystem(GameManager));
+        Engine.AddSystem(new PipeInteractionSystem(GameManager));
 
         base.Initialize();
     }

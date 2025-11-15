@@ -49,13 +49,20 @@ public class MarioCollisionSystem : AbstractSystem
                     {
                         movingPosition.Value.X = secondaryPosition.Value.X + secondaryCollisionInfo.HitBox.Width;
                     }
+
                 }
                 else if (direction.Equals(Direction.Top))
                 {
                     movingVelocity.Value.Y = 0;
                     movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
                 }
-            Engine.PubSub.Publish(new BlockBump { Entity = secondaryEntity });
+
+                if (secondaryEntity.TryGetComponent<PipeEntry>(out var pipeEntry))
+                {
+                    Engine.PubSub.Publish(new PipeEvent { Destination = pipeEntry.Destination, CollisionDirection = direction, PipeDirection = pipeEntry.EntryDirection });
+                }
+
+                Engine.PubSub.Publish(new BlockBump { Entity = secondaryEntity });
                 break;
 
             case ColliderType.Goomba:

@@ -823,23 +823,31 @@
             "key": "static_block",
             "components": {
                 "Position": { "Value": [ 1492, 288 ] },
-                "AnimationState": {
-                    "CurrentState": "green_pipe_tl",
-                    "FrameIndex": 0,
-                    "TimeInCurrentFrame": 0.0
-                }
+              "AnimationState": {
+                "CurrentState": "green_pipe_tl",
+                "FrameIndex": 0,
+                "TimeInCurrentFrame": 0.0
+              },
+              "PipeEntry": {
+                "Destination": "TestLevel",
+                "EntryDirection":  "Bottom"
+              }
             }
         },
         {
             "key": "static_block",
-            "components": {
-                "Position": { "Value": [ 1540, 288 ] },
-                "AnimationState": {
-                    "CurrentState": "green_pipe_tr",
-                    "FrameIndex": 0,
-                    "TimeInCurrentFrame": 0.0
-                }
+          "components": {
+            "Position": { "Value": [ 1540, 288 ] },
+            "AnimationState": {
+              "CurrentState": "green_pipe_tr",
+              "FrameIndex": 0,
+              "TimeInCurrentFrame": 0.0
+            },
+            "PipeEntry": {
+              "Destination": "TestLevel",
+              "EntryDirection": "Bottom"
             }
+          }
         },
         {
             "key": "static_block",

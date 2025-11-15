@@ -77,37 +77,14 @@ public class PlayerMotionSystem : AbstractSystem
 
                     f_position.Value = position.Value;
                     f_velocity.Value = direction * 250f;
-
-                    //var fireball = Engine.CreateEntity();
-                    ////var itemsprite = Assets.GetTexture("ItemsSheet");
-                    //// var fireballsprite = Content.Load<Texture2D>("Sprites/items");
-                    //var itemConfig = SpriteSheetLoader.Load(File.ReadAllText("Content/Config/items_spritesheet.json"));
-
-                    //// TODO: Fix the spawn position for fireball
-                    //fireball.AddComponent(new Position { Value = initialPosition });
-                    //fireball.AddComponent(new Rotation { Value = 0f });
-                    //fireball.AddComponent(new Scale { Value = new Vector2(1.5f, 1.5f) });
-                    //fireball.AddComponent(new Velocity { Value = direction * 250f });
-                    //fireball.AddComponent(new VelocityCap());
-                    //fireball.AddComponent(new Acceleration());
-                    //fireball.AddComponent(new Mass { Value = 2.5f });
-                    ////fireball.AddComponent(new SpriteState { Texture = itemsprite, SourceRect = itemConfig.States["Fireball"].Frames[0], Color = Color.White });
-                    //fireball.AddComponent(new AnimationConfig { States = itemConfig.States });
-                    //fireball.AddComponent(new AnimationState { CurrentState = "Fireball" });
                 });
-
-                //Engine.PubSub.Publish(new FireballLaunch
-                //{
-                //    Position = position,
-                //    Direction = direction
-                //});
             }
         }
         else if (inputEvent.Action == "Jump")
         {
             // TODO: Make holding the button cause higher jumps
             if (inputEvent.Phase == InputPhase.Press && grounded.Value)
-                velocity.Value.Y += -300.0f; // TODO: Move this back to config file
+                velocity.Value.Y += -500.0f; // TODO: Move this back to config file
         }
     }
 
