@@ -21,20 +21,20 @@ public class KoopaWakeupSystem : AbstractSystem
                 enemy.ShellTimer -= deltaTime;
                 if (enemy.ShellTimer < 0)
                 {
-                    enemy.ShellTimer = 6;
+                    enemy.ShellTimer = CONSTANTS.TEMP.SHELL_TIMER;
                     collider.Type = ColliderType.Koopa;
                     velocity.Value.X = -50;
                     facingDirection.IsFacingLeft = true;
                     engine.PubSub.Publish(new AnimationChangeEvent
                     {
-                        NewState = "koopa",
+                        NewState = CONSTANTS.ANIMATION_STATE.KOOPA,
                         Entity = entity
                     });
-                    position.Value.Y -= 34; //TODO: This is hard coded in to get koopa back on the ground when it wakes up
+                    position.Value.Y -= CONSTANTS.TEMP.KOOPA_RESPAWN_HEIGHT; //TODO: This is hard coded in to get koopa back on the ground when it wakes up
                 }
             }
             else
-                enemy.ShellTimer = 6;
+                enemy.ShellTimer = CONSTANTS.TEMP.SHELL_TIMER;
         }
     }
 }

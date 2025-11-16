@@ -20,18 +20,16 @@ public class PlayerAnimationSystem : AbstractSystem
             string animUpdate;
 
             animUpdate = currentStatus.State;
-            if (currentStatus.State != "dead") { 
+            if (currentStatus.State != CONSTANTS.PLAYER_STATE.DEAD) { 
                 if (!isGrounded.Value)
-                    animUpdate += "_jump";
+                    animUpdate += CONSTANTS.ANIMATION_STATE.PLAYER_JUMP_SUFFIX;
                 else if (Math.Abs(velocity.Value.X) < IDLE_THRESHOLD)
-                    animUpdate += "_idle";
+                    animUpdate += CONSTANTS.ANIMATION_STATE.PLAYER_IDLE_SUFFIX;
                 else
-                    animUpdate += "_walk";
+                    animUpdate += CONSTANTS.ANIMATION_STATE.PLAYER_WALK_SUFFIX;
 
 
             }
-
-            //animUpdate = animationState.CurrentState.Split("_")[0] + "_" + animUpdate;
 
             engine.PubSub.Publish(new AnimationChangeEvent
             {

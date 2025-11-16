@@ -15,7 +15,7 @@ public class InvincibilitySystem : AbstractSystem
                 if (status.InvincibilityDuration < 0)
                 {
                     status.isInvincible = false;
-                    status.InvincibilityDuration = 2.0f; //TODO: This should reset to a fixed value.
+                    status.InvincibilityDuration = CONSTANTS.TEMP.STAR_TIMER; //TODO: This should reset to a fixed value.
                 }
         }
     }

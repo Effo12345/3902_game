@@ -19,7 +19,7 @@ public class FacingSystem : AbstractSystem
 
         float horizontalMotion = inputEvent.Value.X;
         // Don't change direction without input
-        if (Math.Abs(horizontalMotion) <= 0.01f)
+        if (Math.Abs(horizontalMotion) <= CONSTANTS.MATH.FLOAT_EPSILON)
             return;
 
         facingDirection.IsFacingLeft = horizontalMotion < 0;

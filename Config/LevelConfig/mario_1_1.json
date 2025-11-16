@@ -31,6 +31,15 @@
             }
         },
         {
+            "key": "music_player",
+            "components": {
+                "Music": {
+                    "Key": "OverworldMusic",
+                    "Volume": 0.5
+                }
+            }
+        },
+        {
             "key": "static_block",
             "components": {
                 "Position": { "Value": [ -44, 384 ] },
