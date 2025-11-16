@@ -30,6 +30,135 @@
                 "Position": { "Value": [ 20, 20 ] }
             }
         },
+
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 1972, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 2500, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 2596, 336 ] },
+                "Velocity": { "Value": [ 50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": false }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 3796, -48 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 3940, -48 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 4612, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 4708, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 5428, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 5524, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 5908, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 6004, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 6100, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 6196, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 8308, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+        {
+            "key": "goomba",
+            "components": {
+                "Position": { "Value": [ 8404, 336 ] },
+                "Velocity": { "Value": [ -50, 0 ] },
+                "FacingDirection": { "IsFacingLeft": true }
+            }
+        },
+
+        {
+            "key": "koopa",
+            "components": {
+                "Position": { "Value": [ 5092, 336 ] }
+            }
+        },
+
         {
             "key": "static_block",
             "components": {
