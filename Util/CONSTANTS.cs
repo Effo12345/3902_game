@@ -80,6 +80,6 @@ public static class CONSTANTS
         public static float KOOPA_RESPAWN_HEIGHT { get; } = 34;
         public static float RESPAWN_TIMER { get; } = 3.5f;
         public static float STAR_TIMER { get; } = 2.0f;
-        public static float JUMP_VELOCITY { get; } = -300.0f;
+        public static float JUMP_VELOCITY { get; } = -900.0f;
     }
 }

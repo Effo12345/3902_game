@@ -3,15 +3,15 @@
     "Velocity": { "Value": [ 0, 0 ] },
     "Rotation": { "Value": 0.0 },
     "Scale": { "Value": [ 3.0, 3.0 ] },
-    "Mass": { "Value": 5 },
+    "Mass": { "Value": 20 },
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "Collider": {
         "Type": "Mario",
         "HitBox": [0, 0, 42, 60]
     },
     "IsGrounded": { "Value": false },
-    "Friction": { "Value": 4.0 },
-    "VelocityCap": { "Value": [ 0.2, 10.0 ] },
+    "Friction": { "Value": 6.0 },
+    "VelocityCap": { "Value": [ 300.0, 10000.0 ] },
     "AnimationState": {
         "CurrentState": "small_idle",
         "FrameIndex": 0,
