@@ -32,6 +32,17 @@
             }
         ]
     },
+    "grey_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 311,
+                "y": 80,
+                "width": 16,
+                "height": 16 
+            }
+        ]
+    },
     "red_mushroom": {
         "frameDuration": 0,
         "frames": [
