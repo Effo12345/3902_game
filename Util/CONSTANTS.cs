@@ -44,11 +44,11 @@ public static class CONSTANTS
         public static float SHELL_KICK_SPEED { get; } = 400;
         public static float STAR_JUMP_VELOCITY { get; } = -500;
         public static Vector2 ITEM_VELOCITY { get; } = new Vector2(100, 0);
-        public static float ITEM_SPAWN_VELOCITY { get; } = -500;
+        public static float ITEM_SPAWN_VELOCITY { get; } = -300;
         public static float ITEM_MASS { get; } = 5;
         public static float ITEM_RISE_SPEED { get; } = 50.0f;
         public static float COIN_RISE_SPEED { get; } = 200.0f;
-        public static float MARIO_DEATH_VELOCITY { get; } = -500.0f;
+        public static float MARIO_DEATH_VELOCITY { get; } = -1000.0f;
     }
     public static class SOUND
     {

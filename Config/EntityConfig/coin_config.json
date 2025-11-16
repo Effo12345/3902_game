@@ -2,7 +2,7 @@
     "Position": { "Value": [ 4, 432 ] },
     "Velocity": {},
     "Acceleration": {},
-    "Mass": {},
+    "Mass": { "Value": 5 },
     "IsGrounded": {},
     "Rotation": { "Value": 0.0 },
     "Scale": { "Value": [ 3, 3 ] },
