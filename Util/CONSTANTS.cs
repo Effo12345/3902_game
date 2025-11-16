@@ -38,7 +38,7 @@ public static class CONSTANTS
     }
     public static class COLLISION
     {
-        public static Rectangle QUADTREE_DIMENSION { get; } = new Rectangle(-200,0,1800,480);
+        public static Rectangle QUADTREE_DIMENSION { get; } = new Rectangle(-200,0,20000,480);
         public static float ENEMY_BOUNCE_VELOCITY { get; } = -500;
         public static float ENEMY_FLIP_VELOCITY { get; } = -200;
         public static float SHELL_KICK_SPEED { get; } = 400;
