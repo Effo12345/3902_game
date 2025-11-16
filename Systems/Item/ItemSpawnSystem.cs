@@ -42,7 +42,7 @@ public class ItemSpawnSystem : AbstractSystem
             position.Value = spawnPosition;
         else
             item.AddComponent(new Position { Value = spawnPosition });
-    
+
     }
     public override void Update(Engine engine, GameTime gameTime) { }
 } 

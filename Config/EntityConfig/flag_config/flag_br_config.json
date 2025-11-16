@@ -1,0 +1,16 @@
+{
+  "Position": { "Value": [0,0] },
+  "Collider": {
+      "Type": "Flag",
+      "HitBox": [0, 0, 48, 24]
+  },
+  "AnimationState": 
+  { 
+    "CurrentState": "flag_br", 
+    "FrameIndex": 0, 
+    "TimeInCurrentFrame": 0.0 
+  },
+  "Rotation": { "Value": 0.0 },
+  "Scale": { "Value": [ 3, 3 ]},
+  "RenderLayer": {"Value": 0}
+}

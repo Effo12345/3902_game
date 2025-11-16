@@ -28,6 +28,12 @@
             }
         },
         {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1650, 384]}
+            }
+        },
+        {
             "key": "static_block",
             "components": {
                 "Position": { "Value": [ -44, 384 ] },

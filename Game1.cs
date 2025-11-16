@@ -32,7 +32,8 @@ public class Game1 : Game
         Engine.AddSystem(new FacingSystem());
         Engine.AddSystem(new ItemSpawnSystem());
         Engine.AddSystem(new ItemBlockConsumptionSystem());
-        Engine.AddSystem(new ItemRiseSystem());
+        Engine.AddSystem(new ItemPostRiseSystem());
+        Engine.AddSystem(new RiseSystem());
         Engine.AddSystem(new BlockBumpMotionSystem());
         Engine.AddSystem(new EnemyCleanupSystem());
         Engine.AddSystem(new KoopaWakeupSystem());

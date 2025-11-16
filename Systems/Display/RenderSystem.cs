@@ -55,6 +55,20 @@ public class RenderSystem : AbstractSystem
         Vector2 cameraOffset = PositionAdjustment();
         Matrix cameraTransform = Matrix.CreateTranslation(cameraOffset.X, cameraOffset.Y, 0);
 
+        // get world bound
+        var viewport = SpriteBatch.GraphicsDevice.Viewport;
+        var worldBounds = new Rectangle(
+            (int)(-cameraOffset.X),
+            (int)(cameraOffset.Y),
+            viewport.Width,
+            viewport.Height
+        );
+        // publish camera bounded events
+        engine.PubSub.Publish(new CameraBoundsEvent
+        {
+           WorldBounds = worldBounds 
+        });
+
         // ...then publish it
         engine.PubSub.Publish(new CameraTransformEvent
         {

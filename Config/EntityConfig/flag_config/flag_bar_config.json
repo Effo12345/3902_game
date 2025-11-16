@@ -1,0 +1,20 @@
+{
+  "Position": { "Value": [0,0] },
+  "Rotation": { "Value": 0.0 },
+  "Scale": { "Value": [ 3, 3 ]},
+  "Collider": {
+      "Type": "Flag",
+      "HitBox": [0, 0, 72, 24]
+  },
+  "AnimationState": 
+  { 
+    "CurrentState": "flag_bar", 
+    "FrameIndex": 0, 
+    "TimeInCurrentFrame": 0.0 
+  },
+  "Rise": 
+  {
+    "DeltaY": 267,
+    "Speed": 150
+  }
+}

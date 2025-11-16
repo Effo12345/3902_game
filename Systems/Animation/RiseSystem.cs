@@ -1,7 +1,20 @@
 namespace ECS.Systems;
 
-public class ItemRiseSystem : AbstractSystem
+public class RiseSystem : AbstractSystem
 {
+    private Rectangle _cameraBounds;
+
+    public override bool Initialize(Engine engine)
+    {
+        base.Initialize(engine);
+        Engine.PubSub.CreateSubscription<CameraBoundsEvent>(OnCameraBounds);
+        return true;
+    }
+    private void OnCameraBounds(IEvent evnt)
+    {
+        var e = (CameraBoundsEvent)evnt;
+        _cameraBounds = e.WorldBounds;
+    }
     public override void Update(Engine engine, GameTime gameTime)
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -12,6 +25,9 @@ public class ItemRiseSystem : AbstractSystem
             if (!e.TryGetComponent<Position>(out var pos))
             { e.RemoveComponent<Rise>(); continue; }
 
+            var posPoint = new Point((int)pos.Value.X, (int)pos.Value.Y);
+            if (!_cameraBounds.Contains(posPoint))
+                continue;
             float dy = rise.Speed * dt;
             float remaining = rise.DeltaY - rise.Moved;
             float move = MathF.Min(dy, remaining);
@@ -21,8 +37,7 @@ public class ItemRiseSystem : AbstractSystem
             if (rise.Moved >= rise.DeltaY)
             {
                 e.RemoveComponent<Rise>();
-                if (e.HasComponent<CanMove>())
-                    e.AddComponent(new Velocity { Value = CONSTANTS.COLLISION.ITEM_VELOCITY });
+                Engine.PubSub.Publish(new PostRiseEvent { Entity = e });
             }
         }
     }

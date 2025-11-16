@@ -17,7 +17,9 @@ public static class LevelLoader
         foreach (var entityConfig in levelConfig.Entities)
         {
             var entity = EntityFactory.BuildEntity(engine, entityConfig.Key);
+        
             EntityFactory.AppendComponentsFromConfig(entity, entityConfig.Config);
+            EntityFactory.BuildCompositeEntity(engine, entity);
         }
     }
 }
