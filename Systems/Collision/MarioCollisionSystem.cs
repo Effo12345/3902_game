@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Data;
+using Microsoft.VisualBasic;
 
 namespace ECS.Systems;
 
@@ -60,22 +61,18 @@ public class MarioCollisionSystem : AbstractSystem
                 break;
 
             case ColliderType.Goomba:
-                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Top)) && !movingStatus.isInvincible)
-                {
-                    HurtMario(movingStatus);
-                }
-                else if (direction.Equals(Direction.Bottom) && movingVelocity.Value.Y > 0)
+                if (movingVelocity.Value.Y > 0)
                 {
                     movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY;
                     HurtEnemy(secondaryEntity);
                 }
-                break;
-            case ColliderType.Koopa:
-                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right) || direction.Equals(Direction.Top)) && !movingStatus.isInvincible)
+                else if (!movingStatus.isInvincible)
                 {
                     HurtMario(movingStatus);
                 }
-                else if (direction.Equals(Direction.Bottom) && movingVelocity.Value.Y > 0) //Make sure mario is moving down to kill enemy
+                break;
+            case ColliderType.Koopa:
+                if (movingVelocity.Value.Y > 0)
                 {
                     movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY; //TODO: remove magic number
                     secondaryVelocity.Value.X = 0;
@@ -88,6 +85,10 @@ public class MarioCollisionSystem : AbstractSystem
                         NewState = CONSTANTS.ANIMATION_STATE.SHELL,
                         Entity = secondaryEntity
                     });
+                }
+                else if (!movingStatus.isInvincible) //Make sure mario is moving down to kill enemy
+                {
+                    HurtMario(movingStatus);
                 }
                 break;
             case ColliderType.Shell:
@@ -114,18 +115,22 @@ public class MarioCollisionSystem : AbstractSystem
                         secondaryVelocity.Value.X = 0;
                         SoundPlayer.PlaySfx(CONSTANTS.SOUND.SHELL_KICK);
                     }
-                    //Only damage mario if shell is moving towards him
-                    else if (!movingStatus.isInvincible && ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X < 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X > 0))
+                    //Only damage mario if shell is moving towards him and mario isn't moving down
+                    else if (!movingStatus.isInvincible && !(movingVelocity.Value.Y > 0) && ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X < 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X > 0))
                         HurtMario(movingStatus);
                 }
                 break;
             case ColliderType.Red_Mushroom:
-                movingStatus.State = CONSTANTS.PLAYER_STATE.BIG;
+                if (movingStatus.State != CONSTANTS.PLAYER_STATE.FIRE)
+                    movingStatus.State = CONSTANTS.PLAYER_STATE.BIG;
                 Engine.DestroyEntity(secondaryEntity);
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.POWERUP);
                 break;
             case ColliderType.Flower:
-                movingStatus.State = CONSTANTS.PLAYER_STATE.FIRE;
+                if (movingStatus.State != CONSTANTS.PLAYER_STATE.SMALL)
+                    movingStatus.State = CONSTANTS.PLAYER_STATE.FIRE;   
+                else
+                    movingStatus.State = CONSTANTS.PLAYER_STATE.BIG;
                 Engine.DestroyEntity(secondaryEntity);
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.POWERUP);
                 break;

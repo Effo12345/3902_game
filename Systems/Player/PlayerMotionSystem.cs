@@ -6,6 +6,8 @@ namespace ECS.Systems;
 public class PlayerMotionSystem : AbstractSystem
 {
     private int StateIndex = 0;
+    private float Timer = -1;
+
 
     public override bool Initialize(Engine engine)
     {
@@ -59,8 +61,9 @@ public class PlayerMotionSystem : AbstractSystem
         }
         else if (inputEvent.Action == CONSTANTS.ACTION.FIRE && inputEvent.Phase == InputPhase.Press)
         {
-            if (currentStatus.State == CONSTANTS.PLAYER_STATE.FIRE)
+            if (currentStatus.State == CONSTANTS.PLAYER_STATE.FIRE && Timer < 0) //There may only be two fireballs at a time
             {
+                Timer = .25f;
                 Vector2 direction;
                 if (facingDirection.IsFacingLeft)
                     direction = new Vector2(-1.0f, 0.0f);
@@ -75,8 +78,9 @@ public class PlayerMotionSystem : AbstractSystem
                     fireball.TryGetComponent<Position>(out var f_position);
                     fireball.TryGetComponent<Velocity>(out var f_velocity);
 
-                    f_position.Value = position.Value;
-                    f_velocity.Value = direction * 250f;
+                    f_position.Value = position.Value + CONSTANTS.TEMP.FIREBALL_SPAWN;
+                    f_velocity.Value *= direction;
+                    SoundPlayer.PlaySfx(CONSTANTS.SOUND.FIREBALL); //TODO: change to fireball sound effect.
                 });
             }
         }
@@ -92,5 +96,11 @@ public class PlayerMotionSystem : AbstractSystem
     }
 
     // no-op
-    public override void Update(Engine engine, GameTime gameTime) { }
+    public override void Update(Engine engine, GameTime gameTime)
+    {
+        float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (Timer > 0)
+        Timer -= deltaTime;
+
+    }
 }

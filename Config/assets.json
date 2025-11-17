@@ -220,6 +220,12 @@
             "entityConfig": "CoinConfig"
         },
         {
+            "key": "fireball",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FireballConfig"
+        },
+        {
             "key": "red_mushroom",
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
