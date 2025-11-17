@@ -27,7 +27,7 @@
         {
             "key": "mario",
             "components": {
-                "Position": { "Value": [ 7060, 20 ] }
+                "Position": { "Value": [ 20, 20 ] }
             }
         },
 

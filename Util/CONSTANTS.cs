@@ -82,4 +82,9 @@ public static class CONSTANTS
         public static float STAR_TIMER { get; } = 2.0f;
         public static float JUMP_VELOCITY { get; } = -900.0f;
     }
+    public static class RENDER
+    {
+        public static Vector2 WindowSize { get; } = new Vector2(800, 800);
+        public static float VERTICAL_CAMERA_OFFSET { get; } = 320;
+    }
 }

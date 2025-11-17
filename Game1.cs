@@ -10,6 +10,10 @@ public class Game1 : Game
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
+        // TODO: Move this somewhere else
+        _graphics.PreferredBackBufferWidth = (int)CONSTANTS.RENDER.WindowSize.X;
+        _graphics.PreferredBackBufferHeight = (int)CONSTANTS.RENDER.WindowSize.Y;
+
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }

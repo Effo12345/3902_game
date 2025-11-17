@@ -37,14 +37,14 @@ public class RenderSystem : AbstractSystem
         if (_center == null)
         {
             // If the following loop finds nothing, use (0, 0)
-            return new Vector2(_midX, 0);
+            return new Vector2(_midX, CONSTANTS.RENDER.VERTICAL_CAMERA_OFFSET);
         }
         else
         {
             Position position;
             _center.TryGetComponent<Position>(out position);
             // Currently, Y position is designed to be not adjusted
-            return new Vector2(_midX - position.Value.X, 0);
+            return new Vector2(_midX - position.Value.X, CONSTANTS.RENDER.VERTICAL_CAMERA_OFFSET);
         }
     }
 
