@@ -65,6 +65,7 @@ public static class CONSTANTS
         public static string DEATH { get; } = "Death";
         public static string JUMP { get; } = "MarioJump";
         public static string BLOCKBREAK { get; } = "BlockBreak";
+        public static string STAR { get; } = "Star";
     }
     public static class MATH
     {

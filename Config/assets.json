@@ -81,6 +81,10 @@
             "path": "Sounds/Effects/shell_ricochet"
         },
         {
+            "key": "Star",
+            "path": "Sounds/Effects/star"
+        },
+        {
             "key": "Stomp",
             "path": "Sounds/Effects/stomp"
         }
