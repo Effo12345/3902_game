@@ -156,7 +156,7 @@ public class MarioCollisionSystem : AbstractSystem
             status.State = CONSTANTS.PLAYER_STATE.DEAD;
     }
 
-    private static void HurtEnemy(Entity entity)
+    private void HurtEnemy(Entity entity)
     {
         entity.TryGetComponent<BasicEnemy>(out var enemy);
         entity.TryGetComponent<Scale>(out var scale);
@@ -167,7 +167,8 @@ public class MarioCollisionSystem : AbstractSystem
         scale.Value = new Vector2(3, 1);
         velocity.Value.X = 0;
         enemy.DeathType = DeathType.Squished;
-
+        
+        Engine.PubSub.Publish(new ScoreAddedEvent{ScoreValue = CONSTANTS.SCORE.ENEMY_VALUE});
         SoundPlayer.PlaySfx(CONSTANTS.SOUND.STOMP);
     }
 

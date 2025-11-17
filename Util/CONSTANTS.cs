@@ -82,4 +82,10 @@ public static class CONSTANTS
         public static float STAR_TIMER { get; } = 2.0f;
         public static float JUMP_VELOCITY { get; } = -300.0f;
     }
+    public static class SCORE
+    {
+        public static int COIN_VALUE {get;} = 200;
+        public static int COIN_COUNT {get;} = 1;
+        public static int ENEMY_VALUE {get;} = 100;
+    }
 }

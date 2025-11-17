@@ -21,7 +21,7 @@ public class ItemSpawnSystem : AbstractSystem
             {
                 velocity.Value.Y =CONSTANTS.COLLISION.ITEM_SPAWN_VELOCITY;
                 mass.Value = CONSTANTS.COLLISION.ITEM_MASS;
-
+                Engine.PubSub.Publish(new CoinPickupEvent{});
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.COIN);
             }
             else

@@ -6,9 +6,11 @@ public class HUDSystem : AbstractSystem
     private TextRender _coinsText;
     private TextRender _worldText;
     private TextRender _timeText;
-    private int _score, _coins, _timeLimit = 400;
+    private int _timeLimit = 400;
     private float _timeRemaining;
+    private Entity _scoreEntity;
     private string _world;
+    
     public override bool Initialize(Engine engine)
     {
         base.Initialize(engine);
@@ -19,8 +21,6 @@ public class HUDSystem : AbstractSystem
     {
         var e = (LevelLoadedEvent)evnt;
 
-        _score = 0;
-        _coins = 0;
         _world = e.Level;
         _timeRemaining = _timeLimit;
 
@@ -45,19 +45,36 @@ public class HUDSystem : AbstractSystem
                     break;
             }
         }
+        foreach (var ent in Engine.GetEntities())
+        {
+            if (ent.HasComponent<Score>() && ent.HasComponent<Coin>())
+            {
+                _scoreEntity = ent;
+                break;
+            }
+        }
         RefreshHudText();
     }
     private void RefreshHudText()
     {
-        _scoreText.Text = $"{_score:D6}";
-        _coinsText.Text = $"x{_coins:D2}";
-        int displayTime = (int)MathF.Ceiling(_timeRemaining);
+        int scoreValue = 0;
+        int coinsValue = 0;
 
+        if (_scoreEntity != null && _scoreEntity.TryGetComponent<Score>(out var score) &&
+            _scoreEntity.TryGetComponent<Coin>(out var coin))
+        {
+            scoreValue = score.Value;
+            coinsValue = coin.Value;
+        }
+
+        _scoreText.Text = $"{scoreValue:D6}";
+        _coinsText.Text = $"x{coinsValue:D2}";
+        
+        int displayTime = (int)MathF.Ceiling(_timeRemaining);
         if (displayTime > 0)
             _timeText.Text = $"{displayTime:D3}";
     }
-    public void AddScore(int amount) =>  _score += amount;
-    public void AddCoin(int amount) => _coins += amount;
+
     public override void Update(Engine engine, GameTime gameTime)
     {
         _timeRemaining -= (float)gameTime.ElapsedGameTime.TotalSeconds;
