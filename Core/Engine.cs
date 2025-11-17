@@ -7,14 +7,9 @@ public class Engine
     private HashSet<Entity> Entities = [];
     private int NextEntityID = 0;
 
-    // deferred command queue
-    private readonly Queue<Action<Engine>> Deferred = new();
-
     private List<ISystem> Systems = new();
 
     public EventPubSub PubSub { get; } = new();
-
-    public void Defer(Action<Engine> mutation) => Deferred.Enqueue(mutation);
 
     // Force instantiation to happen inside the engine
     public Entity CreateEntity()
@@ -57,12 +52,6 @@ public class Engine
         foreach (var system in Systems)
         {
             system.Update(this, gameTime);
-        }
-
-        while (Deferred.Count > 0)
-        {
-            var m = Deferred.Dequeue();
-            m(this);
         }
     }
 }

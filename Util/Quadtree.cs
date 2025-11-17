@@ -8,7 +8,7 @@ public class Quadtree
     private int Y;
     private int Width;
     private int Height;
-    private int sectionCapacity = 20;
+    private int sectionCapacity = 4;
     private Quadtree topLeft = null;
     private Quadtree topRight = null;
     private Quadtree bottomLeft = null;
@@ -93,9 +93,9 @@ public class Quadtree
     }
     
     
-    public HashSet<CollisionEvent> GetCollisions(Entity movingEntity)
+    public List<CollisionEvent> GetCollisions(Entity movingEntity)
     {
-        HashSet<CollisionEvent> collisions = new HashSet<CollisionEvent>();
+        List<CollisionEvent> collisions = new List<CollisionEvent>();
         List<Quadtree> children = new List<Quadtree> { topLeft, topRight, bottomLeft, bottomRight };
         movingEntity.TryGetComponent<Collider>(out var movingCollisionInfo);
         Rectangle movingCollisionBox = movingCollisionInfo.HitBox;
@@ -107,7 +107,7 @@ public class Quadtree
             {
                 if (movingCollisionBox.Intersects(childQuadtree.Bounds))
                 {
-                    collisions.UnionWith(childQuadtree.GetCollisions(movingEntity));
+                    collisions.AddRange(childQuadtree.GetCollisions(movingEntity));
                 }
             }
         }
@@ -126,23 +126,20 @@ public class Quadtree
                 {
                     if (movingCollisionBox.Y < secondaryCollisionBox.Y)
                     {
-                        direction = Direction.Bottom;
+                        direction = Direction.Top;
                     }
                     else
                     {
-                        direction = Direction.Top;
+                        direction = Direction.Bottom;
                     }
                 }
                 else
                 {
-                    if (movingCollisionBox.X < secondaryCollisionBox.X)
-                    {
-                        direction = Direction.Right;
-                    }
-                    else
+                    if(movingCollisionBox.X < secondaryCollisionBox.X)
                     {
                         direction = Direction.Left;
                     }
+                    direction = Direction.Right;
                 }
                 CollisionEvent collisionEvent = new CollisionEvent
                 {
