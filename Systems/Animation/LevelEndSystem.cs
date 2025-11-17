@@ -3,7 +3,15 @@ namespace ECS.Systems;
 
 public class LevelEndSystem : AbstractSystem
 {
+    private GraphicsManager Graphics;
+
     private LevelEndParams CurrentLevelEnd = null;
+    private Entity Player = null;
+
+    public LevelEndSystem(GraphicsManager graphics)
+    {
+        Graphics = graphics;   
+    }
 
     public override bool Initialize(Engine engine)
     {
@@ -32,6 +40,19 @@ public class LevelEndSystem : AbstractSystem
 
         if (CurrentLevelEnd is not null)
             CurrentLevelEnd.LevelEnded = true;
+        else
+            return;
+
+        var player = FindPlayer();
+
+        if (player is not null)
+        {
+            Player = player;
+            player.RemoveComponent<InputBindings>();
+            player.RemoveComponent<Friction>();
+            player.RemoveComponent<Mass>();
+            player.GetComponent<Velocity>().Value = CurrentLevelEnd.PlayerEndingVelocity;
+        }
     }
 
     public override void Update(Engine engine, GameTime gameTime)
@@ -41,7 +62,10 @@ public class LevelEndSystem : AbstractSystem
 
         // Get the time when the end of level procedure started
         if (CurrentLevelEnd.LevelEndTime < CONSTANTS.MATH.FLOAT_EPSILON)
+        {
             CurrentLevelEnd.LevelEndTime = (float) gameTime.TotalGameTime.TotalSeconds;
+            CurrentLevelEnd.BackgroundFadeColor = Graphics.BackgroundColor;
+        }
 
         foreach (var entity in Engine.GetEntities())
         {
@@ -54,10 +78,18 @@ public class LevelEndSystem : AbstractSystem
 
             if (CurrentLevelEnd.FadeColor > 0)
             {
+                float fadePct = (float)(1.0f - (gameTime.TotalGameTime.TotalSeconds - CurrentLevelEnd.LevelEndTime) / CurrentLevelEnd.FadeDuration);
+
                 CurrentLevelEnd.FadeColor = (byte)Math.Clamp(
-                    CONSTANTS.MATH.BYTE_MAX - (CONSTANTS.MATH.BYTE_MAX * ((gameTime.TotalGameTime.TotalSeconds - CurrentLevelEnd.LevelEndTime) / CurrentLevelEnd.FadeDuration)), 
+                    fadePct * CONSTANTS.MATH.BYTE_MAX, 
                     0, 
                     CONSTANTS.MATH.BYTE_MAX
+                );
+
+                Graphics.BackgroundColor = new Color(
+                    CurrentLevelEnd.BackgroundFadeColor.R / (float)CONSTANTS.MATH.BYTE_MAX * fadePct, 
+                    CurrentLevelEnd.BackgroundFadeColor.G / (float)CONSTANTS.MATH.BYTE_MAX * fadePct, 
+                    CurrentLevelEnd.BackgroundFadeColor.B / (float)CONSTANTS.MATH.BYTE_MAX * fadePct
                 );
             }
         }
@@ -84,7 +116,19 @@ public class LevelEndSystem : AbstractSystem
                 return data;
         }
 
-        // TODO: Handle this case properly
+        return null;
+    }
+
+    private Entity FindPlayer()
+    {
+        foreach (var entity in Engine.GetEntities())
+        {
+            if (entity.TryGetComponent<Tag>(out var tag)&&
+                tag.Value == CONSTANTS.TAG.PLAYER
+            )
+                return entity;
+        }
+
         return null;
     }
 }

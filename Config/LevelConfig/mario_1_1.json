@@ -44,7 +44,8 @@
             "components": {
                 "LevelEndParams": {
                     "FadeColor": 255,
-                    "FadeDuration": 2.5
+                    "FadeDuration": 1.0,
+                    "PlayerEndingVelocity": [ 150, 0 ]
                 }
             }
         },

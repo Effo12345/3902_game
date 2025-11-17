@@ -9,6 +9,8 @@ public class Game1 : Game
     public Game1()
     {
         GraphicsManager = new(this);
+        GameManager = new(this, Engine);
+
         Content.RootDirectory = "Content";
     }
 
@@ -38,10 +40,7 @@ public class Game1 : Game
         Engine.AddSystem(new EnemyCleanupSystem());
         Engine.AddSystem(new KoopaWakeupSystem());
         Engine.AddSystem(new MusicSystem());
-        Engine.AddSystem(new LevelEndSystem());
-
-        GameManager = new(this, Engine);
-
+        Engine.AddSystem(new LevelEndSystem(GraphicsManager));
         Engine.AddSystem(new MarioDefeatSystem(GameManager));
 
         base.Initialize();
