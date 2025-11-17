@@ -167,36 +167,8 @@
             "path": "Config/EntityConfig/music_player_config.json"
         },
         {
-            "key": "FlagConfig",
-            "path": "Config/EntityConfig/flag_config/flag_config.json"
-        },
-        {
-            "key": "FlagTopLeftConfig",
-            "path": "Config/EntityConfig/flag_config/flag_tl_config.json"
-        },
-        {
-            "key": "FlagMidLeftConfig",
-            "path": "Config/EntityConfig/flag_config/flag_ml_config.json"
-        },
-        {
-            "key": "FlagBottomLeftConfig",
-            "path": "Config/EntityConfig/flag_config/flag_bl_config.json"
-        },
-        {
-            "key": "FlagTopRightConfig",
-            "path": "Config/EntityConfig/flag_config/flag_tr_config.json"
-        },
-        {
-            "key": "FlagMidRightConfig",
-            "path": "Config/EntityConfig/flag_config/flag_mr_config.json"
-        },
-        {
-            "key": "FlagBottomRightConfig",
-            "path": "Config/EntityConfig/flag_config/flag_br_config.json"
-        },
-        {
-            "key": "FlagBarConfig",
-            "path": "Config/EntityConfig/flag_config/flag_bar_config.json"
+            "key": "FlagPartsConfig",
+            "path": "Config/EntityConfig/flag_parts_config.json"
         }
     ],
     "levelConfigs": [
@@ -287,49 +259,9 @@
         },
         {
             "key": "flag",
-            "entityConfig": "FlagConfig"
-        },
-        {
-            "key": "flag_top_left",
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
-            "entityConfig": "FlagTopLeftConfig"
-        },
-        {
-            "key": "flag_mid_left",
-            "spriteTexture": "TilesSheet",
-            "spriteAtlas": "TilesAnimation",
-            "entityConfig": "FlagMidLeftConfig"
-        },
-        {
-            "key": "flag_bottom_left",
-            "spriteTexture": "TilesSheet",
-            "spriteAtlas": "TilesAnimation",
-            "entityConfig": "FlagBottomLeftConfig"
-        },
-        {
-            "key": "flag_top_right",
-            "spriteTexture": "TilesSheet",
-            "spriteAtlas": "TilesAnimation",
-            "entityConfig": "FlagTopRightConfig"
-        },
-        {
-            "key": "flag_mid_right",
-            "spriteTexture": "TilesSheet",
-            "spriteAtlas": "TilesAnimation",
-            "entityConfig": "FlagMidRightConfig"
-        },
-        {
-            "key": "flag_bottom_right",
-            "spriteTexture": "TilesSheet",
-            "spriteAtlas": "TilesAnimation",
-            "entityConfig": "FlagBottomRightConfig"
-        },
-        {
-            "key": "flag_bar",
-            "spriteTexture": "TilesSheet",
-            "spriteAtlas": "TilesAnimation",
-            "entityConfig": "FlagBarConfig"
+            "entityConfig": "FlagPartsConfig"
         }
     ]
 }

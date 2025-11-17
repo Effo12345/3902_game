@@ -19,7 +19,6 @@ public static class LevelLoader
             var entity = EntityFactory.BuildEntity(engine, entityConfig.Key);
         
             EntityFactory.AppendComponentsFromConfig(entity, entityConfig.Config);
-            EntityFactory.BuildCompositeEntity(engine, entity);
         }
     }
 }

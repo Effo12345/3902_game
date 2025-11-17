@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic;
-
 namespace ECS.Util;
 
 public static class EntityFactory
@@ -89,23 +87,5 @@ public static class EntityFactory
 
         if (entityData.InputConfig is not null)
             entity.AddComponent(Assets.GetInputConfig(entityData.InputConfig));
-    }
-    public static void BuildCompositeEntity(Engine engine, Entity parent)
-    {
-        if(!parent.TryGetComponent<CompositeDefinition>(out var def) || !parent.TryGetComponent<Position>(out var parentPos)) return;
-
-        var composite = new CompositeEntity();
-        parent.AddComponent(composite);
-        
-        foreach(var childDef in def.Children)
-        {
-            var child = BuildEntity(engine, childDef.Key);
-            if(child.TryGetComponent<Position>(out var childPos))
-            {
-                childPos.Value = parentPos.Value + childDef.Offset;
-            }
-            if(!string.IsNullOrEmpty(childDef.PartName))
-                composite.Parts[childDef.PartName] = child;
-        }
     }
 }

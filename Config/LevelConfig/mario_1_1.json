@@ -28,12 +28,6 @@
             }
         },
         {
-            "key": "flag",
-            "components": {
-                "Position": {"Value": [1650, 384]}
-            }
-        },
-        {
             "key": "static_block",
             "components": {
                 "Position": { "Value": [ -44, 384 ] },
@@ -933,6 +927,201 @@
                     "TimeInCurrentFrame": 0.0
                 }
             }
-        }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1650, 360]},
+                "Collider": {
+                    "Type": "Flag",
+                    "HitBox": [0, 0, 48, 24]
+                },
+                "AnimationState": { 
+                    "CurrentState": "flag_bl", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 1}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1650, 312]},
+                "AnimationState": { 
+                    "CurrentState": "flag_ml", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 1}
+            }
+        },     
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1650, 264]},
+                "AnimationState": { 
+                    "CurrentState": "flag_ml", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 1}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1650, 216]},
+                "AnimationState": { 
+                    "CurrentState": "flag_ml", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 1}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1650, 168]},
+                "AnimationState": { 
+                    "CurrentState": "flag_ml", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 1}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1650, 120]},
+                "AnimationState": { 
+                    "CurrentState": "flag_ml", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 1}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1650, 72]},
+                "AnimationState": { 
+                    "CurrentState": "flag_tl", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 1}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1674, 360]},
+                "Collider": {
+                    "Type": "Flag",
+                    "HitBox": [0, 0, 72, 24]
+                },
+                "AnimationState": { 
+                    "CurrentState": "flag_bar", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "Rise": {
+                    "DeltaY": 267,
+                    "Speed": 150
+                }
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1746, 360]},
+                "Collider": {
+                    "Type": "Flag",
+                    "HitBox": [0, 0, 48, 24]
+                },
+                "AnimationState": { 
+                    "CurrentState": "flag_br", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 0}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1746, 312]},
+                "AnimationState": { 
+                    "CurrentState": "flag_mr", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 0}
+            }
+        },     
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1746, 264]},
+                "AnimationState": { 
+                    "CurrentState": "flag_mr", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 0}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1746, 216]},
+                "AnimationState": { 
+                    "CurrentState": "flag_mr", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 0}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1746, 168]},
+                "AnimationState": { 
+                    "CurrentState": "flag_mr", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 0}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1746, 120]},
+                "AnimationState": { 
+                    "CurrentState": "flag_mr", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 0}
+            }
+        },
+        {
+            "key": "flag",
+            "components": {
+                "Position": {"Value": [1746, 72]},
+                "AnimationState": { 
+                    "CurrentState": "flag_tr", 
+                    "FrameIndex": 0, 
+                    "TimeInCurrentFrame": 0.0 
+                },
+                "RenderLayer" : {"Value": 0}
+            }
+        }             
     ]
 }

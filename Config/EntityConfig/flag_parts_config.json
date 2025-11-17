@@ -1,0 +1,9 @@
+{
+  "Position": { "Value": [0,0] },
+  "Rotation": { "Value": 0.0 },
+  "Scale": { "Value": [ 3, 3 ]},
+  "Collider": {
+      "Type": "Flag",
+      "HitBox": [0, 0, 48, 48]
+  }
+}
