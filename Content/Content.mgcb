@@ -13,41 +13,108 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Config/assets.json
-/copy:Config/assets.json
+#begin Fonts/File.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/File.spritefont;Fonts/HUD.spritefont
 
-#begin Config/enemy_spritesheet.json
-/copy:Config/enemy_spritesheet.json
+#begin Sounds/Effects/1up.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/1up.wav
 
-#begin Config/goomba_config.json
-/copy:Config/goomba_config.json
+#begin Sounds/Effects/break_block.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/break_block.wav
 
-#begin Config/items_spritesheet.json
-/copy:Config/items_spritesheet.json
+#begin Sounds/Effects/coin.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/coin.wav
 
-#begin Config/koopa_config.json
-/copy:Config/koopa_config.json
+#begin Sounds/Effects/damage_pipe.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/damage_pipe.wav
 
-#begin Config/mario_1_1.json
-/copy:Config/mario_1_1.json
+#begin Sounds/Effects/death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/death.wav
 
-#begin Config/mario_spritesheet.json
-/copy:Config/mario_spritesheet.json
+#begin Sounds/Effects/fireball.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/fireball.wav
 
-#begin Config/player_config.json
-/copy:Config/player_config.json
+#begin Sounds/Effects/mario_jump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/mario_jump.wav
 
-#begin Config/player_input.json
-/copy:Config/player_input.json
+#begin Sounds/Effects/powerup_spawn.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/powerup_spawn.wav
 
-#begin Config/static_block_config.json
-/copy:Config/static_block_config.json
+#begin Sounds/Effects/powerup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/powerup.wav
 
-#begin Config/test_level.json
-/copy:Config/test_level.json
+#begin Sounds/Effects/shell_kick.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/shell_kick.wav
 
-#begin Config/tiles_spritesheet.json
-/copy:Config/tiles_spritesheet.json
+#begin Sounds/Effects/shell_ricochet.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/shell_ricochet.wav
+
+#begin Sounds/Effects/star.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/star.mp3
+
+#begin Sounds/Effects/stomp.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/stomp.wav
+
+#begin Sounds/Music/overworld.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Music/overworld.wav
+
+#begin Sprites/backgrounds.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/backgrounds.png
 
 #begin Sprites/enemies.png
 /importer:TextureImporter

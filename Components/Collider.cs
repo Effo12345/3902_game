@@ -6,7 +6,15 @@ public enum ColliderType
     Mario,
     Goomba,
     Koopa,
-    Block
+    Shell,
+    Block,
+    QuestionBlock,
+    Coin,
+    Red_Mushroom,
+    Green_Mushroom,
+    Flower,
+    Fireball,
+    Star
 }
 
 public class Collider

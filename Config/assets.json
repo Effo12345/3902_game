@@ -1,0 +1,267 @@
+{
+    "textures": [
+        {
+            "key": "MarioSheet",
+            "path": "Sprites/mario"
+        },
+        {
+            "key": "EnemiesSheet",
+            "path": "Sprites/enemies"
+        },
+        {
+            "key": "TilesSheet",
+            "path": "Sprites/tiles"
+        },
+        {
+            "key": "ItemsSheet",
+            "path": "Sprites/items"
+        },
+        {
+            "key": "BackgroundSheet",
+            "path": "Sprites/backgrounds"
+        }
+    ],
+    "fonts": [
+        {
+            "key": "HUDFont",
+            "path": "Fonts/HUD"
+        }
+    ],
+    "sounds": [
+        {
+            "key": "OverworldMusic",
+            "path": "Sounds/Music/overworld"
+        },
+        {
+            "key": "1Up",
+            "path": "Sounds/Effects/1up"
+        },
+        {
+            "key": "BlockBreak",
+            "path": "Sounds/Effects/break_block"
+        },
+        {
+            "key": "Coin",
+            "path": "Sounds/Effects/coin"
+        },
+        {
+            "key": "Damage",
+            "path": "Sounds/Effects/damage_pipe"
+        },
+        {
+            "key": "Death",
+            "path": "Sounds/Effects/death"
+        },
+        {
+            "key": "Fireball",
+            "path": "Sounds/Effects/fireball"
+        },
+        {
+            "key": "MarioJump",
+            "path": "Sounds/Effects/mario_jump"
+        },
+        {
+            "key": "PipeEnter",
+            "path": "Sounds/Effects/damage_pipe"
+        },
+        {
+            "key": "PowerupSpawn",
+            "path": "Sounds/Effects/powerup_spawn"
+        },
+        {
+            "key": "Powerup",
+            "path": "Sounds/Effects/powerup"
+        },
+        {
+            "key": "ShellKick",
+            "path": "Sounds/Effects/shell_kick"
+        },
+        {
+            "key": "ShellRicochet",
+            "path": "Sounds/Effects/shell_ricochet"
+        },
+        {
+            "key": "Star",
+            "path": "Sounds/Effects/star"
+        },
+        {
+            "key": "Stomp",
+            "path": "Sounds/Effects/stomp"
+        }
+    ],
+    "spriteAtlases": [
+        {
+            "key": "MarioAnimation",
+            "path": "Config/SpriteConfig/mario_spritesheet.json"
+        },
+        {
+            "key": "EnemyAnimation",
+            "path": "Config/SpriteConfig/enemy_spritesheet.json"
+        },
+        {
+            "key": "TilesAnimation",
+            "path": "Config/SpriteConfig/tiles_spritesheet.json"
+        },
+        {
+            "key": "BackgroundAnimation",
+            "path": "Config/SpriteConfig/background_spritesheet.json"
+        }
+    ],
+    "inputConfigs": [
+        {
+            "key": "PlayerInput",
+            "path": "Config/InputConfig/player_input.json"
+        }
+    ],
+    "entityConfigs": [
+        {
+            "key": "MarioConfig",
+            "path": "Config/EntityConfig/player_config.json"
+        },
+        {
+            "key": "GoombaConfig",
+            "path": "Config/EntityConfig/goomba_config.json"
+        },
+        {
+            "key": "KoopaConfig",
+            "path": "Config/EntityConfig/koopa_config.json"
+        },
+        {
+            "key": "FireballConfig",
+            "path": "Config/EntityConfig/fireball_config.json"
+        },
+        {
+            "key": "StaticBlock",
+            "path": "Config/EntityConfig/static_block_config.json"
+        },
+        {
+            "key": "HUDText",
+            "path": "Config/EntityConfig/hud_text_config.json"
+        },
+        {
+            "key": "QuestionBlock",
+            "path": "Config/EntityConfig/question_block_config.json"
+        },
+        {
+            "key": "CoinConfig",
+            "path": "Config/EntityConfig/coin_config.json"
+        },
+        {
+            "key": "RedMushroomConfig",
+            "path": "Config/EntityConfig/red_mushroom_config.json"
+        }, 
+        {
+            "key": "GreenMushroomConfig",
+            "path": "Config/EntityConfig/green_mushroom_config.json"
+        }, 
+        {
+            "key": "FlowerConfig",
+            "path": "Config/EntityConfig/flower_config.json"
+        }, 
+        {
+            "key": "StarConfig",
+            "path": "Config/EntityConfig/star_config.json"
+        },
+        {
+            "key": "BackgroundConfig",
+            "path": "Config/EntityConfig/background_config.json"
+        },
+        {
+            "key": "MusicPlayerConfig",
+            "path": "Config/EntityConfig/music_player_config.json"
+        }
+    ],
+    "levelConfigs": [
+        {
+            "key": "TestLevel",
+            "path": "Config/LevelConfig/test_level.json"
+        },
+        {
+            "key": "Mario1_1",
+            "path": "Config/LevelConfig/mario_1_1.json"
+        }
+    ],
+    "entities": [
+        {
+            "key": "mario",
+            "spriteTexture": "MarioSheet",
+            "spriteAtlas": "MarioAnimation",
+            "entityConfig": "MarioConfig",
+            "inputConfig": "PlayerInput"
+        },
+        {
+            "key": "goomba",
+            "spriteTexture": "EnemiesSheet",
+            "spriteAtlas": "EnemyAnimation",
+            "entityConfig": "GoombaConfig"
+        },
+        {
+            "key": "koopa",
+            "spriteTexture": "EnemiesSheet",
+            "spriteAtlas": "EnemyAnimation",
+            "entityConfig": "KoopaConfig"
+        },
+        {
+          "key": "static_block",
+          "spriteTexture": "TilesSheet",
+          "spriteAtlas": "TilesAnimation",
+          "entityConfig": "StaticBlock"
+        },
+        {
+            "key": "hud_text",
+            "entityConfig": "HUDText"
+        },
+        {
+            "key": "question_block",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "QuestionBlock"
+        },
+        {
+            "key": "coin",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "CoinConfig"
+        },
+        {
+            "key": "fireball",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FireballConfig"
+        },
+        {
+            "key": "red_mushroom",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "RedMushroomConfig"
+        },
+        {
+            "key": "green_mushroom",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "GreenMushroomConfig"
+        },
+        {
+            "key": "flower",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FlowerConfig"
+        },
+        {
+            "key": "star",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "StarConfig"
+        },
+        {
+            "key": "background",
+            "spriteTexture": "BackgroundSheet",
+            "spriteAtlas": "BackgroundAnimation",
+            "entityConfig": "BackgroundConfig"
+        },
+        {
+            "key": "music_player",
+            "entityConfig": "MusicPlayerConfig"
+        }
+    ]
+}
