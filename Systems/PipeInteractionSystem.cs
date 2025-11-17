@@ -1,5 +1,6 @@
 
 using ECS.Events;
+using Microsoft.VisualBasic;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -10,21 +11,24 @@ public class PipeInteractionSystem : AbstractSystem
     private GameManager GameManager;
     // private string Destination = "";
 
-    public PipeInteractionSystem(GameManager gameManager)
-    {
-        GameManager = gameManager;
-    }
+    private bool Enter = false;
     public override bool Initialize(Engine engine)
     {
         base.Initialize(engine);
         engine.PubSub.CreateSubscription<PipeEvent>(HandleEntry);
-        // engine.PubSub.CreateSubscription<InputActionEvent>(HandleInput);
+        engine.PubSub.CreateSubscription<InputActionEvent>(HandleInput);
         return true;
     }
+    private void HandleInput(IEvent e)
+    {
+        var inputEvent = (InputActionEvent)e;
 
+        string Action = inputEvent.Action;
+        if (Action.Equals("Crouch")) 
+            Enter = true;
+    }
     private void HandleEntry(IEvent e)
     {
-        Console.WriteLine("Event");
         var pipeEvent = (PipeEvent)e;
  
         Direction inputDirection = pipeEvent.InputDirection;
@@ -32,7 +36,8 @@ public class PipeInteractionSystem : AbstractSystem
         Entity entity = pipeEvent.Entity;
         Vector2 destination = pipeEvent.Destination;
 
-        if (inputDirection.Equals(pipeDirection))
+        Console.WriteLine(Enter);
+        if (inputDirection.Equals(pipeDirection) && Enter)
         {
            if (entity.TryGetComponent<Position>(out var position)) {
                 position.Value = destination;
@@ -40,5 +45,7 @@ public class PipeInteractionSystem : AbstractSystem
         }
     }
     public override void Update(Engine engine, GameTime gameTime)
-    {}
+    {
+        Enter = false;
+    }
 }
