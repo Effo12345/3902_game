@@ -62,6 +62,7 @@ public static class CONSTANTS
         public static string POWERUP_SPAWN { get; } = "PowerupSpawn";
         public static string DEATH { get; } = "Death";
         public static string JUMP { get; } = "MarioJump";
+        public static string COURSE_CLEAR { get; } = "CourseClear";
     }
     public static class MATH
     {

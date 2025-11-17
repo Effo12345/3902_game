@@ -46,7 +46,7 @@
                     "FadeColor": 255,
                     "FadeDuration": 1.0,
                     "PlayerEndingVelocity": [ 150, 0 ],
-                    "WalkDuration": 2.0
+                    "WalkDuration": 7.3
                 }
             }
         },
@@ -6293,7 +6293,447 @@
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 9882, 384 ] },
+                "Position": { "Value": [ 9892, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9892, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9940, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9940, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9988, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9988, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10036, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10036, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10084, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10084, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10132, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10132, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10180, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10180, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10228, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10228, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10276, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10276, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10324, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10324, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10372, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10372, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10420, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10420, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10468, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10468, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10516, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10516, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10564, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10564, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10612, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10612, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10660, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10660, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10708, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10708, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10756, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10756, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+		{
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10804, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_grass_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10804, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "dirt_block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 10852, 384 ] },
                 "AnimationState": {
                     "CurrentState": "right_rounded_grass_block",
                     "FrameIndex": 0,
@@ -6304,7 +6744,7 @@
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 9882, 432 ] },
+                "Position": { "Value": [ 10852, 432 ] },
                 "AnimationState": {
                     "CurrentState": "right_vertical_grass_block",
                     "FrameIndex": 0,

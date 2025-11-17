@@ -58,8 +58,8 @@ public class Game1 : Game
         Engine.AddSystem(new CameraSystem(GraphicsManager));
         Engine.AddSystem(new BackgroundRenderSystem(GraphicsManager));
         Engine.AddSystem(new RenderSystem(GraphicsManager));
-        Engine.AddSystem(new CollisionVisualizationSystem(GraphicsManager));
-        Engine.AddSystem(new VectorVisualizationSystem(GraphicsManager));
+        // Engine.AddSystem(new CollisionVisualizationSystem(GraphicsManager));
+        // Engine.AddSystem(new VectorVisualizationSystem(GraphicsManager));
         Engine.AddSystem(new TextRenderSystem(GraphicsManager, assets));
     }
 

@@ -45,6 +45,10 @@
             "path": "Sounds/Effects/coin"
         },
         {
+            "key": "CourseClear",
+            "path": "Sounds/Effects/course_clear"
+        },
+        {
             "key": "Damage",
             "path": "Sounds/Effects/damage_pipe"
         },

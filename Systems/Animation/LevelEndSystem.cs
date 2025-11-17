@@ -35,13 +35,16 @@ public class LevelEndSystem : AbstractSystem
         )
             return;
 
-        DeleteFlagBar();
         CurrentLevelEnd = FindLevelEnder();
-
-        if (CurrentLevelEnd is not null)
-            CurrentLevelEnd.LevelEnded = true;
-        else
+        if (CurrentLevelEnd is null || CurrentLevelEnd.LevelEnded)
             return;
+        
+        CurrentLevelEnd.LevelEnded = true;
+
+        DeleteFlagBar();
+
+        SoundPlayer.StopAll();
+        SoundPlayer.PlaySfx("CourseClear");
 
         var player = FindPlayer();
 
