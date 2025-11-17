@@ -31,11 +31,20 @@
             }
         },
         {
-            "key": "music_player",
+            "key": "empty",
             "components": {
                 "Music": {
                     "Key": "OverworldMusic",
                     "Volume": 0.5
+                }
+            }
+        },
+        {
+            "key": "empty",
+            "components": {
+                "LevelEndParams": {
+                    "FadeColor": 255,
+                    "FadeDuration": 2.5
                 }
             }
         },

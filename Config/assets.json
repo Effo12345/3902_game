@@ -163,8 +163,8 @@
             "path": "Config/EntityConfig/background_config.json"
         },
         {
-            "key": "MusicPlayerConfig",
-            "path": "Config/EntityConfig/music_player_config.json"
+            "key": "EmptyConfig",
+            "path": "Config/EntityConfig/empty.json"
         },
         {
             "key": "FlagBlockConfig",
@@ -258,8 +258,8 @@
             "entityConfig": "BackgroundConfig"
         },
         {
-            "key": "music_player",
-            "entityConfig": "MusicPlayerConfig"
+            "key": "empty",
+            "entityConfig": "EmptyConfig"
         },
         {
             "key": "flag_block",
