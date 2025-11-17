@@ -45,7 +45,8 @@
                 "LevelEndParams": {
                     "FadeColor": 255,
                     "FadeDuration": 1.0,
-                    "PlayerEndingVelocity": [ 150, 0 ]
+                    "PlayerEndingVelocity": [ 150, 0 ],
+                    "WalkDuration": 2.0
                 }
             }
         },

@@ -8,4 +8,5 @@ public class LevelEndParams
     public Color BackgroundFadeColor;
     public float FadeDuration;
     public Vector2 PlayerEndingVelocity;
+    public float WalkDuration;
 }

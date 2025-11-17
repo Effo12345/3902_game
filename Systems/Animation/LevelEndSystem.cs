@@ -51,7 +51,7 @@ public class LevelEndSystem : AbstractSystem
             player.RemoveComponent<InputBindings>();
             player.RemoveComponent<Friction>();
             player.RemoveComponent<Mass>();
-            player.GetComponent<Velocity>().Value = CurrentLevelEnd.PlayerEndingVelocity;
+            player.GetComponent<Velocity>().Value.X = CurrentLevelEnd.PlayerEndingVelocity.X;
         }
     }
 
@@ -66,6 +66,8 @@ public class LevelEndSystem : AbstractSystem
             CurrentLevelEnd.LevelEndTime = (float) gameTime.TotalGameTime.TotalSeconds;
             CurrentLevelEnd.BackgroundFadeColor = Graphics.BackgroundColor;
         }
+
+        float deltaSeconds = (float)gameTime.TotalGameTime.TotalSeconds - CurrentLevelEnd.LevelEndTime;
 
         foreach (var entity in Engine.GetEntities())
         {
@@ -91,6 +93,20 @@ public class LevelEndSystem : AbstractSystem
                     CurrentLevelEnd.BackgroundFadeColor.G / (float)CONSTANTS.MATH.BYTE_MAX * fadePct, 
                     CurrentLevelEnd.BackgroundFadeColor.B / (float)CONSTANTS.MATH.BYTE_MAX * fadePct
                 );
+            }
+
+            if (deltaSeconds > CurrentLevelEnd.WalkDuration)
+            {
+                Player.RemoveComponent<Status>();
+                Player.RemoveComponent<Acceleration>();
+                engine.PubSub.Publish(new AnimationChangeEvent
+                {
+                    Entity = Player,
+                    NewState = CONSTANTS.ANIMATION_STATE.BIG_PEACE_SIGN
+                });
+                Player.TryGetComponent<Position>(out var pos);
+                Player.GetComponent<Position>().Value = new Vector2(pos.Value.X, 300);
+                Player.GetComponent<Velocity>().Value = Vector2.Zero;
             }
         }
     }

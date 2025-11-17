@@ -35,6 +35,7 @@ public static class CONSTANTS
         public static string PLAYER_JUMP_SUFFIX { get; } = "_jump";
         public static string PLAYER_IDLE_SUFFIX { get; } = "_idle";
         public static string PLAYER_WALK_SUFFIX { get; } = "_walk";
+        public static string BIG_PEACE_SIGN { get; } = "big_peace";
     }
     public static class COLLISION
     {
