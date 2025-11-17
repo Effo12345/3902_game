@@ -83,10 +83,15 @@ public class MarioCollisionSystem : AbstractSystem
                 }
                 break;
             case ColliderType.Goomba:
+                if (movingStatus.StarTimer > 0)
+                {
+                    HurtEnemy(secondaryEntity,DeathType.Flipped);
+                    break;
+                }
                 if (movingVelocity.Value.Y > 0)
                 {
                     movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY;
-                    HurtEnemy(secondaryEntity);
+                    HurtEnemy(secondaryEntity, DeathType.Squished);
                 }
                 else if (!movingStatus.isInvincible)
                 {
@@ -94,6 +99,11 @@ public class MarioCollisionSystem : AbstractSystem
                 }
                 break;
             case ColliderType.Koopa:
+                if (movingStatus.StarTimer > 0)
+                {
+                    HurtEnemy(secondaryEntity,DeathType.Flipped);
+                    break;
+                }
                 if (movingVelocity.Value.Y > 0)
                 {
                     movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY; //TODO: remove magic number
@@ -114,6 +124,11 @@ public class MarioCollisionSystem : AbstractSystem
                 }
                 break;
             case ColliderType.Shell:
+                if (movingStatus.StarTimer > 0)
+                {
+                    HurtEnemy(secondaryEntity,DeathType.Flipped);
+                    break;
+                }
                 if (direction.Equals(Direction.Bottom))
                 {
                     movingVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_BOUNCE_VELOCITY; 
@@ -162,7 +177,7 @@ public class MarioCollisionSystem : AbstractSystem
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.POWERUP);
                 break;
             case ColliderType.Star:
-                movingStatus.isStar = true;
+                movingStatus.StarTimer = CONSTANTS.TEMP.STAR_TIMER;
                 Engine.DestroyEntity(secondaryEntity);
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.POWERUP);
                 break;
@@ -188,17 +203,22 @@ public class MarioCollisionSystem : AbstractSystem
             status.State = CONSTANTS.PLAYER_STATE.DEAD;
     }
 
-    private static void HurtEnemy(Entity entity)
+    private static void HurtEnemy(Entity entity, DeathType deathType)
     {
         entity.TryGetComponent<BasicEnemy>(out var enemy);
         entity.TryGetComponent<Scale>(out var scale);
         entity.TryGetComponent<Velocity>(out var velocity);
         entity.TryGetComponent<Collider>(out var collider);
-        entity.RemoveComponent<Mass>();
         collider.HitBox = new Rectangle();
-        scale.Value = new Vector2(3, 1);
         velocity.Value.X = 0;
-        enemy.DeathType = DeathType.Squished;
+        if (deathType == DeathType.Squished) {
+            scale.Value = new Vector2(3, 1);
+            entity.RemoveComponent<Mass>();
+        } else
+        {
+            velocity.Value.Y = CONSTANTS.COLLISION.ENEMY_FLIP_VELOCITY;
+        }
+        enemy.DeathType = deathType;
 
         SoundPlayer.PlaySfx(CONSTANTS.SOUND.STOMP);
     }

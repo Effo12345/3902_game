@@ -84,7 +84,7 @@ public static class CONSTANTS
         public static float KOOPA_RESPAWN_HEIGHT { get; } = 34;
         public static Vector2 FIREBALL_SPAWN { get; } = new Vector2(15 * 3 / 2);
         public static float RESPAWN_TIMER { get; } = 3.5f;
-        public static float STAR_TIMER { get; } = 2.0f;
+        public static float STAR_TIMER { get; } = 8.0f;
         public static float JUMP_VELOCITY { get; } = -900.0f;
     }
     public static class RENDER

@@ -5,7 +5,7 @@ public class Status
     public string State; //Can be "small" "big" "fire" or "dead"
     public float InvincibilityDuration;
     public bool isInvincible;
-    public bool isStar;
+    public float StarTimer;
     public int Lives;
     public int Coins;
 

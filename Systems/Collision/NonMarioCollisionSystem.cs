@@ -94,7 +94,6 @@ public class NonMarioCollisionSystem : AbstractSystem
                 }
                 break;
             case ColliderType.Fireball:
-                Console.WriteLine("fireball colliding");
                 if (secondaryType == ColliderType.Goomba || secondaryType == ColliderType.Koopa || secondaryType == ColliderType.Shell)
                 {
                     Engine.DestroyEntity(movingEntity);
