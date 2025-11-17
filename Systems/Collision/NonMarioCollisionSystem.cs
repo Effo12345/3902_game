@@ -78,6 +78,7 @@ public class NonMarioCollisionSystem : AbstractSystem
                     secondaryVelocity.Value.X = 0;
                     secondaryVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_FLIP_VELOCITY;
                     secondaryEnemy.DeathType = DeathType.Flipped;
+                    SoundPlayer.PlaySfx(CONSTANTS.SOUND.STOMP);
                 }
 
 
@@ -92,17 +93,38 @@ public class NonMarioCollisionSystem : AbstractSystem
                     }
                 }
                 break;
+            case ColliderType.Fireball:
+                if (secondaryType == ColliderType.Goomba || secondaryType == ColliderType.Koopa || secondaryType == ColliderType.Shell)
+                {
+                    Engine.DestroyEntity(movingEntity);
+                    secondaryEntity.TryGetComponent<BasicEnemy>(out var secondaryEnemy);
+                    secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity);
+                    secondaryCollisionInfo.HitBox = new Rectangle();
+                    secondaryVelocity.Value.X = 0;
+                    secondaryVelocity.Value.Y = CONSTANTS.COLLISION.ENEMY_FLIP_VELOCITY;
+                    secondaryEnemy.DeathType = DeathType.Flipped;
+                    SoundPlayer.PlaySfx(CONSTANTS.SOUND.STOMP);
+
+                }
+                if ((direction.Equals(Direction.Left) || direction.Equals(Direction.Right)) && secondaryCollisionInfo.Type.Equals(ColliderType.Block))
+                {
+                    Engine.DestroyEntity(movingEntity);
+                    
+                }
+                break;
         }
 
-        //Make the star jump
-        if (movingCollisionInfo.Type == ColliderType.Star && movingIsGrounded.Value == true)
+        //Make the star and fireball jump
+        if ((movingCollisionInfo.Type == ColliderType.Star || movingCollisionInfo.Type == ColliderType.Fireball) && movingIsGrounded.Value == true)
         {
-            movingVelocity.Value.Y = CONSTANTS.COLLISION.STAR_JUMP_VELOCITY;
+            movingVelocity.Value.Y = CONSTANTS.COLLISION.ITEM_JUMP_VELOCITY;
             movingEntity.TryGetComponent<Acceleration>(out var movingAcceleration);
             movingAcceleration.Value.Y = 0;
-        }
+        } 
 
     }
+
+
     
     // no-op
     public override void Update(Engine engine, GameTime gameTime) { }

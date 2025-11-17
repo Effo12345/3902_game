@@ -8,7 +8,7 @@ public class Quadtree
     private int Y;
     private int Width;
     private int Height;
-    private int sectionCapacity = 4;
+    private int sectionCapacity = 20;
     private Quadtree topLeft = null;
     private Quadtree topRight = null;
     private Quadtree bottomLeft = null;
