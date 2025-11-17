@@ -17,6 +17,7 @@ public static class CONSTANTS
     {
         public static string QUIT { get; } = "Quit";
         public static string RESET { get; } = "Reset";
+        public static string CROUCH { get; } = "Crouch";
         public static string TEST_LEVEL { get; } = "TestLevel";
         public static string MARIO_LEVEL { get; } = "MarioLevel";
         public static string VELOCITY { get; } = "Velocity";

@@ -19,7 +19,6 @@ public class StarSystem : AbstractSystem {
                     SoundPlayer.PlaySfx(CONSTANTS.SOUND.STAR); //TODO: this should be music, not a sound effect, and it should pause the overworld song when it plays
                 }
                 status.StarTimer -= deltaTime;
-                Console.WriteLine(status.StarTimer);
             } 
             
         }

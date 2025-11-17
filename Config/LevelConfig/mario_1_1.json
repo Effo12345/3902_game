@@ -460,6 +460,10 @@
                     "CurrentState": "green_pipe_tl",
                     "FrameIndex": 0,
                     "TimeInCurrentFrame": 0.0
+                },
+                "PipeEntry": {
+                    "Destination": [0, 0],
+                    "EntryDirection": "Bottom"
                 }
             }
         },
@@ -471,6 +475,10 @@
                     "CurrentState": "green_pipe_tr",
                     "FrameIndex": 0,
                     "TimeInCurrentFrame": 0.0
+                },
+                "PipeEntry": {
+                    "Destination": [0, 0],
+                    "EntryDirection": "Bottom"
                 }
             }
         },

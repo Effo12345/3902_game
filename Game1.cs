@@ -22,6 +22,7 @@ public class Game1 : Game
     {
         Engine.AddSystem(new HitboxMovementSystem());
         Engine.AddSystem(new CollisionDetectionSystem());
+        Engine.AddSystem(new PipeInteractionSystem());
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new MarioCollisionSystem());
         Engine.AddSystem(new NonMarioCollisionSystem());
