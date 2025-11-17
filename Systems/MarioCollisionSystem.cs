@@ -39,7 +39,7 @@ public class MarioCollisionSystem : AbstractSystem
                     movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
                     if (secondaryEntity.TryGetComponent<PipeEntry>(out var pipeEntry))
                     {
-                        Engine.PubSub.Publish(new PipeEvent {Entity = movingEntity, Destination = new Vector2(100, 100), InputDirection = Direction.Bottom, PipeDirection = pipeEntry.EntryDirection });
+                        Engine.PubSub.Publish(new PipeEvent {Entity = movingEntity, Destination = pipeEntry.Destination, InputDirection = Direction.Bottom, PipeDirection = pipeEntry.EntryDirection });
                     }
                 }
                 else if (direction.Equals(Direction.Right) || direction.Equals(Direction.Left))

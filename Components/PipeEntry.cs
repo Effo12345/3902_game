@@ -2,6 +2,6 @@ namespace ECS.Components;
 
 public class PipeEntry
 {
-    public string Destination;
+    public Vector2 Destination;
     public Direction EntryDirection;
 }

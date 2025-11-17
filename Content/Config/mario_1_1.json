@@ -829,7 +829,7 @@
                 "TimeInCurrentFrame": 0.0
               },
               "PipeEntry": {
-                "Destination": "TestLevel",
+                "Destination": [0 , 0],
                 "EntryDirection":  "Bottom"
               }
             }
@@ -844,7 +844,7 @@
               "TimeInCurrentFrame": 0.0
             },
             "PipeEntry": {
-              "Destination": "TestLevel",
+              "Destination": [0, 0],
               "EntryDirection": "Bottom"
             }
           }
