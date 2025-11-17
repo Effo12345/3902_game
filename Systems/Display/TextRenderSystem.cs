@@ -5,9 +5,9 @@ public class TextRenderSystem : AbstractSystem
     private readonly SpriteBatch SpriteBatch;
     private readonly Assets Assets;
 
-    public TextRenderSystem(SpriteBatch spriteBatch, Assets assets)
+    public TextRenderSystem(GraphicsManager graphics, Assets assets)
     {
-        SpriteBatch = spriteBatch;
+        SpriteBatch = graphics.SpriteBatch;
         Assets = assets;
     }
 
