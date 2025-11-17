@@ -1,10 +1,9 @@
 namespace ECS.Events;
 
-public class ItemSpawn : IEvent
+public struct ItemSpawn : IEvent
 {
     public Position Position;
-    public Entity SourceBlock;
-    public ItemKind ItemKind;
-    public string TextureKey;
-    public string SpriteAtlasKey;
+    public Texture2D Texture;
+    public ItemKind Kind;
+    public Rectangle SourceRect;
 }
