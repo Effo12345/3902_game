@@ -20,7 +20,7 @@ public class ItemSpawnSystem : AbstractSystem
                 itemCollider.Type == ColliderType.Coin)
             {
                 velocity.Value.Y =CONSTANTS.COLLISION.ITEM_SPAWN_VELOCITY;
-                mass.Value = CONSTANTS.COLLISION.ITEM_MASS;
+                // mass.Value = CONSTANTS.COLLISION.ITEM_MASS;
 
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.COIN);
             }

@@ -21,12 +21,11 @@ public class PhysicsSystem : AbstractSystem
                 continue;
 
             // TODO: This looks like to could be more efficient
-            var vel = velocity.Value;
             var velCap = velocityCap.Value;
-            if (Math.Abs(vel.X) > velCap.X)
-                vel.X = velCap.X * Math.Sign(vel.X);
-            if (Math.Abs(vel.Y) > velCap.Y)
-                vel.Y = velCap.Y * Math.Sign(vel.Y);
+            if (Math.Abs(velocity.Value.X) > velCap.X)
+                velocity.Value.X = velCap.X * Math.Sign(velocity.Value.X);
+            if (Math.Abs(velocity.Value.Y) > velCap.Y)
+                velocity.Value.Y = velCap.Y * Math.Sign(velocity.Value.Y);
         }
     }
 }

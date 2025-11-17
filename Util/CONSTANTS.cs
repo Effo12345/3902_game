@@ -38,17 +38,17 @@ public static class CONSTANTS
     }
     public static class COLLISION
     {
-        public static Rectangle QUADTREE_DIMENSION { get; } = new Rectangle(-200,0,1800,480);
+        public static Rectangle QUADTREE_DIMENSION { get; } = new Rectangle(-200,0,20000,480);
         public static float ENEMY_BOUNCE_VELOCITY { get; } = -500;
         public static float ENEMY_FLIP_VELOCITY { get; } = -200;
         public static float SHELL_KICK_SPEED { get; } = 400;
         public static float STAR_JUMP_VELOCITY { get; } = -500;
         public static Vector2 ITEM_VELOCITY { get; } = new Vector2(100, 0);
-        public static float ITEM_SPAWN_VELOCITY { get; } = -500;
+        public static float ITEM_SPAWN_VELOCITY { get; } = -300;
         public static float ITEM_MASS { get; } = 5;
         public static float ITEM_RISE_SPEED { get; } = 50.0f;
         public static float COIN_RISE_SPEED { get; } = 200.0f;
-        public static float MARIO_DEATH_VELOCITY { get; } = -500.0f;
+        public static float MARIO_DEATH_VELOCITY { get; } = -1000.0f;
     }
     public static class SOUND
     {
@@ -80,6 +80,11 @@ public static class CONSTANTS
         public static float KOOPA_RESPAWN_HEIGHT { get; } = 34;
         public static float RESPAWN_TIMER { get; } = 3.5f;
         public static float STAR_TIMER { get; } = 2.0f;
-        public static float JUMP_VELOCITY { get; } = -300.0f;
+        public static float JUMP_VELOCITY { get; } = -900.0f;
+    }
+    public static class RENDER
+    {
+        public static Vector2 WindowSize { get; } = new Vector2(800, 800);
+        public static float VERTICAL_CAMERA_OFFSET { get; } = 320;
     }
 }
