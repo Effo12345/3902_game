@@ -1,0 +1,19 @@
+{
+    "Position": { "Value": [ 0, 0 ] },
+    "Velocity": { "Value": [ 500, 0 ] },
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 3, 3 ] },
+    "Mass": { "Value": 10 },
+    "Acceleration": { "Value": [ 0.0, 0.0 ] },
+    "IsGrounded": { "Value": false },
+    "FacingDirection": {"IsFacingLeft": false},
+    "Collider": {
+        "Type": "Fireball",
+        "HitBox": [0, 0, 21, 21]
+    },
+    "AnimationState": {
+        "CurrentState": "fireball",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    }
+}
