@@ -7,6 +7,7 @@ public class Status
     public bool isInvincible;
     public bool isStar;
     public int Lives;
+    public int Coins;
 
     public int NumFireballs = 0;
     // public int Health;

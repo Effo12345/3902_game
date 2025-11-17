@@ -1,6 +1,5 @@
 {
     "Position": { "Value": [ 4, 432 ] },
-    "Velocity": {},
     "Acceleration": {},
     "Mass": { "Value": 5 },
     "IsGrounded": {},

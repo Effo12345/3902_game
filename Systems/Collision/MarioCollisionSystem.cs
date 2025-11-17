@@ -67,6 +67,9 @@ public class MarioCollisionSystem : AbstractSystem
                         {
                             secondaryItem.Kind = Kind.flower;
                         }
+                    } else if (secondaryEntity.HasComponent<ItemKind>() && secondaryItem.Kind == Kind.coin)
+                    {
+                        movingStatus.Coins++;
                     }
 
                     if (secondaryCollisionInfo.Type == ColliderType.QuestionBlock || movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
@@ -138,6 +141,11 @@ public class MarioCollisionSystem : AbstractSystem
                     else if (!movingStatus.isInvincible && !(movingVelocity.Value.Y > 0) && ((movingCollisionInfo.HitBox.Center.X < secondaryCollisionInfo.HitBox.Center.X && secondaryVelocity.Value.X < 0) || (movingCollisionInfo.HitBox.Center.X > secondaryCollisionInfo.HitBox.Center.X) && secondaryVelocity.Value.X > 0))
                         HurtMario(movingStatus);
                 }
+                break;
+            case ColliderType.Coin:
+                Engine.DestroyEntity(secondaryEntity);
+                movingStatus.Coins++;
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.COIN);
                 break;
             case ColliderType.Red_Mushroom:
                 if (movingStatus.State != CONSTANTS.PLAYER_STATE.FIRE)

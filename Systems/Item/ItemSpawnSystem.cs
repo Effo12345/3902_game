@@ -16,10 +16,9 @@ public class ItemSpawnSystem : AbstractSystem
         if (e.SourceBlock.TryGetComponent<Collider>(out var blockCollider) && item.TryGetComponent<Collider>(out var itemCollider))
         {
             if (item.TryGetComponent<Mass>(out var mass) &&
-                item.TryGetComponent<Velocity>(out var velocity) &&
                 itemCollider.Type == ColliderType.Coin)
             {
-                velocity.Value.Y =CONSTANTS.COLLISION.ITEM_SPAWN_VELOCITY;
+                item.AddComponent(new Velocity {Value = new Vector2(0, CONSTANTS.COLLISION.ITEM_SPAWN_VELOCITY)});
                 // mass.Value = CONSTANTS.COLLISION.ITEM_MASS;
 
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.COIN);
@@ -44,5 +43,8 @@ public class ItemSpawnSystem : AbstractSystem
             item.AddComponent(new Position { Value = spawnPosition });
     
     }
-    public override void Update(Engine engine, GameTime gameTime) { }
+    public override void Update(Engine engine, GameTime gameTime)
+    {
+
+    }
 } 
