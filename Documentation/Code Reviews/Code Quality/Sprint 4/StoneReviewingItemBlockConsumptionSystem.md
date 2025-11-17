@@ -6,11 +6,11 @@
 
 **Sprint**: Sprint 4
 
-**File(s) reviewed**: ItemBlockConsumptionSystem.cs
+**File(s) reviewed**: ItemBlockConsumptionSystem.cs, ItemRiseSystem.cs
 
 **Author of file(s)**: Jiajie
 
-**Time spent reviewing**: 20 min
+**Time spent reviewing**: 22 min
 
 ## Code Smell Analysis
 
@@ -56,7 +56,7 @@
 
 ### 11. Lazy Class/ Middle Man
 
-- It may ought to be merged with other block interaction systems
+- The two classes may ought to be merged with other block interaction systems
 
 ### 12. Message Chains
 
