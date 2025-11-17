@@ -28,6 +28,7 @@ public class Game1 : Game
         Engine.AddSystem(new InvincibilitySystem());
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new PlayerMotionSystem());
+        Engine.AddSystem(new BoundedMotionSystem());
         Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new AnimationSystem());
@@ -63,8 +64,8 @@ public class Game1 : Game
         // TODO: It's annoying to have this system here by itself
         Engine.AddSystem(new BackgroundRenderSystem(_spriteBatch));
         Engine.AddSystem(new RenderSystem(_spriteBatch));
-        Engine.AddSystem(new CollisionVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
-        Engine.AddSystem(new VectorVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
+        // Engine.AddSystem(new CollisionVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
+        // Engine.AddSystem(new VectorVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
         Engine.AddSystem(new TextRenderSystem(_spriteBatch, assets));
     }
 

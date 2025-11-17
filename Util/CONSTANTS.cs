@@ -87,4 +87,8 @@ public static class CONSTANTS
         public static Vector2 WindowSize { get; } = new Vector2(800, 800);
         public static float VERTICAL_CAMERA_OFFSET { get; } = 320;
     }
+    public static class TAG
+    {
+        public static string FLAG_BAR { get; } = "flag_bar";
+    }
 }

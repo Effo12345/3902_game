@@ -1891,7 +1891,12 @@
         {
             "key": "flag_bar",
             "components": {
-                "Position": { "Value": [ 9436, 360 ] }
+                "Position": { "Value": [ 9436, 360 ] },
+                "BoundedMotion": {
+                    "Start": [ 9436, 360 ],
+                    "End": [ 9436, -40 ],
+                    "Velocity": 100.0
+                }
             }
         },
 
