@@ -27,7 +27,7 @@
         {
             "key": "mario",
             "components": {
-                "Position": { "Value": [ 20, 20 ] }
+                "Position": { "Value": [ 7060, 20 ] }
             }
         },
 
@@ -755,7 +755,7 @@
             }
         },
 
-        
+
         {
             "key": "static_block",
             "components": {
@@ -947,7 +947,7 @@
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 7060, 336 ] },
+                "Position": { "Value": [ 7060, 335.9 ] },
                 "AnimationState": {
                     "CurrentState": "block"
                 }
@@ -1286,6 +1286,409 @@
                 }
             }
         },
+
+
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8644, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8692, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8692, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8740, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8740, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8740, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8788, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8788, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8788, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8788, 192 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8836, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8836, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8836, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8836, 192 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8836, 144 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8884, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8884, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8884, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8884, 192 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8884, 144 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8884, 96 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8932, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8932, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8932, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8932, 192 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8932, 144 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8932, 96 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8932, 48 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8980, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8980, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8980, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8980, 192 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8980, 144 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8980, 96 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8980, 48 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 8980, 0 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9028, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9028, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9028, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9028, 192 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9028, 144 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9028, 96 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9028, 48 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 9028, 0 ] },
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+
+
+
+
+
 
         
         {
