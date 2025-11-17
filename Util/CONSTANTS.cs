@@ -65,6 +65,7 @@ public static class CONSTANTS
     public static class MATH
     {
         public static float FLOAT_EPSILON { get; } = 0.001f;
+        public static byte BYTE_MAX { get; } = 255;
     }
     public static class PLAYER_STATE
     {
@@ -89,6 +90,8 @@ public static class CONSTANTS
     }
     public static class TAG
     {
+        public static string PLAYER { get; } = "player";
+        public static string FLAG { get; } = "flag";
         public static string FLAG_BAR { get; } = "flag_bar";
     }
 }

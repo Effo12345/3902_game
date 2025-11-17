@@ -12,5 +12,6 @@
   },
   "Rotation": { "Value": 0.0 },
   "Scale": { "Value": [ 3, 3 ]},
-  "RenderLayer": {"Value": 1}
+  "RenderLayer": {"Value": 1},
+  "Tag": { "Value": "flag" }
 }
