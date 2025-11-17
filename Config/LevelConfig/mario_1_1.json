@@ -27,7 +27,7 @@
         {
             "key": "mario",
             "components": {
-                "Position": { "Value": [ 20, 20 ] }
+                "Position": { "Value": [ 9028, 20 ] }
             }
         },
         {
@@ -1695,8 +1695,205 @@
 
 
 
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, 360 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_bl"
+                }
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, 312 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_ml"
+                }
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, 264 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_ml"
+                }
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, 216 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_ml"
+                }
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, 168 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_ml"
+                }
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, 120 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_ml"
+                }
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, 72 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_ml"
+                }
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, 24 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_ml"
+                }
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, -24 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_ml"
+                }
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9412, -72 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_tl"
+                }
+            }
+        },
 
 
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, 360 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_br"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, 312 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_mr"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, 264 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_mr"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, 216 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_mr"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, 168 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_mr"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, 120 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_mr"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, 72 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_mr"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, 24 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_mr"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, -24 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_mr"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+        {
+            "key": "flag_block",
+            "components": {
+                "Position": { "Value": [ 9508, -72 ] },
+                "AnimationState": {
+                    "CurrentState": "flag_tr"
+                },
+                "RenderLayer": {"Value": 0}
+            }
+        },
+
+        {
+            "key": "flag_bar",
+            "components": {
+                "Position": { "Value": [ 9436, 360 ] }
+            }
+        },
 
         
         {
