@@ -21,22 +21,22 @@ public class PipeInteractionSystem : AbstractSystem
         // engine.PubSub.CreateSubscription<InputActionEvent>(HandleInput);
         return true;
     }
-    private void HandleInput(IEvent evnt)
-    {
-        var inputEvent = (InputActionEvent)evnt;
-        if (inputEvent.Action == "Interaction" && inputEvent.Phase == InputPhase.Press)
-        {
-            
-        }
-    }
 
-    private void HandleEntry(IEvent evnt)
+    private void HandleEntry(IEvent e)
     {
-        var pipeEvent = (PipeEvent)evnt;
+        Console.WriteLine("Event");
+        var pipeEvent = (PipeEvent)e;
+ 
+        Direction inputDirection = pipeEvent.InputDirection;
+        Direction pipeDirection = pipeEvent.PipeDirection;
+        Entity entity = pipeEvent.Entity;
+        Vector2 destination = pipeEvent.Destination;
 
-        if (pipeEvent.CollisionDirection.Equals(pipeEvent.PipeDirection))
+        if (inputDirection.Equals(pipeDirection))
         {
-            GameManager.ChangeLevel(pipeEvent.Destination);
+           if (entity.TryGetComponent<Position>(out var position)) {
+                position.Value = destination;
+            }
         }
     }
     public override void Update(Engine engine, GameTime gameTime)

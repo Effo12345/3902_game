@@ -12,7 +12,8 @@ public enum ColliderType
     Red_Mushroom,
     Green_Mushroom,
     Flower,
-    Star
+    Star, 
+    Pipe
 }
 
 public class Collider

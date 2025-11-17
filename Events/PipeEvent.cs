@@ -1,7 +1,8 @@
 namespace ECS.Events;
 public struct PipeEvent : IEvent
 {
-    public string Destination;
-    public Direction CollisionDirection;
+    public Vector2 Destination;
+    public Entity Entity;
+    public Direction InputDirection;
     public Direction PipeDirection;
 }
