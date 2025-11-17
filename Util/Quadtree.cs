@@ -93,9 +93,9 @@ public class Quadtree
     }
     
     
-    public List<CollisionEvent> GetCollisions(Entity movingEntity)
+    public HashSet<CollisionEvent> GetCollisions(Entity movingEntity)
     {
-        List<CollisionEvent> collisions = new List<CollisionEvent>();
+        HashSet<CollisionEvent> collisions = new HashSet<CollisionEvent>();
         List<Quadtree> children = new List<Quadtree> { topLeft, topRight, bottomLeft, bottomRight };
         movingEntity.TryGetComponent<Collider>(out var movingCollisionInfo);
         Rectangle movingCollisionBox = movingCollisionInfo.HitBox;
@@ -107,7 +107,7 @@ public class Quadtree
             {
                 if (movingCollisionBox.Intersects(childQuadtree.Bounds))
                 {
-                    collisions.AddRange(childQuadtree.GetCollisions(movingEntity));
+                    collisions.UnionWith(childQuadtree.GetCollisions(movingEntity));
                 }
             }
         }
