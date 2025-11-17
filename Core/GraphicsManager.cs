@@ -7,7 +7,7 @@ public class GraphicsManager
     public SpriteBatch SpriteBatch { get; private set; }
 
     public Matrix CameraTransform { get; set; }
-    public Color BackgroundColor { get; set; } = Color.CornflowerBlue;
+    public Color BackgroundColor { get; set; } = CONSTANTS.TEMP.DEFAULT_BACKGROUND_COLOR;
 
     public GraphicsManager(Game game)
     {

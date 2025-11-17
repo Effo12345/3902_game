@@ -1,11 +1,10 @@
-
 namespace ECS.Systems;
 
 public class LevelEndSystem : AbstractSystem
 {
     private GraphicsManager Graphics;
 
-    private LevelEndParams CurrentLevelEnd = null;
+    // private LevelEndParams CurrentLevelEnd = null;
     private Entity Player = null;
 
     public LevelEndSystem(GraphicsManager graphics)
@@ -35,7 +34,7 @@ public class LevelEndSystem : AbstractSystem
         )
             return;
 
-        CurrentLevelEnd = FindLevelEnder();
+        var CurrentLevelEnd = FindLevelEnder();
         if (CurrentLevelEnd is null || CurrentLevelEnd.LevelEnded)
             return;
         
@@ -51,7 +50,8 @@ public class LevelEndSystem : AbstractSystem
         if (player is not null)
         {
             Player = player;
-            player.RemoveComponent<InputBindings>();
+            // Move player controls to a dummy entity so reset and quit still work
+            Engine.Defer(engine => {engine.CreateEntity().AddComponent(player.GetComponent<InputBindings>()); player.RemoveComponent<InputBindings>();});
             player.RemoveComponent<Friction>();
             player.RemoveComponent<Mass>();
             player.GetComponent<Velocity>().Value.X = CurrentLevelEnd.PlayerEndingVelocity.X;
@@ -60,8 +60,13 @@ public class LevelEndSystem : AbstractSystem
 
     public override void Update(Engine engine, GameTime gameTime)
     {
+        var CurrentLevelEnd = FindLevelEnder();
+
         if (CurrentLevelEnd is null || !CurrentLevelEnd.LevelEnded)
-            return;
+        {
+            Graphics.BackgroundColor = CONSTANTS.TEMP.DEFAULT_BACKGROUND_COLOR;
+            return;   
+        }
 
         // Get the time when the end of level procedure started
         if (CurrentLevelEnd.LevelEndTime < CONSTANTS.MATH.FLOAT_EPSILON)
