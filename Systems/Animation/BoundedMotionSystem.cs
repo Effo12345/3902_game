@@ -17,8 +17,13 @@ public class BoundedMotionSystem : AbstractSystem
             
             Vector2 nPosVector = motion.End - pos.Value;
             nPosVector.Normalize();
+            
+            // I only had this happen once. No clue why, but this should
+            // prevent it from happening again
+            if (VectorIsNan(nMotionVector) || VectorIsNan(nPosVector))
+                continue;
 
-            if (Math.Sign(nMotionVector.X) == Math.Sign(nPosVector.X) && 
+            if (Math.Sign(nMotionVector.X) == Math.Sign(nPosVector.X) &&
                 Math.Sign(nMotionVector.Y) == Math.Sign(nPosVector.Y)
             ) {
                 vel.Value = nMotionVector * motion.Velocity;
@@ -30,5 +35,10 @@ public class BoundedMotionSystem : AbstractSystem
                 vel.Value = nMotionVector * -motion.Velocity;
             }
         }
+    }
+
+    bool VectorIsNan(Vector2 vector)
+    {
+        return float.IsNaN(vector.X) || float.IsNaN(vector.Y);
     }
 }
