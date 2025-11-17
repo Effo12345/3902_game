@@ -8,6 +8,7 @@ public enum ColliderType
     Koopa,
     Shell,
     Block,
+    QuestionBlock,
     Coin,
     Red_Mushroom,
     Green_Mushroom,

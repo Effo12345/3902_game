@@ -35,6 +35,7 @@ public class MarioCollisionSystem : AbstractSystem
         switch (type)
         {
             case ColliderType.Block:
+            case ColliderType.QuestionBlock:
                 if (direction.Equals(Direction.Bottom))
                 {
                     movingIsGrounded.Value = true;
@@ -56,10 +57,28 @@ public class MarioCollisionSystem : AbstractSystem
                 {
                     movingVelocity.Value.Y = 0;
                     movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
-                    Engine.PubSub.Publish(new BlockBump { Entity = secondaryEntity });
+
+                    if (secondaryEntity.TryGetComponent<ItemKind>(out var secondaryItem) && secondaryItem.Kind != Kind.coin && secondaryItem.Kind != Kind.green_mushroom && secondaryItem.Kind != Kind.star)
+                    {
+                        if (movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
+                        {
+                            secondaryItem.Kind = Kind.red_mushroom;
+                        } else
+                        {
+                            secondaryItem.Kind = Kind.flower;
+                        }
+                    }
+
+                    if (secondaryCollisionInfo.Type == ColliderType.QuestionBlock || movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
+                    {
+                        Engine.PubSub.Publish(new BlockBump {Entity = secondaryEntity });   
+                    } else
+                    {
+                        Engine.PubSub.Publish(new BlockBreak {Entity = secondaryEntity });
+                    }
+
                 }
                 break;
-
             case ColliderType.Goomba:
                 if (movingVelocity.Value.Y > 0)
                 {

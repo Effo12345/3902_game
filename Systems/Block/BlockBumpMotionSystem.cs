@@ -17,6 +17,8 @@ public class BlockBumpMotionSystem : AbstractSystem
         if (!e.TryGetComponent<Bump>(out var config) || !e.TryGetComponent<Position>(out var pos)
         || e.TryGetComponent<BumpState>(out _))
             return;
+        
+        
 
         e.AddComponent(new BumpState
         {

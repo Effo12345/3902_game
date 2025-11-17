@@ -17,7 +17,6 @@
         "TextureKey": "TilesSheet",
         "SpriteAtlasKey": "TilesAnimation"
     },
-    "CanMove": {},
     "FacingDirection": {"IsFacingLeft": false},
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "IsGrounded": { "Value": false },

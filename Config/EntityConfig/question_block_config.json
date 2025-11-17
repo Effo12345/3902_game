@@ -3,7 +3,7 @@
     "Rotation": { "Value": 0.0 },
     "Scale": { "Value": [ 3.0, 3.0 ] },
     "Collider": {
-        "Type": "Block",
+        "Type": "QuestionBlock",
         "HitBox": [0, 0, 48, 48]
     },
     "AnimationState": {
