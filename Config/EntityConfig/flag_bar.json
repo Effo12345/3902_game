@@ -1,0 +1,22 @@
+{
+  "Position": { "Value": [0,0] },
+  "Rotation": { "Value": 0.0 },
+  "Scale": { "Value": [ 3, 3 ]},
+  "Velocity": { "Value": [ 0.0, 0.0 ] },
+  "Acceleration": { "Value": [ 0.0, 0.0 ] },
+  "Collider": {
+      "Type": "Flag",
+      "HitBox": [0, 0, 72, 24]
+  },
+  "AnimationState": 
+  { 
+    "CurrentState": "flag_bar", 
+    "FrameIndex": 0, 
+    "TimeInCurrentFrame": 0.0 
+  },
+  "Tag": { "Value": "flag_bar" },
+  "BoundedMotion": {
+    "Start": [ 0, 0 ],
+    "End": [ 0, 0 ]
+  }
+}

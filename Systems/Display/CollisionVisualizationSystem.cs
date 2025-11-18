@@ -7,15 +7,16 @@ public class CollisionVisualizationSystem : AbstractSystem
 
     private readonly GraphicsDevice Device;
     private readonly SpriteBatch SpriteBatch;
+    private readonly GraphicsManager Graphics;
     private readonly Texture2D LineTexture;
 
-    private Matrix LatestCameraTransform;
     private Dictionary<Entity, HashSet<Direction>> Collisions = [];
 
-    public CollisionVisualizationSystem(GraphicsDevice graphics, SpriteBatch spriteBatch)
+    public CollisionVisualizationSystem(GraphicsManager graphics)
     {
-        Device = graphics;
-        SpriteBatch = spriteBatch;
+        Device = graphics.GraphicsDevice;
+        SpriteBatch = graphics.SpriteBatch;
+        Graphics = graphics;
 
         LineTexture = new(Device, 1, 1);
         LineTexture.SetData([Color.White]);
@@ -33,7 +34,6 @@ public class CollisionVisualizationSystem : AbstractSystem
     {
         base.Initialize(engine);
 
-        engine.PubSub.CreateSubscription<CameraTransformEvent>(OnCameraTransform);
         engine.PubSub.CreateSubscription<CollisionEvent>(OnCollision);
 
         return true;
@@ -41,7 +41,7 @@ public class CollisionVisualizationSystem : AbstractSystem
 
     public override void Update(Engine engine, GameTime gameTime)
     {
-        SpriteBatch.Begin(transformMatrix: LatestCameraTransform);
+        SpriteBatch.Begin(transformMatrix: Graphics.CameraTransform);
 
         foreach (var entity in engine.GetEntities())
         {
@@ -74,11 +74,6 @@ public class CollisionVisualizationSystem : AbstractSystem
 
         SpriteBatch.End();
         Collisions = [];
-    }
-
-    private void OnCameraTransform(IEvent evt)
-    {
-        LatestCameraTransform = ((CameraTransformEvent)evt).Transform;
     }
 
     private void OnCollision(IEvent evt)

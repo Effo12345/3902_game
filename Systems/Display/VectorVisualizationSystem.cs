@@ -13,22 +13,14 @@ public class VectorVisualizationSystem : AbstractSystem
     // TODO: This should get stored globally somehow
     private Matrix LatestCameraTransform;
 
-    public VectorVisualizationSystem(GraphicsDevice graphics, SpriteBatch spriteBatch)
+    public VectorVisualizationSystem(GraphicsManager graphics)
     {
-        Device = graphics;
-        SpriteBatch = spriteBatch;
+        Device = graphics.GraphicsDevice;
+        SpriteBatch = graphics.SpriteBatch;
+        LatestCameraTransform = graphics.CameraTransform;
 
         LineTexture = new(Device, 1, 1);
         LineTexture.SetData([Color.White]);
-    }
-
-    public override bool Initialize(Engine engine)
-    {
-        base.Initialize(engine);
-
-        engine.PubSub.CreateSubscription<CameraTransformEvent>(OnCameraTransform);
-
-        return true;
     }
 
     public override void Update(Engine engine, GameTime gameTime)
@@ -80,10 +72,5 @@ public class VectorVisualizationSystem : AbstractSystem
             SpriteEffects.None,
             0
         );
-    }
-
-    private void OnCameraTransform(IEvent evt)
-    {
-        LatestCameraTransform = ((CameraTransformEvent)evt).Transform;
     }
 }

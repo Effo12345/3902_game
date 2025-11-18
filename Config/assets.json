@@ -45,6 +45,10 @@
             "path": "Sounds/Effects/coin"
         },
         {
+            "key": "CourseClear",
+            "path": "Sounds/Effects/course_clear"
+        },
+        {
             "key": "Damage",
             "path": "Sounds/Effects/damage_pipe"
         },
@@ -167,8 +171,16 @@
             "path": "Config/EntityConfig/background_config.json"
         },
         {
-            "key": "MusicPlayerConfig",
-            "path": "Config/EntityConfig/music_player_config.json"
+            "key": "EmptyConfig",
+            "path": "Config/EntityConfig/empty.json"
+        },
+        {
+            "key": "FlagBlockConfig",
+            "path": "Config/EntityConfig/flag_block.json"
+        },
+        {
+            "key": "FlagBarConfig",
+            "path": "Config/EntityConfig/flag_bar.json"
         }
     ],
     "levelConfigs": [
@@ -260,8 +272,20 @@
             "entityConfig": "BackgroundConfig"
         },
         {
-            "key": "music_player",
-            "entityConfig": "MusicPlayerConfig"
+            "key": "empty",
+            "entityConfig": "EmptyConfig"
+        },
+        {
+            "key": "flag_block",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FlagBlockConfig"
+        },
+        {
+            "key": "flag_bar",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FlagBarConfig"
         }
     ]
 }

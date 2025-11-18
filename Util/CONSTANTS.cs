@@ -38,6 +38,7 @@ public static class CONSTANTS
         public static string PLAYER_JUMP_SUFFIX { get; } = "_jump";
         public static string PLAYER_IDLE_SUFFIX { get; } = "_idle";
         public static string PLAYER_WALK_SUFFIX { get; } = "_walk";
+        public static string BIG_PEACE_SIGN { get; } = "big_peace";
     }
     public static class COLLISION
     {
@@ -65,12 +66,14 @@ public static class CONSTANTS
         public static string POWERUP_SPAWN { get; } = "PowerupSpawn";
         public static string DEATH { get; } = "Death";
         public static string JUMP { get; } = "MarioJump";
+        public static string COURSE_CLEAR { get; } = "CourseClear";
         public static string BLOCKBREAK { get; } = "BlockBreak";
         public static string STAR { get; } = "Star";
     }
     public static class MATH
     {
         public static float FLOAT_EPSILON { get; } = 0.001f;
+        public static byte BYTE_MAX { get; } = 255;
     }
     public static class PLAYER_STATE
     {
@@ -88,10 +91,17 @@ public static class CONSTANTS
         public static float RESPAWN_TIMER { get; } = 3.5f;
         public static float STAR_TIMER { get; } = 8.0f;
         public static float JUMP_VELOCITY { get; } = -900.0f;
+        public static Color DEFAULT_BACKGROUND_COLOR { get; } = Color.CornflowerBlue;
     }
     public static class RENDER
     {
         public static Vector2 WindowSize { get; } = new Vector2(800, 800);
         public static float VERTICAL_CAMERA_OFFSET { get; } = 320;
+    }
+    public static class TAG
+    {
+        public static string PLAYER { get; } = "player";
+        public static string FLAG { get; } = "flag";
+        public static string FLAG_BAR { get; } = "flag_bar";
     }
 }

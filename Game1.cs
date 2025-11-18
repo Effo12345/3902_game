@@ -2,24 +2,22 @@ namespace ECS;
 
 public class Game1 : Game
 {
-    private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
     private Engine Engine = new Engine();
     private GameManager GameManager;
+    private GraphicsManager GraphicsManager;
 
     public Game1()
     {
-        _graphics = new GraphicsDeviceManager(this);
-        // TODO: Move this somewhere else
-        _graphics.PreferredBackBufferWidth = (int)CONSTANTS.RENDER.WindowSize.X;
-        _graphics.PreferredBackBufferHeight = (int)CONSTANTS.RENDER.WindowSize.Y;
+        GraphicsManager = new(this);
+        GameManager = new(this, Engine);
 
         Content.RootDirectory = "Content";
-        IsMouseVisible = true;
     }
 
     protected override void Initialize()
     {
+        GraphicsManager.Initialize();
+
         Engine.AddSystem(new HitboxMovementSystem());
         Engine.AddSystem(new CollisionDetectionSystem());
         Engine.AddSystem(new PipeInteractionSystem());
@@ -30,6 +28,7 @@ public class Game1 : Game
         Engine.AddSystem(new StarSystem());
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new PlayerMotionSystem());
+        Engine.AddSystem(new BoundedMotionSystem());
         Engine.AddSystem(new FrictionSystem());
         Engine.AddSystem(new PlayerAnimationSystem());
         Engine.AddSystem(new AnimationSystem());
@@ -45,9 +44,7 @@ public class Game1 : Game
         Engine.AddSystem(new EnemyCleanupSystem());
         Engine.AddSystem(new KoopaWakeupSystem());
         Engine.AddSystem(new MusicSystem());
-
-        GameManager = new(this, Engine);
-
+        Engine.AddSystem(new LevelEndSystem(GraphicsManager));
         Engine.AddSystem(new MarioDefeatSystem(GameManager));
 
         base.Initialize();
@@ -55,8 +52,6 @@ public class Game1 : Game
 
     protected override void LoadContent()
     {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
-
         var assets = AssetLoader.Load(Content, File.ReadAllText(CONSTANTS.FILE.ASSETS));
         EntityFactory.RegisterAssets(assets);
         LevelLoader.RegisterAssets(assets);
@@ -64,12 +59,12 @@ public class Game1 : Game
 
         GameManager.Initialize(CONSTANTS.LEVEL.MARIO1_1);
 
-        // TODO: It's annoying to have this system here by itself
-        Engine.AddSystem(new BackgroundRenderSystem(_spriteBatch));
-        Engine.AddSystem(new RenderSystem(_spriteBatch));
-        Engine.AddSystem(new CollisionVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
-        Engine.AddSystem(new VectorVisualizationSystem(_graphics.GraphicsDevice, _spriteBatch));
-        Engine.AddSystem(new TextRenderSystem(_spriteBatch, assets));
+        Engine.AddSystem(new CameraSystem(GraphicsManager));
+        Engine.AddSystem(new BackgroundRenderSystem(GraphicsManager));
+        Engine.AddSystem(new RenderSystem(GraphicsManager));
+        // Engine.AddSystem(new CollisionVisualizationSystem(GraphicsManager));
+        // Engine.AddSystem(new VectorVisualizationSystem(GraphicsManager));
+        Engine.AddSystem(new TextRenderSystem(GraphicsManager, assets));
     }
 
     protected override void Update(GameTime gameTime)
@@ -79,7 +74,7 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(GraphicsManager.BackgroundColor);
 
         // TODO: Add execution time and priority for systems
         Engine.Update(gameTime);

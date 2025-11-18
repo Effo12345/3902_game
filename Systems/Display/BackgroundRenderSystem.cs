@@ -5,24 +5,17 @@ public class BackgroundRenderSystem : AbstractSystem
     private const float PARALLAX_SCALE = 0.4f;
 
     private readonly SpriteBatch SpriteBatch;
+    private readonly GraphicsManager Graphics;
 
-    private Matrix LatestCameraTransform;
-
-    public BackgroundRenderSystem(SpriteBatch spriteBatch)
+    public BackgroundRenderSystem(GraphicsManager graphics)
     {
-        SpriteBatch = spriteBatch;
-    }
-
-    public override bool Initialize(Engine engine)
-    {
-        base.Initialize(engine);
-        engine.PubSub.CreateSubscription<CameraTransformEvent>(OnCameraTransform);
-
-        return true;
+        SpriteBatch = graphics.SpriteBatch;
+        Graphics = graphics;
     }
 
     public override void Update(Engine engine, GameTime gameTime)
     {
+        Matrix LatestCameraTransform = Graphics.CameraTransform;
         // Move the background more slowly than the foreground
         LatestCameraTransform.M41 *= PARALLAX_SCALE;
         // TODO: Calling this multiple times per update has a performance cost
@@ -53,10 +46,5 @@ public class BackgroundRenderSystem : AbstractSystem
         }
 
         SpriteBatch.End();
-    }
-
-    private void OnCameraTransform(IEvent evt)
-    {
-        LatestCameraTransform = ((CameraTransformEvent)evt).Transform;
     }
 }
