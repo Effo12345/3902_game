@@ -85,6 +85,10 @@
             "path": "Sounds/Effects/shell_ricochet"
         },
         {
+            "key": "Star",
+            "path": "Sounds/Effects/star"
+        },
+        {
             "key": "Stomp",
             "path": "Sounds/Effects/stomp"
         }
@@ -230,6 +234,12 @@
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
             "entityConfig": "CoinConfig"
+        },
+        {
+            "key": "fireball",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FireballConfig"
         },
         {
             "key": "red_mushroom",

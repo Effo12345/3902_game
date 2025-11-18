@@ -76,6 +76,35 @@
             }
         ]
     },
+    "fireball": {
+        "frameDuration": 0.2,
+        "frames": [
+            {
+                "x": 479,
+                "y": 215,
+                "width": 6,
+                "height": 7
+            },
+            {
+                "x": 497,
+                "y": 216,
+                "width": 7,
+                "height": 6
+            },
+            {
+                "x": 517,
+                "y": 214,
+                "width": 6,
+                "height": 7
+            },
+            {
+                "x": 538,
+                "y": 214,
+                "width": 7,
+                "height": 6
+            }
+        ]
+    },
     "flower": {
         "frameDuration": 0,
         "frames": [

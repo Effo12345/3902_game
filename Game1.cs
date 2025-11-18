@@ -20,10 +20,12 @@ public class Game1 : Game
 
         Engine.AddSystem(new HitboxMovementSystem());
         Engine.AddSystem(new CollisionDetectionSystem());
+        Engine.AddSystem(new PipeInteractionSystem());
         Engine.AddSystem(new InputSystem());
         Engine.AddSystem(new MarioCollisionSystem());
         Engine.AddSystem(new NonMarioCollisionSystem());
         Engine.AddSystem(new InvincibilitySystem());
+        Engine.AddSystem(new StarSystem());
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new PlayerMotionSystem());
         Engine.AddSystem(new BoundedMotionSystem());
@@ -37,6 +39,8 @@ public class Game1 : Game
         Engine.AddSystem(new ItemBlockConsumptionSystem());
         Engine.AddSystem(new ItemRiseSystem());
         Engine.AddSystem(new BlockBumpMotionSystem());
+        Engine.AddSystem(new BlockBreakSystem());
+        Engine.AddSystem(new CoinCleanupSystem());
         Engine.AddSystem(new EnemyCleanupSystem());
         Engine.AddSystem(new KoopaWakeupSystem());
         Engine.AddSystem(new MusicSystem());

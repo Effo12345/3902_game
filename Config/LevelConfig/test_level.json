@@ -7,6 +7,12 @@
             }
         },
         {
+            "key": "coin",
+            "components": {
+                "Position": {"Value": [400, 200]}
+            }
+        },
+        {
             "key": "koopa",
             "components": {
                 "Position": { "Value": [ 500, 200 ] }

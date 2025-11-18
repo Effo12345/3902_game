@@ -11,6 +11,10 @@
     "axisX": 10,
     "axisY": 0
   },
+  "Crouch": {
+    "type": "Button",
+    "keys": ["S", "Down"]
+  },
   "Jump": {
     "type": "Button",
     "keys": [ "Space" ]
