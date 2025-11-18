@@ -58,6 +58,7 @@ public class Game1 : Game
         GameManager.Initialize(CONSTANTS.LEVEL.MARIO1_1);
         GraphicsManager.Initialize(assets);
 
+        Engine.AddSystem(new PixelationSystem(GraphicsManager));
         Engine.AddSystem(new CameraSystem(GraphicsManager));
         Engine.AddSystem(new BackgroundRenderSystem(GraphicsManager));
         Engine.AddSystem(new RenderSystem(GraphicsManager));

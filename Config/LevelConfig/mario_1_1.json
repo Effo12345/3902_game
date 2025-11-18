@@ -51,6 +51,15 @@
             }
         },
         {
+            "key": "empty",
+            "components": {
+                "PixelationIntro": {
+                    "Value": 0.05,
+                    "StepSize": 0.0015
+                }
+            }
+        },
+        {
             "key": "goomba",
             "components": {
                 "Position": { "Value": [ 1972, 336 ] },
