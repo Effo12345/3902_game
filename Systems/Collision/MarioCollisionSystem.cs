@@ -159,7 +159,7 @@ public class MarioCollisionSystem : AbstractSystem
                 break;
             case ColliderType.Coin:
                 Engine.DestroyEntity(secondaryEntity);
-                movingStatus.Coins++;
+                Engine.PubSub.Publish(new CoinPickupEvent{});
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.COIN);
                 break;
             case ColliderType.Red_Mushroom:
@@ -186,11 +186,6 @@ public class MarioCollisionSystem : AbstractSystem
                 Engine.DestroyEntity(secondaryEntity);
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.ONEUP);
                 break;
-            case ColliderType.Coin:
-                Engine.DestroyEntity(secondaryEntity);
-                Engine.PubSub.Publish(new CoinPickupEvent{});
-                SoundPlayer.PlaySfx(CONSTANTS.SOUND.COIN);
-                break;
         }
     }
 
@@ -208,7 +203,7 @@ public class MarioCollisionSystem : AbstractSystem
             status.State = CONSTANTS.PLAYER_STATE.DEAD;
     }
 
-    private static void HurtEnemy(Entity entity, DeathType deathType)
+    private void HurtEnemy(Entity entity, DeathType deathType)
     {
         entity.TryGetComponent<BasicEnemy>(out var enemy);
         entity.TryGetComponent<Scale>(out var scale);
