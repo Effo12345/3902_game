@@ -1,3 +1,39 @@
+# Sprint 4
+
+## Implemented Features
+- Finish JSON definition of 1-1
+- Item + Mario interaction (change powerup state)
+- Enemy + Mario interaction (damage Mario + animation)
+- Velocity and acceleration vector visualizer
+- Collision box visualizer
+- Deferred entity instantiation
+- Intro Animation
+- Pipe interaction and sub-area loading
+- Goal flag system
+- Kill the player when they fall in a pit
+- Level HUD
+- Fix mario throwing fireballs
+- Clean up mario physics
+- Item entities and behavior
+- Level background
+- Fix issues with existing interactions
+- Enemy + fireball (kill enemy, animation)
+- Mario + dynamic blocks (bumping + breaking blocks on collision)
+- Change mario's collision box size based on powerup state
+- Constants class to extract all magic numbers
+- Font loading
+- Level time system
+- Sound effects and background music
+- Acceleration-based user input (in addition to velocity)
+- Reorganize filesystem
+
+## Backlogged Features
+- Advanced Mario animations
+- Scale jump height by button pressed time
+- Player life system
+- Pipe animations
+- Json definition for underground area
+
 # Sprint 3
 
 ## Implemented Features

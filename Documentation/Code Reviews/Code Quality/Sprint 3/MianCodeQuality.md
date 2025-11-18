@@ -2,83 +2,70 @@
 
 **Author**: Mian
 
-**Date**: 2025-10-27
+**Date**: 2025-10-29
 
 **Sprint**: 3
 
-**File(s) reviewed**: Quadtree.cs
+**File(s) reviewed**: EntityFactory.cs
 
-**Author of file(s)**: Logan
+**Author of file(s)**: Ethan
 
-**Time spent reviewing**: 35
+**Time spent reviewing**: 20
 
 ## Code Smell Analysis
 
 ### 1. Duplicated Code
 
-* Insertion logic appears both in `Insert()` and again during `subdivide()` redistribution, leading to two places that must stay in sync.
-* Child traversal patterns in `GetCollisions()` are repeated for each quadrant; consider a helper that takes a child reference and the query rectangle to avoid repetition.
-* Boundary calculations for the four child rectangles are repeated constructs; a small factory/helper could generate them from `Bounds` once.
+* The “append components” flow is split between `AppendGeneralComponents` and `AppendSpecializedComponents`; both translate configuration into `entity.AddComponent(...)`. A single orchestrator with pluggable mappers would remove duplication of “read-config → add component” patterns.
+* Child texture/atlas/input additions repeat the same “if config present → fetch from Assets → AddComponent” shape; consider a small registry mapping keys to lambda adders.
 
 ### 2. Long Method
 
-* `GetCollisions()` combines: tree traversal, local collision checks, intersection math, and direction resolution. This makes it hard to follow and test.
-* Refactor into smaller, intention-revealing methods—e.g., `CollectChildCollisions`, `CollectLocalCollisions`, `ResolveDirection`, `MakeCollisionEvent`.
+* Methods are short; N/A. Minor: `AppendSpecializedComponents` grows as more specialized types are added—watch for length creep.
 
 ### 3. Large Class
 
-* The class manages storage, spatial subdivision, collision resolution, and event creation. These are multiple responsibilities.
-* Consider extracting: (a) a `QuadtreeNode` for topology, (b) a `CollisionResolver` for direction/physics semantics, and (c) a simple `CollisionEventFactory`.
+* The class owns: registration, asset access, config application, cloning, and specialized component wiring. This mixes “factory”, “repository”, and “mapper” roles. Extract a `ComponentMapper` (config → components) and keep the factory focused on `BuildEntity`.
 
 ### 4. Long Parameter List
 
-* Not evident in public APIs, but several methods implicitly depend on many fields (`Bounds`, `X/Y/Width/Height`, capacity, children). This is an implicit long parameter list through shared state.
-* Collapsing duplicate state (see Data Clumps) and passing compact DTOs (e.g., a `Quadrant` struct) would reduce hidden parameter surfaces.
+* Public API is compact. Internally, reliance on globals (`Assets`, `Entities`) hides parameters, which can be harder to test. Passing dependencies explicitly (DI) would make the parameter surface clearer.
 
 ### 5. Cyclomatic Complexity
 
-* The direction computation branch picks vertical vs. horizontal by comparing intersection width/height, then does nested conditional checks; this inflates complexity and risks edge-case bugs.
-* `GetCollisions()`’s multiple early exits and per-child branching also elevate complexity. Splitting methods and using clear `if/else` (not overwritten assignments) will help.
+* Low today. Risk area: `AppendSpecializedComponents` is a growing branching hub tied to content types. Consider strategy/registry to keep complexity flat as features scale.
 
 ### 6. Divergent Change
 
-* Any change to capacity policy or quadrant assignment requires edits in multiple places (both `Insert()` and `subdivide()`), indicating the class tends to change for more than one reason.
-* Centralize the “choose quadrant vs. keep at node” rule in a single helper (e.g., `AssignNodeFor(Rectangle)`), and reuse it everywhere.
+* Any new component type or asset source forces edits in multiple places (`AppendSpecializedComponents`, possibly cloning behavior). Centralize component wiring in a registry keyed by component/asset kind.
 
 ### 7. Shotgun Surgery
 
-* Fixes to collision direction or hitbox acquisition would require touching several call sites where `TryGetComponent<CollisionInfo>` is used without a single abstraction.
-* Introduce `bool TryGetHitBox(Entity, out Rectangle)` to contain these checks in one place.
+* Changes to cloning semantics or component add policy affect `AppendComponentsFromConfig`, `Clone<T>`, and potentially specialized adders. Introduce a single “component materializer” abstraction to limit spread.
 
 ### 8. Feature Envy
 
-* Direction resolution logic operates mostly on geometric data (`Rectangle`, positions), not on quadtree structure; it “envies” `Rectangle`/collision domain.
-* Move direction resolution into a dedicated `CollisionResolver` or an extension method over rectangles to reduce envy and improve reuse.
+* Factory reaches into `Assets` for textures, atlases, input configs—behavior arguably belongs to an asset-aware mapper rather than the factory itself.
 
 ### 9. Data Clumps
 
-* `X`, `Y`, `Width`, `Height` mirror `Bounds` and travel together across calculations. Keeping both sets introduces drift risk and cognitive load.
-* Prefer a single source of truth (`Bounds`) and expose derived read-only properties if necessary.
+* `Texture`, `Origin`, `Color` for `SpriteState` travel together; consider a small DTO or config section representing sprite defaults to reduce parameter/clump repetition.
 
 ### 10. Switch Statements
 
-* Direction selection can be expressed as a small `switch` (or pattern matching) on an enum representing dominant axis & sign, replacing nested conditionals.
-* Child quadrant selection could similarly use an index (0..3) computed from comparisons and then a `switch` to select `topLeft`/`topRight`/`bottomLeft`/`bottomRight`.
+* No explicit switches. Implicit switching via if-chains in `AppendSpecializedComponents` could be replaced by a dictionary from “config key” → handler function.
 
 ### 11. Lazy Class/ Middle Man
 
-* Not a clear lazy class, but there is some “middle-man” behavior: the quadtree constructs `CollisionEvent` objects, which could be delegated to an event factory to keep the node focused on spatial concerns.
-* If no additional logic exists around event creation, consider moving it out or at least isolating it.
+* `EntityFactory` acts as a middleman to `Assets` and component creation. If most logic becomes “lookup-and-forward,” consider pushing responsibility into specialized mappers or an `IEntityComponentProvider`.
 
 ### 12. Message Chains
 
-* Potential chains like `entity.TryGetComponent(...).HitBox` (when not guarded) couple callers to internal details. Consolidate through `TryGetHitBox` to avoid chained lookups and NRE risk.
-* Accessing child nodes via repeated `node.child.child` is not present, but iterating children via an array would prevent future chains.
+* Access is reasonably direct. Risk: callers depend on `BuildEntity(engine, key)` + global `RegisterAssets/Entity`. Prefer injecting `Assets` and `Entities` via constructor (if factory were non-static) to avoid global chains.
 
 ### 13. Deoderizing Comments
 
-* Some comments reiterate what the code says (“if overlaps multiple quadrants, keep in this node”), yet implementation deviates—this can mislead.
-* Replace restatements with intent-revealing comments where logic is non-obvious (e.g., define the rule: *crosses axes ⇒ store here; otherwise ⇒ single child*). Remove noise comments.
+* The TODO on reflection cost is helpful; consider replacing with actionable task references or links to design notes. Comments otherwise minimal and purposeful.
 
 <!-- Code smells presentation: https://osu.instructure.com/courses/190003/files/78535068?module_item_id=15761957 -->
 
@@ -86,25 +73,26 @@
 
 ## Future Improvement
 
-**Proposed Change**: Unify insertion and subdivision policy so that an entity is inserted into **exactly one** child quadrant when it does **not** cross the center axes; otherwise it remains in the current node. Extract collision direction logic into a dedicated helper/service and remove redundant boundary fields.
+**Proposed Change**: Introduce a **component materialization registry** that maps (component/config key → handler) and perform **one-time reflection caching** for cloning and type conversion.
 
-Discuss whether the current implementation supports this change and why (how it would be hard if not supported, or how it could be implemented if supported)
+Discuss whether the current implementation supports this change and why (how it would be hard if not supported,
+or how it could be implemented if supported)
 
 * Pros/cons to current approach
 
-  * **Pros**: Simple to reason about; easy to implement initially.
-  * **Cons**: Duplicated storage (entities in multiple children), inflated query cost, higher memory use, and correctness bugs (e.g., direction overwrite).
+  * **Pros**: Simple, easy to read; minimal indirection; quick to wire new types.
+  * **Cons**: Growing branching in `AppendSpecializedComponents`; repeated asset fetch patterns; reflection penalty per component; global state hurts testability.
 
-* Pros/cons to unified insertion rule
+* Pros/cons to registry + caching
 
-  * **Pros**: Eliminates duplication, reduces recursion, improves query time, and clarifies invariants.
-  * **Cons**: Requires a reliable `GetQuadrantIndex` and a redistribution pass in `subdivide()` following the same rule.
+  * **Pros**: Single place to add new types; reduced cyclomatic complexity; pay reflection cost once via cached `MethodInfo`/delegates; easier unit testing by swapping handlers.
+  * **Cons**: Slight upfront complexity; requires bootstrapping order (register assets/handlers before use).
 
-* Pros/cons to extracting collision logic
+* Pros/cons to DI (non-static factory)
 
-  * **Pros**: Lowers cyclomatic complexity in `GetCollisions()`, enables unit testing of direction resolution, and separates spatial structure from physics semantics.
-  * **Cons**: Introduces another small abstraction (a resolver/factory), but with clear payoff.
+  * **Pros**: Eliminates global state; clearer dependencies; enables mocking `Assets`.
+  * **Cons**: Requires touching call sites to pass a factory instance.
 
 ## Conclusion
 
-The quadtree’s overall design is appropriate, but correctness and maintainability suffer due to duplicated insertion logic, elevated complexity in collision handling, and redundant boundary state. By centralizing quadrant assignment, extracting collision resolution, and removing data clumps, the implementation will become faster, safer, and easier to evolve.
+`EntityFactory` is concise and functional but mixes concerns and relies on global state. Moving to a handler registry with cached reflection, plus (optionally) a non-static, DI-friendly design, will reduce branching, improve performance, and make the system easier to evolve and test.

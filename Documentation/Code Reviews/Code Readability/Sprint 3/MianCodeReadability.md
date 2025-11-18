@@ -2,43 +2,53 @@
 
 **Author**: Mian
 
-**Date**: 2025-10-27
+**Date**: 2025-10-29
 
 **Sprint**: 3
 
-**File(s) reviewed**: Quadtree.cs
+**File(s) reviewed**: StartScreenSystem.cs
 
-**Author of file(s)**: Logan
+**Author of file(s)**: Jiajie
 
 **Time spent reviewing**: 15 minutes
 
 ## Readability Notes
-Readability is acceptable but suffers from unclear naming, large methods, and redundant data. Applying consistent naming, extracting helper methods, and reducing hidden assumptions will make the code far easier to follow and maintain.
+
+The file is small and readable, with a straightforward input-driven loop. Most readability wins come from **making implicit intent explicit** (constants, named options), **removing tiny inconsistencies** (formatting), and **extracting micro-helpers** for input edges and selection handling. These changes reduce mental overhead without altering behavior, making the screen logic easier to scan and safer to extend. 
 
 ## Positive Aspects
 
-* **Single Responsibility**
-  The class clearly focuses on spatial partitioning and collision collection.
+* **Clear control flow**
+The `Update` loop is easy to follow (guard on `_done`, read input, handle Up/Down/Space, update `_prev`).
 
-* **Helpful Comments**
-  Notes like leave in current node if intersecting multiple quadrants clarify intent.
+* **Good early-return usage**
+`if (_done) return;` avoids unnecessary work and keeps the frame logic readable. 
+
+* **Minimal state surface**
+Only a handful of fields are tracked (`_selected`, `_cursorOffset`, `_prev`, `_done`), which keeps cognitive load low. 
 
 ## Areas for Improvement
 
-* **Naming Mismatch**
-  `intersectsQuadrants` does not clearly reflect its purpose. Better alternatives: `CrossesAxes`, `OverlapsMultipleQuadrants`.
+* **Magic numbers**    
+`_cursorOffset = 30` is a literal with no context; it would read better as a named constant (e.g., `const int CursorOffset = 30;`). 
 
-* **Field Redundancy**
-  Storing both `Bounds` and `X/Y/Width/Height` forces the reader to reconcile two sources of truth.
+* **Hard-coded resource path**
+`"Content/Config/Level/TestLevel.json"` is embedded in the input handler, obscuring intent and making changes harder to discover; a named constant or config would help. 
 
-* **Inconsistent Naming Style**
-  Private fields in PascalCase (`X`, `Y`) violate standard conventions. Should be `_x`, `_y`, etc.
+* **Inconsistent formatting**
+Minor spacing inconsistency (`if(kb.IsKeyDown(Keys.Space)` vs `if (kb.IsKeyDown(Keys.Up)`) hinders scanability. A formatter rule would remove this noise. 
 
-* **Hidden Assumptions**
-  `TryGetComponent` failures are silently ignored in some places. Readers must assume all entities have `CollisionInfo`. Making this explicit improves clarity.
+* **Implicit meanings**
+`_selected == 0` implies ¡°Start game,¡± else ¡°Exit,¡± but that knowledge is not obvious in code. Naming the options (enum) or mapping to actions would make the intent explicit. 
 
-* **Branching Logic Clarity**
-  Collision direction code overrides values without clear branching, making it confusing. A proper `if/else` structure would be easier to read and safer.
+* **Mixed responsibilities in `Update`**
+Input edge detection, selection updates, cursor movement, and action dispatch all live together. Extracting small helpers would make the loop more declarative. 
 
-* **Method Size**
-  `GetCollisions` does too much: traverses children, checks local entities, computes direction, and constructs events. Splitting into smaller methods would reduce cognitive load.
+* **Field mutability semantics**
+`_cursorOffset` never changes after initialization¡ª`const`/`readonly` would communicate intent and prevent accidental mutation. 
+
+* **Member ordering**
+Placing the constructor before overrides (`Initialize`, `Update`) is a common convention that aids discoverability when scanning the file top-down. 
+
+* **Comment/doc hints**
+Brief XML docs for the system (what it renders/handles; exit conditions) would help future readers, especially around `_done` lifecycle and the option semantics. 
