@@ -104,4 +104,9 @@ public static class CONSTANTS
         public static string FLAG { get; } = "flag";
         public static string FLAG_BAR { get; } = "flag_bar";
     }
+    public static class SHADER
+    {
+        public static string PIXELATION_SHADER { get; } = "PixelationShader";
+        public static string PIXEL_SIZE_PROPERTY { get; } = "PixelSize";
+    }
 }

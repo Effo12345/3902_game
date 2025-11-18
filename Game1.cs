@@ -16,8 +16,6 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        GraphicsManager.Initialize();
-
         Engine.AddSystem(new HitboxMovementSystem());
         Engine.AddSystem(new CollisionDetectionSystem());
         Engine.AddSystem(new PipeInteractionSystem());
@@ -58,7 +56,9 @@ public class Game1 : Game
         SoundPlayer.RegisterAssets(assets);
 
         GameManager.Initialize(CONSTANTS.LEVEL.MARIO1_1);
+        GraphicsManager.Initialize(assets);
 
+        Engine.AddSystem(new PixelationSystem(GraphicsManager));
         Engine.AddSystem(new CameraSystem(GraphicsManager));
         Engine.AddSystem(new BackgroundRenderSystem(GraphicsManager));
         Engine.AddSystem(new RenderSystem(GraphicsManager));
@@ -74,10 +74,12 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(GraphicsManager.BackgroundColor);
+        GraphicsManager.PreRender();
 
         // TODO: Add execution time and priority for systems
         Engine.Update(gameTime);
+
+        GraphicsManager.PostRender();
 
         // Console.WriteLine($"Running slowly: {gameTime.IsRunningSlowly} Frame time: {gameTime.ElapsedGameTime.TotalMilliseconds}");
 
