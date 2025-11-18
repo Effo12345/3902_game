@@ -14,7 +14,7 @@ public enum ColliderType
     Green_Mushroom,
     Flower,
     Star,
-    Flag
+    Flag,
     Pipe,
     Fireball,
 }

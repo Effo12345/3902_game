@@ -37,10 +37,6 @@ public class RenderSystem : AbstractSystem
                 spriteEffects |= SpriteEffects.FlipHorizontally;
             if (entity.TryGetComponent<BasicEnemy>(out var enemy) && enemy.DeathType == DeathType.Flipped)
                 spriteEffects |= SpriteEffects.FlipVertically;
-            if (entity.TryGetComponent<Status>(out var status) && status.StarTimer > 0)
-                sprite.Color = Color.Aquamarine;
-            else 
-                sprite.Color = Color.White;
 
             float depth = 0.5f;
             if (entity.TryGetComponent<RenderLayer>(out var layer))
