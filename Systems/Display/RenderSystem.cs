@@ -11,7 +11,6 @@ public class RenderSystem : AbstractSystem
         SpriteBatch = graphics.SpriteBatch;
     }
 
-    // TODO: Split this into its own system
     public override void Update(Engine engine, GameTime gameTime)
     {
         // PointClamp prevents scaled sprites from looking blurry

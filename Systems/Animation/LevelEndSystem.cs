@@ -1,10 +1,13 @@
 namespace ECS.Systems;
 
+/// <summary>
+/// TODO: Realistically, this class is overcomplicated and overspecific for what it's doing.
+/// Try and do it better next time
+/// </summary>
 public class LevelEndSystem : AbstractSystem
 {
-    private GraphicsManager Graphics;
+    private readonly GraphicsManager Graphics;
 
-    // private LevelEndParams CurrentLevelEnd = null;
     private Entity Player = null;
 
     public LevelEndSystem(GraphicsManager graphics)

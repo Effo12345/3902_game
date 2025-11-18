@@ -19,7 +19,6 @@ public class ItemSpawnSystem : AbstractSystem
                 itemCollider.Type == ColliderType.Coin)
             {
                 item.AddComponent(new Velocity {Value = new Vector2(0, CONSTANTS.COLLISION.ITEM_SPAWN_VELOCITY)});
-                // mass.Value = CONSTANTS.COLLISION.ITEM_MASS;
 
                 Engine.PubSub.Publish(new CoinPickupEvent{});
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.COIN);
@@ -44,8 +43,7 @@ public class ItemSpawnSystem : AbstractSystem
             item.AddComponent(new Position { Value = spawnPosition });
     
     }
-    public override void Update(Engine engine, GameTime gameTime)
-    {
 
-    }
+    // no-op
+    public override void Update(Engine engine, GameTime gameTime) {}
 } 

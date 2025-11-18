@@ -95,7 +95,6 @@ public class PlayerMotionSystem : AbstractSystem
         }
     }
 
-    // no-op
     public override void Update(Engine engine, GameTime gameTime)
     {
         float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;

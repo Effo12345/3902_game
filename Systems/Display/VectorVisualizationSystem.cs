@@ -6,18 +6,16 @@ public class VectorVisualizationSystem : AbstractSystem
     private const float VELOCITY_VECTOR_SCALE = 0.5f;
     private const float ACCELERATION_VECTOR_SCALE = 0.2f;
 
+    private readonly GraphicsManager Graphics;
     private readonly GraphicsDevice Device;
     private readonly SpriteBatch SpriteBatch;
     private readonly Texture2D LineTexture;
 
-    // TODO: This should get stored globally somehow
-    private Matrix LatestCameraTransform;
-
     public VectorVisualizationSystem(GraphicsManager graphics)
     {
+        Graphics = graphics;
         Device = graphics.GraphicsDevice;
         SpriteBatch = graphics.SpriteBatch;
-        LatestCameraTransform = graphics.CameraTransform;
 
         LineTexture = new(Device, 1, 1);
         LineTexture.SetData([Color.White]);
@@ -25,7 +23,7 @@ public class VectorVisualizationSystem : AbstractSystem
 
     public override void Update(Engine engine, GameTime gameTime)
     {
-        SpriteBatch.Begin(transformMatrix: LatestCameraTransform);
+        SpriteBatch.Begin(transformMatrix: Graphics.CameraTransform);
 
         foreach (var entity in engine.GetEntities())
         {

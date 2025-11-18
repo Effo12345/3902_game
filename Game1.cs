@@ -81,8 +81,6 @@ public class Game1 : Game
 
         GraphicsManager.PostRender();
 
-        // Console.WriteLine($"Running slowly: {gameTime.IsRunningSlowly} Frame time: {gameTime.ElapsedGameTime.TotalMilliseconds}");
-
         base.Draw(gameTime);
     }
 }

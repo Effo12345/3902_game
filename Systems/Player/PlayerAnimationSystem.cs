@@ -27,8 +27,6 @@ public class PlayerAnimationSystem : AbstractSystem
                     animUpdate += CONSTANTS.ANIMATION_STATE.PLAYER_IDLE_SUFFIX;
                 else
                     animUpdate += CONSTANTS.ANIMATION_STATE.PLAYER_WALK_SUFFIX;
-
-
             }
 
             engine.PubSub.Publish(new AnimationChangeEvent

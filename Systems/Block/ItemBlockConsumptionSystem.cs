@@ -8,6 +8,7 @@ public class ItemBlockConsumptionSystem : AbstractSystem
         Engine.PubSub.CreateSubscription<BlockBumped>(OnBlockBumped);
         return true;
     }
+
     private void OnBlockBumped(IEvent evnt)
     {
         var e = ((BlockBumped)evnt).Entity;
@@ -37,5 +38,7 @@ public class ItemBlockConsumptionSystem : AbstractSystem
             }
         }
     }
+
+    // no-op
     public override void Update(Engine engine, GameTime gameTime){}
 }

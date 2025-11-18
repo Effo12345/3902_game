@@ -127,8 +127,6 @@ public class NonMarioCollisionSystem : AbstractSystem
 
     }
 
-
-    
     // no-op
     public override void Update(Engine engine, GameTime gameTime) { }
 }

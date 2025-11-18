@@ -24,7 +24,6 @@ public class CameraSystem : AbstractSystem
             && entity.TryGetComponent<InputBindings>(out var _);
     }
 
-    // TODO: Move camera adjustments to their own system
     private Vector2 PositionAdjustment()
     {
         foreach (var entity in Engine.GetEntities())

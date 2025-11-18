@@ -11,5 +11,6 @@
 - The level music doesn't loop seamlessly.
 - Mario doesn't display the starman color switching correctly.
 - The timer expiring doesn't kill the player.
+- Blocks don't produce debris on player contact.
 
 # Features that may seem like issues

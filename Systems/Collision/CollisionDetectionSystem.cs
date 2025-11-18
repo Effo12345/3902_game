@@ -6,7 +6,7 @@ public class CollisionDetectionSystem : AbstractSystem
     public override void Update(Engine engine, GameTime gameTime)
     {
         List<CollisionEvent> collisionEvents = new List<CollisionEvent>();
-        quadtree = new Quadtree(CONSTANTS.COLLISION.QUADTREE_DIMENSION); //TODO: replace the rectangle parameter with bounds of level.
+        quadtree = new Quadtree(CONSTANTS.COLLISION.QUADTREE_DIMENSION);
         foreach (var entity in engine.GetEntities())
         {
             if (!entity.TryGetComponent<Collider>(out var collisionInfo) ||

@@ -9,6 +9,7 @@ public class BlockBumpMotionSystem : AbstractSystem
         Engine.PubSub.CreateSubscription<BlockBump>(OnBump);
         return true;
     }
+    
     private void OnBump(IEvent evnt)
     {
         //Get bumped entity
@@ -18,8 +19,6 @@ public class BlockBumpMotionSystem : AbstractSystem
         || e.TryGetComponent<BumpState>(out _))
             return;
         
-        
-
         e.AddComponent(new BumpState
         {
             InitY = pos.Value.Y,
@@ -31,6 +30,7 @@ public class BlockBumpMotionSystem : AbstractSystem
         });
         Engine.PubSub.Publish(new BlockBumped { Entity = e, Position = pos });
     }
+
     public override void Update(Engine engine, GameTime gameTime)
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
