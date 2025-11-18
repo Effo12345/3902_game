@@ -93,6 +93,12 @@
             "path": "Sounds/Effects/stomp"
         }
     ],
+    "shaders": [
+        {
+            "key": "PixelationShader",
+            "path": "Shaders/PixelationShader"
+        }
+    ],
     "spriteAtlases": [
         {
             "key": "MarioAnimation",

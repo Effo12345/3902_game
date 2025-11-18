@@ -20,6 +20,7 @@ public class AssetConfig
     public List<AssetFile> Textures { get; set; } = [];
     public List<AssetFile> Fonts { get; set; } = [];
     public List<AssetFile> Sounds { get; set; } = [];
+    public List<AssetFile> Shaders { get; set; } = [];
     public List<AssetFile> SpriteAtlases { get; set; } = [];
     public List<AssetFile> InputConfigs { get; set; } = [];
     public List<AssetFile> EntityConfigs { get; set; } = [];
@@ -62,6 +63,7 @@ public class AssetConfigLoader
             Textures = TryGetValue(root, "textures", new List<AssetFile>()),
             Fonts = TryGetValue(root, "fonts", new List<AssetFile>()),
             Sounds = TryGetValue(root, "sounds", new List<AssetFile>()),
+            Shaders = TryGetValue(root, "shaders", new List<AssetFile>()),
             SpriteAtlases = TryGetValue(root, "spriteAtlases", new List<AssetFile>()),
             InputConfigs = TryGetValue(root, "inputConfigs", new List<AssetFile>()),
             EntityConfigs = TryGetValue(root, "entityConfigs", new List<AssetFile>()),

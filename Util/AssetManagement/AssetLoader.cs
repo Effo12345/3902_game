@@ -10,6 +10,7 @@ public static class AssetLoader
         LoadAssetType(config.Textures, (key, path) => assets.LoadTexture(content, key, path));
         LoadAssetType(config.Fonts, (key, path) => assets.LoadFont(content, key, path));
         LoadAssetType(config.Sounds, (key, path) => assets.LoadSound(content, key, path));
+        LoadAssetType(config.Shaders, (key, path) => assets.LoadShader(content, key, path));
         LoadAssetType(config.SpriteAtlases, assets.LoadSpriteAtlas);
         LoadAssetType(config.InputConfigs, assets.LoadInputConfig);
         LoadAssetType(config.LevelConfigs, assets.LoadLevelConfig);
