@@ -4,34 +4,41 @@
 ### Framework/Core Improvements
 - System priority and execution phase
 - Universal solution for readonly global data storage
-- Deferred entity instantiation
+- `Deferred entity instantiation`
 
 ### Full Level
 - Only have entemies move when near mario
 - Stop the camera and player from moving backwards
-- Pipe interaction and sub-area loading
-- Goal flag system
-- Kill the player when they fall in a pit
-- Level HUD
-- Fix mario throwing fireballs
+- `Intro Animation`
+- `Pipe interaction and sub-area loading`
+- `Goal flag system`
+- `Kill the player when they fall in a pit`
+- `Level HUD`
+- `Fix mario throwing fireballs`
+- `Clean up mario phsics`
+- `Item entities and behaviors`
+- `Level background`
 
 ### Collision
-- Fix issues with existing interactions
-- Enemy + fireball (kill enemy, animation)
-- Mario + dynamic blocks (bumping + breaking blocks on collision)
-- Change mario's collision box size based on powerup state
+- `Fix issues with existing interactions`
+- `Enemy + fireball (kill enemy, animation)`
+- `Mario + dynamic blocks (bumping + breaking blocks on collision)`
+- `Change mario's collision box size based on powerup state`
 
 ### Utilities
 - Debug mode
-- Constants class to extract all magic numbers
+- `Constants class to extract all magic numbers`
+- `Font loading`
 
 ### Other
-- Player life system
-- Level time system
-- Sound effects and background music
+- `Player life system`
+- `Level time system`
+- `Sound effects and background music`
 - Main menu screen
 - Game over screen
 - Pausing
+- `Acceleration-based user input (in addition to velocity)`
+- `Reorganize filesystem`
 
 # Sprint 4 Focused Features 
 
@@ -48,6 +55,7 @@
 - Deferred entity instantiation
 
 ### Full Level
+- Intro Animation
 - Pipe interaction and sub-area loading
 - Goal flag system
 - Kill the player when they fall in a pit
@@ -64,7 +72,6 @@
 - Change mario's collision box size based on powerup state
 
 ### Utilities
-- Debug mode
 - Constants class to extract all magic numbers
 - Font loading
 
@@ -72,18 +79,8 @@
 - Player life system
 - Level time system
 - Sound effects and background music
-- Main menu screen
-- Game over screen
-- Pausing
 - Acceleration-based user input (in addition to velocity)
 - Reorganize filesystem
-
-## Initial Assignments
-- Ethan: Collision box visualizer, Font loading, Velocity and acceleration vector visualizer, Sound effects and background music, Finish JSON definition of 1-1
-- Jiajie: Item entities and behavior, Goal flag system/flag loading, Level HUD
-- Logan: Fix issues with existing collision interactions, Mario + dynamic blocks (bumping + breaking blocks on collision)
-- Mian: Deferred entity instantiation, Acceleration-based user input (in addition to velocity), Pipe interaction and sub-area loading, Fix mario throwing fireballs
-- Stone: Player life system, level time system
 
 # Sprint 3 Focused Features
 

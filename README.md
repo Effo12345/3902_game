@@ -15,6 +15,7 @@ A recreation of Super Mario Bros. 1-1 with Super Mario World assets.
 ├── Content/
     ├── Fonts/         # Text font styles
     ├── Sounds/        # .wav audio files
+    ├── Shaders/       # Global graphical modifications
     ├── Sprites/       # Texture assets
 ├── Core/              # ECS framework
 ├── Documentation/     # Game documentation and code reviews
