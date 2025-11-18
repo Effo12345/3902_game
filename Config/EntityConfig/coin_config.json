@@ -1,0 +1,18 @@
+{
+    "Position": { "Value": [ 4, 432 ] },
+    "Acceleration": {},
+    "Mass": { "Value": 5 },
+    "IsGrounded": {},
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 3, 3 ] },
+    "Collider": {
+        "Type": "Coin",
+        "HitBox": [0, 0, 32, 32]
+    },
+    "AnimationState": {
+        "CurrentState": "coin",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    },
+    "RenderLayer": {"Value": 1}
+}
