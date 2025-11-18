@@ -92,6 +92,13 @@ public class NonMarioCollisionSystem : AbstractSystem
                     }
                 }
                 break;
+            case ColliderType.Fireball:
+                if(secondaryType == ColliderType.Goomba || secondaryType == ColliderType.Koopa)
+                {
+                    //Consider making hurt enemy as a seperate system or make the method public
+                    Engine.PubSub.Publish(new ScoreAddedEvent{ScoreValue = CONSTANTS.SCORE.ENEMY_VALUE});
+                }
+                break;
         }
 
         //Make the star jump

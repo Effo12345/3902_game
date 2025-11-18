@@ -139,6 +139,11 @@ public class MarioCollisionSystem : AbstractSystem
                 Engine.DestroyEntity(secondaryEntity);
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.ONEUP);
                 break;
+            case ColliderType.Coin:
+                Engine.DestroyEntity(secondaryEntity);
+                Engine.PubSub.Publish(new CoinPickupEvent{});
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.COIN);
+                break;
         }
     }
 

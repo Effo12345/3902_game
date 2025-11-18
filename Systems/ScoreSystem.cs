@@ -25,7 +25,6 @@ public class ScoreSystem : AbstractSystem
     private void OnCoinCollected(IEvent evt)
     {
         var e = (CoinPickupEvent)evt;
-        Console.Write("Coin picked");
         var score = _scoreEntity.GetComponent<Score>();
         var coins = _scoreEntity.GetComponent<Coin>();
 

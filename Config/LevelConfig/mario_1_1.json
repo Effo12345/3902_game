@@ -120,6 +120,12 @@
             }
         },
         {
+            "key": "coin",
+            "components": {
+                "Position": {"Value": [100, 300]}
+            }
+        },
+        {
             "key": "static_block",
             "components": {
                 "Position": { "Value": [ -44, 384 ] },
