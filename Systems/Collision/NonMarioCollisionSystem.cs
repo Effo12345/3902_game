@@ -96,6 +96,9 @@ public class NonMarioCollisionSystem : AbstractSystem
             case ColliderType.Fireball:
                 if (secondaryType == ColliderType.Goomba || secondaryType == ColliderType.Koopa || secondaryType == ColliderType.Shell)
                 {
+                    //Consider making hurt enemy as a seperate system or make the method public
+                    Engine.PubSub.Publish(new ScoreAddedEvent{ScoreValue = CONSTANTS.SCORE.ENEMY_VALUE});
+                  
                     Engine.DestroyEntity(movingEntity);
                     secondaryEntity.TryGetComponent<BasicEnemy>(out var secondaryEnemy);
                     secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity);

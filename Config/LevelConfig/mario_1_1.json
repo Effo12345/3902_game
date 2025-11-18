@@ -59,6 +59,98 @@
                 }
             }
         },
+              {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 50, 20 ] },
+                "TextRender": {
+                    "Text": "MARIO",
+                    "Font": "HUDFont",
+                    "Color": [ 0, 0, 0, 255 ]
+                }
+            }
+        },
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 50, 50 ] },
+                "TextRender": {
+                    "Text": "000000",
+                    "Font": "HUDFont",
+                    "Color": [ 0, 0, 0, 255 ]
+                },
+                "Tag": { "Value": "hud_score_value" }
+            }
+        },
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 250, 20 ] },
+                "TextRender": {
+                    "Text": "COINS",
+                    "Font": "HUDFont",
+                    "Color": [ 0, 0, 0, 255 ]
+                }
+            }
+        },
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 250, 50 ] },
+                "TextRender": {
+                    "Text": "00",
+                    "Font": "HUDFont",
+                    "Color": [ 0, 0, 0, 255 ]
+                },
+                "Tag": { "Value": "hud_coins_value" }
+            }
+        },
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 450, 20 ] },
+                "TextRender": {
+                    "Text": "WORLD",
+                    "Font": "HUDFont",
+                    "Color": [ 0, 0, 0, 255 ]
+                }
+            }
+        },
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 450, 50 ] },
+                "TextRender": {
+                    "Text": "1-1",
+                    "Font": "HUDFont",
+                    "Color": [ 0, 0, 0, 255 ]
+                },
+                "Tag": { "Value": "hud_world_value" }
+            }
+        },
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 650, 20 ] },
+                "TextRender": {
+                    "Text": "TIME",
+                    "Font": "HUDFont",
+                    "Color": [ 0, 0, 0, 255 ]
+                }
+            }
+        },
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 650, 50 ] },
+                "TextRender": {
+                    "Text": "400",
+                    "Font": "HUDFont",
+                    "Color": [ 0, 0, 0, 255 ]
+                },
+                "Tag": { "Value": "hud_time_value" }
+            }
+        },   
         {
             "key": "goomba",
             "components": {
@@ -5745,7 +5837,7 @@
                     "TimeInCurrentFrame": 0.0
                 }
             }
-        },
+        },       
         {
             "key": "static_block",
             "components": {
@@ -5757,7 +5849,7 @@
                 }
             }
         },
-		{
+        {
             "key": "static_block",
             "components": {
                 "Position": { "Value": [ 8692, 384 ] },
