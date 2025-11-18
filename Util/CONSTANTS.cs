@@ -69,6 +69,7 @@ public static class CONSTANTS
         public static string COURSE_CLEAR { get; } = "CourseClear";
         public static string BLOCKBREAK { get; } = "BlockBreak";
         public static string STAR { get; } = "Star";
+        public static string PIPE_ENTER { get; } = "PipeEnter";
     }
     public static class MATH
     {

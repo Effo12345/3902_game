@@ -34,6 +34,8 @@ public class PipeInteractionSystem : AbstractSystem
            if (entity.TryGetComponent<Position>(out var position)) {
                 position.Value = destination;
             }
+
+            SoundPlayer.PlaySfx(CONSTANTS.SOUND.PIPE_ENTER);
         }
     }
     
