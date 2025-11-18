@@ -7,8 +7,9 @@
         "HitBox": [0, 0, 48, 48]
     },
     "AnimationState": {
-        "CurrentState": "block",
+        "CurrentState": "grey_block",
         "FrameIndex": 0,
         "TimeInCurrentFrame": 0.0
-    }
+    },
+    "Bump": {}
 }

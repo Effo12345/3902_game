@@ -20,6 +20,12 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/File.spritefont;Fonts/HUD.spritefont
 
+#begin Shaders/PixelationShader.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/PixelationShader.fx
+
 #begin Sounds/Effects/1up.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -32,29 +38,17 @@
 /processorParam:Quality=Best
 /build:Sounds/Effects/break_block.wav
 
-#begin Sounds/Effects/break_block.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Effects/break_block.wav
-
 #begin Sounds/Effects/coin.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Effects/coin.wav
 
-#begin Sounds/Effects/coin.wav
+#begin Sounds/Effects/course_clear.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/Effects/coin.wav
-
-#begin Sounds/Effects/damage_pipe.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Effects/damage_pipe.wav
+/build:Sounds/Effects/course_clear.wav
 
 #begin Sounds/Effects/damage_pipe.wav
 /importer:WavImporter
@@ -68,29 +62,11 @@
 /processorParam:Quality=Best
 /build:Sounds/Effects/death.wav
 
-#begin Sounds/Effects/death.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Effects/death.wav
-
 #begin Sounds/Effects/fireball.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Effects/fireball.wav
-
-#begin Sounds/Effects/fireball.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Effects/fireball.wav
-
-#begin Sounds/Effects/mario_jump.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Effects/mario_jump.wav
 
 #begin Sounds/Effects/mario_jump.wav
 /importer:WavImporter
@@ -104,29 +80,11 @@
 /processorParam:Quality=Best
 /build:Sounds/Effects/powerup_spawn.wav
 
-#begin Sounds/Effects/powerup_spawn.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Effects/powerup_spawn.wav
-
 #begin Sounds/Effects/powerup.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Effects/powerup.wav
-
-#begin Sounds/Effects/powerup.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Effects/powerup.wav
-
-#begin Sounds/Effects/shell_kick.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Effects/shell_kick.wav
 
 #begin Sounds/Effects/shell_kick.wav
 /importer:WavImporter
@@ -140,17 +98,11 @@
 /processorParam:Quality=Best
 /build:Sounds/Effects/shell_ricochet.wav
 
-#begin Sounds/Effects/shell_ricochet.wav
-/importer:WavImporter
+#begin Sounds/Effects/star.mp3
+/importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/Effects/shell_ricochet.wav
-
-#begin Sounds/Effects/stomp.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Effects/stomp.wav
+/build:Sounds/Effects/star.mp3
 
 #begin Sounds/Effects/stomp.wav
 /importer:WavImporter

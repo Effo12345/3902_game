@@ -2,14 +2,18 @@
   "MoveLeft": {
     "type": "Velocity",
     "keys": [ "A", "Left" ],
-    "axisX": -5,
+    "axisX": -10,
     "axisY": 0
   },
   "MoveRight": {
     "type": "Velocity",
     "keys": [ "D", "Right" ],
-    "axisX": 5,
+    "axisX": 10,
     "axisY": 0
+  },
+  "Crouch": {
+    "type": "Button",
+    "keys": ["S", "Down"]
   },
   "Jump": {
     "type": "Button",

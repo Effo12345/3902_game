@@ -8,12 +8,15 @@ public enum ColliderType
     Koopa,
     Shell,
     Block,
+    QuestionBlock,
     Coin,
     Red_Mushroom,
     Green_Mushroom,
     Flower,
     Star,
-    Fireball
+    Flag,
+    Pipe,
+    Fireball,
 }
 
 public class Collider

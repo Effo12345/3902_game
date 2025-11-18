@@ -37,6 +37,12 @@
             { "x": 208, "y": 117, "width": 15, "height": 28 }
         ]
     },
+    "big_peace": {
+        "frameDuration": 0.0,
+        "frames": [
+            { "x": 328, "y": 116, "width": 16, "height": 28 }
+        ]
+    },
     "fire_idle": {
         "frameDuration": 0.0,
         "frames": [

@@ -32,6 +32,17 @@
             }
         ]
     },
+    "grey_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 311,
+                "y": 80,
+                "width": 16,
+                "height": 16 
+            }
+        ]
+    },
     "red_mushroom": {
         "frameDuration": 0,
         "frames": [
@@ -62,6 +73,35 @@
                 "y": 13,
                 "width": 15,
                 "height": 16
+            }
+        ]
+    },
+    "fireball": {
+        "frameDuration": 0.2,
+        "frames": [
+            {
+                "x": 479,
+                "y": 215,
+                "width": 6,
+                "height": 7
+            },
+            {
+                "x": 497,
+                "y": 216,
+                "width": 7,
+                "height": 6
+            },
+            {
+                "x": 517,
+                "y": 214,
+                "width": 6,
+                "height": 7
+            },
+            {
+                "x": 538,
+                "y": 214,
+                "width": 7,
+                "height": 6
             }
         ]
     },
@@ -149,6 +189,48 @@
         "frameDuration": 0.0,
         "frames": [
             {"x": 18, "y": 195, "width": 16, "height": 16}
+        ]
+    },
+    "flag_tl": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 137, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "flag_ml": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 137, "y": 18, "width": 16, "height": 16}
+        ]
+    },
+    "flag_bl": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 137, "y": 35, "width": 16, "height": 8}
+        ]
+    },
+    "flag_tr": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 169, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "flag_mr": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 169, "y": 18, "width": 16, "height": 16}
+        ]
+    },
+    "flag_br": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 169, "y": 35, "width": 16, "height": 8}
+        ]
+    },
+    "flag_bar": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 137, "y": 53, "width": 24, "height": 8}
         ]
     }
 }

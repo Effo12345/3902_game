@@ -45,6 +45,10 @@
             "path": "Sounds/Effects/coin"
         },
         {
+            "key": "CourseClear",
+            "path": "Sounds/Effects/course_clear"
+        },
+        {
             "key": "Damage",
             "path": "Sounds/Effects/damage_pipe"
         },
@@ -81,8 +85,18 @@
             "path": "Sounds/Effects/shell_ricochet"
         },
         {
+            "key": "Star",
+            "path": "Sounds/Effects/star"
+        },
+        {
             "key": "Stomp",
             "path": "Sounds/Effects/stomp"
+        }
+    ],
+    "shaders": [
+        {
+            "key": "PixelationShader",
+            "path": "Shaders/PixelationShader"
         }
     ],
     "spriteAtlases": [
@@ -163,8 +177,16 @@
             "path": "Config/EntityConfig/background_config.json"
         },
         {
-            "key": "MusicPlayerConfig",
-            "path": "Config/EntityConfig/music_player_config.json"
+            "key": "EmptyConfig",
+            "path": "Config/EntityConfig/empty.json"
+        },
+        {
+            "key": "FlagBlockConfig",
+            "path": "Config/EntityConfig/flag_block.json"
+        },
+        {
+            "key": "FlagBarConfig",
+            "path": "Config/EntityConfig/flag_bar.json"
         }
     ],
     "levelConfigs": [
@@ -220,6 +242,12 @@
             "entityConfig": "CoinConfig"
         },
         {
+            "key": "fireball",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FireballConfig"
+        },
+        {
             "key": "red_mushroom",
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
@@ -250,8 +278,20 @@
             "entityConfig": "BackgroundConfig"
         },
         {
-            "key": "music_player",
-            "entityConfig": "MusicPlayerConfig"
+            "key": "empty",
+            "entityConfig": "EmptyConfig"
+        },
+        {
+            "key": "flag_block",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FlagBlockConfig"
+        },
+        {
+            "key": "flag_bar",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "FlagBarConfig"
         }
     ]
 }
