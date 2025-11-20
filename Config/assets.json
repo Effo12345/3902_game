@@ -145,6 +145,10 @@
             "path": "Config/EntityConfig/static_block_config.json"
         },
         {
+            "key": "InvisibleBlock",
+            "path": "Config/EntityConfig/invisible_block_config.json"
+        },
+        {
             "key": "HUDText",
             "path": "Config/EntityConfig/hud_text_config.json"
         },
@@ -224,6 +228,12 @@
           "spriteTexture": "TilesSheet",
           "spriteAtlas": "TilesAnimation",
           "entityConfig": "StaticBlock"
+        },
+        {
+          "key": "invisible_block",
+          "spriteTexture": "TilesSheet",
+          "spriteAtlas": "TilesAnimation",
+          "entityConfig": "InvisibleBlock"
         },
         {
             "key": "hud_text",

@@ -30,6 +30,18 @@ public class MarioCollisionSystem : AbstractSystem
         secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity);
         switch (type)
         {
+            case ColliderType.InvisibleBlock:
+                if (direction.Equals(Direction.Top) && movingVelocity.Value.Y < 0)
+                {
+                    movingVelocity.Value.Y = 0;
+                    movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
+                    secondaryCollisionInfo.Type = ColliderType.Block;
+                    if (secondaryEntity.TryGetComponent<Visible>(out var visible)) 
+                        visible.Value = true;
+
+                    Engine.PubSub.Publish(new BlockBump {Entity = secondaryEntity });
+                }
+                break;
             case ColliderType.Block:
             case ColliderType.QuestionBlock:
                 if (direction.Equals(Direction.Bottom))

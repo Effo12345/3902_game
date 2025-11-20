@@ -3429,6 +3429,17 @@
                 }
             }
         },
+        {
+            "key": "invisible_block",
+            "components": {
+                "Position": { "Value": [ 3028, 150 ] },
+                "AnimationState": {
+                    "CurrentState": "block",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                }
+            }
+        },
 		{
             "key": "static_block",
             "components": {

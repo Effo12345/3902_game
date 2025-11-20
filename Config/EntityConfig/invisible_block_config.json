@@ -1,0 +1,22 @@
+{
+    "Position": { "Value": [ 4, 432 ] },
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 3.0, 3.0 ] },
+    "Collider": {
+        "Type": "InvisibleBlock",
+        "HitBox": [0, 0, 48, 48]
+    },
+    "AnimationState": {
+        "CurrentState": "invisible_block",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    },
+    "Bump": {},
+    "Visible": { "Value": false},
+    "HitCount": { "Value": 1 },
+    "ItemKind": {
+        "Kind": "green_mushroom",
+        "TextureKey": "TilesSheet",
+        "spriteAtlasKey": "TilesAnimation"
+    }
+}

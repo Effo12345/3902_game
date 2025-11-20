@@ -31,11 +31,13 @@ public class PipeInteractionSystem : AbstractSystem
 
         if (inputDirection.Equals(pipeDirection) && Enter)
         {
-           if (entity.TryGetComponent<Position>(out var position)) {
+            if (entity.TryGetComponent<Position>(out var position) &&
+                entity.TryGetComponent<Velocity>(out var velocity) &&
+                entity.TryGetComponent<Acceleration>(out var acceleration) &&
+                entity.TryGetComponent<Collider>(out var collider)) {
+                SoundPlayer.PlaySfx(CONSTANTS.SOUND.PIPE_ENTER);
                 position.Value = destination;
             }
-
-            SoundPlayer.PlaySfx(CONSTANTS.SOUND.PIPE_ENTER);
         }
     }
     
