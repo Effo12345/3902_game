@@ -21,6 +21,7 @@
 - `Block breaking animation`
 - Crouch
 - Only break one block at a time
+- Use the actual mario world font
 
 # Sprint 5 features
 - `Controller input`
