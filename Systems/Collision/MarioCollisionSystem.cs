@@ -35,7 +35,7 @@ public class MarioCollisionSystem : AbstractSystem
                 {
                     movingVelocity.Value.Y = 0;
                     movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
-                    secondaryCollisionInfo.Type = ColliderType.Block;
+                    secondaryCollisionInfo.Type = ColliderType.QuestionBlock;
                     if (secondaryEntity.TryGetComponent<Visible>(out var visible)) 
                         visible.Value = true;
 
