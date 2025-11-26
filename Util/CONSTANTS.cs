@@ -93,6 +93,7 @@ public static class CONSTANTS
         public static float STAR_TIMER { get; } = 8.0f;
         public static float JUMP_VELOCITY { get; } = -900.0f;
         public static Color DEFAULT_BACKGROUND_COLOR { get; } = Color.CornflowerBlue;
+        public static float BLOCK_TIMER { get; } = 1.0f;
     }
     public static class RENDER
     {

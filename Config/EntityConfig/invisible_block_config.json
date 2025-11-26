@@ -13,7 +13,9 @@
     },
     "Bump": {},
     "Visible": { "Value": false},
-    "HitCount": { "Value": 1 },
+    "HitCount": { 
+        "Value": 1, 
+        "Timer": -1},
     "ItemKind": {
         "Kind": "green_mushroom",
         "TextureKey": "TilesSheet",

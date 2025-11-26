@@ -756,9 +756,14 @@
             }
         },
         {
-            "key": "static_block",
+            "key": "ten_coin_block",
             "components": {
-                "Position": { "Value": [ 4468, 192 ] }
+                "Position": { "Value": [ 4468, 192 ] },
+                "ItemKind": {
+                    "Kind": "coin",
+                    "TextureKey": "ItemsSheet",
+                    "spriteAtlasKey": "ItemsAnimation"
+                }
             }
         },
         {

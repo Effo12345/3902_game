@@ -157,6 +157,10 @@
             "path": "Config/EntityConfig/question_block_config.json"
         },
         {
+            "key": "TenCoinBlock",
+            "path": "Config/EntityConfig/ten_coin_block_config.json"
+        },
+        {
             "key": "CoinConfig",
             "path": "Config/EntityConfig/coin_config.json"
         },
@@ -234,6 +238,12 @@
           "spriteTexture": "TilesSheet",
           "spriteAtlas": "TilesAnimation",
           "entityConfig": "InvisibleBlock"
+        },
+        {
+            "key": "ten_coin_block",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "TenCoinBlock"
         },
         {
             "key": "hud_text",

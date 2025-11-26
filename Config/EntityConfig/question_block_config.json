@@ -12,7 +12,9 @@
         "TimeInCurrentFrame": 0.0
     },
     "Bump": {},
-    "HitCount": { "Value": 1 },
+    "HitCount": { 
+        "Value": 1, 
+        "Timer": -1},
     "ItemKind": {
         "Kind": "red_mushroom",
         "TextureKey": "TilesSheet",
