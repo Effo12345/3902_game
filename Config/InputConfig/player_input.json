@@ -17,7 +17,8 @@
   },
   "Jump": {
     "type": "Button",
-    "keys": [ "Space" ]
+    "keys": [ "Space" ],
+    "gamepadButtons": [ "A" ]
   },
   "Fire": {
     "type": "Button",

@@ -15,6 +15,10 @@ public static class InputDefinitionLoader
         public string Type { get; set; } = "Button";       // Button | Vector | Acceleration
         public List<string>? Keys { get; set; }            // ["W","A","Space"]
         public List<string>? MouseButtons { get; set; }    // Mousebutton["Left","Right"]
+
+        public List<string>? GamepadButtons { get; set; }
+        public string? GamepadAxis { get; set; }
+
         public float AxisX { get; set; } = 0;              // Vector / Acceleration
         public float AxisY { get; set; } = 0;              // Vector / Acceleration
     }
@@ -33,6 +37,9 @@ public static class InputDefinitionLoader
                 Type = ParseType(ib.Type),
                 Keys = ParseKeys(ib.Keys),
                 MouseButtons = ib.MouseButtons ?? new List<string>(),
+
+                GamepadButtons = ParseGamepadButtons(ib.GamepadButtons),
+
                 AxisX = ib.AxisX,
                 AxisY = ib.AxisY
             };
@@ -75,4 +82,18 @@ public static class InputDefinitionLoader
         }
         return list;
     }
+
+    private static List<Buttons> ParseGamepadButtons(IEnumerable<string>? names)
+    {
+        var list = new List<Buttons>();
+        if (names == null) return list;
+
+        foreach (var s in names)
+        {
+            if (Enum.TryParse<Buttons>(s, ignoreCase: true, out var btn))
+                list.Add(btn);
+        }
+        return list;
+    }
+
 }

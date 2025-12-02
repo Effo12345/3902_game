@@ -14,6 +14,7 @@ public class PlayerMotionSystem : AbstractSystem
         base.Initialize(engine);
         engine.PubSub.CreateSubscription<InputAxisEvent>(OnAxis);
         engine.PubSub.CreateSubscription<InputActionEvent>(OnAction);
+        engine.PubSub.CreateSubscription<InputGamepadStickEvent>(OnGamepad);
         return true;
     }
     private void OnAxis(IEvent evt)
@@ -28,6 +29,22 @@ public class PlayerMotionSystem : AbstractSystem
 
         var v = e.Value;
         if (!grounded.Value) v.Y = 0f;
+        velocity.Value += v;
+    }
+
+    private void OnGamepad(IEvent evt)
+    {
+        var e = (InputGamepadStickEvent)evt;
+        if (e.Stick != GamepadStick.Left)
+            return;
+        var entity = e.Entity;
+
+        if (!entity.TryGetComponent<Velocity>(out var velocity) ||
+            !entity.TryGetComponent<IsGrounded>(out var grounded))
+            return;
+
+        var v = new Vector2(e.Value.X * 10.0f, 0f);
+
         velocity.Value += v;
     }
     private void OnAction(IEvent evt)
