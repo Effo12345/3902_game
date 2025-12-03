@@ -6,6 +6,7 @@ public class FacingSystem : AbstractSystem
     {
         base.Initialize(engine);
         engine.PubSub.CreateSubscription<InputAxisEvent>(HandleInput);
+        engine.PubSub.CreateSubscription<InputGamepadStickEvent>(HandleGamepadInput);
 
         return true;
     }
@@ -25,6 +26,23 @@ public class FacingSystem : AbstractSystem
         facingDirection.IsFacingLeft = horizontalMotion < 0;
     }
 
+    private void HandleGamepadInput(IEvent evt)
+    {
+        var inputEvent = (InputGamepadStickEvent)evt;
+        if (inputEvent.Stick != GamepadStick.Left)
+            return;
+        var entity = inputEvent.Entity;
+
+        if (!inputEvent.Entity.TryGetComponent<FacingDirection>(out var facingDirection))
+            return;
+
+        float horizontalMotion = inputEvent.Value.X;
+        // Don't change direction without input
+        if (Math.Abs(horizontalMotion) <= CONSTANTS.MATH.FLOAT_EPSILON)
+            return;
+
+        facingDirection.IsFacingLeft = horizontalMotion < 0;
+    }
     // no-op
     public override void Update(Engine engine, GameTime gameTime) { }
 }
