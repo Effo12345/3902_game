@@ -7,6 +7,14 @@ public class PipeAnimationSystem : AbstractSystem
     private bool GoingUp = false;
     private float Timer = 0.0f;
     private Vector2 PipeDestination;
+    private Vector2 TravelVelocity;
+    private Dictionary<Direction, Vector2> DirectionToVelocity = new Dictionary<Direction, Vector2>
+    {
+        {Direction.Bottom, new Vector2(0, 100)},
+        {Direction.Top, new Vector2(0, -100)},
+        {Direction.Left, new Vector2(-100, 0)},
+        {Direction.Right, new Vector2(100, 0)},
+    };
 
     public override bool Initialize(Engine engine)
     {
@@ -22,15 +30,13 @@ public class PipeAnimationSystem : AbstractSystem
         Entity entity = pipeAnimationEvent.Entity;
         Vector2 destination = pipeAnimationEvent.Destination;
 
-        if (!entity.TryGetComponent<Velocity>(out var velocity) ||
-            !entity.TryGetComponent<Acceleration>(out var acceleration) ||
-            !entity.TryGetComponent<Collider>(out var collider) ||
-            !entity.TryGetComponent<Mass>(out var mass) ||
-            !entity.TryGetComponent<Position>(out var position))
+        if (!entity.TryGetComponent<Status>(out var status))
             return;
 
         Timer = 0.0f;
         PipeDestination = destination;
+        DirectionToVelocity.TryGetValue(status.InputDirection, out var velocity);
+        TravelVelocity = velocity;
         GoingDown = true;
         SoundPlayer.PlaySfx(CONSTANTS.SOUND.PIPE_ENTER);
     }
@@ -56,7 +62,7 @@ public class PipeAnimationSystem : AbstractSystem
                 entity.RemoveComponent<Mass>();
                 entity.RemoveComponent<InputBindings>();
 
-                velocity.Value.Y = 100;
+                velocity.Value = TravelVelocity;
                 if (Timer > 1.5)
                 {
 
@@ -71,7 +77,7 @@ public class PipeAnimationSystem : AbstractSystem
             if (GoingUp)
             {
                 Timer += deltaTime;
-                velocity.Value.Y = -100;
+                velocity.Value = -TravelVelocity;
     
                 if (Timer > 0.5)
                 {
