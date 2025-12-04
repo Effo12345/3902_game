@@ -7,7 +7,8 @@
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "Collider": {
         "Type": "Mario",
-        "HitBox": [0, 0, 42, 60]
+        "HitBox": [0, 0, 42, 60],
+        "IsActive": true
     },
     "IsGrounded": { "Value": false },
     "Friction": { "Value": 6.0 },

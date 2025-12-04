@@ -6,7 +6,8 @@
   "Acceleration": { "Value": [ 0.0, 0.0 ] },
   "Collider": {
       "Type": "Flag",
-      "HitBox": [0, 0, 72, 24]
+      "HitBox": [0, 0, 72, 24],
+      "IsActive": true
   },
   "AnimationState": 
   { 

@@ -24,4 +24,6 @@ public class Collider
 {
     public ColliderType Type;
     public Rectangle HitBox;
+
+    public bool IsActive;
 }

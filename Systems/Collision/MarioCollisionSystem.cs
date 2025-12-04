@@ -48,9 +48,9 @@ public class MarioCollisionSystem : AbstractSystem
                 {
                     movingIsGrounded.Value = true;
                     movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
-                    if (secondaryEntity.TryGetComponent<PipeEntry>(out var pipeEntry))
+                    if (secondaryEntity.TryGetComponent<PipeEntry>(out var pipeEntry) && pipeEntry.EntryDirection == direction)
                     {
-                        Engine.PubSub.Publish(new PipeEvent {Entity = movingEntity, Destination = pipeEntry.Destination, InputDirection = Direction.Bottom, PipeDirection = pipeEntry.EntryDirection });
+                        Engine.PubSub.Publish(new PipeEvent {Entity = movingEntity, Destination = pipeEntry.Destination, InputDirection = movingStatus.InputDirection, PipeDirection = pipeEntry.EntryDirection });
                     }
                 }
                 else if (direction.Equals(Direction.Right) || direction.Equals(Direction.Left))

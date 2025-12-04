@@ -2,7 +2,8 @@
   "Position": { "Value": [0,0] },
   "Collider": {
       "Type": "Flag",
-      "HitBox": [0, 0, 48, 48]
+      "HitBox": [0, 0, 48, 48],
+      "IsActive": true
   },
   "AnimationState": 
   { 

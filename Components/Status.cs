@@ -8,6 +8,7 @@ public class Status
     public float StarTimer;
     public int Lives;
     public int Coins;
+    public Direction InputDirection;
 
     public int NumFireballs = 0;
     // public int Health;

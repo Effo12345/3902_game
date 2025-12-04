@@ -7,7 +7,8 @@
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "Collider": {
         "Type": "Koopa",
-        "HitBox": [0, 0, 48, 81]
+        "HitBox": [0, 0, 48, 81],
+        "IsActive": true
     },
     "IsGrounded": { "Value": false },
     "AnimationState": {

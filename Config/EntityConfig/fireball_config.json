@@ -9,7 +9,8 @@
     "FacingDirection": {"IsFacingLeft": false},
     "Collider": {
         "Type": "Fireball",
-        "HitBox": [0, 0, 21, 21]
+        "HitBox": [0, 0, 21, 21],
+        "IsActive": true
     },
     "AnimationState": {
         "CurrentState": "fireball",

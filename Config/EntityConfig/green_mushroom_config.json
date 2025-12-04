@@ -4,7 +4,8 @@
     "Scale": { "Value": [ 3, 3 ] },
     "Collider": {
         "Type": "Green_Mushroom",
-        "HitBox": [0, 0, 32, 32]
+        "HitBox": [0, 0, 32, 32],
+        "IsActive": true
     },
     "AnimationState": {
         "CurrentState": "green_mushroom",

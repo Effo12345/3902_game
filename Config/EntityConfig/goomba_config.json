@@ -7,7 +7,8 @@
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "Collider": {
         "Type": "Goomba",
-        "HitBox": [0, 0, 48, 48]
+        "HitBox": [0, 0, 48, 48],
+        "IsActive": true
     },
     "IsGrounded": { "Value": false },
     "AnimationState": {
