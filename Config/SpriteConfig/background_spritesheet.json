@@ -9,5 +9,16 @@
                 "height": 432
             }
         ]
+    },
+    "underground": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 2,
+                "y": 1740,
+                "width": 512,
+                "height": 432
+            }
+        ]
     }
 }
