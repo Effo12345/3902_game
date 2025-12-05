@@ -59,7 +59,16 @@
                 }
             }
         },
-              {
+        {
+            "key": "empty",
+            "components": {
+                "LevelTimer": {
+                    "InitialTime": 400,
+                    "RemainingTime": 400
+                }
+            }
+        },
+        {
             "key": "hud_text",
             "components": {
                 "Position": { "Value": [ 50, 20 ] },

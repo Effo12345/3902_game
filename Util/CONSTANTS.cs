@@ -104,6 +104,8 @@ public static class CONSTANTS
         public static string PLAYER { get; } = "player";
         public static string FLAG { get; } = "flag";
         public static string FLAG_BAR { get; } = "flag_bar";
+        public static string BLOCK_DEBRIS { get; } = "block_debris";
+
     }
     public static class SHADER
     {

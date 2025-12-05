@@ -187,6 +187,10 @@
         {
             "key": "FlagBarConfig",
             "path": "Config/EntityConfig/flag_bar.json"
+        },
+        {
+            "key": "DebrisConfig",
+            "path": "Config/EntityConfig/block_debris_config.json"
         }
     ],
     "levelConfigs": [
@@ -292,6 +296,12 @@
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
             "entityConfig": "FlagBarConfig"
+        },
+        {
+            "key": "block_debris",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "DebrisConfig"
         }
     ]
 }

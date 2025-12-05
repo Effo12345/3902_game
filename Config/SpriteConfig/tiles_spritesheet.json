@@ -43,6 +43,17 @@
             }
         ]
     },
+    "block_debris": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 311,
+                "y": 80,
+                "width": 4,
+                "height": 4 
+            }
+        ]
+    },
     "red_mushroom": {
         "frameDuration": 0,
         "frames": [

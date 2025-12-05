@@ -1,0 +1,14 @@
+{
+    "Position": { "Value": [ 0, 0 ] },
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 3, 3 ] },
+    "Acceleration": { "Value": [ 0, 0 ] },
+    "Velocity": { "Value": [ 0, 0 ] },
+    "Mass": { "Value": 5 },
+    "AnimationState": {
+        "CurrentState": "block_debris",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    },
+    "LifeTime": { "Time": 2 }
+}

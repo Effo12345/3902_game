@@ -11,5 +11,8 @@
         "FrameIndex": 0,
         "TimeInCurrentFrame": 0.0
     },
-    "Bump": {}
+    "Bump": {},
+    "BlockDebris": {
+        "Directions": [[-1, -1.4], [1, -1.5], [-0.8, -1.1], [0.9, -1.2]]
+    }
 }

@@ -40,12 +40,14 @@ public class Game1 : Game
         Engine.AddSystem(new BlockBreakSystem());
         Engine.AddSystem(new CoinCleanupSystem());
         Engine.AddSystem(new EnemyCleanupSystem());
+        Engine.AddSystem(new DebrisCleanupSystem());
         Engine.AddSystem(new KoopaWakeupSystem());
         Engine.AddSystem(new MusicSystem());
         Engine.AddSystem(new ScoreSystem());
         Engine.AddSystem(new HUDSystem());
         Engine.AddSystem(new LevelEndSystem(GraphicsManager));
         Engine.AddSystem(new MarioDefeatSystem(GameManager));
+        Engine.AddSystem(new LevelTimerSystem());
 
         base.Initialize();
     }

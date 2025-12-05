@@ -33,6 +33,7 @@ public class MarioDefeatSystem : AbstractSystem
                 entity.RemoveComponent<Collider>();
                 entity.RemoveComponent<Friction>();
                 entity.RemoveComponent<InputBindings>();
+                Engine.PubSub.Publish(new EndLevelTimer{});
 
                 //Apply upwards velocity
                 velocity.Value.Y = CONSTANTS.COLLISION.MARIO_DEATH_VELOCITY;
