@@ -41,10 +41,17 @@ public class RenderSystem : AbstractSystem
             float depth = 0.5f;
             if (entity.TryGetComponent<RenderLayer>(out var layer))
                 depth = MathHelper.Clamp(layer.Value, 0f, 1f);
+
+            sprite.Origin = new Vector2(
+                sprite.SourceRect.Width * 0.5f,
+                sprite.SourceRect.Height * 0.5f
+            );
+
+            Vector2 renderPos = position.Value + sprite.Origin * scale.Value;
             
             SpriteBatch.Draw(
                 texture.Texture,
-                position.Value,
+                renderPos,
                 sprite.SourceRect,
                 sprite.Color,
                 rotation.Value,

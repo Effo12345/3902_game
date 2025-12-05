@@ -31,5 +31,6 @@
         "IsStar": false,
         "Lives": 3
     },
-    "Tag": { "Value": "player" }
+    "Tag": { "Value": "player" },
+    "RenderLayer": { "Value": 0.9 }
 }

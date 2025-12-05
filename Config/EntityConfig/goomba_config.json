@@ -26,5 +26,6 @@
         "Name": "goomba",
         "DeathType": "Alive",
         "cleanupTimer": 0.5
-    }
+    },
+    "RenderLayer": { "Value": 0 }
 }
