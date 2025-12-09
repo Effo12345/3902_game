@@ -20,7 +20,7 @@
     "keys": [ "Space" ],
     "gamepadButtons": [ "A" ]
   },
-  "Fire": {
+  "Special": {
     "type": "Button",
     "keys": [ "L" ],
     "mouseButtons": [ "Left" ]

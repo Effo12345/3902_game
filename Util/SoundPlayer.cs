@@ -49,8 +49,10 @@ public static class SoundPlayer
 
     public static void Stop(string key)
     {
-        PlayingSounds[key].Stop();
-        PlayingSounds.Remove(key);
+        if (PlayingSounds.ContainsKey(key)) {
+            PlayingSounds[key].Stop();
+            PlayingSounds.Remove(key);
+        }
     }
 
     public static void StopAll()

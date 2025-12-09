@@ -68,6 +68,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Effects/fireball.wav
 
+#begin Sounds/Effects/mario_hover.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Effects/mario_hover.wav
+
 #begin Sounds/Effects/mario_jump.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -115,6 +121,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Music/overworld.wav
+
+#begin Sounds/Music/pachinko.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Music/pachinko.wav
 
 #begin Sprites/backgrounds.png
 /importer:TextureImporter

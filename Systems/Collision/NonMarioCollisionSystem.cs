@@ -115,6 +115,10 @@ public class NonMarioCollisionSystem : AbstractSystem
                     
                 }
                 break;
+            case ColliderType.Water:
+                if (secondaryCollisionInfo.Type == ColliderType.Block)
+                    Engine.DestroyEntity(movingEntity);
+                break;
         }
 
         //Make the star and fireball jump

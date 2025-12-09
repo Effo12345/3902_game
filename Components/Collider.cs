@@ -17,6 +17,7 @@ public enum ColliderType
     Flag,
     Pipe,
     Fireball,
+    Water
 }
 
 public class Collider
