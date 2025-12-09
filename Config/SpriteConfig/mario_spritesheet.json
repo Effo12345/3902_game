@@ -62,6 +62,37 @@
             { "x": 208, "y": 474, "width": 15, "height": 28 }
         ]
     },
+    "sunshine_idle": {
+        "frameDuration": 0.0,
+        "frames": [
+            { "x": 11, "y": 72, "width": 39, "height": 54}
+        ]
+    },
+    "sunshine_walk": {
+        "frameDuration": 0.1,
+        "frames": [
+            { "x": 58, "y": 8, "width": 46, "height": 47},
+            { "x": 107, "y": 9, "width": 46, "height": 47}
+        ]
+    },
+    "sunshine_jump": {
+        "frameDuration": 0.0,
+        "frames": [
+            { "x": 1, "y": 1, "width": 48, "height": 59}
+        ]
+    },
+    "sunshine_dive": {
+        "frameDuration": 0.0,
+        "frames": [
+            { "x": 112, "y": 79, "width": 54, "height": 48}
+        ]
+    },
+    "sunshine_hover": {
+        "frameDuration": 0.0,
+        "frames": [
+            { "x": 67, "y": 72, "width": 39, "height": 55}
+        ]
+    },
     "dead": {
         "frameDuration": 0.0,
         "frames": [
