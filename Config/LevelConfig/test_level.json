@@ -3,46 +3,15 @@
         {
             "key": "mario",
             "components": {
-                "Position": { "Value": [ 100, 20 ] }
+                "Position": { "Value": [ 100, 20 ] },
+                "Status": { "State": "sunshine"},
+                "Scale": { "Value": [1, 1]}
             }
         },
         {
             "key": "coin",
             "components": {
                 "Position": {"Value": [400, 200]}
-            }
-        },
-        {
-            "key": "koopa",
-            "components": {
-                "Position": { "Value": [ 500, 200 ] }
-            }
-        },
-        {
-            "key": "star",
-            "components": {
-                "Position": { "Value": [ 300, 200 ] },
-                "Velocity": { "Value": [ 100, 0]}
-            }
-        },
-        {
-            "key": "red_mushroom",
-            "components": {
-                "Position": { "Value": [ 400, 200 ] },
-                "Velocity": { "Value": [ 100, 0]}
-            }
-        },
-        {
-            "key": "green_mushroom",
-            "components": {
-                "Position": { "Value": [ 500, 200 ] },
-                "Velocity": { "Value": [ 100, 0]}
-            }
-        },
-        {
-            "key": "flower",
-            "components": {
-                "Position": { "Value": [ 484, 384 ] }
             }
         },
         {

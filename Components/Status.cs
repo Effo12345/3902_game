@@ -2,7 +2,7 @@
 
 public class Status
 {
-    public string State; //Can be "small" "big" "fire" or "dead"
+    public string State; //Can be "small" "big" "fire" "sunshine" or "dead"
     public float InvincibilityDuration;
     public bool isInvincible;
     public float StarTimer;
