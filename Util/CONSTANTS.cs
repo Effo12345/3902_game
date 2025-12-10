@@ -93,8 +93,11 @@ public static class CONSTANTS
         public static Vector2 FIREBALL_SPAWN { get; } = new Vector2(15 * 3 / 2);
         public static float RESPAWN_TIMER { get; } = 3.5f;
         public static float STAR_TIMER { get; } = 8.0f;
-        public static float JUMP_VELOCITY { get; } = -900.0f;
+        public static float JUMP_VELOCITY { get; } = -500.0f;
+        public static float MAX_JUMP_HOLD_FRAMES { get; } = 20;
+
         public static Color DEFAULT_BACKGROUND_COLOR { get; } = Color.CornflowerBlue;
+        public static float BLOCK_TIMER { get; } = 1.0f;
     }
     public static class RENDER
     {

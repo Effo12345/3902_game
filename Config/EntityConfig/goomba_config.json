@@ -7,7 +7,8 @@
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "Collider": {
         "Type": "Goomba",
-        "HitBox": [0, 0, 48, 48]
+        "HitBox": [0, 0, 48, 48],
+        "IsActive": true
     },
     "IsGrounded": { "Value": false },
     "AnimationState": {
@@ -15,10 +16,16 @@
         "FrameIndex": 0,
         "TimeInCurrentFrame": 0.0
     },
+    "SpriteState": {
+        "SourceRect": [ 0, 0, 0, 0 ],
+        "Origin": [ 0, 0 ],
+        "Color": [ 255, 255, 255, 255 ]
+    },
     "FacingDirection": { "IsFacingLeft": false },
     "BasicEnemy": { 
         "Name": "goomba",
         "DeathType": "Alive",
         "cleanupTimer": 0.5
-    }
+    },
+    "RenderLayer": { "Value": 0 }
 }

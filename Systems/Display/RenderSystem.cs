@@ -19,6 +19,7 @@ public class RenderSystem : AbstractSystem
         foreach (var entity in Engine.GetEntities())
         {
             if (!entity.TryGetComponent<SpriteState>(out var sprite) ||
+                !entity.TryGetComponent<SpriteTexture>(out var texture) ||
                 !entity.TryGetComponent<Position>(out var position) ||
                 !entity.TryGetComponent<Rotation>(out var rotation) ||
                 !entity.TryGetComponent<Scale>(out var scale)
@@ -40,10 +41,17 @@ public class RenderSystem : AbstractSystem
             float depth = 0.5f;
             if (entity.TryGetComponent<RenderLayer>(out var layer))
                 depth = MathHelper.Clamp(layer.Value, 0f, 1f);
+
+            sprite.Origin = new Vector2(
+                sprite.SourceRect.Width * 0.5f,
+                sprite.SourceRect.Height * 0.5f
+            );
+
+            Vector2 renderPos = position.Value + sprite.Origin * scale.Value;
             
             SpriteBatch.Draw(
-                sprite.Texture,
-                position.Value,
+                texture.Texture,
+                renderPos,
                 sprite.SourceRect,
                 sprite.Color,
                 rotation.Value,
