@@ -32,6 +32,7 @@ public class MarioCollisionSystem : AbstractSystem
         {
             case ColliderType.Block:
             case ColliderType.QuestionBlock:
+            case ColliderType.HardBlock:
                 if (direction.Equals(Direction.Bottom))
                 {
                     movingIsGrounded.Value = true;
@@ -75,7 +76,7 @@ public class MarioCollisionSystem : AbstractSystem
                     if (secondaryCollisionInfo.Type == ColliderType.QuestionBlock || movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
                     {
                         Engine.PubSub.Publish(new BlockBump {Entity = secondaryEntity });   
-                    } else
+                    } else if (secondaryCollisionInfo.Type != ColliderType.HardBlock)
                     {
                         Engine.PubSub.Publish(new BlockBreak {Entity = secondaryEntity });
                     }

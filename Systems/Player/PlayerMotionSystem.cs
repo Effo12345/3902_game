@@ -110,6 +110,7 @@ public class PlayerMotionSystem : AbstractSystem
                 }
                 if (inputEvent.Phase == InputPhase.Hold && HoverTimer > 0) {
                     velocity.Value.Y = -50;
+                    currentStatus.isHovering = true;
                     Engine.Defer(Engine =>
                     {
                         var fireball = EntityFactory.BuildEntity(Engine, "fireball"); //"water"
@@ -132,6 +133,7 @@ public class PlayerMotionSystem : AbstractSystem
                 {
                     SoundPlayer.Stop(CONSTANTS.SOUND.MARIO_HOVER);
                     currentStatus.canHover = false;
+                    currentStatus.isHovering = false;
                     HoverTimer = -1.0f;
                 }
             }

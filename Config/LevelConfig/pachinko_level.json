@@ -1,9 +1,32 @@
 {
     "entities": [
         {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 50, 50 ] },
+                "TextRender": {
+                    "Text": "COINS:",
+                    "Font": "HUDFont",
+                    "Color": [255,255,255,255]
+                }
+            }
+        },        
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 200, 50 ] },
+                "TextRender": {
+                    "Text": "00",
+                    "Font": "HUDFont",
+                    "Color": [ 255, 255, 255, 255 ]
+                },
+                "Tag": { "Value": "hud_coins_value" }
+            }
+        },
+        {
             "key": "mario",
             "components": {
-                "Position": { "Value": [ 100, 20 ] },
+                "Position": { "Value": [ 100, -240 ] },
                 "Status": { "State": "sunshine"},
                 "Scale": { "Value": [1, 1]}
             }
@@ -11,7 +34,7 @@
         {
             "key": "coin",
             "components": {
-                "Position": {"Value": [400, 200]}
+                "Position": {"Value": [532, 120]}
             }
         },
         {
@@ -27,7 +50,7 @@
             "key": "hud_text",
             "components": {
                 "TextRender": {
-                    "Text": "Hi :3",
+                    "Text": "Left Click or L to hover. Try to get all 5 coins!",
                     "Font": "HUDFont",
                     "Color": [ 255, 255, 255, 255 ]
                 }
@@ -36,202 +59,745 @@
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 52, 288 ] },
+                "Position": { "Value": [ -140, -192 ] },
+                "Collider": { "Type": "HardBlock"},
                 "AnimationState": {
-                    "CurrentState": "question_block",
-                    "FrameIndex": 0,
-                    "TimeInCurrentFrame": 0.0
+                    "CurrentState": "block"
                 }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 100, 288 ] },
+                "Position": { "Value": [ -92, -192 ] },
+                "Collider": { "Type": "HardBlock"},
                 "AnimationState": {
-                    "CurrentState": "question_block",
-                    "FrameIndex": 0,
-                    "TimeInCurrentFrame": 0.0
+                    "CurrentState": "block"
                 }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 148, 288 ] },
+                "Position": { "Value": [ -44, -192 ] },
+                "Collider": { "Type": "HardBlock"},
                 "AnimationState": {
-                    "CurrentState": "question_block",
-                    "FrameIndex": 0,
-                    "TimeInCurrentFrame": 0.0
+                    "CurrentState": "block"
                 }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ -44, 192 ] }
+                "Position": { "Value": [ 4, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ -44, 240 ] }
+                "Position": { "Value": [ 52, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ -44, 288 ] }
+                "Position": { "Value": [ 100, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ -44, 336 ] }
+                "Position": { "Value": [ 196, -48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ -44, 384 ] }
+                "Position": { "Value": [ 196, 0 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ -44, 432 ] }
+                "Position": { "Value": [ 196, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 4, 432 ] }
+                "Position": { "Value": [ 196, 96 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 52, 432 ] }
+                "Position": { "Value": [ 196, 144 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 100, 432 ] }
+                "Position": { "Value": [ 196, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 148, 432 ] }
+                "Position": { "Value": [ 196, 240 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 196, 432 ] }
+                "Position": { "Value": [ 196, 288 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 244, 432 ] }
+                "Position": { "Value": [ 196, 336 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 292, 432 ] }
+                "Position": { "Value": [ 196, 384 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "coin",
+            "components": {
+                "Position": { "Value": [ 202, 432 ] }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 340, 432 ] }
+                "Position": { "Value": [ 292, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 388, 432 ] }
+                "Position": { "Value": [ 340, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 436, 432 ] }
+                "Position": { "Value": [ 388, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 484, 432 ] }
+                "Position": { "Value": [ 436, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 532, 432 ] }
+                "Position": { "Value": [ 484, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 580, 432 ] }
+                "Position": { "Value": [ 532, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 628, 432 ] }
+                "Position": { "Value": [ -140, -192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 676, 432 ] }
+                "Position": { "Value": [ -188, -144 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 724, 432 ] }
+                "Position": { "Value": [ -236, -96 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 770, 432 ] }
+                "Position": { "Value": [ -284, -48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 770, 384 ] }
+                "Position": { "Value": [ -332, 0 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 770, 336 ] }
+                "Position": { "Value": [ -332, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 770, 288 ] }
+                "Position": { "Value": [ -332, 96 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 770, 240 ] }
+                "Position": { "Value": [ -332, 144 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
             }
         },
         {
             "key": "static_block",
             "components": {
-                "Position": { "Value": [ 770, 192 ] }
+                "Position": { "Value": [ -332, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 336 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -284, 336 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -380, 336 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -380, 96 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "coin",
+            "components": {
+                "Position": { "Value": [ -284, 0 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 384 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 432 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 580, -144 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 628, -96 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 676, -48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 0 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 0 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 96 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 144 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 336 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 772, 336 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 676, 336 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 772, 96 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "coin",
+            "components": {
+                "Position": { "Value": [ 676, 0 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 384 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 432 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 604, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 556, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 508, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 460, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 604, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 556, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 508, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 460, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 604, 144 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 604, 96 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -68, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -116, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -164, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -212, 48 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -68, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -116, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -164, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -212, 192 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -212, 144 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -212, 96 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "coin",
+            "components": {
+                "Position": { "Value": [ -136, 120 ] }
             }
         }
     ]

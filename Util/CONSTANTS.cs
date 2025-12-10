@@ -1,5 +1,4 @@
 using System.Net.NetworkInformation;
-
 namespace ECS.Util;
 
 public static class CONSTANTS
@@ -43,7 +42,7 @@ public static class CONSTANTS
     }
     public static class COLLISION
     {
-        public static Rectangle QUADTREE_DIMENSION { get; } = new Rectangle(-200,-200,20000,680);
+        public static Rectangle QUADTREE_DIMENSION { get; } = new Rectangle(-500,-500,20000,1000);
         public static float ENEMY_BOUNCE_VELOCITY { get; } = -500;
         public static float ENEMY_FLIP_VELOCITY { get; } = -200;
         public static float SHELL_KICK_SPEED { get; } = 400;

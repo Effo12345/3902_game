@@ -9,6 +9,7 @@ public enum ColliderType
     Shell,
     Block,
     QuestionBlock,
+    HardBlock,
     Coin,
     Red_Mushroom,
     Green_Mushroom,
