@@ -63,7 +63,8 @@ public class Game1 : Game
 
         GraphicsManager.Initialize(assets);
         GameManager.Initialize(GraphicsManager, CONSTANTS.LEVEL.START_SCREEN_LEVEL);
-        GameManager.RequestLevelChange(CONSTANTS.LEVEL.MARIO1_1);
+        // GameManager.RequestLevelChange(CONSTANTS.LEVEL.MARIO1_1);
+        GameManager.RequestLevelChange("Minecraft1_1");
 
         Engine.AddSystem(new PixelationSystem(GraphicsManager));
         Engine.AddSystem(new CameraSystem(GraphicsManager));
