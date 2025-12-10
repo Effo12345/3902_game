@@ -1,0 +1,13 @@
+{
+    "mario_start": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 514,
+                "y": 0,
+                "width": 256,
+                "height": 224
+            }
+        ]
+    }
+}

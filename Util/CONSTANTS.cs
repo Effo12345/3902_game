@@ -7,6 +7,7 @@ public static class CONSTANTS
     {
         public static string MARIO1_1 { get; } = "Mario1_1";
         public static string PACHINKO_LEVEL { get; } = "PachinkoLevel";
+        public static string START_SCREEN_LEVEL { get; } = "StartScreen";
     }
     public static class FILE
     {

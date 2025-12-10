@@ -58,7 +58,7 @@ public class MarioDefeatSystem : AbstractSystem
             {
                 timer = 0.0f;
                 animationStarted = false;
-                GameManager.ChangeLevel(CONSTANTS.LEVEL.MARIO1_1);
+                GameManager.ReloadCurrentLevel();
             }
         }
     }

@@ -46,9 +46,9 @@ public class Game1 : Game
         Engine.AddSystem(new MusicSystem());
         Engine.AddSystem(new ScoreSystem());
         Engine.AddSystem(new HUDSystem());
-
         Engine.AddSystem(new LevelEndSystem(GraphicsManager));
         Engine.AddSystem(new MarioDefeatSystem(GameManager));
+        Engine.AddSystem(new StartScreenSystem(GameManager));
         Engine.AddSystem(new PipeAnimationSystem());
 
         base.Initialize();
@@ -61,8 +61,9 @@ public class Game1 : Game
         LevelLoader.RegisterAssets(assets);
         SoundPlayer.RegisterAssets(assets);
 
-        GameManager.Initialize(CONSTANTS.LEVEL.MARIO1_1);
         GraphicsManager.Initialize(assets);
+        GameManager.Initialize(GraphicsManager, CONSTANTS.LEVEL.START_SCREEN_LEVEL);
+        GameManager.RequestLevelChange(CONSTANTS.LEVEL.MARIO1_1);
 
         Engine.AddSystem(new PixelationSystem(GraphicsManager));
         Engine.AddSystem(new CameraSystem(GraphicsManager));

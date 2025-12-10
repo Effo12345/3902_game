@@ -19,6 +19,10 @@
         {
             "key": "BackgroundSheet",
             "path": "Sprites/backgrounds"
+        },
+        {
+            "key": "ScreensSheet",
+            "path": "Sprites/screens"
         }
     ],
     "fonts": [
@@ -123,6 +127,10 @@
         {
             "key": "BackgroundAnimation",
             "path": "Config/SpriteConfig/background_spritesheet.json"
+        },
+        {
+            "key": "ScreensAnimation",
+            "path": "Config/SpriteConfig/screens_spritesheet.json"
         }
     ],
     "inputConfigs": [
@@ -207,6 +215,10 @@
         {
             "key": "BumpBlockConfig",
             "path": "Config/EntityConfig/bump_block.json"
+        },
+        {
+            "key": "ScreenConfig",
+            "path": "Config/EntityConfig/screen_config.json"
         }
     ],
     "levelConfigs": [
@@ -217,6 +229,10 @@
         {
             "key": "Mario1_1",
             "path": "Config/LevelConfig/mario_1_1.json"
+        },
+        {
+            "key": "StartScreen",
+            "path": "Config/LevelConfig/start_screen.json"
         }
     ],
     "entities": [
@@ -330,6 +346,12 @@
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
             "entityConfig": "BumpBlockConfig"
+        },
+        {
+            "key": "screen",
+            "spriteTexture": "ScreensSheet",
+            "spriteAtlas": "ScreensAnimation",
+            "entityConfig": "ScreenConfig"
         }
     ]
 }
