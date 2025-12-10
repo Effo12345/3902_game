@@ -1,0 +1,29 @@
+{
+    "Position": { "Value": [ 4, 432 ] },
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 3.0, 3.0 ] },
+    "Collider": {
+        "Type": "QuestionBlock",
+        "HitBox": [0, 0, 48, 48],
+        "IsActive": true
+    },
+    "AnimationState": {
+        "CurrentState": "grey_block",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    },
+    "SpriteState": {
+        "SourceRect": [ 0, 0, 0, 0 ],
+        "Origin": [ 0, 0 ],
+        "Color": [ 255, 255, 255, 255 ]
+    },
+    "Bump": {},
+    "HitCount": { 
+        "Value": 10, 
+        "Timer": -1},
+    "ItemKind": {
+        "Kind": "coin",
+        "TextureKey": "TilesSheet",
+        "spriteAtlasKey": "TilesAnimation"
+    }
+}

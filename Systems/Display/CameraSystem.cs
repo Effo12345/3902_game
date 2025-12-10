@@ -10,12 +10,39 @@ public class CameraSystem : AbstractSystem
     private float _midX; // determines where one wants to regard as middle of the screen
     private Entity _center;
 
+    private bool LockCamera = false;
+    private Vector2 LockCoords = Vector2.Zero;
+
     public CameraSystem(GraphicsManager graphics)
     {
         Graphics = graphics;
 
         _center = null;
         _midX = graphics.SpriteBatch.GraphicsDevice.Viewport.Width * SCROLL_WIDTH;
+    }
+
+    public override bool Initialize(Engine engine)
+    {
+        base.Initialize(engine);
+
+        Engine.PubSub.CreateSubscription<CameraLockEvent>(HandleCameraLock);
+
+        return true;
+    }
+
+    private void HandleCameraLock(IEvent e)
+    {
+        var cameraLockEvent = (CameraLockEvent)e;
+
+        LockCamera = cameraLockEvent.DoLockCamera;
+        LockCoords = cameraLockEvent.LockPos;
+    }
+
+    public override void Update(Engine engine, GameTime gameTime)
+    {
+        // Get the transformation matrix needed to offset by the camera amount...
+        Vector2 cameraOffset = LockCamera ? LockCoords : PositionAdjustment();
+        Graphics.CameraTransform = Matrix.CreateTranslation(cameraOffset.X, cameraOffset.Y, 0);
     }
 
     private static bool IsMario(Entity entity)
@@ -47,13 +74,5 @@ public class CameraSystem : AbstractSystem
             // Currently, Y position is designed to be not adjusted
             return new Vector2(_midX - position.Value.X, CONSTANTS.RENDER.VERTICAL_CAMERA_OFFSET);
         }
-    }
-
-
-    public override void Update(Engine engine, GameTime gameTime)
-    {
-        // Get the transformation matrix needed to offset by the camera amount...
-        Vector2 cameraOffset = PositionAdjustment();
-        Graphics.CameraTransform = Matrix.CreateTranslation(cameraOffset.X, cameraOffset.Y, 0);
     }
 }

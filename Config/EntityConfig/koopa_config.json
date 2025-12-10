@@ -7,13 +7,19 @@
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "Collider": {
         "Type": "Koopa",
-        "HitBox": [0, 0, 48, 81]
+        "HitBox": [0, 0, 48, 81],
+        "IsActive": true
     },
     "IsGrounded": { "Value": false },
     "AnimationState": {
         "CurrentState": "koopa",
         "FrameIndex": 0,
         "TimeInCurrentFrame": 0.0
+    },
+    "SpriteState": {
+        "SourceRect": [ 0, 0, 0, 0 ],
+        "Origin": [ 0, 0 ],
+        "Color": [ 255, 255, 255, 255 ]
     },
     "FacingDirection": { "IsFacingLeft": true },
     "BasicEnemy": { 

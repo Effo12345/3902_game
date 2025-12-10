@@ -1,3 +1,4 @@
+using ECS.Components;
 using ECS.Core;
 using ECS.Util;
 using Microsoft.VisualBasic;
@@ -58,7 +59,8 @@ public class PlayerMotionSystem : AbstractSystem
             !entity.TryGetComponent<Position>(out var position) ||
             !entity.TryGetComponent<Velocity>(out var velocity) ||
             !entity.TryGetComponent<FacingDirection>(out var facingDirection) ||
-            !entity.TryGetComponent<IsGrounded>(out var grounded)
+            !entity.TryGetComponent<IsGrounded>(out var grounded) ||
+            !entity.TryGetComponent<JumpControl>(out var jumpControl)
         )
             return;
 
@@ -140,12 +142,36 @@ public class PlayerMotionSystem : AbstractSystem
         }
         else if (inputEvent.Action == CONSTANTS.ACTION.JUMP)
         {
-            // TODO: Make holding the button cause higher jumps
             if (inputEvent.Phase == InputPhase.Press && grounded.Value)
             {
-                velocity.Value.Y += CONSTANTS.TEMP.JUMP_VELOCITY; // TODO: Move this back to config file
+                jumpControl.IsCharging = true;
+                jumpControl.HoldFrames = 0;
+
+                velocity.Value.Y = CONSTANTS.TEMP.JUMP_VELOCITY;
+
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.JUMP);
             }
+            else if (inputEvent.Phase == InputPhase.Hold && jumpControl.IsCharging)
+            {
+                if (jumpControl.HoldFrames < CONSTANTS.TEMP.MAX_JUMP_HOLD_FRAMES)
+                {
+                    jumpControl.HoldFrames++;
+
+                    velocity.Value.Y = CONSTANTS.TEMP.JUMP_VELOCITY;
+                }
+            }
+
+            else if (inputEvent.Phase == InputPhase.Release && jumpControl.IsCharging)
+            {
+                jumpControl.IsCharging = false;
+            }
+
+            //// TODO: Make holding the button cause higher jumps
+            //if (inputEvent.Phase == InputPhase.Press && grounded.Value)
+            //{
+            //    velocity.Value.Y += CONSTANTS.TEMP.JUMP_VELOCITY; // TODO: Move this back to config file
+            //    SoundPlayer.PlaySfx(CONSTANTS.SOUND.JUMP);
+            //}
         }
     }
 

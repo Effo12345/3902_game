@@ -19,6 +19,11 @@ public class ItemBlockConsumptionSystem : AbstractSystem
             return;
 
         hits.Value--;
+
+        if (Math.Abs(hits.Timer) < 0.001)
+            hits.Value = 0;
+        
+        hits.Timer = CONSTANTS.TEMP.BLOCK_TIMER; //For the ten-coin blocks: This timer gets reset every time mario hits the block (1 sec). If it reaches 0, the next time mario hits the block it will turn off.
         Engine.PubSub.Publish(new ItemSpawn
         {
             Position = pos,

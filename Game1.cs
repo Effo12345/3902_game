@@ -20,10 +20,12 @@ public class Game1 : Game
         Engine.AddSystem(new CollisionDetectionSystem());
         Engine.AddSystem(new PipeInteractionSystem());
         Engine.AddSystem(new InputSystem());
+        Engine.AddSystem(new InputDirectionSystem());
         Engine.AddSystem(new MarioCollisionSystem());
         Engine.AddSystem(new NonMarioCollisionSystem());
         Engine.AddSystem(new InvincibilitySystem());
         Engine.AddSystem(new StarSystem());
+        Engine.AddSystem(new ItemBlockTimerSystem());
         Engine.AddSystem(new GravitySystem());
         Engine.AddSystem(new PlayerMotionSystem());
         Engine.AddSystem(new BoundedMotionSystem());
@@ -47,6 +49,7 @@ public class Game1 : Game
 
         Engine.AddSystem(new LevelEndSystem(GraphicsManager));
         Engine.AddSystem(new MarioDefeatSystem(GameManager));
+        Engine.AddSystem(new PipeAnimationSystem());
 
         base.Initialize();
     }
