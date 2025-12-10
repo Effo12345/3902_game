@@ -25,5 +25,9 @@
         "IsStar": false,
         "Lives": 3
     },
-    "Tag": { "Value": "player" }
+    "Tag": { "Value": "player" },
+    "JumpControl": {
+        "IsCharging": false,
+        "HoldFrames": 0
+    }
 }
