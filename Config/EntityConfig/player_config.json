@@ -33,4 +33,8 @@
     },
     "Tag": { "Value": "player" },
     "RenderLayer": { "Value": 0.9 }
+    "JumpControl": {
+        "IsCharging": false,
+        "HoldFrames": 0
+    }
 }

@@ -1,3 +1,4 @@
+using ECS.Components;
 using ECS.Core;
 using ECS.Util;
 
@@ -14,6 +15,7 @@ public class PlayerMotionSystem : AbstractSystem
         base.Initialize(engine);
         engine.PubSub.CreateSubscription<InputAxisEvent>(OnAxis);
         engine.PubSub.CreateSubscription<InputActionEvent>(OnAction);
+        engine.PubSub.CreateSubscription<InputGamepadStickEvent>(OnGamepad);
         return true;
     }
     private void OnAxis(IEvent evt)
@@ -30,6 +32,22 @@ public class PlayerMotionSystem : AbstractSystem
         if (!grounded.Value) v.Y = 0f;
         velocity.Value += v;
     }
+
+    private void OnGamepad(IEvent evt)
+    {
+        var e = (InputGamepadStickEvent)evt;
+        if (e.Stick != GamepadStick.Left)
+            return;
+        var entity = e.Entity;
+
+        if (!entity.TryGetComponent<Velocity>(out var velocity) ||
+            !entity.TryGetComponent<IsGrounded>(out var grounded))
+            return;
+
+        var v = new Vector2(e.Value.X * 10.0f, 0f);
+
+        velocity.Value += v;
+    }
     private void OnAction(IEvent evt)
     {
         var inputEvent = (InputActionEvent)evt;
@@ -39,7 +57,8 @@ public class PlayerMotionSystem : AbstractSystem
             !entity.TryGetComponent<Position>(out var position) ||
             !entity.TryGetComponent<Velocity>(out var velocity) ||
             !entity.TryGetComponent<FacingDirection>(out var facingDirection) ||
-            !entity.TryGetComponent<IsGrounded>(out var grounded)
+            !entity.TryGetComponent<IsGrounded>(out var grounded) ||
+            !entity.TryGetComponent<JumpControl>(out var jumpControl)
         )
             return;
 
@@ -86,12 +105,36 @@ public class PlayerMotionSystem : AbstractSystem
         }
         else if (inputEvent.Action == CONSTANTS.ACTION.JUMP)
         {
-            // TODO: Make holding the button cause higher jumps
             if (inputEvent.Phase == InputPhase.Press && grounded.Value)
             {
-                velocity.Value.Y += CONSTANTS.TEMP.JUMP_VELOCITY; // TODO: Move this back to config file
+                jumpControl.IsCharging = true;
+                jumpControl.HoldFrames = 0;
+
+                velocity.Value.Y = CONSTANTS.TEMP.JUMP_VELOCITY;
+
                 SoundPlayer.PlaySfx(CONSTANTS.SOUND.JUMP);
             }
+            else if (inputEvent.Phase == InputPhase.Hold && jumpControl.IsCharging)
+            {
+                if (jumpControl.HoldFrames < CONSTANTS.TEMP.MAX_JUMP_HOLD_FRAMES)
+                {
+                    jumpControl.HoldFrames++;
+
+                    velocity.Value.Y = CONSTANTS.TEMP.JUMP_VELOCITY;
+                }
+            }
+
+            else if (inputEvent.Phase == InputPhase.Release && jumpControl.IsCharging)
+            {
+                jumpControl.IsCharging = false;
+            }
+
+            //// TODO: Make holding the button cause higher jumps
+            //if (inputEvent.Phase == InputPhase.Press && grounded.Value)
+            //{
+            //    velocity.Value.Y += CONSTANTS.TEMP.JUMP_VELOCITY; // TODO: Move this back to config file
+            //    SoundPlayer.PlaySfx(CONSTANTS.SOUND.JUMP);
+            //}
         }
     }
 
