@@ -24,6 +24,15 @@
             }
         },
         {
+            "key": "empty",
+            "components": {
+                "PixelationIntro": {
+                    "Value": 0.05,
+                    "StepSize": 0.0015
+                }
+            }
+        },
+        {
             "key": "mario",
             "components": {
                 "Position": { "Value": [ 100, -240 ] },
