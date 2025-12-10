@@ -7,7 +7,7 @@ public static class CONSTANTS
     public static class LEVEL
     {
         public static string MARIO1_1 { get; } = "Mario1_1";
-        public static string TEST_LEVEL { get; } = "TestLevel";
+        public static string PACHINKO_LEVEL { get; } = "PachinkoLevel";
     }
     public static class FILE
     {
@@ -18,7 +18,7 @@ public static class CONSTANTS
         public static string QUIT { get; } = "Quit";
         public static string RESET { get; } = "Reset";
         public static string CROUCH { get; } = "Crouch";
-        public static string TEST_LEVEL { get; } = "TestLevel";
+        public static string PACHINKO_LEVEL { get; } = "PachinkoLevel";
         public static string MARIO_LEVEL { get; } = "MarioLevel";
         public static string VELOCITY { get; } = "Velocity";
         public static string ACCELERATION { get; } = "Acceleration";

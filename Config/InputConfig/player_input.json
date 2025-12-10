@@ -37,7 +37,7 @@
     "type": "Button",
     "keys": [ "R" ]
   },
-  "TestLevel": {
+  "PachinkoLevel": {
     "type": "Button",
     "keys": [ "T" ]
   },
