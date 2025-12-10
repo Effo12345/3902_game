@@ -59,7 +59,7 @@
                 }
             }
         },
-              {
+        {
             "key": "hud_text",
             "components": {
                 "Position": { "Value": [ 50, 20 ] },
