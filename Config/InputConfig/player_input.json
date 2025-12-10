@@ -23,7 +23,8 @@
   "Special": {
     "type": "Button",
     "keys": [ "L" ],
-    "mouseButtons": [ "Left" ]
+    "mouseButtons": [ "Left" ],
+    "gamepadButtons": [ "B" ]
   },
   "SwitchState": {
     "type": "Button",

@@ -8,6 +8,7 @@ public class PipeInteractionSystem : AbstractSystem
         base.Initialize(engine);
         engine.PubSub.CreateSubscription<PipeEvent>(HandleEntry);
         engine.PubSub.CreateSubscription<InputActionEvent>(HandleInput);
+        engine.PubSub.CreateSubscription<InputGamepadStickEvent>(HandleStickInput);
         return true;
     }
 
@@ -18,6 +19,16 @@ public class PipeInteractionSystem : AbstractSystem
         string Action = inputEvent.Action;
         if (Action.Equals(CONSTANTS.ACTION.CROUCH)) 
             Enter = true;
+    }
+
+    private void HandleStickInput(IEvent e)
+    {
+        var stickEvent = (InputGamepadStickEvent)e;
+
+        if (stickEvent.Value.Y > .5)
+        {
+            Enter = true;
+        }
     }
 
     private void HandleEntry(IEvent e)
