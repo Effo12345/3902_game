@@ -7,7 +7,8 @@
     "Acceleration": { "Value": [ 0.0, 0.0 ] },
     "Collider": {
         "Type": "Mario",
-        "HitBox": [0, 0, 42, 60]
+        "HitBox": [0, 0, 42, 60],
+        "IsActive": true
     },
     "IsGrounded": { "Value": false },
     "Friction": { "Value": 6.0 },
@@ -16,6 +17,11 @@
         "CurrentState": "small_idle",
         "FrameIndex": 0,
         "TimeInCurrentFrame": 0.0
+    },
+    "SpriteState": {
+        "SourceRect": [ 0, 0, 0, 0 ],
+        "Origin": [ 0, 0 ],
+        "Color": [ 255, 255, 255, 255 ]
     },
     "FacingDirection": { "IsFacingLeft": false },
     "Status": { 
@@ -26,6 +32,7 @@
         "Lives": 3
     },
     "Tag": { "Value": "player" },
+    "RenderLayer": { "Value": 0.9 }
     "JumpControl": {
         "IsCharging": false,
         "HoldFrames": 0

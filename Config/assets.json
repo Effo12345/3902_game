@@ -145,12 +145,20 @@
             "path": "Config/EntityConfig/static_block_config.json"
         },
         {
+            "key": "InvisibleBlock",
+            "path": "Config/EntityConfig/invisible_block_config.json"
+        },
+        {
             "key": "HUDText",
             "path": "Config/EntityConfig/hud_text_config.json"
         },
         {
             "key": "QuestionBlock",
             "path": "Config/EntityConfig/question_block_config.json"
+        },
+        {
+            "key": "TenCoinBlock",
+            "path": "Config/EntityConfig/ten_coin_block_config.json"
         },
         {
             "key": "CoinConfig",
@@ -224,6 +232,18 @@
           "spriteTexture": "TilesSheet",
           "spriteAtlas": "TilesAnimation",
           "entityConfig": "StaticBlock"
+        },
+        {
+          "key": "invisible_block",
+          "spriteTexture": "TilesSheet",
+          "spriteAtlas": "TilesAnimation",
+          "entityConfig": "InvisibleBlock"
+        },
+        {
+            "key": "ten_coin_block",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "TenCoinBlock"
         },
         {
             "key": "hud_text",

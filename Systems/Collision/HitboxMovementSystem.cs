@@ -11,8 +11,11 @@ public class HitboxMovementSystem : AbstractSystem {
                 !entity.TryGetComponent<SpriteState>(out var sprite))
                 continue;
 
-            //Don't adjust hitboxes for dead enemies
+            //Don't adjust hitboxes for dead enemies or enemies whose colliders are off
             if (entity.TryGetComponent<BasicEnemy>(out var enemy) && enemy.DeathType != DeathType.Alive)
+                continue;
+
+            if (!collider.IsActive)
                 continue;
 
             //TODO: make hitbox relative to position

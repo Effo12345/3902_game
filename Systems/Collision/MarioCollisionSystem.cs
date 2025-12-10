@@ -30,16 +30,24 @@ public class MarioCollisionSystem : AbstractSystem
         secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity);
         switch (type)
         {
+            case ColliderType.InvisibleBlock:
+                if (direction.Equals(Direction.Top) && movingVelocity.Value.Y < 0)
+                {
+                    movingVelocity.Value.Y = 0;
+                    movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
+                    secondaryCollisionInfo.Type = ColliderType.QuestionBlock;
+                    if (secondaryEntity.TryGetComponent<Visible>(out var visible)) 
+                        visible.Value = true;
+
+                    Engine.PubSub.Publish(new BlockBump {Entity = secondaryEntity });
+                }
+                break;
             case ColliderType.Block:
             case ColliderType.QuestionBlock:
                 if (direction.Equals(Direction.Bottom))
                 {
                     movingIsGrounded.Value = true;
                     movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
-                    if (secondaryEntity.TryGetComponent<PipeEntry>(out var pipeEntry))
-                    {
-                        Engine.PubSub.Publish(new PipeEvent {Entity = movingEntity, Destination = pipeEntry.Destination, InputDirection = Direction.Bottom, PipeDirection = pipeEntry.EntryDirection });
-                    }
                 }
                 else if (direction.Equals(Direction.Right) || direction.Equals(Direction.Left))
                 {
@@ -80,6 +88,12 @@ public class MarioCollisionSystem : AbstractSystem
                         Engine.PubSub.Publish(new BlockBreak {Entity = secondaryEntity });
                     }
 
+                }
+
+                if (secondaryEntity.TryGetComponent<PipeEntry>(out var pipeEntry))
+                {
+                    if (pipeEntry.EntryDirection == direction)
+                        Engine.PubSub.Publish(new PipeEvent {Entity = movingEntity, Pipe=pipeEntry, InputDirection = movingStatus.InputDirection });
                 }
                 break;
             case ColliderType.Goomba:

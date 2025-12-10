@@ -25,17 +25,16 @@ public class PipeInteractionSystem : AbstractSystem
         var pipeEvent = (PipeEvent)e;
  
         Direction inputDirection = pipeEvent.InputDirection;
-        Direction pipeDirection = pipeEvent.PipeDirection;
+        Direction pipeDirection = pipeEvent.Pipe.EntryDirection;
         Entity entity = pipeEvent.Entity;
-        Vector2 destination = pipeEvent.Destination;
 
-        if (inputDirection.Equals(pipeDirection) && Enter)
+        if (entity.TryGetComponent<Position>(out var position) && inputDirection == pipeDirection) 
         {
-           if (entity.TryGetComponent<Position>(out var position)) {
-                position.Value = destination;
-            }
-
-            SoundPlayer.PlaySfx(CONSTANTS.SOUND.PIPE_ENTER);
+            Engine.PubSub.Publish(new PipeAnimationEvent
+            {
+                Entity = entity,
+                Pipe = pipeEvent.Pipe
+            });
         }
     }
     

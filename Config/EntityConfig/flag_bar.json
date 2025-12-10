@@ -6,13 +6,19 @@
   "Acceleration": { "Value": [ 0.0, 0.0 ] },
   "Collider": {
       "Type": "Flag",
-      "HitBox": [0, 0, 72, 24]
+      "HitBox": [0, 0, 72, 24],
+      "IsActive": true
   },
   "AnimationState": 
   { 
     "CurrentState": "flag_bar", 
     "FrameIndex": 0, 
     "TimeInCurrentFrame": 0.0 
+  },
+  "SpriteState": {
+    "SourceRect": [ 0, 0, 0, 0 ],
+    "Origin": [ 0, 0 ],
+    "Color": [ 255, 255, 255, 255 ]
   },
   "Tag": { "Value": "flag_bar" },
   "BoundedMotion": {

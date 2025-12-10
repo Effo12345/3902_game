@@ -9,6 +9,7 @@ public enum ColliderType
     Shell,
     Block,
     QuestionBlock,
+    InvisibleBlock,
     Coin,
     Red_Mushroom,
     Green_Mushroom,
@@ -23,4 +24,6 @@ public class Collider
 {
     public ColliderType Type;
     public Rectangle HitBox;
+
+    public bool IsActive;
 }

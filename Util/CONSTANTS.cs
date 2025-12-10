@@ -95,6 +95,7 @@ public static class CONSTANTS
         public static float MAX_JUMP_HOLD_FRAMES { get; } = 20;
 
         public static Color DEFAULT_BACKGROUND_COLOR { get; } = Color.CornflowerBlue;
+        public static float BLOCK_TIMER { get; } = 1.0f;
     }
     public static class RENDER
     {
