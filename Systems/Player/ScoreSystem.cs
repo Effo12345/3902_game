@@ -3,8 +3,8 @@ namespace ECS.Systems;
 public class ScoreSystem : AbstractSystem
 {
     private Entity _scoreEntity;
-    private int _score;
-    private int _coins;
+    private int _score = 0;
+    private int _coins = 0;
 
     public override bool Initialize(Engine engine)
     {

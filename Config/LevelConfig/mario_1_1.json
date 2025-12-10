@@ -574,8 +574,9 @@
                     "TimeInCurrentFrame": 0.0
                 },
                 "PipeEntry": {
-                    "Destination": [15096, 100],
-                    "EntryDirection": "Bottom"
+                    "Destination": [15096, 20],
+                    "EntryDirection": "Bottom",
+                    "OutputDirection": "Top"
                 }
             }
         },
@@ -589,8 +590,9 @@
                     "TimeInCurrentFrame": 0.0
                 },
                 "PipeEntry": {
-                    "Destination": [15096, 100],
-                    "EntryDirection": "Bottom"
+                    "Destination": [15096, 20],
+                    "EntryDirection": "Bottom",
+                    "OutputDirection": "Top"
                 }
             }
         },
@@ -7368,7 +7370,7 @@
             "key": "static_block",
             "components": {
                 "Position": { "Value": [ 15624, 288 ] },
-                "Rotation": { "Value": 1.5708 },
+                "Rotation": { "Value": -1.5708 },
                 "AnimationState": {
                     "CurrentState": "green_pipe_tr",
                     "FrameIndex": 0,
@@ -7376,7 +7378,67 @@
                 },
                 "PipeEntry": {
                     "Destination": [7790, 200],
-                    "EntryDirection": "Right"
+                    "EntryDirection": "Right",
+                    "OutputDirection": "Bottom",
+                    "DoAnimation": true
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15624, 336 ] },
+                "Rotation": { "Value": -1.5708 },
+                "AnimationState": {
+                    "CurrentState": "green_pipe_tl",
+                    "FrameIndex": 0,
+                    "TimeInCurrentFrame": 0.0
+                },
+                "PipeEntry": {
+                    "Destination": [7790, 200],
+                    "EntryDirection": "Right",
+                    "OutputDirection": "Bottom",
+                    "DoAnimation": true
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15672, 288 ] },
+                "Rotation": { "Value": -1.5708 },
+                "AnimationState": {
+                    "CurrentState": "green_pipe_br"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15672, 336 ] },
+                "Rotation": { "Value": -1.5708 },
+                "AnimationState": {
+                    "CurrentState": "green_pipe_bl"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, 288 ] },
+                "Rotation": { "Value": -1.5708 },
+                "AnimationState": {
+                    "CurrentState": "green_pipe_br"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, 336 ] },
+                "Rotation": { "Value": -1.5708 },
+                "AnimationState": {
+                    "CurrentState": "green_pipe_bl"
                 }
             }
         },
