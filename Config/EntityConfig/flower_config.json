@@ -12,6 +12,11 @@
         "FrameIndex": 0,
         "TimeInCurrentFrame": 0.0
     },
+    "SpriteState": {
+        "SourceRect": [ 0, 0, 0, 0 ],
+        "Origin": [ 0, 0 ],
+        "Color": [ 255, 255, 255, 255 ]
+    },
     "RenderLayer": {"Value": 1},
     "ItemKind":{
         "Kind": "flower",

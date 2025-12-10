@@ -12,5 +12,11 @@
         "FrameIndex": 0,
         "TimeInCurrentFrame": 0.0
     },
-    "Bump": {}
+    "SpriteState": {
+        "SourceRect": [ 0, 0, 0, 0 ],
+        "Origin": [ 0, 0 ],
+        "Color": [ 255, 255, 255, 255 ]
+    },
+    "Bump": {},
+    "RenderLayer": { "Value": 0.75 }
 }

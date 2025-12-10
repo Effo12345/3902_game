@@ -3,17 +3,18 @@ namespace ECS.Systems;
 
 public class PipeAnimationSystem : AbstractSystem
 {
+    private const float PIPE_ENTRY_VEL = 100.0f;
+
     private bool GoingDown = false;
     private bool GoingUp = false;
     private float Timer = 0.0f;
-    private Vector2 PipeDestination;
-    private Vector2 TravelVelocity;
+    private PipeEntry CurrentPipe;
     private Dictionary<Direction, Vector2> DirectionToVelocity = new Dictionary<Direction, Vector2>
     {
-        {Direction.Bottom, new Vector2(0, 100)},
-        {Direction.Top, new Vector2(0, -100)},
-        {Direction.Left, new Vector2(-100, 0)},
-        {Direction.Right, new Vector2(100, 0)},
+        {Direction.Bottom, new Vector2(0, 1)},
+        {Direction.Top, new Vector2(0, -1)},
+        {Direction.Left, new Vector2(-1, 0)},
+        {Direction.Right, new Vector2(1, 0)},
     };
 
     public override bool Initialize(Engine engine)
@@ -28,15 +29,12 @@ public class PipeAnimationSystem : AbstractSystem
         var pipeAnimationEvent = (PipeAnimationEvent)e;
 
         Entity entity = pipeAnimationEvent.Entity;
-        Vector2 destination = pipeAnimationEvent.Destination;
 
         if (!entity.TryGetComponent<Status>(out var status))
             return;
 
+        CurrentPipe = pipeAnimationEvent.Pipe;
         Timer = 0.0f;
-        PipeDestination = destination;
-        DirectionToVelocity.TryGetValue(status.InputDirection, out var velocity);
-        TravelVelocity = velocity;
         GoingDown = true;
         SoundPlayer.PlaySfx(CONSTANTS.SOUND.PIPE_ENTER);
     }
@@ -49,12 +47,15 @@ public class PipeAnimationSystem : AbstractSystem
             if (!entity.TryGetComponent<Status>(out var status) ||
                 !entity.TryGetComponent<Position>(out var position) ||
                 !entity.TryGetComponent<Velocity>(out var velocity) ||
-                !entity.TryGetComponent<Acceleration>(out var acceleration))
+                !entity.TryGetComponent<Acceleration>(out var acceleration) ||
+                !entity.TryGetComponent<IsGrounded>(out var grounded)
+            )
                 continue;
 
             if (GoingDown)
             {
                 Timer += deltaTime;
+                // grounded.Value = true;
 
                 //Remove unnecessary components
                 entity.RemoveComponent<Collider>();
@@ -62,33 +63,54 @@ public class PipeAnimationSystem : AbstractSystem
                 entity.RemoveComponent<Mass>();
                 entity.RemoveComponent<InputBindings>();
 
-                velocity.Value = TravelVelocity;
+                DirectionToVelocity.TryGetValue(CurrentPipe.EntryDirection, out var vel);
+                velocity.Value = vel * PIPE_ENTRY_VEL;
+
+                if (Math.Abs(vel.X) > CONSTANTS.MATH.FLOAT_EPSILON)
+                    position.Value.Y = CurrentPipe.PipeCenter.Y;
+                else if (Math.Abs(vel.Y) > CONSTANTS.MATH.FLOAT_EPSILON)
+                    position.Value.X = CurrentPipe.PipeCenter.X;
+
                 if (Timer > 1.5)
                 {
 
                     GoingDown = false;
-                    GoingUp = true;
+
+                    if (CurrentPipe.DoAnimation)
+                        GoingUp = true;
+                    else
+                        RepairPlayer(entity);
+
+                    engine.PubSub.Publish(new CameraLockEvent {DoLockCamera = CurrentPipe.LockCamera, LockPos = CurrentPipe.CameraLockPos});
+
                     Timer = 0.0f;
-                    position.Value.X = PipeDestination.X;
-                    position.Value.Y = PipeDestination.Y + 60;
+                    position.Value.X = CurrentPipe.Destination.X;
+                    position.Value.Y = CurrentPipe.Destination.Y + 60;
                     SoundPlayer.PlaySfx(CONSTANTS.SOUND.PIPE_ENTER);
                 }
             }
             if (GoingUp)
             {
                 Timer += deltaTime;
-                velocity.Value = -TravelVelocity;
+
+                DirectionToVelocity.TryGetValue(CurrentPipe.OutputDirection, out var vel);
+                velocity.Value = -vel * PIPE_ENTRY_VEL;
     
                 if (Timer > 0.5)
                 {
-                    entity.AddComponent(new Collider {Type = ColliderType.Mario , IsActive = true});
-                    entity.AddComponent(new Friction {Value = 6});
-                    entity.AddComponent(new Mass {Value = 20});
-                    entity.AddComponent(InputDefinitionLoader.LoadFromFile("Config/InputConfig/player_input.json"));
+                    RepairPlayer(entity);
                     GoingUp = false;
                     Timer = 0;
                 }
             }
         }
+    }
+
+    private void RepairPlayer(Entity entity)
+    {
+        entity.AddComponent(new Collider {Type = ColliderType.Mario , IsActive = true});
+        entity.AddComponent(new Friction {Value = 6});
+        entity.AddComponent(new Mass {Value = 20});
+        entity.AddComponent(InputDefinitionLoader.LoadFromFile("Config/InputConfig/player_input.json"));
     }
 }

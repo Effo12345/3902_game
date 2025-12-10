@@ -4,4 +4,9 @@ public class PipeEntry
 {
     public Vector2 Destination;
     public Direction EntryDirection;
+    public Direction OutputDirection;
+    public bool DoAnimation;
+    public bool LockCamera;
+    public Vector2 CameraLockPos;
+    public Vector2 PipeCenter;
 }
