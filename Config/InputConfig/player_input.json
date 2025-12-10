@@ -20,10 +20,11 @@
     "keys": [ "Space" ],
     "gamepadButtons": [ "A" ]
   },
-  "Fire": {
+  "Special": {
     "type": "Button",
     "keys": [ "L" ],
-    "mouseButtons": [ "Left" ]
+    "mouseButtons": [ "Left" ],
+    "gamepadButtons": [ "B" ]
   },
   "SwitchState": {
     "type": "Button",
@@ -37,7 +38,7 @@
     "type": "Button",
     "keys": [ "R" ]
   },
-  "TestLevel": {
+  "PachinkoLevel": {
     "type": "Button",
     "keys": [ "T" ]
   },

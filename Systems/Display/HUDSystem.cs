@@ -57,6 +57,9 @@ public class HUDSystem : AbstractSystem
     }
     private void RefreshHudText()
     {
+        if (_scoreText == null || _coinsText == null || _timeText == null)
+            return;
+
         int scoreValue = 0;
         int coinsValue = 0;
 

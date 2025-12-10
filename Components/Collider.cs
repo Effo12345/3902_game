@@ -9,6 +9,7 @@ public enum ColliderType
     Shell,
     Block,
     QuestionBlock,
+    HardBlock,
     InvisibleBlock,
     Coin,
     Red_Mushroom,
@@ -18,6 +19,7 @@ public enum ColliderType
     Flag,
     Pipe,
     Fireball,
+    Water
 }
 
 public class Collider

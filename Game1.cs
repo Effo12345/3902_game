@@ -46,6 +46,7 @@ public class Game1 : Game
         Engine.AddSystem(new MusicSystem());
         Engine.AddSystem(new ScoreSystem());
         Engine.AddSystem(new HUDSystem());
+
         Engine.AddSystem(new LevelEndSystem(GraphicsManager));
         Engine.AddSystem(new MarioDefeatSystem(GameManager));
         Engine.AddSystem(new PipeAnimationSystem());

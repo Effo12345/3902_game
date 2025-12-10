@@ -33,6 +33,10 @@
             "path": "Sounds/Music/overworld"
         },
         {
+            "key": "PachinkoMusic",
+            "path": "Sounds/Music/pachinko"
+        },
+        {
             "key": "1Up",
             "path": "Sounds/Effects/1up"
         },
@@ -63,6 +67,10 @@
         {
             "key": "MarioJump",
             "path": "Sounds/Effects/mario_jump"
+        },
+        {
+            "key": "MarioHover",
+            "path": "Sounds/Effects/mario_hover"
         },
         {
             "key": "PipeEnter",
@@ -203,8 +211,8 @@
     ],
     "levelConfigs": [
         {
-            "key": "TestLevel",
-            "path": "Config/LevelConfig/test_level.json"
+            "key": "PachinkoLevel",
+            "path": "Config/LevelConfig/pachinko_level.json"
         },
         {
             "key": "Mario1_1",

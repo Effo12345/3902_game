@@ -59,8 +59,6 @@
                 }
             }
         },
-
-
         {
             "key": "hud_text",
             "components": {

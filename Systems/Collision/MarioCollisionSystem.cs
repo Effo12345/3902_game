@@ -44,6 +44,7 @@ public class MarioCollisionSystem : AbstractSystem
                 break;
             case ColliderType.Block:
             case ColliderType.QuestionBlock:
+            case ColliderType.HardBlock:
                 if (direction.Equals(Direction.Bottom))
                 {
                     movingIsGrounded.Value = true;

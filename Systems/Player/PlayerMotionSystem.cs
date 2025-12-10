@@ -1,13 +1,15 @@
 using ECS.Components;
 using ECS.Core;
 using ECS.Util;
+using Microsoft.VisualBasic;
 
 namespace ECS.Systems;
 
 public class PlayerMotionSystem : AbstractSystem
 {
     private int StateIndex = 0;
-    private float Timer = -1;
+    private float FireballTimer = -1;
+    private float HoverTimer = -1;
 
 
     public override bool Initialize(Engine engine)
@@ -78,11 +80,11 @@ public class PlayerMotionSystem : AbstractSystem
                 currentStatus.State = CONSTANTS.PLAYER_STATE.FIRE;
             }
         }
-        else if (inputEvent.Action == CONSTANTS.ACTION.FIRE && inputEvent.Phase == InputPhase.Press)
+        else if (inputEvent.Action == CONSTANTS.ACTION.SPECIAL)
         {
-            if (currentStatus.State == CONSTANTS.PLAYER_STATE.FIRE && Timer < 0) //There may only be two fireballs at a time
+            if (currentStatus.State == CONSTANTS.PLAYER_STATE.FIRE && inputEvent.Phase == InputPhase.Press && FireballTimer < 0) //Launch Fireball
             {
-                Timer = .25f;
+                FireballTimer  = .25f;
                 Vector2 direction;
                 if (facingDirection.IsFacingLeft)
                     direction = new Vector2(-1.0f, 0.0f);
@@ -99,8 +101,43 @@ public class PlayerMotionSystem : AbstractSystem
 
                     f_position.Value = position.Value + CONSTANTS.TEMP.FIREBALL_SPAWN;
                     f_velocity.Value *= direction;
-                    SoundPlayer.PlaySfx(CONSTANTS.SOUND.FIREBALL); //TODO: change to fireball sound effect.
+                    SoundPlayer.PlaySfx(CONSTANTS.SOUND.FIREBALL);
                 });
+            }
+            else if (currentStatus.State == CONSTANTS.PLAYER_STATE.SUNSHINE)
+            {
+                if (currentStatus.canHover && inputEvent.Phase == InputPhase.Press)
+                {
+                    HoverTimer = 3.0f; 
+                }
+                if (inputEvent.Phase == InputPhase.Hold && HoverTimer > 0) {
+                    velocity.Value.Y = -50;
+                    currentStatus.isHovering = true;
+                    Engine.Defer(Engine =>
+                    {
+                        var fireball = EntityFactory.BuildEntity(Engine, "fireball"); //"water"
+                        fireball.TryGetComponent<Position>(out var f_position);
+                        fireball.TryGetComponent<Velocity>(out var f_velocity);
+                        fireball.TryGetComponent<SpriteState>(out var f_spriteState);
+                        fireball.TryGetComponent<Collider>(out var collider);
+
+                        f_position.Value = position.Value;
+                        if (facingDirection.IsFacingLeft)
+                            f_position.Value.X += 40;
+                        f_velocity.Value.X = velocity.Value.X;
+                        collider.Type = ColliderType.Water;
+
+                        f_spriteState.Color = Color.Aqua;
+                        SoundPlayer.PlaySfx(CONSTANTS.SOUND.MARIO_HOVER);
+                    });
+                }
+                if (inputEvent.Phase == InputPhase.Release)
+                {
+                    SoundPlayer.Stop(CONSTANTS.SOUND.MARIO_HOVER);
+                    currentStatus.canHover = false;
+                    currentStatus.isHovering = false;
+                    HoverTimer = -1.0f;
+                }
             }
         }
         else if (inputEvent.Action == CONSTANTS.ACTION.JUMP)
@@ -141,8 +178,22 @@ public class PlayerMotionSystem : AbstractSystem
     public override void Update(Engine engine, GameTime gameTime)
     {
         float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-        if (Timer > 0)
-        Timer -= deltaTime;
+        if (FireballTimer > 0)
+            FireballTimer -= deltaTime;
+        if (HoverTimer > 0)
+            HoverTimer -= deltaTime;
+
+        foreach (var entity in engine.GetEntities())
+        {
+            if (!entity.TryGetComponent<Status>(out var status) ||
+                !entity.TryGetComponent<IsGrounded>(out var grounded))
+                continue;
+
+            if (grounded.Value)
+            {
+                status.canHover = true;
+            }
+        }
 
     }
 }

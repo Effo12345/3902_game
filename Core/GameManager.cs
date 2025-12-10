@@ -23,7 +23,7 @@ public class GameManager
         {
             {CONSTANTS.ACTION.QUIT, () => Game.Exit()},
             {CONSTANTS.ACTION.RESET, () => ChangeLevel(CurrentLevel)},
-            {CONSTANTS.ACTION.TEST_LEVEL, () => ChangeLevel(CONSTANTS.LEVEL.TEST_LEVEL)},
+            {CONSTANTS.ACTION.PACHINKO_LEVEL, () => ChangeLevel(CONSTANTS.LEVEL.PACHINKO_LEVEL)},
             {CONSTANTS.ACTION.MARIO_LEVEL, () => ChangeLevel(CONSTANTS.LEVEL.MARIO1_1)},
         };
     }
