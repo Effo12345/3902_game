@@ -81,14 +81,16 @@ public class MarioCollisionSystem : AbstractSystem
                         movingStatus.Coins++;
                     }
 
-                    if (secondaryCollisionInfo.Type == ColliderType.QuestionBlock || movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
+                    if (secondaryEntity.HasComponent<Bump>())
                     {
-                        Engine.PubSub.Publish(new BlockBump {Entity = secondaryEntity });   
-                    } else if (secondaryCollisionInfo.Type != ColliderType.HardBlock)
-                    {
-                        Engine.PubSub.Publish(new BlockBreak {Entity = secondaryEntity });
+                        if (secondaryCollisionInfo.Type == ColliderType.QuestionBlock || movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
+                        {
+                            Engine.PubSub.Publish(new BlockBump {Entity = secondaryEntity });   
+                        } else
+                        {
+                            Engine.PubSub.Publish(new BlockBreak {Entity = secondaryEntity });
+                        }
                     }
-
                 }
 
                 if (secondaryEntity.TryGetComponent<PipeEntry>(out var pipeEntry))

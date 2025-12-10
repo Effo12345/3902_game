@@ -203,6 +203,10 @@
         {
             "key": "FlagBarConfig",
             "path": "Config/EntityConfig/flag_bar.json"
+        },
+        {
+            "key": "BumpBlockConfig",
+            "path": "Config/EntityConfig/bump_block.json"
         }
     ],
     "levelConfigs": [
@@ -320,6 +324,12 @@
             "spriteTexture": "TilesSheet",
             "spriteAtlas": "TilesAnimation",
             "entityConfig": "FlagBarConfig"
+        },
+        {
+            "key": "bump_block",
+            "spriteTexture": "TilesSheet",
+            "spriteAtlas": "TilesAnimation",
+            "entityConfig": "BumpBlockConfig"
         }
     ]
 }
