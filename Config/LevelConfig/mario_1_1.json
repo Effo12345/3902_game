@@ -6892,7 +6892,15 @@
 
 
 
-
+        {
+            "key": "background",
+            "components": {
+                "Position": { "Value": [ 5980, -800] },
+                "AnimationState": {
+                    "CurrentState": "underground"
+                }
+            }
+        },
 
         {
             "key": "static_block",
@@ -7601,7 +7609,7 @@
             }
         },
 
-        
+
         {
             "key": "static_block",
             "components": {
