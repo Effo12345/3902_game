@@ -116,7 +116,7 @@ public class NonMarioCollisionSystem : AbstractSystem
                 }
                 break;
             case ColliderType.Water:
-                if (secondaryCollisionInfo.Type == ColliderType.Block)
+                if (secondaryCollisionInfo.Type == ColliderType.Block || secondaryCollisionInfo.Type == ColliderType.QuestionBlock || secondaryCollisionInfo.Type == ColliderType.HardBlock)
                     Engine.DestroyEntity(movingEntity);
                 break;
         }

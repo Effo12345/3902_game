@@ -119,6 +119,16 @@
         {
             "key": "static_block",
             "components": {
+                "Position": { "Value": [ 196, 0 ] },
+                "Collider": { "Type": "HardBlock"},
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
                 "Position": { "Value": [ 196, -48 ] },
                 "Collider": { "Type": "HardBlock"},
                 "AnimationState": {
