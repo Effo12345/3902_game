@@ -576,7 +576,9 @@
                 "PipeEntry": {
                     "Destination": [15096, 20],
                     "EntryDirection": "Bottom",
-                    "OutputDirection": "Top"
+                    "OutputDirection": "Top",
+                    "LockCamera": true,
+                    "CameraLockPos": [ -14976, 320 ]
                 }
             }
         },
@@ -592,7 +594,9 @@
                 "PipeEntry": {
                     "Destination": [15096, 20],
                     "EntryDirection": "Bottom",
-                    "OutputDirection": "Top"
+                    "OutputDirection": "Top",
+                    "LockCamera": true,
+                    "CameraLockPos": [ -14976, 320 ]
                 }
             }
         },
@@ -6890,6 +6894,140 @@
 
 
 
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 336 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 288 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 192 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 144 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 96 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 48 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 0 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, -48 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, -96 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, -144 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+
+
 
         {
             "key": "static_block",
@@ -7442,8 +7580,266 @@
                 }
             }
         },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 288 ] },
+                "Rotation": { "Value": -1.5708 },
+                "AnimationState": {
+                    "CurrentState": "green_pipe_br"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 336 ] },
+                "Rotation": { "Value": -1.5708 },
+                "AnimationState": {
+                    "CurrentState": "green_pipe_bl"
+                }
+            }
+        },
+
+        
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, 192 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, 144 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, 96 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, 48 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, 0 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, -48 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, -96 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15720, -144 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
 
 
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 240 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 192 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 144 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 96 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 48 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 0 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, -48 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, -96 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, -144 ] },
+                "AnimationState": {
+                    "CurrentState": "brick"
+                },
+                "SpriteState": {
+                "Color": [ 44, 115, 209, 255 ]
+            }
+            }
+        },
+
+
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_stone_block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 14952, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "solid_stone_block"
+                }
+            }
+        },
         {
             "key": "static_block",
             "components": {
@@ -7727,6 +8123,24 @@
             "key": "static_block",
             "components": {
                 "Position": { "Value": [ 15720, 432 ] },
+                "AnimationState": {
+                    "CurrentState": "solid_stone_block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 384 ] },
+                "AnimationState": {
+                    "CurrentState": "flat_stone_block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 15768, 432 ] },
                 "AnimationState": {
                     "CurrentState": "solid_stone_block"
                 }

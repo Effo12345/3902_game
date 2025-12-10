@@ -6,4 +6,6 @@ public class PipeEntry
     public Direction EntryDirection;
     public Direction OutputDirection;
     public bool DoAnimation;
+    public bool LockCamera;
+    public Vector2 CameraLockPos;
 }

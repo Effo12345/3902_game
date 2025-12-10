@@ -72,6 +72,8 @@ public class PipeAnimationSystem : AbstractSystem
                     else
                         RepairPlayer(entity);
 
+                    engine.PubSub.Publish(new CameraLockEvent {DoLockCamera = CurrentPipe.LockCamera, LockPos = CurrentPipe.CameraLockPos});
+
                     Timer = 0.0f;
                     position.Value.X = CurrentPipe.Destination.X;
                     position.Value.Y = CurrentPipe.Destination.Y + 60;
