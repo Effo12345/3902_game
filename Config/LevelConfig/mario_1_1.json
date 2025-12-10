@@ -578,7 +578,8 @@
                     "EntryDirection": "Bottom",
                     "OutputDirection": "Top",
                     "LockCamera": true,
-                    "CameraLockPos": [ -14976, 320 ]
+                    "CameraLockPos": [ -14976, 320 ],
+                    "PipeCenter": [ 2812, 192 ]
                 }
             }
         },
@@ -596,7 +597,8 @@
                     "EntryDirection": "Bottom",
                     "OutputDirection": "Top",
                     "LockCamera": true,
-                    "CameraLockPos": [ -14976, 320 ]
+                    "CameraLockPos": [ -14976, 320 ],
+                    "PipeCenter": [ 2812, 192 ]
                 }
             }
         },
@@ -7526,7 +7528,8 @@
                     "Destination": [7790, 200],
                     "EntryDirection": "Right",
                     "OutputDirection": "Bottom",
-                    "DoAnimation": true
+                    "DoAnimation": true,
+                    "PipeCenter": [ 15624, 312 ]
                 }
             }
         },
@@ -7544,7 +7547,8 @@
                     "Destination": [7790, 200],
                     "EntryDirection": "Right",
                     "OutputDirection": "Bottom",
-                    "DoAnimation": true
+                    "DoAnimation": true,
+                    "PipeCenter": [ 15624, 312 ]
                 }
             }
         },

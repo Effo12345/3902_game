@@ -47,12 +47,15 @@ public class PipeAnimationSystem : AbstractSystem
             if (!entity.TryGetComponent<Status>(out var status) ||
                 !entity.TryGetComponent<Position>(out var position) ||
                 !entity.TryGetComponent<Velocity>(out var velocity) ||
-                !entity.TryGetComponent<Acceleration>(out var acceleration))
+                !entity.TryGetComponent<Acceleration>(out var acceleration) ||
+                !entity.TryGetComponent<IsGrounded>(out var grounded)
+            )
                 continue;
 
             if (GoingDown)
             {
                 Timer += deltaTime;
+                // grounded.Value = true;
 
                 //Remove unnecessary components
                 entity.RemoveComponent<Collider>();
@@ -62,6 +65,12 @@ public class PipeAnimationSystem : AbstractSystem
 
                 DirectionToVelocity.TryGetValue(CurrentPipe.EntryDirection, out var vel);
                 velocity.Value = vel * PIPE_ENTRY_VEL;
+
+                if (Math.Abs(vel.X) > CONSTANTS.MATH.FLOAT_EPSILON)
+                    position.Value.Y = CurrentPipe.PipeCenter.Y;
+                else if (Math.Abs(vel.Y) > CONSTANTS.MATH.FLOAT_EPSILON)
+                    position.Value.X = CurrentPipe.PipeCenter.X;
+
                 if (Timer > 1.5)
                 {
 

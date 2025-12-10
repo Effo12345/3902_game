@@ -8,4 +8,5 @@ public class PipeEntry
     public bool DoAnimation;
     public bool LockCamera;
     public Vector2 CameraLockPos;
+    public Vector2 PipeCenter;
 }
