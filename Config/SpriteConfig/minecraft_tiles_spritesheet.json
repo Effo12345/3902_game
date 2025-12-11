@@ -1,0 +1,275 @@
+{
+    "block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 17, 
+                "y": 1,
+                "width": 16,
+                "height": 16 
+            }
+        ]
+    },
+    "unused_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 113,
+                "y": 17,
+                "width": 16,
+                "height": 16 
+            }
+        ]
+    },
+    "used_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 305,
+                "y": 209,
+                "width": 16,
+                "height": 16 
+            }
+        ]
+    },
+    "grey_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 97,
+                "y": 49,
+                "width": 16,
+                "height": 16 
+            }
+        ]
+    },
+    "red_mushroom": {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 291,
+                "y": 30,
+                "width": 16,
+                "height": 16
+            }
+        ]
+    },
+    "green_mushroom": {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 308,
+                "y": 30,
+                "width": 16,
+                "height": 16
+            }
+        ]
+    },
+    "star": {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 274,
+                "y": 13,
+                "width": 15,
+                "height": 16
+            }
+        ]
+    },
+    "fireball": {
+        "frameDuration": 0.2,
+        "frames": [
+            {
+                "x": 479,
+                "y": 215,
+                "width": 6,
+                "height": 7
+            },
+            {
+                "x": 497,
+                "y": 216,
+                "width": 7,
+                "height": 6
+            },
+            {
+                "x": 517,
+                "y": 214,
+                "width": 6,
+                "height": 7
+            },
+            {
+                "x": 538,
+                "y": 214,
+                "width": 7,
+                "height": 6
+            }
+        ]
+    },
+    "flower": {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 274,
+                "y": 30,
+                "width": 16,
+                "height": 16
+            }
+        ]
+    },
+    "coin": {
+        "frameDuration": 0.2,
+        "frames": [
+            {"x": 219, "y": 28, "width": 12, "height": 16}
+        ]
+    },
+    "left_rounded_grass_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 49, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "flat_grass_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 49, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "right_rounded_grass_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 49, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "left_vertical_grass_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 33, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "right_vertical_grass_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 33, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "dirt_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 33, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "left_rounded_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 17, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "flat_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 17, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "right_rounded_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 17, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "left_vertical_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 17, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "solid_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 17, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "right_vertical_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 17, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "brick": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 113, "y": 1, "width": 16, "height": 16}
+        ]
+    },
+    "question_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 113, "y": 17, "width": 16, "height": 16}
+        ]
+    },
+    "green_pipe_tl": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 321, "y": 417, "width": 16, "height": 16}
+        ]
+    },
+    "green_pipe_tr": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 321, "y": 417, "width": 16, "height": 16}
+        ]
+    },
+    "green_pipe_bl": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 321, "y": 417, "width": 16, "height": 16}
+        ]
+    },
+    "green_pipe_br": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 321, "y": 417, "width": 16, "height": 16}
+        ]
+    },
+    "flag_tl": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 81, "y": 33, "width": 16, "height": 16}
+        ]
+    },
+    "flag_ml": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 81, "y": 33, "width": 16, "height": 16}
+        ]
+    },
+    "flag_bl": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 81, "y": 33, "width": 16, "height": 8}
+        ]
+    },
+    "flag_tr": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 81, "y": 33, "width": 16, "height": 16}
+        ]
+    },
+    "flag_mr": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 81, "y": 33, "width": 16, "height": 16}
+        ]
+    },
+    "flag_br": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 81, "y": 33, "width": 16, "height": 8}
+        ]
+    },
+    "flag_bar": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 321, "y": 17, "width": 16, "height": 16}
+        ]
+    }
+}

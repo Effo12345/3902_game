@@ -1,0 +1,15 @@
+{
+    "Position": { "Value": [ 0, 0 ] },
+    "Rotation": { "Value": 0.0 },
+    "Scale": { "Value": [ 5.0, 5.0 ] },
+    "AnimationState": {
+        "CurrentState": "mario_start",
+        "FrameIndex": 0,
+        "TimeInCurrentFrame": 0.0
+    },
+    "SpriteState": {
+        "SourceRect": [ 0, 0, 0, 0 ],
+        "Origin": [ 0, 0 ],
+        "Color": [ 255, 255, 255, 255 ]
+    }
+}

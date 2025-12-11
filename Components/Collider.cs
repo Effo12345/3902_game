@@ -9,6 +9,8 @@ public enum ColliderType
     Shell,
     Block,
     QuestionBlock,
+    HardBlock,
+    InvisibleBlock,
     Coin,
     Red_Mushroom,
     Green_Mushroom,
@@ -17,10 +19,13 @@ public enum ColliderType
     Flag,
     Pipe,
     Fireball,
+    Water
 }
 
 public class Collider
 {
     public ColliderType Type;
     public Rectangle HitBox;
+
+    public bool IsActive;
 }

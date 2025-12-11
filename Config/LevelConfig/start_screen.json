@@ -1,0 +1,17 @@
+{
+    "entities": [
+        {
+            "key": "screen",
+            "components": {
+                "Position": { "Value": [-560, -500] }
+            }
+        },
+        {
+            "key": "empty",
+            "components": {
+                "Position": { "Value": [320, 300] },
+                "StartScreenPause": { "Duration": 1.0 }
+            }
+        }
+    ]
+}

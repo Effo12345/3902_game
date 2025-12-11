@@ -21,7 +21,12 @@ public class PlayerAnimationSystem : AbstractSystem
 
             animUpdate = currentStatus.State;
             if (currentStatus.State != CONSTANTS.PLAYER_STATE.DEAD) { 
-                if (!isGrounded.Value)
+                if (currentStatus.isHovering) 
+                {
+                    animUpdate += CONSTANTS.ANIMATION_STATE.PLAYER_HOVER_SUFFIX;
+                    currentStatus.isHovering = false;
+                }
+                else if (!isGrounded.Value)
                     animUpdate += CONSTANTS.ANIMATION_STATE.PLAYER_JUMP_SUFFIX;
                 else if (Math.Abs(velocity.Value.X) < IDLE_THRESHOLD)
                     animUpdate += CONSTANTS.ANIMATION_STATE.PLAYER_IDLE_SUFFIX;

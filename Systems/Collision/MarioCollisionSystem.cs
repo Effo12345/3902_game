@@ -30,16 +30,25 @@ public class MarioCollisionSystem : AbstractSystem
         secondaryEntity.TryGetComponent<Velocity>(out var secondaryVelocity);
         switch (type)
         {
+            case ColliderType.InvisibleBlock:
+                if (direction.Equals(Direction.Top) && movingVelocity.Value.Y < 0)
+                {
+                    movingVelocity.Value.Y = 0;
+                    movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
+                    secondaryCollisionInfo.Type = ColliderType.QuestionBlock;
+                    if (secondaryEntity.TryGetComponent<Visible>(out var visible)) 
+                        visible.Value = true;
+
+                    Engine.PubSub.Publish(new BlockBump {Entity = secondaryEntity });
+                }
+                break;
             case ColliderType.Block:
             case ColliderType.QuestionBlock:
+            case ColliderType.HardBlock:
                 if (direction.Equals(Direction.Bottom))
                 {
                     movingIsGrounded.Value = true;
                     movingPosition.Value.Y = secondaryPosition.Value.Y - movingCollisionInfo.HitBox.Height + 1;
-                    if (secondaryEntity.TryGetComponent<PipeEntry>(out var pipeEntry))
-                    {
-                        Engine.PubSub.Publish(new PipeEvent {Entity = movingEntity, Destination = pipeEntry.Destination, InputDirection = Direction.Bottom, PipeDirection = pipeEntry.EntryDirection });
-                    }
                 }
                 else if (direction.Equals(Direction.Right) || direction.Equals(Direction.Left))
                 {
@@ -58,28 +67,38 @@ public class MarioCollisionSystem : AbstractSystem
                     movingVelocity.Value.Y = 0;
                     movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
 
-                    if (secondaryEntity.TryGetComponent<ItemKind>(out var secondaryItem) && secondaryItem.Kind != Kind.coin && secondaryItem.Kind != Kind.green_mushroom && secondaryItem.Kind != Kind.star)
+                    if (secondaryEntity.TryGetComponent<ItemKind>(out var secondaryItem) && secondaryItem.Kind != Kind.coin && secondaryItem.Kind != Kind.green_mushroom && secondaryItem.Kind != Kind.star
+                        && secondaryItem.Kind != Kind.minecraft_coin && secondaryItem.Kind != Kind.minecraft_green_mushroom && secondaryItem.Kind != Kind.star
+                    )
                     {
                         if (movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
                         {
-                            secondaryItem.Kind = Kind.red_mushroom;
+                            secondaryItem.Kind = secondaryItem.Kind == Kind.red_mushroom ? Kind.red_mushroom : Kind.minecraft_red_mushroom;
                         } else
                         {
-                            secondaryItem.Kind = Kind.flower;
+                            secondaryItem.Kind = secondaryItem.Kind == Kind.red_mushroom ? Kind.flower : Kind.minecraft_flower;
                         }
                     } else if (secondaryEntity.HasComponent<ItemKind>() && secondaryItem.Kind == Kind.coin)
                     {
                         movingStatus.Coins++;
                     }
 
-                    if (secondaryCollisionInfo.Type == ColliderType.QuestionBlock || movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
+                    if (secondaryEntity.HasComponent<Bump>())
                     {
-                        Engine.PubSub.Publish(new BlockBump {Entity = secondaryEntity });   
-                    } else
-                    {
-                        Engine.PubSub.Publish(new BlockBreak {Entity = secondaryEntity });
+                        if (secondaryCollisionInfo.Type == ColliderType.QuestionBlock || movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
+                        {
+                            Engine.PubSub.Publish(new BlockBump {Entity = secondaryEntity });   
+                        } else
+                        {
+                            Engine.PubSub.Publish(new BlockBreak {Entity = secondaryEntity });
+                        }
                     }
+                }
 
+                if (secondaryEntity.TryGetComponent<PipeEntry>(out var pipeEntry))
+                {
+                    if (pipeEntry.EntryDirection == direction)
+                        Engine.PubSub.Publish(new PipeEvent {Entity = movingEntity, Pipe=pipeEntry, InputDirection = movingStatus.InputDirection });
                 }
                 break;
             case ColliderType.Goomba:

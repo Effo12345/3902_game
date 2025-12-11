@@ -2,13 +2,19 @@
   "Position": { "Value": [0,0] },
   "Collider": {
       "Type": "Flag",
-      "HitBox": [0, 0, 48, 48]
+      "HitBox": [0, 0, 48, 48],
+      "IsActive": true
   },
   "AnimationState": 
   { 
     "CurrentState": "flag_ml", 
     "FrameIndex": 0, 
     "TimeInCurrentFrame": 0.0 
+  },
+  "SpriteState": {
+    "SourceRect": [ 0, 0, 0, 0 ],
+    "Origin": [ 0, 0 ],
+    "Color": [ 255, 255, 255, 255 ]
   },
   "Rotation": { "Value": 0.0 },
   "Scale": { "Value": [ 3, 3 ]},

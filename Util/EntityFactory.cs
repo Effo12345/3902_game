@@ -74,11 +74,9 @@ public static class EntityFactory
     {
         // TODO: Probably split this component and move it to another config
         if (entityData.SpriteTexture is not null)
-            entity.AddComponent(new SpriteState
+            entity.AddComponent(new SpriteTexture
             {
-                Texture = Assets.GetTexture(entityData.SpriteTexture),
-                Origin = Vector2.Zero,
-                Color = Color.White
+                Texture = Assets.GetTexture(entityData.SpriteTexture)
             });
 
         if (entityData.SpriteAtlas is not null)

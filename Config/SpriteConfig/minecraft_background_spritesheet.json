@@ -1,0 +1,13 @@
+{
+    "overworld": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 0,
+                "y": 0,
+                "width": 987,
+                "height": 498
+            }
+        ]
+    }
+}

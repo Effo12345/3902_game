@@ -9,11 +9,17 @@
     "FacingDirection": {"IsFacingLeft": false},
     "Collider": {
         "Type": "Fireball",
-        "HitBox": [0, 0, 21, 21]
+        "HitBox": [0, 0, 21, 21],
+        "IsActive": true
     },
     "AnimationState": {
         "CurrentState": "fireball",
         "FrameIndex": 0,
         "TimeInCurrentFrame": 0.0
+    },
+    "SpriteState": {
+        "SourceRect": [ 0, 0, 0, 0 ],
+        "Origin": [ 0, 0 ],
+        "Color": [ 255, 255, 255, 255 ]
     }
 }

@@ -158,6 +158,48 @@
             {"x": 444, "y": 219, "width": 16, "height": 16}
         ]
     },
+    "left_rounded_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 69, "y": 205, "width": 16, "height": 16}
+        ]
+    },
+    "flat_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 86, "y": 205, "width": 16, "height": 16}
+        ]
+    },
+    "right_rounded_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 103, "y": 205, "width": 16, "height": 16}
+        ]
+    },
+    "left_vertical_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 69, "y": 222, "width": 16, "height": 16}
+        ]
+    },
+    "solid_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 86, "y": 222, "width": 16, "height": 16}
+        ]
+    },
+    "right_vertical_stone_block": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 103, "y": 222, "width": 16, "height": 16}
+        ]
+    },
+    "brick": {
+        "frameDuration": 0.0,
+        "frames": [
+            {"x": 18, "y": 145, "width": 16, "height": 16}
+        ]
+    },
     "question_block": {
         "frameDuration": 0.15,
         "frames": [
