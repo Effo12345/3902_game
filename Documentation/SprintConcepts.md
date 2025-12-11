@@ -4,41 +4,63 @@
 ### Framework/Core Improvements
 - System priority and execution phase
 - Universal solution for readonly global data storage
-- `Deferred entity instantiation`
 
 ### Full Level
 - Only have entemies move when near mario
 - Stop the camera and player from moving backwards
-- `Intro Animation`
-- `Pipe interaction and sub-area loading`
-- `Goal flag system`
-- `Kill the player when they fall in a pit`
-- `Level HUD`
-- `Fix mario throwing fireballs`
-- `Clean up mario phsics`
-- `Item entities and behaviors`
-- `Level background`
+- `Underground area json definition`
+- `Pipe animations, sideways pipes`
+- `Invisible blocks`
+- `Multi-coin blocks`
+- `Better level transitions`
 
 ### Collision
-- `Fix issues with existing interactions`
-- `Enemy + fireball (kill enemy, animation)`
-- `Mario + dynamic blocks (bumping + breaking blocks on collision)`
-- `Change mario's collision box size based on powerup state`
+- `Fix collision bugs (stop on ground, bump/break pipes and other static blocks)`
+- Make collision more data-driven
+- `Block breaking animation`
 
 ### Utilities
 - Debug mode
-- `Constants class to extract all magic numbers`
-- `Font loading`
 
 ### Other
-- `Player life system`
-- `Level time system`
-- `Sound effects and background music`
+- Player life system
 - Main menu screen
 - Game over screen
 - Pausing
-- `Acceleration-based user input (in addition to velocity)`
-- `Reorganize filesystem`
+- `Sprint button`
+- `Scale jump height by button press time`
+
+### Sprint5 Ideas
+- `Controller input`
+- `FLUDD`
+- Dive mechanic
+- Galaxy
+
+# Sprint 5 Focused Features
+
+### Backlogged From Previous Sprint
+- Advanced Mario animations
+- Scale jump height by button pressed time
+- Player life system
+- Pipe animations
+- Json definition for underground area
+
+### Full Level
+- Pipe animations, sideways pipes
+- Invisible blocks
+- Multi-coin blocks
+- Better level transitions
+
+### Collision
+- Fix collision bugs (stop on ground, bump/break pipes and other static blocks)
+- Block breaking animation
+
+### Other
+- Sprint button
+
+### Sprint5 Ideas
+- Controller input
+- FLUDD
 
 # Sprint 4 Focused Features 
 
