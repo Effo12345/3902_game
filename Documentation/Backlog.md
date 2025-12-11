@@ -8,4 +8,7 @@
 - Json definition for underground area
 
 ## Backlog for future work
-
+- Advanced Mario animations
+- Player life system
+- Block breaking animation
+- Sprint button
