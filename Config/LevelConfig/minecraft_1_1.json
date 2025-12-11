@@ -1,27 +1,21 @@
 {
     "entities": [
         {
-            "key": "background",
+            "key": "minecraft_background",
             "components": {
-                "Position": { "Value": [-500, -800] }
+                "Position": { "Value": [-500, -800] },
+                "AnimationState": {
+                    "CurrentState": "overworld"
+                }
             }
         },
         {
-            "key": "background",
+            "key": "minecraft_background",
             "components": {
-                "Position": { "Value": [1036, -800] }
-            }
-        },
-        {
-            "key": "background",
-            "components": {
-                "Position": { "Value": [2572, -800] }
-            }
-        },
-        {
-            "key": "background",
-            "components": {
-                "Position": { "Value": [4108, -800] }
+                "Position": { "Value": [2450, -800] },
+                "AnimationState": {
+                    "CurrentState": "overworld"
+                }
             }
         },
         {
@@ -34,7 +28,7 @@
             "key": "empty",
             "components": {
                 "Music": {
-                    "Key": "OverworldMusic",
+                    "Key": "MinecraftMusic",
                     "Volume": 0.5
                 }
             }
@@ -306,9 +300,9 @@
             "components": {
                 "Position": { "Value": [ 772, 202 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
@@ -321,7 +315,12 @@
         {
             "key": "minecraft_question_block",
             "components": {
-                "Position": { "Value": [ 1012, 202 ] }
+                "Position": { "Value": [ 1012, 202 ] },
+                "ItemKind": {
+                    "Kind": "minecraft_red_mushroom",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
+                }
             }
         },
         {
@@ -335,9 +334,9 @@
             "components": {
                 "Position": { "Value": [ 1060, 0 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
@@ -354,9 +353,9 @@
             "components": {
                 "Position": { "Value": [ 1108, 202 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
@@ -677,7 +676,12 @@
         {
             "key": "minecraft_question_block",
             "components": {
-                "Position": { "Value": [ 3700, 192 ] }
+                "Position": { "Value": [ 3700, 192 ] },
+                "ItemKind": {
+                    "Kind": "minecraft_red_mushroom",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
+                }
             }
         },
         {
@@ -757,9 +761,9 @@
             "components": {
                 "Position": { "Value": [ 4468, 0 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
@@ -769,8 +773,8 @@
                 "Position": { "Value": [ 4468, 192 ] },
                 "ItemKind": {
                     "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
@@ -791,9 +795,9 @@
             "components": {
                 "Position": { "Value": [ 5044, 192 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
@@ -802,16 +806,21 @@
             "components": {
                 "Position": { "Value": [ 5188, 192 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
         {
             "key": "minecraft_question_block",
             "components": {
-                "Position": { "Value": [ 5188, 0 ] }
+                "Position": { "Value": [ 5188, 0 ] },
+                "ItemKind": {
+                    "Kind": "minecraft_red_mushroom",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
+                }
             }
         },
         {
@@ -819,9 +828,9 @@
             "components": {
                 "Position": { "Value": [ 5332, 192 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
@@ -860,9 +869,9 @@
             "components": {
                 "Position": { "Value": [ 6148, 0 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
@@ -877,9 +886,9 @@
             "components": {
                 "Position": { "Value": [ 6196, 0 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },
@@ -1369,9 +1378,9 @@
             "components": {
                 "Position": { "Value": [ 8116, 192 ] },
                 "ItemKind": {
-                    "Kind": "coin",
-                    "TextureKey": "ItemsSheet",
-                    "spriteAtlasKey": "ItemsAnimation"
+                    "Kind": "minecraft_coin",
+                    "TextureKey": "MinecraftItemsSheet",
+                    "spriteAtlasKey": "MinecraftItemsAnimation"
                 }
             }
         },

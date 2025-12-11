@@ -31,6 +31,14 @@
         {
             "key": "SteveSheet",
             "path": "Sprites/steve"
+        },
+        {
+            "key": "MinecraftItemsSheet",
+            "path": "Sprites/minecraft_items"
+        },
+        {
+            "key": "MinecraftBackgroundSheet",
+            "path": "Sprites/minecraft_background"
         }
     ],
     "fonts": [
@@ -47,6 +55,10 @@
         {
             "key": "PachinkoMusic",
             "path": "Sounds/Music/pachinko"
+        },
+        {
+            "key": "MinecraftMusic",
+            "path": "Sounds/Music/sweden"
         },
         {
             "key": "1Up",
@@ -147,6 +159,14 @@
         {
             "key": "SteveAnimation",
             "path": "Config/SpriteConfig/steve_spritesheet.json"
+        },
+        {
+            "key": "MinecraftItemsAnimation",
+            "path": "Config/SpriteConfig/minecraft_items_spritesheet.json"
+        },
+        {
+            "key": "MinecraftBackgroundAnimation",
+            "path": "Config/SpriteConfig/minecraft_background_spritesheet.json"
         }
     ],
     "inputConfigs": [
@@ -421,6 +441,48 @@
             "spriteAtlas": "SteveAnimation",
             "entityConfig": "MarioConfig",
             "inputConfig": "PlayerInput"
+        },
+        {
+            "key": "minecraft_coin",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "CoinConfig"
+        },
+        {
+            "key": "minecraft_fireball",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "FireballConfig"
+        },
+        {
+            "key": "minecraft_red_mushroom",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "RedMushroomConfig"
+        },
+        {
+            "key": "minecraft_green_mushroom",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "GreenMushroomConfig"
+        },
+        {
+            "key": "minecraft_flower",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "FlowerConfig"
+        },
+        {
+            "key": "minecraft_star",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "StarConfig"
+        },
+        {
+            "key": "minecraft_background",
+            "spriteTexture": "MinecraftBackgroundSheet",
+            "spriteAtlas": "MinecraftBackgroundAnimation",
+            "entityConfig": "BackgroundConfig"
         }
     ]
 }

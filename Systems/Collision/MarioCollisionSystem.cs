@@ -67,14 +67,16 @@ public class MarioCollisionSystem : AbstractSystem
                     movingVelocity.Value.Y = 0;
                     movingPosition.Value.Y = secondaryPosition.Value.Y + secondaryCollisionInfo.HitBox.Height;
 
-                    if (secondaryEntity.TryGetComponent<ItemKind>(out var secondaryItem) && secondaryItem.Kind != Kind.coin && secondaryItem.Kind != Kind.green_mushroom && secondaryItem.Kind != Kind.star)
+                    if (secondaryEntity.TryGetComponent<ItemKind>(out var secondaryItem) && secondaryItem.Kind != Kind.coin && secondaryItem.Kind != Kind.green_mushroom && secondaryItem.Kind != Kind.star
+                        && secondaryItem.Kind != Kind.minecraft_coin && secondaryItem.Kind != Kind.minecraft_green_mushroom && secondaryItem.Kind != Kind.star
+                    )
                     {
                         if (movingStatus.State == CONSTANTS.PLAYER_STATE.SMALL)
                         {
-                            secondaryItem.Kind = Kind.red_mushroom;
+                            secondaryItem.Kind = secondaryItem.Kind == Kind.red_mushroom ? Kind.red_mushroom : Kind.minecraft_red_mushroom;
                         } else
                         {
-                            secondaryItem.Kind = Kind.flower;
+                            secondaryItem.Kind = secondaryItem.Kind == Kind.red_mushroom ? Kind.flower : Kind.minecraft_flower;
                         }
                     } else if (secondaryEntity.HasComponent<ItemKind>() && secondaryItem.Kind == Kind.coin)
                     {
