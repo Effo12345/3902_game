@@ -22,4 +22,3 @@
 ### Areas for Improvement
 
 - Isn't immediately obvious what the different functions in GameManager.cs do, and they could be explained.
--\
