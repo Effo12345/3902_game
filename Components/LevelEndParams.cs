@@ -9,4 +9,6 @@ public class LevelEndParams
     public float FadeDuration;
     public Vector2 PlayerEndingVelocity;
     public float WalkDuration;
+    public float PoseDuration;
+    public string NextLevel;
 }
