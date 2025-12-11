@@ -5,7 +5,7 @@
 - **Right Arrow** - Move right
 - **Space Bar** - Jump
 - **F** - Cycle through Mario's powerup states
-- **L** or **Left Click** - Throw a fireball (as fire Mario)
+- **L** or **Left Click** - Throw a fireball (as fire Mario) OR use F.L.U.D.D when wearing it
 
 ## General
 - **Q** - Quit the game
