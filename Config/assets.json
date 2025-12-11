@@ -23,6 +23,22 @@
         {
             "key": "ScreensSheet",
             "path": "Sprites/screens"
+        },
+        {
+            "key": "MinecraftTilesSheet",
+            "path": "Sprites/minecraft_tiles"
+        },
+        {
+            "key": "SteveSheet",
+            "path": "Sprites/steve"
+        },
+        {
+            "key": "MinecraftItemsSheet",
+            "path": "Sprites/minecraft_items"
+        },
+        {
+            "key": "MinecraftBackgroundSheet",
+            "path": "Sprites/minecraft_background"
         }
     ],
     "fonts": [
@@ -39,6 +55,10 @@
         {
             "key": "PachinkoMusic",
             "path": "Sounds/Music/pachinko"
+        },
+        {
+            "key": "MinecraftMusic",
+            "path": "Sounds/Music/sweden"
         },
         {
             "key": "1Up",
@@ -131,6 +151,22 @@
         {
             "key": "ScreensAnimation",
             "path": "Config/SpriteConfig/screens_spritesheet.json"
+        },
+        {
+            "key": "MinecraftTilesAnimation",
+            "path": "Config/SpriteConfig/minecraft_tiles_spritesheet.json"
+        },
+        {
+            "key": "SteveAnimation",
+            "path": "Config/SpriteConfig/steve_spritesheet.json"
+        },
+        {
+            "key": "MinecraftItemsAnimation",
+            "path": "Config/SpriteConfig/minecraft_items_spritesheet.json"
+        },
+        {
+            "key": "MinecraftBackgroundAnimation",
+            "path": "Config/SpriteConfig/minecraft_background_spritesheet.json"
         }
     ],
     "inputConfigs": [
@@ -233,6 +269,10 @@
         {
             "key": "StartScreen",
             "path": "Config/LevelConfig/start_screen.json"
+        },
+        {
+            "key": "Minecraft1_1",
+            "path": "Config/LevelConfig/minecraft_1_1.json"
         }
     ],
     "entities": [
@@ -352,6 +392,97 @@
             "spriteTexture": "ScreensSheet",
             "spriteAtlas": "ScreensAnimation",
             "entityConfig": "ScreenConfig"
+        },
+        {
+          "key": "minecraft_static_block",
+          "spriteTexture": "MinecraftTilesSheet",
+          "spriteAtlas": "MinecraftTilesAnimation",
+          "entityConfig": "StaticBlock"
+        },
+        {
+            "key": "minecraft_bump_block",
+            "spriteTexture": "MinecraftTilesSheet",
+            "spriteAtlas": "MinecraftTilesAnimation",
+            "entityConfig": "BumpBlockConfig"
+        },
+        {
+            "key": "minecraft_question_block",
+            "spriteTexture": "MinecraftTilesSheet",
+            "spriteAtlas": "MinecraftTilesAnimation",
+            "entityConfig": "QuestionBlock"
+        },
+        {
+            "key": "minecraft_flag_block",
+            "spriteTexture": "MinecraftTilesSheet",
+            "spriteAtlas": "MinecraftTilesAnimation",
+            "entityConfig": "FlagBlockConfig"
+        },
+        {
+            "key": "minecraft_flag_bar",
+            "spriteTexture": "MinecraftTilesSheet",
+            "spriteAtlas": "MinecraftTilesAnimation",
+            "entityConfig": "FlagBarConfig"
+        },
+        {
+            "key": "minecraft_ten_coin_block",
+            "spriteTexture": "MinecraftTilesSheet",
+            "spriteAtlas": "MinecraftTilesAnimation",
+            "entityConfig": "TenCoinBlock"
+        },
+        {
+          "key": "minecraft_invisible_block",
+          "spriteTexture": "MinecraftTilesSheet",
+          "spriteAtlas": "MinecraftTilesAnimation",
+          "entityConfig": "InvisibleBlock"
+        },
+        {
+            "key": "steve",
+            "spriteTexture": "SteveSheet",
+            "spriteAtlas": "SteveAnimation",
+            "entityConfig": "MarioConfig",
+            "inputConfig": "PlayerInput"
+        },
+        {
+            "key": "minecraft_coin",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "CoinConfig"
+        },
+        {
+            "key": "minecraft_fireball",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "FireballConfig"
+        },
+        {
+            "key": "minecraft_red_mushroom",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "RedMushroomConfig"
+        },
+        {
+            "key": "minecraft_green_mushroom",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "GreenMushroomConfig"
+        },
+        {
+            "key": "minecraft_flower",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "FlowerConfig"
+        },
+        {
+            "key": "minecraft_star",
+            "spriteTexture": "MinecraftItemsSheet",
+            "spriteAtlas": "MinecraftItemsAnimation",
+            "entityConfig": "StarConfig"
+        },
+        {
+            "key": "minecraft_background",
+            "spriteTexture": "MinecraftBackgroundSheet",
+            "spriteAtlas": "MinecraftBackgroundAnimation",
+            "entityConfig": "BackgroundConfig"
         }
     ]
 }

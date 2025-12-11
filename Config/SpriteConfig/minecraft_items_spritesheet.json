@@ -1,0 +1,63 @@
+{
+    "red_mushroom": {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 100,
+                "y": 74,
+                "width": 8,
+                "height": 6
+            }
+        ]
+    },
+    "green_mushroom": {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 85,
+                "y": 74,
+                "width": 6,
+                "height": 6
+            }
+        ]
+    },
+    "star": {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 177,
+                "y": 401,
+                "width": 15,
+                "height": 15
+            }
+        ]
+    },
+    "fireball": {
+        "frameDuration": 0.0,
+        "frames": [
+            {
+                "x": 128,
+                "y": 352,
+                "width": 16,
+                "height": 16
+            }
+        ]
+    },
+    "flower": {
+        "frameDuration": 0,
+        "frames": [
+            {
+                "x": 68,
+                "y": 69,
+                "width": 9,
+                "height": 11
+            }
+        ]
+    },
+    "coin": {
+        "frameDuration": 0.2,
+        "frames": [
+            {"x": 160, "y": 224, "width": 16, "height": 16}
+        ]
+    }
+}

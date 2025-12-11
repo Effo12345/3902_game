@@ -7,12 +7,14 @@ namespace ECS.Systems;
 public class LevelEndSystem : AbstractSystem
 {
     private readonly GraphicsManager Graphics;
+    private readonly GameManager GameManager;
 
     private Entity Player = null;
 
-    public LevelEndSystem(GraphicsManager graphics)
+    public LevelEndSystem(GraphicsManager graphics, GameManager gameManager)
     {
-        Graphics = graphics;   
+        Graphics = graphics;
+        GameManager = gameManager;
     }
 
     public override bool Initialize(Engine engine)
@@ -118,6 +120,11 @@ public class LevelEndSystem : AbstractSystem
                 Player.TryGetComponent<Position>(out var pos);
                 Player.GetComponent<Position>().Value = new Vector2(pos.Value.X, 300);
                 Player.GetComponent<Velocity>().Value = Vector2.Zero;
+            }
+
+            if (deltaSeconds > CurrentLevelEnd.PoseDuration)
+            {
+                GameManager.RequestLevelChange(CurrentLevelEnd.NextLevel);
             }
         }
     }

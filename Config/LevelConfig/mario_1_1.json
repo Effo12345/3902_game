@@ -46,7 +46,9 @@
                     "FadeColor": 255,
                     "FadeDuration": 1.0,
                     "PlayerEndingVelocity": [ 150, 0 ],
-                    "WalkDuration": 7.3
+                    "WalkDuration": 7.3,
+                    "PoseDuration": 9.3,
+                    "NextLevel": "Minecraft1_1"
                 }
             }
         },
