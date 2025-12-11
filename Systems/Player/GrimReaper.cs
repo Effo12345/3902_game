@@ -20,6 +20,7 @@ public class MarioDefeatSystem : AbstractSystem
             if (!entity.TryGetComponent<Status>(out var status) ||
                 !entity.TryGetComponent<Velocity>(out var velocity) ||
                 !entity.TryGetComponent<Position>(out var position) ||
+                !entity.TryGetComponent<Scale>(out var scale) ||
                 animationStarted)
                 continue;
 
@@ -33,6 +34,9 @@ public class MarioDefeatSystem : AbstractSystem
                 entity.RemoveComponent<Collider>();
                 entity.RemoveComponent<Friction>();
                 entity.RemoveComponent<InputBindings>();
+
+                //Reset scale (for sunshine)
+                scale.Value = new Vector2(3,3);
 
                 //Apply upwards velocity
                 velocity.Value.Y = CONSTANTS.COLLISION.MARIO_DEATH_VELOCITY;
@@ -54,7 +58,7 @@ public class MarioDefeatSystem : AbstractSystem
             {
                 timer = 0.0f;
                 animationStarted = false;
-                GameManager.ChangeLevel(CONSTANTS.LEVEL.MARIO1_1);
+                GameManager.ReloadCurrentLevel();
             }
         }
     }

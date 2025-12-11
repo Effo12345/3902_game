@@ -1,0 +1,823 @@
+{
+    "entities": [
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 50, 50 ] },
+                "TextRender": {
+                    "Text": "COINS:",
+                    "Font": "HUDFont",
+                    "Color": [255,255,255,255]
+                }
+            }
+        },        
+        {
+            "key": "hud_text",
+            "components": {
+                "Position": { "Value": [ 200, 50 ] },
+                "TextRender": {
+                    "Text": "00",
+                    "Font": "HUDFont",
+                    "Color": [ 255, 255, 255, 255 ]
+                },
+                "Tag": { "Value": "hud_coins_value" }
+            }
+        },
+        {
+            "key": "empty",
+            "components": {
+                "PixelationIntro": {
+                    "Value": 0.05,
+                    "StepSize": 0.0015
+                }
+            }
+        },
+        {
+            "key": "mario",
+            "components": {
+                "Position": { "Value": [ 100, -240 ] },
+                "Status": { "State": "sunshine"},
+                "Scale": { "Value": [1, 1]}
+            }
+        },
+        {
+            "key": "coin",
+            "components": {
+                "Position": {"Value": [532, 120]}
+            }
+        },
+        {
+            "key": "empty",
+            "components": {
+                "Music": {
+                    "Key": "PachinkoMusic",
+                    "Volume": 0.5
+                }
+            }
+        },
+        {
+            "key": "hud_text",
+            "components": {
+                "TextRender": {
+                    "Text": "Left Click or L to hover. Try to get all 5 coins!",
+                    "Font": "HUDFont",
+                    "Color": [ 255, 255, 255, 255 ]
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -140, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -92, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -44, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 4, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 52, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 100, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 0 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, -48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 0 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 96 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 144 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 240 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 288 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 336 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 196, 384 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "coin",
+            "components": {
+                "Position": { "Value": [ 202, 432 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 292, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 340, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 388, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 436, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 484, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 532, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -140, -192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -188, -144 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -236, -96 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -284, -48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 0 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 96 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 144 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 336 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -284, 336 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -380, 336 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -380, 96 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "coin",
+            "components": {
+                "Position": { "Value": [ -284, 0 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 384 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 432 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 580, -144 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 628, -96 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 676, -48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 0 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -332, 0 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 96 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 144 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 336 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 772, 336 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 676, 336 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 772, 96 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "coin",
+            "components": {
+                "Position": { "Value": [ 676, 0 ] }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 384 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 724, 432 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 604, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 556, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 508, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 460, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 604, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 556, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 508, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 460, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 604, 144 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ 604, 96 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -68, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -116, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -164, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -212, 48 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -68, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -116, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -164, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -212, 192 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -212, 144 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "static_block",
+            "components": {
+                "Position": { "Value": [ -212, 96 ] },
+                
+                "AnimationState": {
+                    "CurrentState": "block"
+                }
+            }
+        },
+        {
+            "key": "coin",
+            "components": {
+                "Position": { "Value": [ -136, 120 ] }
+            }
+        }
+    ]
+}

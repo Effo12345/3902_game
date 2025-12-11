@@ -67,4 +67,9 @@ public class GraphicsManager
         SpriteBatch.Draw(SceneTarget, Vector2.Zero, Color.White);
         SpriteBatch.End();
     }
+
+    public void ClearPixelation()
+    {
+        Pixelation = 0.0f;
+    }
 }

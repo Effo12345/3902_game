@@ -1,3 +1,24 @@
+# Sprint 5
+
+## Implemented Features
+- Scale jump height by button pressed time
+- Pipe animations
+- Json definition for underground area
+- Pipe animations, sideways pipes
+- Invisible blocks
+- Multi-coin blocks
+- Better level transitions
+- Fix collision bugs (stop on ground, bump/break pipes and other static blocks)
+- Scale jump height by button press time
+- Controller input
+- FLUDD
+
+## Backlogged Features
+- Advanced Mario animations
+- Player life system
+- Block breaking animation
+- Sprint button
+
 # Sprint 4
 
 ## Implemented Features

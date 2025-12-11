@@ -1,5 +1,4 @@
 using System.Net.NetworkInformation;
-
 namespace ECS.Util;
 
 public static class CONSTANTS
@@ -7,7 +6,8 @@ public static class CONSTANTS
     public static class LEVEL
     {
         public static string MARIO1_1 { get; } = "Mario1_1";
-        public static string TEST_LEVEL { get; } = "TestLevel";
+        public static string PACHINKO_LEVEL { get; } = "PachinkoLevel";
+        public static string START_SCREEN_LEVEL { get; } = "StartScreen";
     }
     public static class FILE
     {
@@ -18,7 +18,7 @@ public static class CONSTANTS
         public static string QUIT { get; } = "Quit";
         public static string RESET { get; } = "Reset";
         public static string CROUCH { get; } = "Crouch";
-        public static string TEST_LEVEL { get; } = "TestLevel";
+        public static string PACHINKO_LEVEL { get; } = "PachinkoLevel";
         public static string MARIO_LEVEL { get; } = "MarioLevel";
         public static string VELOCITY { get; } = "Velocity";
         public static string ACCELERATION { get; } = "Acceleration";
@@ -27,7 +27,7 @@ public static class CONSTANTS
         public static string MIDDLE { get; } = "Middle";
         public static string X1 { get; } = "X1";
         public static string X2 { get; } = "X2";
-        public static string FIRE { get; } = "Fire";
+        public static string SPECIAL { get; } = "Special";
         public static string JUMP { get; } = "Jump";
     }
     public static class ANIMATION_STATE
@@ -36,13 +36,14 @@ public static class CONSTANTS
         public static string SHELL { get; } = "shell";
         public static string KOOPA { get; } = "koopa";
         public static string PLAYER_JUMP_SUFFIX { get; } = "_jump";
+        public static string PLAYER_HOVER_SUFFIX { get; } = "_hover";
         public static string PLAYER_IDLE_SUFFIX { get; } = "_idle";
         public static string PLAYER_WALK_SUFFIX { get; } = "_walk";
         public static string BIG_PEACE_SIGN { get; } = "big_peace";
     }
     public static class COLLISION
     {
-        public static Rectangle QUADTREE_DIMENSION { get; } = new Rectangle(-200,-200,20000,680);
+        public static Rectangle QUADTREE_DIMENSION { get; } = new Rectangle(-500,-500,20000,1000);
         public static float ENEMY_BOUNCE_VELOCITY { get; } = -500;
         public static float ENEMY_FLIP_VELOCITY { get; } = -200;
         public static float SHELL_KICK_SPEED { get; } = 400;
@@ -70,6 +71,7 @@ public static class CONSTANTS
         public static string BLOCKBREAK { get; } = "BlockBreak";
         public static string STAR { get; } = "Star";
         public static string PIPE_ENTER { get; } = "PipeEnter";
+        public static string MARIO_HOVER { get; } = "MarioHover";
     }
     public static class MATH
     {
@@ -82,6 +84,7 @@ public static class CONSTANTS
         public static string SMALL { get; } = "small";
         public static string BIG { get; } = "big";
         public static string FIRE { get; } = "fire";
+        public static string SUNSHINE { get; } = "sunshine";
     }
     public static class TEMP
     {
@@ -91,8 +94,11 @@ public static class CONSTANTS
         public static Vector2 FIREBALL_SPAWN { get; } = new Vector2(15 * 3 / 2);
         public static float RESPAWN_TIMER { get; } = 3.5f;
         public static float STAR_TIMER { get; } = 8.0f;
-        public static float JUMP_VELOCITY { get; } = -900.0f;
+        public static float JUMP_VELOCITY { get; } = -500.0f;
+        public static float MAX_JUMP_HOLD_FRAMES { get; } = 20;
+
         public static Color DEFAULT_BACKGROUND_COLOR { get; } = Color.CornflowerBlue;
+        public static float BLOCK_TIMER { get; } = 1.0f;
     }
     public static class RENDER
     {

@@ -4,11 +4,12 @@ public class InputSystem : AbstractSystem
 {
     private KeyboardState _prevKeyboard;
     private MouseState _prevMouse;
-
+    private GamePadState _prevGamepad;
     public override void Update(Engine engine, GameTime gameTime)
     {
         var kb = Keyboard.GetState();
         var ms = Mouse.GetState();
+        var gp = GamePad.GetState(PlayerIndex.One);
 
         foreach (var entity in engine.GetEntities())
         {
@@ -44,18 +45,24 @@ public class InputSystem : AbstractSystem
 
                 if (ab.Type == InputActionType.Velocity)
                 {
-                    // Any pressed key or mousekey add up the binded vector
-                    if ((ab.Keys != null && ab.Keys.Any(kb.IsKeyDown)) ||
-                        (ab.MouseButtons != null && IsAnyMouseDown(ms, ab.MouseButtons)))
+                    bool down =
+                        (ab.Keys != null && ab.Keys.Any(kb.IsKeyDown)) ||
+                        (ab.MouseButtons != null && IsAnyMouseDown(ms, ab.MouseButtons)) ||
+                        (ab.GamepadButtons != null && IsAnyGamepadDown(gp, ab.GamepadButtons));
+
+                    if (down)
                     {
                         velocitymove += new Vector2(ab.AxisX, ab.AxisY);
                     }
                 }
                 else if (ab.Type == InputActionType.Acceleration)
                 {
-                    // Any pressed key or mousekey add up the binded vector
-                    if ((ab.Keys != null && ab.Keys.Any(kb.IsKeyDown)) ||
-                        (ab.MouseButtons != null && IsAnyMouseDown(ms, ab.MouseButtons)))
+                    bool down =
+                        (ab.Keys != null && ab.Keys.Any(kb.IsKeyDown)) ||
+                        (ab.MouseButtons != null && IsAnyMouseDown(ms, ab.MouseButtons)) ||
+                        (ab.GamepadButtons != null && IsAnyGamepadDown(gp, ab.GamepadButtons));
+
+                    if (down)
                     {
                         accelerationmove += new Vector2(ab.AxisX, ab.AxisY);
                     }
@@ -64,11 +71,14 @@ public class InputSystem : AbstractSystem
                 {
                     bool nowDown =
                         (ab.Keys != null && ab.Keys.Any(kb.IsKeyDown)) ||
-                        (ab.MouseButtons != null && IsAnyMouseDown(ms, ab.MouseButtons));
+                        (ab.MouseButtons != null && IsAnyMouseDown(ms, ab.MouseButtons)) ||
+                        (ab.GamepadButtons != null && IsAnyGamepadDown(gp, ab.GamepadButtons));
 
                     bool prevDown =
                         (ab.Keys != null && ab.Keys.Any(_prevKeyboard.IsKeyDown)) ||
-                        (ab.MouseButtons != null && IsAnyMouseDown(_prevMouse, ab.MouseButtons));
+                        (ab.MouseButtons != null && IsAnyMouseDown(_prevMouse, ab.MouseButtons)) ||
+                        (ab.GamepadButtons != null && IsAnyGamepadDown(_prevGamepad, ab.GamepadButtons));
+
 
                     if (nowDown && !prevDown) PublishButton(engine, entity, actionName, InputPhase.Press);
                     if (nowDown && prevDown) PublishButton(engine, entity, actionName, InputPhase.Hold);
@@ -95,10 +105,51 @@ public class InputSystem : AbstractSystem
                     Entity = entity
                 });
             }
+
+            if (bindings.UseGamepad)
+            {
+                var prevLeftRaw = _prevGamepad.ThumbSticks.Left;
+                var prevRightRaw = _prevGamepad.ThumbSticks.Right;
+                var currLeftRaw = gp.ThumbSticks.Left;
+                var currRightRaw = gp.ThumbSticks.Right;
+
+                var prevLeft = new Vector2(prevLeftRaw.X, -prevLeftRaw.Y);
+                var currLeft = new Vector2(currLeftRaw.X, -currLeftRaw.Y);
+                var prevRight = new Vector2(prevRightRaw.X, -prevRightRaw.Y);
+                var currRight = new Vector2(currRightRaw.X, -currRightRaw.Y);
+
+                if (bindings.UseGamepad)
+                {
+                    var deltaL = currLeft - prevLeft;
+                    if (currLeft != Vector2.Zero)
+                    {
+                        engine.PubSub.Publish(new InputGamepadStickEvent
+                        {
+                            Stick = GamepadStick.Left,
+                            Value = currLeft,
+                            Delta = deltaL,
+                            Entity = entity
+                        });
+                    }
+
+                    var deltaR = currRight - prevRight;
+                    if (currRight != Vector2.Zero)
+                    {
+                        engine.PubSub.Publish(new InputGamepadStickEvent
+                        {
+                            Stick = GamepadStick.Right,
+                            Value = currRight,
+                            Delta = deltaR,
+                            Entity = entity
+                        });
+                    }
+                }
+            }
         }
 
         _prevKeyboard = kb;
         _prevMouse = ms;
+        _prevGamepad = gp;
     }
 
     private static void PublishButton(Engine engine, Entity entity, string action, InputPhase phase)
@@ -130,4 +181,17 @@ public class InputSystem : AbstractSystem
         }
         return false;
     }
+
+    private static bool IsAnyGamepadDown(GamePadState gp, IEnumerable<Buttons>? buttons)
+    {
+        if (buttons == null) return false;
+
+        foreach (var b in buttons)
+        {
+            if (gp.IsButtonDown(b))
+                return true;
+        }
+        return false;
+    }
+
 }
